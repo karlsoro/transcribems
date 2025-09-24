@@ -1,20 +1,11 @@
 # Feature Specification: WhisperX Audio Transcription API
 
-**Feature Branch**: `001-api-transcribe`
+**Feature Branch**: `001-an-api-that`
 **Created**: 2025-01-24
 **Status**: Draft
 **Input**: User description: "an API that will take the input of the path to a audio file and then will read that audio file and use whisperX to create a transcription file with the speakers identified (speaker 1, speaker 2, etc) and the start and end time makers as a file. The API will leverage a GPU if one is available. There should be logging as well and a debug flag to allow setting the level of the verboseness of the logging"
 
 ---
-
-## Clarifications
-
-### Session 2025-01-24
-- Q: Which audio formats should the API support? → A: WhisperX defaults: WAV, MP3, M4A, FLAC
-- Q: What should be the maximum audio file size the API can handle? → A: Enterprise files: 5GB limit
-- Q: What should be the acceptable processing time limit for audio transcription? → A: No strict limit: Best effort processing
-- Q: Where should the transcription files be stored? → A: Dedicated output directory (./transcriptions/)
-- Q: What format should the transcription output file use? → A: JSON with structured speaker/timestamp data
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -42,15 +33,15 @@ A developer or system administrator needs to transcribe audio files containing m
 - **FR-002**: System MUST read and process audio files to generate transcriptions
 - **FR-003**: System MUST identify different speakers in the audio and label them sequentially (Speaker 1, Speaker 2, etc.)
 - **FR-004**: System MUST include precise start and end timestamps for each speech segment
-- **FR-005**: System MUST output transcription results to JSON format with structured speaker/timestamp data
+- **FR-005**: System MUST output transcription results to a structured file format
 - **FR-006**: System MUST automatically detect and utilize GPU acceleration when available
 - **FR-007**: System MUST implement comprehensive logging of processing steps and errors
 - **FR-008**: System MUST provide a debug flag to control logging verbosity levels
 - **FR-009**: System MUST validate input file paths and handle invalid paths gracefully
-- **FR-010**: System MUST support WhisperX default audio formats (WAV, MP3, M4A, FLAC)
-- **FR-011**: System MUST handle audio files up to 5GB in size
-- **FR-012**: System MUST process audio files with best effort timing (no strict time limits)
-- **FR-013**: System MUST store transcription files in a dedicated ./transcriptions/ directory
+- **FR-010**: System MUST support [NEEDS CLARIFICATION: which audio formats - MP3, WAV, M4A, FLAC?]
+- **FR-011**: System MUST handle audio files up to [NEEDS CLARIFICATION: maximum file size not specified]
+- **FR-012**: System MUST complete processing within [NEEDS CLARIFICATION: acceptable processing time limits not specified]
+- **FR-013**: System MUST store transcription files at [NEEDS CLARIFICATION: output directory/path not specified]
 
 ### Key Entities *(include if feature involves data)*
 - **Audio File**: Input audio file containing speech from one or more speakers, with file path, format, duration, and quality metadata
@@ -71,7 +62,7 @@ A developer or system administrator needs to transcribe audio files containing m
 - [x] All mandatory sections completed
 
 ### Requirement Completeness
-- [x] No [NEEDS CLARIFICATION] markers remain
+- [ ] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Scope is clearly bounded
@@ -88,6 +79,6 @@ A developer or system administrator needs to transcribe audio files containing m
 - [x] User scenarios defined
 - [x] Requirements generated
 - [x] Entities identified
-- [x] Review checklist passed
+- [ ] Review checklist passed
 
 ---
