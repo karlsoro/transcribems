@@ -24,6 +24,7 @@ This is a **specification-first development environment** with the following key
   - `/tasks` - Break down features into executable tasks
   - `/implement` - Execute the implementation
   - `/analyze` - Cross-artifact consistency analysis
+  - `/constitution` - Create or update the project constitution
 
 ### Feature Development Workflow
 
@@ -51,6 +52,9 @@ Execute these commands in order for feature development:
 4. **`/tasks`** - Generate detailed task breakdown
 5. **`/analyze`** - Validate consistency across artifacts
 6. **`/implement`** - Execute the implementation
+
+### Constitution Management Command
+- **`/constitution`** - Create or update the project constitution with interactive principle inputs, maintaining template synchronization
 
 ### Script Commands
 - **`./specify/scripts/bash/check-prerequisites.sh`** - Check environment and artifacts

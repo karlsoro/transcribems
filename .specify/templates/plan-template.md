@@ -47,7 +47,33 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**Code Quality Gates**:
+- [ ] Code follows established patterns and naming conventions
+- [ ] Cyclomatic complexity under 10 for all functions
+- [ ] Code reviews planned for all changes
+
+**Testing Standards Gates**:
+- [ ] TDD approach confirmed (tests before implementation)
+- [ ] 85% minimum test coverage target set
+- [ ] Integration tests planned for all API endpoints
+- [ ] Performance tests planned for stated requirements
+
+**UX Consistency Gates**:
+- [ ] Design system compliance verified
+- [ ] Accessibility requirements (WCAG 2.1 AA) addressed
+- [ ] User feedback patterns established
+
+**Performance Requirements Gates**:
+- [ ] API response times under 200ms p95 planned
+- [ ] Page load times under 2 seconds targeted
+- [ ] Database query optimization planned
+- [ ] Performance regression tests included
+
+**Development Workflow Gates**:
+- [ ] Feature branch strategy confirmed
+- [ ] Code review process established
+- [ ] CI/CD requirements identified
+- [ ] Documentation update plan included
 
 ## Project Structure
 
@@ -209,4 +235,4 @@ ios/ or android/
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v1.0.0 - See `.specify/memory/constitution.md`*
