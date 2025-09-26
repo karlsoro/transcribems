@@ -11,6 +11,9 @@ import tempfile
 import os
 from pathlib import Path
 
+# Initialize logger before any potential usage
+logger = logging.getLogger(__name__)
+
 try:
     import whisperx
     import librosa
@@ -25,8 +28,6 @@ from ..models.transcription_job import TranscriptionJob
 from ..models.transcription_result import TranscriptionResult, TranscriptionSegment, Word, Speaker
 from ..models.types import TranscriptionSettings, TranscriptionMetadata, JobStatus
 from ..error_handler import MCPErrorHandler
-
-logger = logging.getLogger(__name__)
 
 
 class TranscriptionService:

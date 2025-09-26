@@ -1,0 +1,31 @@
+{
+  "job_id": "31fc3c15-9b9c-412f-a06b-e55463620711",
+  "audio_file": {
+    "file_path": "/home/karlsoro/Projects/TranscribeMS/test_audio/short_speech.wav",
+    "file_name": "short_speech.wav",
+    "file_size": 160044,
+    "duration": 5.0,
+    "format": "WAV",
+    "sample_rate": 16000,
+    "channels": 1,
+    "created_at": "2025-09-26 10:29:50.585552",
+    "checksum": "e0a37a644ac7db284597a0a6c523cae502df183ac5cf428c6881c8efc5871028",
+    "state": "AudioFileState.READY"
+  },
+  "status": "JobStatus.PENDING",
+  "progress": 0.0,
+  "started_at": null,
+  "completed_at": null,
+  "error_message": null,
+  "settings": {
+    "model_size": "base",
+    "language": null,
+    "enable_diarization": true,
+    "device": "cpu",
+    "chunk_length": 30,
+    "compute_type": "int8"
+  },
+  "estimated_duration": null,
+  "current_chunk": 0,
+  "total_chunks": 1
+}

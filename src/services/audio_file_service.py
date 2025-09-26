@@ -69,31 +69,19 @@ class AudioFileService:
             raise
 
     async def _extract_audio_metadata(self, audio_file: AudioFile) -> None:
-        """Extract audio metadata using librosa and mutagen.
+        """Extract audio metadata using soundfile (avoiding librosa coverage conflict).
 
         Args:
             audio_file: AudioFile instance to update with metadata
         """
         try:
-            # Use librosa to get basic audio information
-            duration = librosa.get_duration(path=audio_file.file_path)
-            audio_file.duration = duration
+            # Use soundfile to get audio information (avoids coverage conflict)
+            info = sf.info(audio_file.file_path)
+            audio_file.duration = info.duration
+            audio_file.sample_rate = info.samplerate
+            audio_file.channels = info.channels
 
-            # Try to get more detailed info with soundfile
-            try:
-                info = sf.info(audio_file.file_path)
-                audio_file.sample_rate = info.samplerate
-                audio_file.channels = info.channels
-                logger.debug(f"Extracted metadata: duration={duration:.2f}s, sr={info.samplerate}, ch={info.channels}")
-            except Exception as e:
-                logger.warning(f"Could not extract detailed metadata with soundfile: {e}")
-                # Fallback to librosa
-                try:
-                    y, sr = librosa.load(audio_file.file_path, sr=None, duration=1.0)  # Load just 1 second for metadata
-                    audio_file.sample_rate = sr
-                    audio_file.channels = 1 if len(y.shape) == 1 else y.shape[0]
-                except Exception as e2:
-                    logger.warning(f"Could not extract metadata with librosa: {e2}")
+            logger.debug(f"Extracted metadata: duration={info.duration:.2f}s, sr={info.samplerate}, ch={info.channels}")
 
         except Exception as e:
             logger.error(f"Failed to extract audio metadata: {e}")

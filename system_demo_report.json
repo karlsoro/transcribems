@@ -1,0 +1,22 @@
+{
+  "started_at": "2025-09-26T06:55:54.437009",
+  "demos_run": [
+    {
+      "section": "System Information",
+      "success": true,
+      "duration": 0.07712054252624512,
+      "result": {
+        "whisperx_available": false,
+        "supported_formats": [
+          "MP3",
+          "WAV",
+          "M4A",
+          "OGG",
+          "FLAC",
+          "AAC",
+          "WMA"
+        ],
+        "max_file_size_bytes": 1073741824,
+        "max_file_size_gb": 1.0,
+        "test_audio_files": [
+          

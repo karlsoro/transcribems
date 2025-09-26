@@ -1,0 +1,48 @@
+{
+  "test_files": [
+    {
+      "filename": "short_speech.wav",
+      "path": "test_audio/short_speech.wav",
+      "duration": 5.0,
+      "samplerate": 16000,
+      "channels": 1,
+      "size_bytes": 160044
+    },
+    {
+      "filename": "medium_speech.wav",
+      "path": "test_audio/medium_speech.wav",
+      "duration": 15.0,
+      "samplerate": 16000,
+      "channels": 1,
+      "size_bytes": 480044
+    },
+    {
+      "filename": "multi_speaker.wav",
+      "path": "test_audio/multi_speaker.wav",
+      "duration": 10.0,
+      "samplerate": 16000,
+      "channels": 1,
+      "size_bytes": 320044
+    },
+    {
+      "filename": "quiet_speech.wav",
+      "path": "test_audio/quiet_speech.wav",
+      "duration": 8.0,
+      "samplerate": 16000,
+      "channels": 1,
+      "size_bytes": 256044
+    },
+    {
+      "filename": "high_quality_speech.wav",
+      "path": "test_audio/high_quality_speech.wav",
+      "duration": 6.0,
+      "samplerate": 44100,
+      "channels": 1,
+      "size_bytes": 529244
+    }
+  ],
+  "created_by": "TranscribeMS test audio generator",
+  "sample_rate": 16000,
+  "format": "WAV",
+  "notes": "Synthetic audio files for testing transcription system"
+}
