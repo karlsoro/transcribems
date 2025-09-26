@@ -1,0 +1,261 @@
+{
+  "mcp_error_responses": {
+    "file_validation_errors": {
+      "FILE_NOT_FOUND": {
+        "code": "FILE_NOT_FOUND",
+        "message": "The specified audio file does not exist or is not accessible",
+        "details": {
+          "error_type": "validation_error",
+          "http_equivalent": 404,
+          "user_action": "Verify the file path exists and Claude Code has read permissions"
+        }
+      },
+      "FILE_TOO_LARGE": {
+        "code": "FILE_TOO_LARGE",
+        "message": "Audio file exceeds maximum size limit of 1GB",
+        "details": {
+          "error_type": "validation_error",
+          "http_equivalent": 413,
+          "max_size_bytes": 1073741824,
+          "user_action": "Split the audio file into smaller chunks or compress the file"
+        }
+      },
+      "UNSUPPORTED_FORMAT": {
+        "code": "UNSUPPORTED_FORMAT",
+        "message": "Audio format is not supported",
+        "details": {
+          "error_type": "validation_error",
+          "http_equivalent": 415,
+          "supported_formats": ["MP3", "WAV", "M4A", "OGG", "FLAC", "AAC", "WMA"],
+          "user_action": "Convert the audio file to a supported format"
+        }
+      },
+      "CORRUPTED_AUDIO": {
+        "code": "CORRUPTED_AUDIO",
+        "message": "Audio file appears to be corrupted or unreadable",
+        "details": {
+          "error_type": "validation_error",
+          "http_equivalent": 422,
+          "user_action": "Verify the audio file is not corrupted and try again"
+        }
+      }
+    },
+    "processing_errors": {
+      "TRANSCRIPTION_FAILED": {
+        "code": "TRANSCRIPTION_FAILED",
+        "message": "Transcription processing failed",
+        "details": {
+          "error_type": "processing_error",
+          "http_equivalent": 500,
+          "user_action": "Try again with a different model size or check audio quality"
+        }
+      },
+      "MODEL_LOAD_ERROR": {
+        "code": "MODEL_LOAD_ERROR",
+        "message": "Failed to load WhisperX model",
+        "details": {
+          "error_type": "system_error",
+          "http_equivalent": 503,
+          "user_action": "Check internet connection for model download or verify disk space"
+        }
+      },
+      "INSUFFICIENT_MEMORY": {
+        "code": "INSUFFICIENT_MEMORY",
+        "message": "Insufficient memory to process the audio file",
+        "details": {
+          "error_type": "resource_error",
+          "http_equivalent": 507,
+          "user_action": "Try with a smaller model size or reduce chunk length"
+        }
+      },
+      "DEVICE_NOT_AVAILABLE": {
+        "code": "DEVICE_NOT_AVAILABLE",
+        "message": "Requested processing device is not available",
+        "details": {
+          "error_type": "configuration_error",
+          "http_equivalent": 400,
+          "available_devices": ["cpu"],
+          "user_action": "Use an available device or install required drivers"
+        }
+      }
+    },
+    "job_management_errors": {
+      "JOB_NOT_FOUND": {
+        "code": "JOB_NOT_FOUND",
+        "message": "The specified transcription job was not found",
+        "details": {
+          "error_type": "not_found_error",
+          "http_equivalent": 404,
+          "user_action": "Verify the job ID is correct"
+        }
+      },
+      "JOB_ALREADY_COMPLETED": {
+        "code": "JOB_ALREADY_COMPLETED",
+        "message": "Cannot modify a completed transcription job",
+        "details": {
+          "error_type": "state_error",
+          "http_equivalent": 409,
+          "user_action": "Use get_transcription_result to retrieve the completed result"
+        }
+      },
+      "JOB_CANCELLED": {
+        "code": "JOB_CANCELLED",
+        "message": "Transcription job was cancelled",
+        "details": {
+          "error_type": "state_error",
+          "http_equivalent": 409,
+          "user_action": "Start a new transcription job if needed"
+        }
+      },
+      "CANNOT_CANCEL_COMPLETED": {
+        "code": "CANNOT_CANCEL_COMPLETED",
+        "message": "Cannot cancel a completed or failed job",
+        "details": {
+          "error_type": "state_error",
+          "http_equivalent": 409,
+          "user_action": "Job is already in final state"
+        }
+      }
+    },
+    "batch_processing_errors": {
+      "BATCH_TOO_LARGE": {
+        "code": "BATCH_TOO_LARGE",
+        "message": "Batch contains too many files",
+        "details": {
+          "error_type": "validation_error",
+          "http_equivalent": 413,
+          "max_batch_size": 10,
+          "user_action": "Split into smaller batches with 10 or fewer files"
+        }
+      },
+      "MIXED_BATCH_ERRORS": {
+        "code": "MIXED_BATCH_ERRORS",
+        "message": "Some files in batch failed validation",
+        "details": {
+          "error_type": "partial_error",
+          "http_equivalent": 207,
+          "failed_files": [],
+          "user_action": "Check individual file errors and retry valid files"
+        }
+      }
+    },
+    "server_errors": {
+      "SERVER_OVERLOADED": {
+        "code": "SERVER_OVERLOADED",
+        "message": "Server is currently processing too many jobs",
+        "details": {
+          "error_type": "capacity_error",
+          "http_equivalent": 503,
+          "retry_after": 30,
+          "user_action": "Wait and retry, or check job queue status"
+        }
+      },
+      "CONFIGURATION_ERROR": {
+        "code": "CONFIGURATION_ERROR",
+        "message": "MCP server configuration is invalid",
+        "details": {
+          "error_type": "configuration_error",
+          "http_equivalent": 500,
+          "user_action": "Check server configuration and restart if necessary"
+        }
+      },
+      "STORAGE_ERROR": {
+        "code": "STORAGE_ERROR",
+        "message": "Failed to read or write transcription data",
+        "details": {
+          "error_type": "storage_error",
+          "http_equivalent": 500,
+          "user_action": "Check disk space and file permissions"
+        }
+      }
+    }
+  },
+  "error_response_format": {
+    "type": "object",
+    "properties": {
+      "error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Machine-readable error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message"
+          },
+          "details": {
+            "type": "object",
+            "properties": {
+              "error_type": {
+                "type": "string",
+                "enum": ["validation_error", "processing_error", "system_error", "resource_error", "configuration_error", "not_found_error", "state_error", "partial_error", "capacity_error", "storage_error"]
+              },
+              "http_equivalent": {
+                "type": "integer",
+                "description": "HTTP status code equivalent for reference"
+              },
+              "user_action": {
+                "type": "string",
+                "description": "Suggested action for the user"
+              },
+              "retry_after": {
+                "type": "integer",
+                "description": "Seconds to wait before retrying (for rate limiting)"
+              },
+              "max_size_bytes": {
+                "type": "integer",
+                "description": "Maximum allowed file size for FILE_TOO_LARGE"
+              },
+              "supported_formats": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of supported audio formats"
+              },
+              "available_devices": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of available processing devices"
+              },
+              "failed_files": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "file_path": {
+                      "type": "string"
+                    },
+                    "error_code": {
+                      "type": "string"
+                    },
+                    "error_message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "description": "Details of failed files in batch operations"
+              }
+            },
+            "required": ["error_type", "user_action"]
+          }
+        },
+        "required": ["code", "message", "details"]
+      },
+      "job_id": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Job ID if applicable to the error context"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "When the error occurred"
+      }
+    },
+    "required": ["error"]
+  }
+}

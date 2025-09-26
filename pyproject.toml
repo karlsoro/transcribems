@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "transcribems"
 version = "1.0.0"
-description = "WhisperX Audio Transcription API with Speaker Identification"
+description = "WhisperX Audio Transcription MCP Server with Speaker Identification"
 authors = [
     {name = "TranscribeMS Team", email = "support@transcribems.com"},
 ]
@@ -25,10 +25,8 @@ classifiers = [
 ]
 
 dependencies = [
-    # Core API Framework
-    "fastapi>=0.104.0",
-    "uvicorn[standard]>=0.24.0",
-    "python-multipart>=0.0.6",
+    # MCP Server Framework
+    "mcp>=1.0.0",
 
     # WhisperX and Audio Processing
     "whisperx>=3.1.1",
@@ -38,16 +36,14 @@ dependencies = [
     "soundfile>=0.12.1",
     "ffmpeg-python>=0.2.0",
 
-    # Background Task Processing
-    "celery>=5.3.0",
-    "redis>=5.0.0",
-
     # Data Models and Validation
     "pydantic>=2.5.0",
     "pydantic-settings>=2.1.0",
 
-    # HTTP Client and Utilities
-    "httpx>=0.25.0",
+    # Async Processing
+    "asyncio-throttle>=1.0.2",
+
+    # File System and Utilities
     "aiofiles>=23.2.0",
 
     # Logging and Monitoring
@@ -71,7 +67,6 @@ dev = [
     "pytest-asyncio>=0.21.0",
     "pytest-cov>=4.1.0",
     "pytest-mock>=3.12.0",
-    "httpx>=0.25.0",
 
     # Code Quality
     "black>=23.11.0",
@@ -107,7 +102,7 @@ Issues = "https://github.com/transcribems/transcribems/issues"
 Documentation = "https://docs.transcribems.com"
 
 [project.scripts]
-transcribems = "src.main:main"
+transcribems-mcp = "src.mcp_server.server:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
