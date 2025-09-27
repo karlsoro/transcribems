@@ -6,7 +6,7 @@ Tests MUST FAIL before implementation - this is TDD.
 
 import pytest
 import uuid
-from typing import Dict, Any
+from typing import Dict
 
 from src.tools.progress_tool import get_transcription_progress_tool
 from src.models.types import JobStatus

@@ -7,7 +7,6 @@ Tests MUST FAIL before implementation - this is TDD.
 import pytest
 import asyncio
 from pathlib import Path
-from typing import Dict, Any
 
 from src.mcp_server.server import MCPServer
 

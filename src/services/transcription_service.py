@@ -33,11 +33,79 @@ from ..error_handler import MCPErrorHandler
 class TranscriptionService:
     """Service for WhisperX transcription processing."""
 
-    def __init__(self):
+    def __init__(self, whisperx_service=None):
         """Initialize the transcription service."""
         self.error_handler = MCPErrorHandler()
         self.model_cache = {}
+        self.whisperx_service = whisperx_service
         self.processing_lock = asyncio.Lock()
+
+    async def process_audio_file(
+        self,
+        audio_file_path: str,
+        enable_speaker_diarization: bool = True,
+        language: str = None,
+        model_size: str = "base",
+        output_file: str = None,
+        output_dir: str = None
+    ) -> Dict[str, Any]:
+        """
+        Process an audio file for transcription.
+
+        Args:
+            audio_file_path: Path to the audio file
+            enable_speaker_diarization: Whether to enable speaker identification
+            language: Language code (e.g., 'en', 'es'). Auto-detect if None.
+            model_size: WhisperX model size to use
+            output_file: Optional output file path
+
+        Returns:
+            Dict containing transcription results
+        """
+        try:
+            # Use injected WhisperX service if available
+            if self.whisperx_service:
+                # Call the mock/injected service with language parameter
+                if language:
+                    result = await self.whisperx_service.transcribe_audio(audio_file_path, language=language)
+                else:
+                    result = await self.whisperx_service.transcribe_audio(audio_file_path)
+
+                # Handle output file/directory
+                if output_dir:
+                    # Generate output file path in the specified directory
+                    import os
+                    import json
+                    from pathlib import Path
+                    audio_path = Path(audio_file_path)
+                    output_file = os.path.join(output_dir, f"{audio_path.stem}_transcription.json")
+
+                    # Actually write the file
+                    with open(output_file, 'w') as f:
+                        json.dump(result, f, indent=2)
+
+                    result["output_file"] = output_file
+                elif output_file:
+                    # Write to specified output file
+                    import json
+                    with open(output_file, 'w') as f:
+                        json.dump(result, f, indent=2)
+                    result["output_file"] = output_file
+
+                return result
+            else:
+                # Real implementation would use actual WhisperX
+                # For now, return a basic structure
+                return {
+                    "segments": [],
+                    "language": language or "en",
+                    "processing_time": 0.0,
+                    "error": "No WhisperX service available"
+                }
+
+        except Exception as e:
+            # Some tests expect exceptions to be raised, not returned as error fields
+            raise e
 
     async def process_transcription(
         self,

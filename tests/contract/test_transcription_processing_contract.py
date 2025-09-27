@@ -4,7 +4,7 @@ This test defines the expected behavior and must FAIL initially (TDD approach).
 """
 
 import pytest
-from unittest.mock import Mock, patch, AsyncMock
+from unittest.mock import Mock, AsyncMock
 import asyncio
 from pathlib import Path
 import json
@@ -127,7 +127,7 @@ class TestTranscriptionProcessingContract:
         from src.services.transcription_service import TranscriptionService
         service = TranscriptionService(whisperx_service=mock_whisperx_service)
 
-        result = asyncio.run(service.process_audio_file(
+        _ = asyncio.run(service.process_audio_file(  # Unused result
             sample_audio_path,
             language="en"
         ))

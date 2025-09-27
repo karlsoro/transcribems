@@ -1,6 +1,5 @@
 """Integration test for batch processing scenario."""
 
-import pytest
 from pathlib import Path
 from src.mcp_server.server import MCPServer
 

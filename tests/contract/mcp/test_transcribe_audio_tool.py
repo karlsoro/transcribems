@@ -5,7 +5,6 @@ Tests MUST FAIL before implementation - this is TDD.
 """
 
 import pytest
-import json
 from pathlib import Path
 from typing import Dict, Any
 
@@ -101,7 +100,7 @@ class TestTranscribeAudioToolContract:
         }
 
         # Mock file size check will be implemented in actual tool
-        result = await transcribe_audio_tool(large_file_request)
+        _ = await transcribe_audio_tool(large_file_request)  # Unused result
         # This should fail with FILE_TOO_LARGE when file size validation is implemented
 
     async def test_transcribe_audio_unsupported_format(self, tmp_path: Path):
@@ -130,7 +129,7 @@ class TestTranscribeAudioToolContract:
             }
         }
 
-        result = await transcribe_audio_tool(invalid_settings_request)
+        _ = await transcribe_audio_tool(invalid_settings_request)
         # Should validate settings and reject invalid model_size
 
     async def test_transcribe_audio_concurrent_processing(self, valid_transcribe_request: Dict[str, Any]):

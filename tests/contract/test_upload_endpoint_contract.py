@@ -5,7 +5,6 @@ This test defines the expected behavior and must FAIL initially (TDD approach).
 
 import pytest
 from fastapi.testclient import TestClient
-from pathlib import Path
 from unittest.mock import Mock
 import io
 
@@ -19,10 +18,26 @@ def client():
 
 @pytest.fixture
 def sample_audio_file():
-    """Mock audio file for testing."""
-    # Create a mock audio file with proper content
-    audio_content = b"RIFF" + b"\x00" * 40  # Mock WAV header
-    return io.BytesIO(audio_content)
+    """Create a minimal valid WAV file for testing."""
+    # Create a minimal valid WAV file (44 bytes header + 1 sample)
+    # WAV file format: RIFF header + fmt chunk + data chunk
+    wav_header = (
+        b'RIFF'                    # Chunk ID
+        b'\x2d\x00\x00\x00'       # Chunk size (45 bytes total - 8)
+        b'WAVE'                    # Format
+        b'fmt '                    # Subchunk1 ID
+        b'\x10\x00\x00\x00'       # Subchunk1 size (16 for PCM)
+        b'\x01\x00'               # Audio format (1 = PCM)
+        b'\x01\x00'               # Number of channels (1)
+        b'\x44\xac\x00\x00'       # Sample rate (44100)
+        b'\x44\xac\x00\x00'       # Byte rate
+        b'\x01\x00'               # Block align
+        b'\x08\x00'               # Bits per sample (8)
+        b'data'                    # Subchunk2 ID
+        b'\x01\x00\x00\x00'       # Subchunk2 size (1 byte of data)
+        b'\x80'                    # One sample of audio data
+    )
+    return io.BytesIO(wav_header)
 
 
 class TestAudioUploadContract:

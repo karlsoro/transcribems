@@ -1,6 +1,5 @@
 """Integration test for transcription history scenario."""
 
-import pytest
 from src.mcp_server.server import MCPServer
 
 

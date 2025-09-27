@@ -1,6 +1,5 @@
 """Integration test for error handling and recovery scenario."""
 
-import pytest
 from src.mcp_server.server import MCPServer
 
 

@@ -47,7 +47,7 @@ class WhisperXService:
         self.hf_token = hf_token
 
         # Device setup
-        self.gpu_service = GPUService()
+        self.gpu_service = GPUService(defer_initialization=True)
         if device == "auto" or device is None:
             self.device = self._select_device()
         else:
@@ -68,10 +68,14 @@ class WhisperXService:
 
     def _select_device(self) -> str:
         """Select optimal device for processing."""
-        if self.gpu_service.is_gpu_available():
-            optimal_gpu = self.gpu_service.select_optimal_device()
-            if optimal_gpu:
-                return f"cuda:{optimal_gpu['device_id']}"
+        try:
+            if self.gpu_service.is_gpu_available():
+                optimal_gpu = self.gpu_service.select_optimal_device()
+                if optimal_gpu:
+                    return f"cuda:{optimal_gpu['device_id']}"
+        except Exception:
+            # If GPU service fails, fall back to CPU
+            pass
         return "cpu"
 
     async def load_models(self, language: str = "en") -> None:
@@ -408,11 +412,14 @@ class WhisperXService:
             "compute_type": self.compute_type
         }
 
-        if self.device.startswith("cuda"):
-            gpu_info = self.gpu_service.get_memory_usage(
-                device_id=int(self.device.split(":")[-1])
-            )
-            device_info.update(gpu_info)
+        if self.device.startswith("cuda") and ":" in self.device:
+            try:
+                device_id = int(self.device.split(":")[-1])
+                gpu_info = self.gpu_service.get_memory_usage(device_id=device_id)
+                device_info.update(gpu_info)
+            except (ValueError, IndexError):
+                # Handle malformed device string
+                pass
 
         return device_info
 

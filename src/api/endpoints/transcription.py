@@ -54,7 +54,7 @@ async def transcribe_audio(
 
     logger.info("Audio transcription request received", extra={
         "job_id": job_id,
-        "filename": file.filename,
+        "original_filename": file.filename,
         "content_type": file.content_type,
         "language": language,
         "speaker_diarization": enable_speaker_diarization,

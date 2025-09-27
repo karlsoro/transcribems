@@ -1,0 +1,19 @@
+{
+  "file": "20250924-1.aac",
+  "file_size_mb": 37.8923225402832,
+  "audio_duration_seconds": 3261.888,
+  "performance": {
+    "model_load_time": 3.3224422931671143,
+    "audio_load_time": 1.9249684810638428,
+    "transcription_time": 99.42302441596985,
+    "speaker_processing_time": 0.00014734268188476562,
+    "total_time": 104.67058253288269,
+    "realtime_factor": 32.80817516024043
+  },
+  "results": {
+    "segments_count": 134,
+    "speakers_identified": 2,
+    "speaker_segments": 134
+  },
+  "status": "SUCCESS"
+}

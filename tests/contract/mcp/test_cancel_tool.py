@@ -6,7 +6,7 @@ Tests MUST FAIL before implementation - this is TDD.
 
 import pytest
 import uuid
-from typing import Dict, str
+from typing import Dict
 
 from src.tools.cancel_tool import cancel_transcription_tool
 

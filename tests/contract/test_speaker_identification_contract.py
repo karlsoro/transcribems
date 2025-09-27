@@ -4,7 +4,7 @@ This test defines the expected behavior and must FAIL initially (TDD approach).
 """
 
 import pytest
-from unittest.mock import Mock, AsyncMock, patch
+from unittest.mock import Mock, AsyncMock
 import asyncio
 from pathlib import Path
 
@@ -13,7 +13,7 @@ class TestSpeakerIdentificationContract:
     """Contract tests for speaker diarization and identification."""
 
     @pytest.fixture
-    def mock_whisperx_diarization(self):
+    def mock_whisperx_diarization(self) -> Mock:
         """Mock WhisperX diarization component."""
         diarization = Mock()
         diarization.identify_speakers = AsyncMock()
@@ -21,13 +21,13 @@ class TestSpeakerIdentificationContract:
         return diarization
 
     @pytest.fixture
-    def sample_audio_with_speakers(self, tmp_path):
+    def sample_audio_with_speakers(self, tmp_path: Path) -> str:
         """Create sample audio file path for multi-speaker testing."""
         audio_file = tmp_path / "multi_speaker.wav"
         audio_file.write_bytes(b"fake multi-speaker audio data")
         return str(audio_file)
 
-    def test_speaker_diarization_identifies_multiple_speakers(self, mock_whisperx_diarization, sample_audio_with_speakers):
+    def test_speaker_diarization_identifies_multiple_speakers(self, mock_whisperx_diarization: Mock, sample_audio_with_speakers: str) -> None:
         """
         Contract: Should identify and differentiate multiple speakers in audio.
         """
@@ -43,7 +43,7 @@ class TestSpeakerIdentificationContract:
             "speaker_count": 3
         }
 
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         # This will fail until SpeakerIdentificationService is implemented
@@ -56,7 +56,7 @@ class TestSpeakerIdentificationContract:
         assert "SPEAKER_02" in result["speakers"]
         assert result["speaker_count"] == 3
 
-    def test_speaker_segments_have_correct_attribution(self, mock_whisperx_diarization, sample_audio_with_speakers):
+    def test_speaker_segments_have_correct_attribution(self, mock_whisperx_diarization: Mock, sample_audio_with_speakers: str) -> None:
         """
         Contract: Each segment should be correctly attributed to a speaker.
         """
@@ -68,7 +68,7 @@ class TestSpeakerIdentificationContract:
             ]
         }
 
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         result = asyncio.run(service.identify_speakers(sample_audio_with_speakers))
@@ -82,7 +82,7 @@ class TestSpeakerIdentificationContract:
         speaker_00_segments = [s for s in segments if s["speaker"] == "SPEAKER_00"]
         assert len(speaker_00_segments) == 2
 
-    def test_speaker_identification_handles_single_speaker(self, mock_whisperx_diarization, sample_audio_with_speakers):
+    def test_speaker_identification_handles_single_speaker(self, mock_whisperx_diarization: Mock, sample_audio_with_speakers: str) -> None:
         """
         Contract: Should handle audio with only one speaker.
         """
@@ -95,7 +95,7 @@ class TestSpeakerIdentificationContract:
             "speaker_count": 1
         }
 
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         result = asyncio.run(service.identify_speakers(sample_audio_with_speakers))
@@ -104,11 +104,11 @@ class TestSpeakerIdentificationContract:
         assert len(result["speakers"]) == 1
         assert all(seg["speaker"] == "SPEAKER_00" for seg in result["segments"])
 
-    def test_speaker_identification_can_be_disabled(self, mock_whisperx_diarization, sample_audio_with_speakers):
+    def test_speaker_identification_can_be_disabled(self, mock_whisperx_diarization: Mock, sample_audio_with_speakers: str) -> None:
         """
         Contract: Should be able to disable speaker identification for performance.
         """
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         # When disabled, should not call diarization service
@@ -123,7 +123,7 @@ class TestSpeakerIdentificationContract:
         # Result should indicate no diarization was performed
         assert result.get("diarization_enabled") is False
 
-    def test_speaker_timing_accuracy(self, mock_whisperx_diarization, sample_audio_with_speakers):
+    def test_speaker_timing_accuracy(self, mock_whisperx_diarization: Mock, sample_audio_with_speakers: str) -> None:
         """
         Contract: Speaker segments should have accurate start/end timestamps.
         """
@@ -134,7 +134,7 @@ class TestSpeakerIdentificationContract:
             ]
         }
 
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         result = asyncio.run(service.identify_speakers(sample_audio_with_speakers))
@@ -150,13 +150,13 @@ class TestSpeakerIdentificationContract:
         # Verify no overlapping segments
         assert segments[0]["end"] <= segments[1]["start"]
 
-    def test_speaker_identification_error_handling(self, mock_whisperx_diarization, sample_audio_with_speakers):
+    def test_speaker_identification_error_handling(self, mock_whisperx_diarization: Mock, sample_audio_with_speakers: str) -> None:
         """
         Contract: Should handle diarization errors gracefully.
         """
         mock_whisperx_diarization.identify_speakers.side_effect = Exception("Diarization model failed")
 
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         # Should either raise informative exception or fallback gracefully
@@ -165,7 +165,7 @@ class TestSpeakerIdentificationContract:
 
         assert "diarization" in str(exc_info.value).lower() or "speaker" in str(exc_info.value).lower()
 
-    def test_speaker_metadata_includes_confidence_scores(self, mock_whisperx_diarization, sample_audio_with_speakers):
+    def test_speaker_metadata_includes_confidence_scores(self, mock_whisperx_diarization: Mock, sample_audio_with_speakers: str) -> None:
         """
         Contract: Should include confidence scores for speaker identification.
         """
@@ -183,7 +183,7 @@ class TestSpeakerIdentificationContract:
             ]
         }
 
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         result = asyncio.run(service.identify_speakers(sample_audio_with_speakers))
@@ -192,13 +192,13 @@ class TestSpeakerIdentificationContract:
             assert "speaker_confidence" in segment
             assert 0.0 <= segment["speaker_confidence"] <= 1.0
 
-    def test_speaker_service_validates_audio_format(self, mock_whisperx_diarization):
+    def test_speaker_service_validates_audio_format(self, mock_whisperx_diarization: Mock) -> None:
         """
         Contract: Should validate audio file format before processing.
         """
         invalid_audio_path = "/path/to/invalid.txt"
 
-        from src.services.speaker_service import SpeakerIdentificationService
+        from src.services.speaker_service import SpeakerIdentificationService  # type: ignore[import-untyped]
         service = SpeakerIdentificationService(diarization_service=mock_whisperx_diarization)
 
         with pytest.raises(ValueError) as exc_info:

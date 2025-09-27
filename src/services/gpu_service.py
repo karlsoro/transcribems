@@ -19,10 +19,11 @@ class GPUService:
     Service for GPU detection, selection, and memory management.
     """
 
-    def __init__(self):
+    def __init__(self, defer_initialization: bool = False):
         """Initialize GPU service."""
         self._device_cache = {}
-        self._initialize_cuda_info()
+        if not defer_initialization:
+            self._initialize_cuda_info()
 
     def _initialize_cuda_info(self) -> None:
         """Initialize CUDA information and cache device details."""

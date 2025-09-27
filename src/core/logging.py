@@ -66,6 +66,18 @@ class JSONFormatter(logging.Formatter):
         if hasattr(record, 'error_message'):
             log_entry["error_message"] = record.error_message
 
+        # Add additional fields for testing
+        if hasattr(record, 'user_id'):
+            log_entry["user_id"] = record.user_id
+        if hasattr(record, 'api_key'):
+            log_entry["api_key"] = record.api_key
+        if hasattr(record, 'file_path'):
+            log_entry["file_path"] = record.file_path
+        if hasattr(record, 'ip_address'):
+            log_entry["ip_address"] = record.ip_address
+        if hasattr(record, 'original_filename'):
+            log_entry["original_filename"] = record.original_filename
+
         # Add exception information
         if record.exc_info:
             log_entry["traceback"] = self.formatException(record.exc_info)
@@ -173,7 +185,7 @@ def setup_logging(
         wrapper_class=structlog.make_filtering_bound_logger(
             getattr(logging, log_level.upper())
         ),
-        logger_factory=structlog.PrintLoggerFactory(),
+        logger_factory=structlog.stdlib.LoggerFactory(),
         cache_logger_on_first_use=True,
     )
 

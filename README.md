@@ -1,6 +1,6 @@
-# TranscribeMS - WhisperX Audio Transcription API
+# TranscribeMS - WhisperX Audio Transcription MCP Server
 
-Enterprise-grade audio transcription service with speaker identification using WhisperX.
+Enterprise-grade audio transcription service with speaker identification using WhisperX, implemented as a Model Context Protocol (MCP) server.
 
 ## Features
 
@@ -8,9 +8,9 @@ Enterprise-grade audio transcription service with speaker identification using W
 - **Speaker Identification**: Automatic speaker diarization with sequential labeling (Speaker 1, Speaker 2, etc.)
 - **Large File Support**: Process audio files up to 5GB with chunked processing strategy
 - **GPU Acceleration**: Automatic GPU detection with CPU fallback for optimal performance
-- **Real-time Progress**: Server-Sent Events for live transcription progress monitoring
+- **MCP Integration**: Native Model Context Protocol server for seamless AI agent integration
 - **Enterprise Integration**: Comprehensive logging, error handling, and validation
-- **Async Processing**: Background processing with Celery and Redis for scalability
+- **Async Processing**: Built-in async processing for optimal performance
 
 ## Supported Audio Formats
 
@@ -24,92 +24,153 @@ Enterprise-grade audio transcription service with speaker identification using W
 ### Prerequisites
 
 - Python 3.11+
-- Redis server
 - NVIDIA GPU with CUDA 11.8+ (optional, for acceleration)
 - 16GB+ RAM (32GB recommended for large files)
+- MCP-compatible client (Claude Desktop, VS Code with MCP extension, or custom MCP client)
 
 ### Installation
 
 1. Clone the repository:
-```bash
-git clone <repository-url>
-cd TranscribeMS
-```
+
+   ```bash
+   git clone <repository-url>
+   cd TranscribeMS
+   ```
 
 2. Create virtual environment:
-```bash
-python3.11 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+
+   ```bash
+   python3.11 -m venv transcribems_env
+   source transcribems_env/bin/activate  # On Windows: transcribems_env\Scripts\activate
+   ```
 
 3. Install dependencies:
-```bash
-pip install -e .
-```
+
+   ```bash
+   pip install -e .
+   ```
 
 4. Configure environment:
+
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration (HF_TOKEN for speaker diarization)
+   ```
+
+5. Test the installation:
+
+   ```bash
+   # Run the integration test
+   python3 integration_test.py
+
+   # Run MCP contract tests
+   python3 -m pytest tests/contract/mcp/ -v
+   ```
+
+### MCP Server Setup
+
+#### Option 1: Direct Command Line
+
 ```bash
-cp .env.example .env
-# Edit .env with your configuration
+# Start the MCP server
+transcribems-mcp
+
+# Or run directly with Python
+python -m src.mcp_server.server
 ```
 
-5. Start Redis server:
-```bash
-redis-server
+#### Option 2: Claude Desktop Integration
+
+Add to your Claude Desktop configuration:
+
+```json
+{
+  "mcpServers": {
+    "transcribems": {
+      "command": "transcribems-mcp",
+      "args": [],
+      "env": {
+        "HF_TOKEN": "your_huggingface_token_here"
+      }
+    }
+  }
+}
 ```
 
-6. Start Celery worker:
-```bash
-celery -A src.tasks.celery_app worker --loglevel=info
-```
-
-7. Start the API server:
-```bash
-uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
-```
-
-### Docker Setup (Recommended)
+#### Option 3: Docker Setup
 
 ```bash
 docker-compose up --build
 ```
 
-## API Usage
+## MCP Tools Usage
 
-### Submit Transcription Job
+TranscribeMS provides the following MCP tools:
 
-```bash
-curl -X POST "http://localhost:8000/v1/transcriptions" \
-  -H "Content-Type: multipart/form-data" \
-  -F "audio_file=@/path/to/your/audio.wav" \
-  -F "enable_diarization=true" \
-  -F "debug_mode=false"
-```
+### Available Tools
 
-### Check Job Status
+1. **transcribe_audio** - Transcribe audio files with speaker diarization
+2. **get_transcription_progress** - Monitor transcription progress
+3. **get_transcription_result** - Retrieve completed transcription results
+4. **list_transcription_history** - View transcription history
+5. **batch_transcribe** - Process multiple audio files
+6. **cancel_transcription** - Cancel running transcriptions
 
-```bash
-curl "http://localhost:8000/v1/transcriptions/{job_id}"
-```
+### Example Usage (MCP Client)
 
-### Monitor Progress (Real-time)
+```python
+# Example MCP client usage
+import asyncio
+from mcp.client import ClientSession
 
-```javascript
-const eventSource = new EventSource(`http://localhost:8000/v1/transcriptions/${jobId}/progress`);
-eventSource.onmessage = function(event) {
-    const data = JSON.parse(event.data);
-    console.log(`Progress: ${data.progress}%`);
-};
+async def transcribe_audio():
+    async with ClientSession() as session:
+        # Submit transcription
+        result = await session.call_tool(
+            "transcribe_audio",
+            {
+                "audio_file_path": "/path/to/audio.wav",
+                "enable_diarization": True,
+                "debug_mode": False
+            }
+        )
+
+        job_id = result["job_id"]
+
+        # Monitor progress
+        while True:
+            progress = await session.call_tool(
+                "get_transcription_progress",
+                {"job_id": job_id}
+            )
+
+            if progress["status"] == "completed":
+                break
+
+            await asyncio.sleep(1)
+
+        # Get final result
+        final_result = await session.call_tool(
+            "get_transcription_result",
+            {"job_id": job_id}
+        )
+
+        return final_result
+
+# Run the transcription
+result = asyncio.run(transcribe_audio())
+print(result)
 ```
 
 ## Configuration
 
 Key environment variables:
 
-- `WHISPERX_MODEL_SIZE`: Model size (base, large-v2, large-v3)
+- `WHISPERX_MODEL_SIZE`: Model size (base, large-v2, large-v3) - default: large-v2
 - `MAX_FILE_SIZE`: Maximum upload size in bytes (default: 5GB)
-- `REDIS_HOST`: Redis server hostname
-- `HF_TOKEN`: Hugging Face token for speaker diarization
+- `HF_TOKEN`: Hugging Face token for speaker diarization (required for diarization)
+- `TRANSCRIBEMS_LOG_LEVEL`: Logging level (DEBUG, INFO, WARNING, ERROR)
+- `TRANSCRIBEMS_WORK_DIR`: Working directory for temporary files
 
 ## Performance
 
@@ -120,10 +181,11 @@ Key environment variables:
 
 ## Architecture
 
-- **FastAPI**: Async REST API framework
+- **MCP Server**: Model Context Protocol server for AI agent integration
 - **WhisperX**: Advanced speech recognition with speaker diarization
-- **Celery**: Background task processing
-- **Redis**: Message queue and result storage
+- **AsyncIO**: Async processing for optimal performance
+- **Pydantic**: Data validation and serialization
+- **Structured Logging**: Comprehensive logging with structured output
 - **Docker**: Containerized deployment with CUDA support
 
 ## Development
@@ -131,16 +193,91 @@ Key environment variables:
 ### Running Tests
 
 ```bash
-pytest tests/ -v --cov=src --cov-report=html
+# Install development dependencies
+pip install -e .[dev]
+
+# Run all tests
+python3 -m pytest tests/ -v --cov=src --cov-report=html
+
+# Run only MCP contract tests
+python3 -m pytest tests/contract/mcp/ -v
+
+# Run integration tests
+python3 -m pytest tests/integration/ -v
+
+# Run the comprehensive integration test
+python3 integration_test.py
+```
+
+### Testing Your Setup
+
+```bash
+# 1. Create test audio (if you don't have any)
+python3 create_test_audio.py
+
+# 2. Run system demo
+python3 system_demo.py
+
+# 3. Run performance benchmark
+python3 performance_benchmark.py
+
+# 4. Validate implementation
+python3 validate_implementation.py
 ```
 
 ### Code Quality
 
 ```bash
+# Format code
 black src/ tests/
+
+# Lint code
 flake8 src/ tests/
+
+# Type checking
 mypy src/
+
+# Sort imports
+isort src/ tests/
+
+# Run pre-commit hooks
+pre-commit run --all-files
 ```
+
+### Validating Transcription Results
+
+To ensure your setup is working correctly:
+
+1. **Basic Validation**:
+
+   ```bash
+   python3 integration_test.py
+   ```
+
+   This will test all MCP tools and report success/failure.
+
+2. **Audio Quality Test**:
+
+   ```bash
+   python3 create_test_audio.py  # Creates test_audio/test_speech.wav
+   python3 system_demo.py        # Transcribes the test audio
+   ```
+
+   Check the output in `system_demo_report.json` for accuracy.
+
+3. **Performance Benchmark**:
+
+   ```bash
+   python3 performance_benchmark.py
+   ```
+
+   Validates performance metrics and accuracy.
+
+4. **Manual Validation**:
+   - Use your own audio files
+   - Check speaker diarization accuracy (if enabled)
+   - Verify timestamps and formatting
+   - Test large file processing
 
 ## License
 

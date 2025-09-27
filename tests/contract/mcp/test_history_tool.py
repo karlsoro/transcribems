@@ -5,7 +5,7 @@ Tests MUST FAIL before implementation - this is TDD.
 """
 
 import pytest
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 
 from src.tools.history_tool import list_transcription_history_tool
 from src.models.types import JobStatus
@@ -97,7 +97,7 @@ class TestTranscriptionHistoryToolContract:
             "status_filter": "invalid_status"
         }
 
-        result = await list_transcription_history_tool(invalid_request)
+        _ = await list_transcription_history_tool(invalid_request)
         # Should handle invalid status gracefully or return error
 
     async def test_history_tool_limit_bounds(self):
@@ -113,7 +113,7 @@ class TestTranscriptionHistoryToolContract:
         assert len(result["jobs"]) <= 100
 
         # Test invalid limits
-        invalid_limit_request = {"limit": 0}
+        _ = {"limit": 0}
         # Should handle invalid limits appropriately
 
     async def test_history_tool_empty_history(self):

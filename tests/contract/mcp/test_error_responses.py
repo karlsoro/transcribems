@@ -4,8 +4,6 @@ This test verifies that error responses follow the MCP error schema.
 Tests MUST FAIL before implementation - this is TDD.
 """
 
-import pytest
-from typing import Dict, Any
 
 from src.error_handler import MCPErrorHandler
 

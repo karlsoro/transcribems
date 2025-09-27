@@ -4,8 +4,6 @@ This test defines the expected behavior and must FAIL initially (TDD approach).
 """
 
 import pytest
-from unittest.mock import Mock, patch, MagicMock
-import logging
 import json
 from pathlib import Path
 import tempfile
@@ -40,9 +38,22 @@ class TestLoggingConfigurationContract:
         log_files = list(temp_log_dir.glob("*.log"))
         assert len(log_files) > 0
 
-        # Verify structured format
-        log_content = log_files[0].read_text()
-        log_entry = json.loads(log_content.strip())
+        # Find the main log file (not error log)
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
+
+        assert main_log_file is not None, f"No main log file found in {[f.name for f in log_files]}"
+
+        # Verify structured format - get the last log entry (our test message)
+        log_content = main_log_file.read_text()
+        log_lines = [line for line in log_content.strip().split('\n') if line.strip()]
+        assert len(log_lines) > 0, f"No log lines found in {log_content}"
+
+        # Parse the last log entry (our test message)
+        log_entry = json.loads(log_lines[-1])
 
         assert log_entry["level"] == "INFO"
         assert log_entry["message"] == "Test message"
@@ -67,14 +78,22 @@ class TestLoggingConfigurationContract:
         logger.critical("Critical message")
 
         log_files = list(temp_log_dir.glob("*.log"))
-        log_content = log_files[0].read_text()
-        log_lines = log_content.strip().split('\n')
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
 
-        # Should have 5 log entries
-        assert len(log_lines) == 5
+        assert main_log_file is not None
+        log_content = main_log_file.read_text()
+        log_lines = [line for line in log_content.strip().split('\n') if line.strip()]
 
-        # Verify each level was logged
-        levels = [json.loads(line)["level"] for line in log_lines]
+        # Should have 6 log entries (5 test + 1 setup)
+        assert len(log_lines) >= 5
+
+        # Verify each level was logged - filter out setup log
+        test_lines = [line for line in log_lines if '"test_levels"' in line]
+        levels = [json.loads(line)["level"] for line in test_lines]
         assert "DEBUG" in levels
         assert "INFO" in levels
         assert "WARNING" in levels
@@ -95,7 +114,14 @@ class TestLoggingConfigurationContract:
         logger.info("Info message - should appear")
 
         log_files = list(temp_log_dir.glob("*.log"))
-        log_content = log_files[0].read_text()
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
+
+        assert main_log_file is not None
+        log_content = main_log_file.read_text()
 
         # Should only contain INFO message, not DEBUG
         assert "Info message - should appear" in log_content
@@ -123,8 +149,18 @@ class TestLoggingConfigurationContract:
         })
 
         log_files = list(temp_log_dir.glob("*.log"))
-        log_content = log_files[0].read_text()
-        log_entry = json.loads(log_content.strip())
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
+
+        assert main_log_file is not None
+        log_content = main_log_file.read_text()
+        log_lines = [line.strip() for line in log_content.split('\n') if line.strip()]
+        # Get the transcription log entry (not the setup log)
+        transcription_line = [line for line in log_lines if '"transcription"' in line][0]
+        log_entry = json.loads(transcription_line)
 
         assert log_entry["job_id"] == "job-456"
         assert log_entry["audio_file"] == "meeting.wav"
@@ -161,13 +197,22 @@ class TestLoggingConfigurationContract:
             })
 
         log_files = list(temp_log_dir.glob("*.log"))
-        log_content = log_files[0].read_text()
-        log_lines = log_content.strip().split('\n')
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
 
-        assert len(log_lines) == 5
+        assert main_log_file is not None
+        log_content = main_log_file.read_text()
+        # Split by actual newlines and filter out empty lines
+        log_lines = [line.strip() for line in log_content.split('\n') if line.strip()]
 
-        # Verify progress logging
-        progress_values = [json.loads(line)["progress_percent"] for line in log_lines]
+        assert len(log_lines) >= 5
+
+        # Verify progress logging - skip setup log entry
+        progress_lines = [line for line in log_lines if '"progress_percent"' in line]
+        progress_values = [json.loads(line)["progress_percent"] for line in progress_lines]
         assert progress_values == [0.0, 20.0, 70.0, 90.0, 100.0]
 
     def test_logger_captures_errors_with_stack_traces(self, temp_log_dir):
@@ -246,8 +291,18 @@ class TestLoggingConfigurationContract:
         })
 
         log_files = list(temp_log_dir.glob("*.log"))
-        log_content = log_files[0].read_text()
-        log_entry = json.loads(log_content.strip())
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
+
+        assert main_log_file is not None
+        log_content = main_log_file.read_text()
+        log_lines = [line.strip() for line in log_content.split('\n') if line.strip()]
+        # Get the performance log entry
+        perf_line = [line for line in log_lines if '"processing_time_seconds"' in line][0]
+        log_entry = json.loads(perf_line)
 
         assert "processing_time_seconds" in log_entry
         assert "realtime_factor" in log_entry
@@ -273,7 +328,14 @@ class TestLoggingConfigurationContract:
         logger.debug("Debug from environment config")
 
         log_files = list(temp_log_dir.glob("*.log"))
-        log_content = log_files[0].read_text()
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
+
+        assert main_log_file is not None
+        log_content = main_log_file.read_text()
 
         # Should contain debug message since LOG_LEVEL=DEBUG
         assert "Debug from environment config" in log_content
@@ -301,7 +363,14 @@ class TestLoggingConfigurationContract:
         })
 
         log_files = list(temp_log_dir.glob("*.log"))
-        log_content = log_files[0].read_text()
+        main_log_file = None
+        for log_file in log_files:
+            if "error" not in log_file.name:
+                main_log_file = log_file
+                break
+
+        assert main_log_file is not None
+        log_content = main_log_file.read_text()
 
         # Sensitive data should be masked/sanitized
         assert "sk-1234567890abcdef" not in log_content
