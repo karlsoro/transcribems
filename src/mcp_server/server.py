@@ -9,17 +9,16 @@ import logging
 from typing import Dict, Any, Optional
 
 try:
-    from mcp import Server, ServerOptions
-    from mcp.server.stdio import stdio_server
+    from mcp.server import FastMCP
     from mcp.types import Tool, TextContent
 except ImportError:
     # Fallback for development without MCP SDK installed
     class MockServer:
         def __init__(self, name: str, version: str): pass
         def add_tool(self, *args, **kwargs): pass
-        async def run(self): pass
+        async def run_stdio_async(self): pass
 
-    Server = MockServer
+    FastMCP = MockServer
     TextContent = dict
     Tool = dict
 
@@ -37,86 +36,47 @@ class TranscribeMSServer:
 
     def __init__(self):
         """Initialize the MCP server."""
-        self.server = Server("transcribems", "1.0.0")
+        self.server = FastMCP("transcribems")
         self._setup_tools()
 
     def _setup_tools(self):
         """Register all MCP tools with the server."""
 
         # Transcribe audio tool
-        self.server.add_tool(
-            Tool(
-                name="transcribe_audio",
-                description="Transcribe audio file using WhisperX with speaker diarization",
-                inputSchema={
-                    "type": "object",
-                    "properties": {
-                        "file_path": {
-                            "type": "string",
-                            "description": "Path to the audio file to transcribe"
-                        },
-                        "model_size": {
-                            "type": "string",
-                            "enum": ["tiny", "base", "small", "medium", "large"],
-                            "default": "base",
-                            "description": "WhisperX model size"
-                        },
-                        "language": {
-                            "type": "string",
-                            "description": "Language code (optional, auto-detect if not provided)"
-                        },
-                        "enable_diarization": {
-                            "type": "boolean",
-                            "default": True,
-                            "description": "Enable speaker diarization"
-                        },
-                        "output_format": {
-                            "type": "string",
-                            "enum": ["simple", "detailed", "segments"],
-                            "default": "detailed",
-                            "description": "Output format preference"
-                        },
-                        "device": {
-                            "type": "string",
-                            "enum": ["cpu", "cuda"],
-                            "default": "cpu",
-                            "description": "Processing device"
-                        },
-                        "compute_type": {
-                            "type": "string",
-                            "enum": ["int8", "int16", "float16", "float32"],
-                            "default": "int8",
-                            "description": "Compute type for processing"
-                        }
-                    },
-                    "required": ["file_path"]
-                }
-            ),
-            transcribe_audio_tool
-        )
+        @self.server.tool()
+        async def transcribe_audio(
+            file_path: str,
+            model_size: str = "base",
+            language: str = None,
+            enable_diarization: bool = True,
+            output_format: str = "detailed",
+            device: str = None,
+            compute_type: str = None
+        ) -> dict:
+            """Transcribe audio file using WhisperX with speaker diarization"""
+            request = {
+                'file_path': file_path,
+                'model_size': model_size,
+                'language': language,
+                'enable_diarization': enable_diarization,
+                'output_format': output_format,
+                'device': device,
+                'compute_type': compute_type
+            }
+            return await transcribe_audio_tool(request)
 
         # Progress tracking tool
-        self.server.add_tool(
-            Tool(
-                name="get_transcription_progress",
-                description="Get progress information for transcription jobs",
-                inputSchema={
-                    "type": "object",
-                    "properties": {
-                        "job_id": {
-                            "type": "string",
-                            "description": "Specific job ID to get progress for"
-                        },
-                        "all_jobs": {
-                            "type": "boolean",
-                            "default": False,
-                            "description": "Return all active jobs if true"
-                        }
-                    }
-                }
-            ),
-            get_transcription_progress_tool
-        )
+        @self.server.tool()
+        async def get_transcription_progress(
+            job_id: str = None,
+            all_jobs: bool = False
+        ) -> dict:
+            """Get progress information for transcription jobs"""
+            request = {
+                'job_id': job_id,
+                'all_jobs': all_jobs
+            }
+            return await get_transcription_progress_tool(request)
 
         # History tool
         self.server.add_tool(
@@ -301,7 +261,7 @@ class TranscribeMSServer:
         """Run the MCP server."""
         try:
             logger.info("Starting TranscribeMS MCP Server...")
-            await self.server.run()
+            await self.server.run_stdio_async()
         except Exception as e:
             logger.error(f"Server error: {e}")
             raise

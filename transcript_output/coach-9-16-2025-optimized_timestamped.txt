@@ -1,0 +1,783 @@
+TIMESTAMPED TRANSCRIPT: ./.cache/recordings/coach-9-16-2025/coach-9-16-2025.aac
+Generated: 2025-09-28T11:32:01.979288
+Total duration: 60.9 minutes
+================================================================================
+
+[00:03 - 00:04] Okay.
+[00:11 - 00:17] Maybe let's give one more minute for Vishal to join in, then they get started.
+[00:18 - 00:25] So today we wanted to talk about, okay it is Satish who has joined, okay.
+[00:26 - 00:39] We wanted to talk about the taxonomy and after that we also wanted to touch upon what are the outcomes that we are planning to achieve.
+[00:39 - 00:41] by end of the vision statement.
+[00:41 - 00:53] There was a discussion, there's a thought Pashanti has shared that whether she's looking for three things, one is the vision statement, then two or three capabilities and the mapping to the respective application.
+[00:53 - 01:02] So that's the three things, but then here is the first step like building that the standing and modifying the content for the vision works up tomorrow.
+[01:02 - 01:05] Accordingly, that's the plan.
+[01:05 - 01:09] So Karl, I think we have full house, which may not be able to join.
+[01:09 - 01:10] He has some medical emergency.
+[01:11 - 01:12] That's what he's sure.
+[01:12 - 01:15] So we can get started.
+[01:15 - 01:17] What do you get all yours?
+[01:17 - 01:18] Yeah, sure.
+[01:18 - 01:24] I mean, and a lot of what we were covering was I mean, seems to be that there's people don't know what a business capability is or how business capability maps are.
+[01:25 - 01:29] I'm not looking at what our business capability map is because there's still some stuff up in the air there.
+[01:30 - 01:34] We had some conversation over last couple days of
+[01:35 - 01:46] There is a version in Lean IX, which currently is considered the, you know, the Kenview version, but there's also some discussion about whether or not the Lean IX version is right or not, so we'll continue to have those discussions.
+[01:47 - 01:52] But my bigger thing is understanding what a business capability map and how it works into the product model.
+[01:52 - 01:55] What does a business capability map have to do with a product model?
+[01:56 - 01:58] They are very, very much linked.
+[01:59 - 02:04] And by definition, if you look at the design of a product model by anybody,
+[02:05 - 02:08] Actually, I was just looking yesterday at seven different product models.
+[02:08 - 02:09] There's seven different versions.
+[02:09 - 02:13] The product model that I've been able to locate over the seven, every single one of them uses.
+[02:13 - 02:19] I'm sorry, I just got it.
+[02:19 - 02:21] You know, I guess I'm the being that you have to pay attention to.
+[02:24 - 02:30] The, you know, in the product model, what they're doing in a lot of cases is what you're doing exactly what we're looking at.
+[02:30 - 02:33] When you're talking about a line to a group,
+[02:34 - 02:38] to a team, you're looking at capabilities.
+[02:38 - 02:46] A line is a high level, a level one capability, a product group is a level two capability, and a level three capability is a team.
+[02:47 - 02:48] That's why they're defined the way they are.
+[02:49 - 02:52] We had a definition that was used to category software.
+[02:52 - 02:57] We're changing from that definition, we're moving out of that definition, there's a Copa version that was used there.
+[02:58 - 03:00] Copa is a standards organization.
+[03:00 - 03:05] The standards organization of the CPG business is what it's from.
+[03:05 - 03:06] We won't be using that one.
+[03:06 - 03:08] There are some changes from there.
+[03:09 - 03:12] There's a couple other models that are out there that are fairly common.
+[03:12 - 03:19] About five of them is the same model, but for the most part, there's different models.
+[03:19 - 03:27] So I'm intentionally going to use a graphic from an I will share in this condition as I find it.
+[03:28 - 03:30] A graphic that's, this is how it looks.
+[03:30 - 03:31] This isn't ours.
+[03:32 - 03:33] It has nothing to do with ours.
+[03:33 - 03:36] I don't want to use ours for a very good reason.
+[03:36 - 03:41] Is that ours is up in the air and I don't want people to get confused by what's going to be there.
+[03:42 - 03:48] So if I can just find this stupid thing, I will share it.
+[03:50 - 03:51] All right, where did it go?
+[03:51 - 03:56] That's not the one.
+[03:56 - 03:58] That is ours, okay.
+[03:58 - 04:03] And I am working currently on as part of another process.
+[04:04 - 04:06] I'm working on what ours will look like.
+[04:07 - 04:16] Somewhat I need to get agreement from a couple people before I can say so, because whether we're gonna have one or two and things like that, because there's a lot of different thought processes out there.
+[04:16 - 04:19] So, where did it go?
+[04:20 - 04:20] There it is, okay.
+[04:22 - 04:23] Now I have to go back to sharing.
+[04:23 - 04:25] I have to find it before I get shared.
+[04:27 - 04:46] The fun of working on a Mac is you have multiple screens and I can't find the stupid thing on the screen.
+[04:46 - 04:47] I want it to be on.
+[04:48 - 04:50] All right, I'll open it again.
+[04:50 - 04:52] I can't show it.
+[04:52 - 04:54] All right, let me try this.
+[04:54 - 04:56] if I can share my entire thing just because it's easier that way.
+[04:58 - 05:02] And then you can tell me whether or not you can see it when I get it where to go.
+[05:03 - 05:05] All right, if I share my screen, can you see that?
+[05:05 - 05:06] Are you seeing a big box?
+[05:06 - 05:07] Okay, good.
+[05:08 - 05:08] Cool.
+[05:08 - 05:10] All right, now.
+[05:10 - 05:13] When I talk about L1s, then this is where you'll start to see where things happen.
+[05:13 - 05:18] When you talk about L1s, where you see operating processes here, or management and support processes.
+[05:19 - 05:20] Those are L1s.
+[05:20 - 05:29] Those usually have a VP over them at a VP level that would be responsible for operating processes and what the goals are for that operating processes group.
+[05:30 - 05:32] So if we were to look at
+[05:32 - 05:33] Probably Eleanor is the best mix.
+[05:34 - 05:44] Eleanor in our company has enterprise services, which includes corporate services, and it includes supply chain, which is sometimes done, sometimes not.
+[05:44 - 05:45] It's a little unique on its own.
+[05:46 - 05:53] But what comes in after that, normally, would then be, where do you take the things that are inside of
+[05:53 - 05:54] enterprise services.
+[05:54 - 05:56] So enterprise services has a lot of different systems.
+[05:57 - 05:59] Okay, we have a lot of different things but they're grouped together.
+[05:59 - 06:02] So maybe we were to say is I'm going to do corporate systems.
+[06:04 - 06:07] Now the thing that gets lost quite often is you can have multiple capabilities under there.
+[06:07 - 06:10] So you might say corporate systems is one of these boxes.
+[06:12 - 06:13] Well, what do we have in corporate systems?
+[06:14 - 06:16] Well, we can have finance systems, we can have HR systems.
+[06:16 - 06:18] But what is the capability?
+[06:18 - 06:19] What are they doing?
+[06:19 - 06:27] So if I were to look at HR and say, what are the actual capabilities that would make up these blue boxes in this case,
+[06:27 - 06:33] I would look at things like if I said I was in corporate systems and I had capabilities inside corporate systems.
+[06:33 - 06:36] Now, HR can be grouped in there as its own or as something different.
+[06:37 - 06:38] You could make HR one of these boxes.
+[06:39 - 06:40] People do it different ways.
+[06:40 - 06:44] So if we were to say HR was one of these yellow blocks, HR has capabilities.
+[06:45 - 06:48] You have Core HCM, which is things like Workday.
+[06:48 - 06:52] You have compensations, which could be in total reward.
+[06:54 - 06:56] You could have
+[06:58 - 07:02] talent recruiting which is another part of all of that.
+[07:02 - 07:11] Now those would normally have a leader in the yellow box in that case would be Jessica in our case because we've dealt with Jessica and the blue box is what you would see is the
+[07:11 - 07:13] folks that we're working with and I can't remember what her name is.
+[07:14 - 07:15] Generally, you would actually be somebody more.
+[07:15 - 07:18] Now, we have an extra layer in the corporate end of the world.
+[07:19 - 07:20] So we do have extra people in there.
+[07:21 - 07:24] But if we were to split off HR on its own, we wouldn't.
+[07:24 - 07:28] If we said HR or compensation is that, then you'd have just owning two boxes.
+[07:28 - 07:29] That's why it gets confused.
+[07:30 - 07:37] But what we're trying to do is say is what I need to know is what are my high level lines so that I have a leader here that's a
+[07:38 - 07:41] aligning with that business side of that.
+[07:41 - 07:43] These don't just apply to technology.
+[07:43 - 07:45] They apply to technology and business.
+[07:45 - 07:54] So if I were to be able to apply both of them and say, okay, in the business, we have a set of goals.
+[07:54 - 07:55] Those goals come cascading down.
+[07:56 - 08:01] When we talk about cost savings, maybe at operating process, we want to save
+[08:03 - 08:07] $50 million and we have six boxes here.
+[08:07 - 08:18] We may split that six boxes into six parts and say you each have to do one or we may do it unevenly because they're of the impact each group has.
+[08:18 - 08:21] You would then cascade that would be where that cascaded goal would come from.
+[08:21 - 08:26] So if the vision of operating processes is to shorten work times and reduce costs,
+[08:27 - 08:29] OK, that vision is going to cascade down.
+[08:29 - 08:32] It's going to cascade down to the things what impact they can have.
+[08:33 - 08:38] Then those will get down to the team level to say which individual team should be supporting in what level.
+[08:38 - 08:40] So the goal doesn't change.
+[08:40 - 08:45] The portion of the goal that the teams can actually impact changes.
+[08:46 - 08:48] So that's when you're looking at your vision.
+[08:48 - 08:49] The vision doesn't change.
+[08:49 - 08:54] The vision becomes specified much more detailed to what you can do.
+[08:54 - 08:57] So if they say, yeah, right.
+[08:58 - 09:00] question for you.
+[09:00 - 09:09] Can we say that this is a guideline for teams to define what the L1 capabilities are?
+[09:11 - 09:14] Yes, not sure, but L2.
+[09:14 - 09:18] Well, L1 is a product line.
+[09:18 - 09:22] Teams wouldn't define what their product line is.
+[09:23 - 09:27] Corporate systems would, like if you were going into, who's going first?
+[09:28 - 09:29] Who's going tomorrow?
+[09:31 - 09:38] We're doing plans.
+[09:38 - 09:48] Okay, so you may be looking at research and development as being the product line, which is probably, it may or may not be part of operations, but that's okay.
+[09:48 - 09:56] So let's assume that R&D was this thing, rather than operating processes, this said research and development, and you were going into the lab services.
+[09:57 - 10:01] There could be two teams, there could be three teams, there could be multiple software packages.
+[10:01 - 10:11] So their L1 would then be R&D, their L2 would be lab services, and their individual teams, limbs being one of them would be an L3.
+[10:11 - 10:18] So then the level three capability is lab, I forget what limbs does now, monitoring and notebooking it.
+[10:19 - 10:27] So how do I translate this into business capabilities that I'm going to maybe just need?
+[10:27 - 10:33] Well, again, this is where we run into the problem here at Kenview because we haven't really settled on something.
+[10:33 - 10:38] There are industry definitions that say, this is the capabilities that you do in the company.
+[10:39 - 10:41] We can use those or we can use what they define.
+[10:41 - 10:46] If they want to call limbs, I am the lab management platforms.
+[10:46 - 10:48] OK, your lab management platforms.
+[10:48 - 10:49] Do you have any more than one system?
+[10:49 - 10:50] Maybe not.
+[10:50 - 10:51] It's possible they don't.
+[10:52 - 10:54] It could be their lab management platforms.
+[10:54 - 11:00] Then their blue box would say lab management platforms, which is fine.
+[11:00 - 11:03] I mean, they can define whatever they want to put there.
+[11:03 - 11:10] The problem I think we have right now is that we have multiple places where we've already gathered this information multiple times.
+[11:10 - 11:12] and everybody's getting different answers.
+[11:12 - 11:17] So we have to figure out who is the source of truth or what is the source of truth and stick to one.
+[11:17 - 11:21] So right now what I'm using is what actually happens to be in lean IX.
+[11:22 - 11:28] So if I were to look at what's in lean IX, lean IX has a set of things.
+[11:28 - 11:28] Let me see if I can find it.
+[11:29 - 11:30] I could probably can because I think I had it open.
+[11:31 - 11:36] Pishanti has a question, I think she just tempts out as well.
+[11:36 - 11:44] So what I understood here is the L1 is kind of equivalent to the product line.
+[11:44 - 11:49] That's what we are seeing it, which particularly talks about what your product does.
+[11:50 - 11:51] Not product, product line does.
+[11:52 - 11:53] That's what in combination.
+[11:54 - 11:54] That's what it is.
+[11:55 - 12:04] And then we have not just upon L2 and L3, but who defined these L1, L2, L3, who are the responsible person who has to define these?
+[12:05 - 12:08] Well, right now, what we have is, I don't even actually know.
+[12:08 - 12:13] I mean, architecture worked with a bunch of senior leaders to come up with a number of definitions.
+[12:14 - 12:19] So, that is who defined the ones that we have.
+[12:19 - 12:21] So, can you see a business capability index I have for LeanIX here?
+[12:24 - 12:25] I can see the screen.
+[12:26 - 12:26] Yeah.
+[12:26 - 12:35] Okay, so if I look at this, now if I look at the L ones that they have defined, you would look at this and say, okay, here my product line is R&D and engineer.
+[12:37 - 12:38] Makes sense, right?
+[12:39 - 12:40] It's a rational thing because it's there.
+[12:40 - 12:41] Those are already defined.
+[12:42 - 12:44] Normally there's eight, we have 33.
+[12:45 - 12:51] Then if I came down again, a little level to L2s, now I would see is, okay, well, there's a bunch of them.
+[12:51 - 12:55] So wait, this is limb, so this is going to be, you know, 212.
+[12:55 - 12:58] So it was the R&D engineering and lab management.
+[12:59 - 13:02] Now, if I want to hit the level three, because they have an additional level here.
+[13:02 - 13:09] And theoretically, this is an additional level because they missed the old one.
+[13:09 - 13:12] But let's then I come down to 21.
+[13:15 - 13:16] lab management.
+[13:16 - 13:21] Now they could be, limbs itself could be one of these lab management data.
+[13:21 - 13:24] So maybe there are 21, 2, 3 lab management data management.
+[13:27 - 13:32] And they're different than whoever is doing lab data visualization or real material management or any of the other management.
+[13:33 - 13:41] So assuming that these are the correct ones because these are the ones that are set up currently in Leon IX and they're pretty adamant about keeping them that way.
+[13:41 - 13:42] They're not going to change them at this point.
+[13:43 - 13:45] So just one question, come.
+[13:46 - 13:49] I think Leonides, at least let's take the example of R&D.
+[13:50 - 13:51] Okay.
+[13:51 - 13:58] I'm not sure if you have access, maybe we can look at it, download and see what Leonie X has.
+[13:59 - 14:10] But my understanding is Chris Smith has already defined his L1 and L2L3 capabilities and based on what I'm hearing,
+[14:11 - 14:14] I mean, there's nobody else deciding these things.
+[14:14 - 14:16] It's us, or it's them, right?
+[14:17 - 14:24] We have not taken a stab and said, Brian has not told us saying that we'll go with the industry best practices.
+[14:24 - 14:26] Somebody actually has to make it.
+[14:27 - 14:29] This is the Lenax data that we're looking at right now.
+[14:29 - 14:31] This is not industry best practices.
+[14:31 - 14:34] This specifically is Lenax.
+[14:34 - 14:36] Okay, let me see what I have.
+[14:37 - 14:40] I have what Chris gave me was one second.
+[14:43 - 14:48] He has given, if you don't mind, I'll steal the share for one second and I'll give it back to you.
+[14:49 - 14:53] This is what he has given me, unless it has changed.
+[14:53 - 14:58] I don't know what's the latest, but this is what he's saying.
+[14:59 - 15:00] These are the L2 capabilities.
+[15:01 - 15:02] These are the L3.
+[15:02 - 15:05] So according to him, these are the product.
+[15:05 - 15:10] No, I think this is product line product groups and products.
+[15:10 - 15:11] This is how they are looking at it.
+[15:12 - 15:15] And then maybe Lynne's Paul center regulatory.
+[15:15 - 15:17] I don't know regulatory of clinical.
+[15:18 - 15:18] I'm not sure.
+[15:18 - 15:21] But this is what I was expecting to see in Linux.
+[15:22 - 15:24] If this is not matching, then we need.
+[15:24 - 15:25] And that'll never come back.
+[15:25 - 15:28] That'll never end up in Linux because those aren't actual categories.
+[15:28 - 15:34] Those are actually, you know, medical safety is not a category because it could fit in 50 different places.
+[15:35 - 15:37] It's not going to show up in capabilities.
+[15:37 - 15:43] Now, what Chris has here, my understanding is he got this agreed upon with senior leaders.
+[15:44 - 15:45] We're following up.
+[15:45 - 15:46] I had a conversation with Brian on it.
+[15:46 - 15:48] We're having some follow up with it on it already.
+[15:48 - 15:55] But the idea was, do we adapt to what Lena X is saying or do we let every single group do it the way they want to do it?
+[15:55 - 16:02] Because the problem that we have, and I think it's a little off track of the conversation where I've been here because we can let them tell us anything they want.
+[16:03 - 16:05] We have to make a decision on what
+[16:05 - 16:06] We're going to use this.
+[16:07 - 16:08] There's a hundred charts out there.
+[16:08 - 16:11] Fortunately, we are not getting, I'm stopping my share.
+[16:11 - 16:14] I'll take, if you give me that list, I'm going to take both of them.
+[16:14 - 16:22] I'm going to send it to Chris Smith and Chris Serito, coffee, Brian, you and Sara and say, pick one.
+[16:22 - 16:23] We are moving forward.
+[16:23 - 16:26] Yeah, Brian must have already happened.
+[16:26 - 16:28] So it is that a government.
+[16:29 - 16:30] Okay, it's already.
+[16:30 - 16:30] Brian already has it.
+[16:30 - 16:32] He's headed for a few days and he's going through it.
+[16:32 - 16:33] So
+[16:33 - 16:36] You can check on his status with it, and let's go that way.
+[16:37 - 16:43] But it's actually nothing.
+[16:43 - 16:46] I was trying to explain why we do it the way we do it.
+[16:47 - 16:50] What chart we use doesn't matter, and I don't want to go too far off of what chart.
+[16:51 - 16:52] We know there's questions of which chart we're going to use.
+[16:53 - 16:55] I don't want to get stuck in that.
+[16:55 - 16:58] The idea is, we keep talking about business.
+[16:58 - 17:05] For us, if we ask people to map to some end to capabilities, we have to give them the end to capabilities to say, map it.
+[17:06 - 17:09] Now, which end to capability will put in front of them?
+[17:09 - 17:11] We'll try to put whatever is expected.
+[17:11 - 17:12] online.
+[17:12 - 17:16] I think if they want to throw some dabs, evolve up, that's up to them.
+[17:16 - 17:21] But at this point of time, the direction I've got is don't disrupt anything.
+[17:21 - 17:25] If there's something already existing, just go with it.
+[17:25 - 17:29] That's the strong direction I obviously, but I might be wrong.
+[17:29 - 17:32] There might be something else that's going on right now.
+[17:32 - 17:37] This team is looking for carless, not like, hey, maybe this or that.
+[17:38 - 17:47] We need to go with one list so that they can finish the activity of mapping because if we put two lists in front of Reginae and say, hey, ask them if they can map here.
+[17:47 - 17:48] This is better.
+[17:48 - 17:49] This is Chris says.
+[17:49 - 17:50] You can map here.
+[17:50 - 17:52] This is what Chris mid says.
+[17:52 - 17:54] It will be very confusing to them.
+[17:54 - 17:55] We need to give them one list.
+[17:55 - 17:58] Like Christmas, if you set it off, fight it out.
+[17:58 - 18:03] One list comes out of it and that list goes to this train as simple as that.
+[18:04 - 18:06] And Prishandhi, I have a follow up question on that.
+[18:06 - 18:11] So you have shared that slide that we have it from long, right?
+[18:11 - 18:13] It talks about L2L3.
+[18:13 - 18:20] So when we are in a workshop, are we asking the business to verify it, whether this is correct or not?
+[18:20 - 18:23] Because it's the audience.
+[18:23 - 18:27] Whoever you have invited, I'm assuming they have the decision makers over there.
+[18:27 - 18:29] It could be the technical leader.
+[18:29 - 18:31] It could be the business.
+[18:31 - 18:32] It's a collaborative thing.
+[18:32 - 18:40] If they are saying, take this application, take there is this, whatever, Anaplan did demand planning.
+[18:40 - 18:47] Yes, the technical person is saying this, does the business person agree or his capability is delivered?
+[18:47 - 18:50] Do they use Anaplan for supply planning?
+[18:50 - 18:51] That's the biggest question.
+[18:52 - 18:56] Yes, yes, yes, that's the application.
+[18:56 - 18:59] That's the capability, that's how you navigate.
+[18:59 - 19:04] And we might be just talking about one product here because we are just talking pioneers.
+[19:04 - 19:08] But ideally, like Farley is saying, we should do top down.
+[19:08 - 19:10] But we are not in that space.
+[19:10 - 19:11] We are doing bottoms up.
+[19:11 - 19:21] So maybe in that entire hierarchy, it's only one box you're going to pick up and say, hey, these two applications, we have been talking about mass to this supply plan.
+[19:21 - 19:22] That's it.
+[19:23 - 19:24] You map it done.
+[19:25 - 19:27] Then you say, OK, the product, whatever.
+[19:28 - 19:32] Finalize the name, finalize the age to capability, finalize the applications.
+[19:32 - 19:36] That's your two-way mapping, right?
+[19:37 - 19:38] At least stop there.
+[19:38 - 19:39] We are not going to boil the ocean.
+[19:39 - 19:42] At this point of time, it's too late.
+[19:42 - 19:45] We have been debating on this three months, four months.
+[19:45 - 19:46] We don't have answer.
+[19:46 - 19:51] And unfortunately, I'm ready to make a decision today.
+[19:51 - 19:52] somebody gave me the option.
+[19:53 - 19:54] Khan will make it today.
+[19:55 - 19:56] If somebody empowered him, right?
+[19:57 - 20:01] If Brian told Khan, you are 100% accountable for this structure.
+[20:01 - 20:02] Go put it.
+[20:02 - 20:07] I'm sure he'll come up with the best in class taxonomy.
+[20:07 - 20:09] And we can say this is the taxonomy aligned to it.
+[20:10 - 20:11] But nobody is empowering us.
+[20:11 - 20:13] That's the biggest problem.
+[20:13 - 20:16] Without empowerment, we can be talking, talking, talking.
+[20:16 - 20:19] We might be having the best taxonomy in the world.
+[20:19 - 20:25] We cannot operationalize it because the leaders are not supporting.
+[20:25 - 20:39] In the end, it's owned by architecture in the end, because they're the ones who have to set this up for the... I understood that they do have a set up, and we are having the discussion whether or not we just go with it.
+[20:39 - 20:44] And right now, they don't want to change anything again, because they're going to miss all their dates, because they have to get their stuff in there.
+[20:44 - 20:52] But the reality of it is, what we really need to understand is how this stuff relates to what we're talking about, and how do we explain it to people.
+[20:52 - 20:57] What it is can be debated forever for a bunch of leaders want to go argue 50 different times.
+[20:57 - 20:58] I don't care.
+[20:58 - 21:07] The reality of it is there's a direct mapping between business capabilities and lines and groups and teams.
+[21:07 - 21:10] That's how the two go together and they go together for that way for a reason.
+[21:10 - 21:19] There's the reasoning behind this in a lot of cases is when you're dealing with a product model for one product doesn't necessarily fit every single type of organization, but
+[21:19 - 21:23] By understanding where the business capabilities are, they do fit every organization.
+[21:23 - 21:29] No matter what kind of organization it is, whether it's an infrastructure or a R&D organization, it doesn't matter.
+[21:30 - 21:35] The idea is that what it gives us is a standard methodology for understanding how we're doing.
+[21:35 - 21:37] So you can set metrics.
+[21:37 - 21:43] You can say, am I spending on this capability in the same range as my competition?
+[21:44 - 21:48] Am I delivering time frame wise?
+[21:48 - 21:59] indirect alignment with my competition by putting capabilities in and as a rational way and mapping those capabilities in a standard way, it gives us an ability to go against other information that we have.
+[21:59 - 22:03] Now we can do that data analytics and data-driven decision making that makes sense.
+[22:04 - 22:08] If we say we now want to invest in growth,
+[22:09 - 22:17] If we're overspending in five places, but we're underspending on the things that help with growth, we know where we can move things around in a very rational way and make sense.
+[22:17 - 22:22] The idea behind the business capability model is that ability to attach ourselves to something.
+[22:22 - 22:32] If I go to Gartner and say, what is the average that a CPG company of over $5 billion will spend on HR?
+[22:33 - 22:36] It'll give me an idea whether I'm in the ballpark or not.
+[22:36 - 22:42] When we say that we spend too much on things, because we'll hear that quite a bit in a lot of our meetings, people say we're spending too much on.
+[22:43 - 22:44] That's where those numbers come from.
+[22:45 - 22:50] But we are currently at such a high level that we know we spend too much on IT.
+[22:50 - 22:53] We don't know we spend too much on what.
+[22:53 - 22:55] So that is a lot of the purpose of why it's there.
+[22:55 - 23:00] But we want the product teams to understand is that these capabilities match up to something.
+[23:01 - 23:07] When we're saying that, you know, you need to do these, they're important because they're giving us an actual data driven something.
+[23:09 - 23:11] You know, we don't know whether we're doing good better and different.
+[23:11 - 23:13] We only know it from the context of us.
+[23:15 - 23:25] The current leadership, the current and a lot of other things are looking at us and the street will look at us and say, are they doing a good job at a high level?
+[23:25 - 23:28] And that's always been the number, but the next level down matters.
+[23:29 - 23:33] There was the question of, are we spending too much on IT or are we just not making enough money to cover it?
+[23:35 - 23:36] So you have two choices.
+[23:36 - 23:37] You always have two choices.
+[23:37 - 23:40] Do you know what I'm saying?
+[23:40 - 23:50] I hear you and kind of angry, but only my question here is now totally, you know, it has to be done that way and then there is a talk.
+[23:50 - 23:58] But now right now, we started with this pioneer and the immediate test, please correct me.
+[23:58 - 24:00] Okay, this is what it's coming in my mind.
+[24:00 - 24:21] We do have a capability map either we can go with the presentation one or you know the one which we have pulled it from the line you extend and then we will ask the business to get it verify and do that and another thing is because we might be at L3 or even below that because we could be at the application level.
+[24:21 - 24:26] What could be the different applications are there in that L3?
+[24:26 - 24:30] Maybe is that something to outcome that we look for?
+[24:30 - 24:32] I mean, this is what it's coming for.
+[24:32 - 24:34] But that's being mapped separately right now.
+[24:34 - 24:38] That is a separate exercise that's been going on fairly actively right now.
+[24:38 - 24:43] I'm actually meeting with Brian's going to have a communication going on on the application list shortly.
+[24:44 - 24:46] Products and applications do not equal.
+[24:47 - 24:52] So you could have three applications in a product or you could have one application in a product.
+[24:52 - 24:53] It doesn't matter.
+[24:53 - 24:57] I mean, like if your workday you may say is, okay, HR core is all in workday, so I have one application.
+[24:58 - 24:58] Good.
+[24:59 - 24:59] Fine.
+[24:59 - 25:04] If you looked at total rewards, total rewards had a dozen applications underneath it.
+[25:04 - 25:07] But they're all vendor manage, but they had a bunch of applications underneath them.
+[25:08 - 25:10] So they're all, but they're all the same product.
+[25:10 - 25:12] They're just different things.
+[25:12 - 25:15] So, you know, it was the CCR one-stream conversation.
+[25:15 - 25:19] If a mid was the one running CCR, it should be CCR.
+[25:19 - 25:23] If a mid's only running one stream, is one stream the only thing, and is there somebody above him?
+[25:24 - 25:29] Now, if there isn't, then maybe they have two different, you know, L3s, and that's what they have.
+[25:29 - 25:35] One is one stream, which we would probably call the name, not by its product name, you know, the software product name.
+[25:36 - 25:37] But,
+[25:37 - 25:41] You know, there's lots of different ways to look at these things, but we are currently working on the application list.
+[25:41 - 25:42] That's something else that's being done.
+[25:42 - 25:43] And it's being done as an Ampika.
+[25:43 - 25:45] Brian said it should be done as an Amp.
+[25:45 - 25:50] So Shanti has called something like that.
+[25:50 - 25:52] We have 12 minutes left.
+[25:53 - 25:58] So my question is, what was the outcome you wanted to achieve on this call for Bill?
+[25:58 - 26:01] Because I see outcome for vision session.
+[26:01 - 26:03] One thing of the vision session.
+[26:03 - 26:06] Yeah, that's what we want.
+[26:06 - 26:09] Unless there's any other questions specifically to this thing.
+[26:10 - 26:11] Again, this is an informational thing.
+[26:11 - 26:16] If you go with the slide that Chris gave us, it's going to be less hassle, less argument, and it does not going to make really a difference anyway.
+[26:16 - 26:17] So I would just go with that.
+[26:18 - 26:22] But I'm sure we're going to change something, but that's OK.
+[26:22 - 26:22] It doesn't matter.
+[26:22 - 26:25] I mean, you should go with what Chris is.
+[26:25 - 26:29] What you really want to know is if they own a function here, no matter what it's called, we call it 1.1.1.
+[26:30 - 26:30] Who cares?
+[26:32 - 26:33] What applications they have underneath that?
+[26:34 - 26:40] And if they can say that there's applications under that and we can identify a TPO, that's a positive thing because most of our TPO's are wrong in all of our data.
+[26:41 - 26:44] So that's a huge step forward, so I would go with it.
+[26:45 - 26:49] But is there anything else anybody need to know about what the point of capabilities is?
+[26:52 - 26:54] So we should call, yeah, we shall go ahead.
+[26:55 - 27:03] So the intent of the session was we wanted to try and understand how to incorporate lean Ix into
+[27:04 - 27:06] the conversation that we're having with the limbs tomorrow.
+[27:07 - 27:16] So we have a draft deck that we've created and I'm sharing information and you can opine on what you want us to do with it.
+[27:16 - 27:20] So first question is, when we meet with some kids tomorrow,
+[27:21 - 27:29] Uh, we're going to go over the full value mapping, right, which is the target that the two slides that I think you.
+[27:29 - 27:31] Can I see the content, please?
+[27:31 - 27:33] I don't want to be a ceiling.
+[27:34 - 27:35] I want to see the content.
+[27:35 - 27:38] I want to know who is because I don't see anything on my calendar.
+[27:39 - 27:41] So I'm not sure why I'm not invited.
+[27:42 - 27:49] Uh, so I want to be there to understand what's going on in the sessions because I don't want another escalation from
+[27:49 - 27:50] That's correct.
+[27:50 - 27:57] So this is me and Unuch are tagging, so Rajani can you forward the session?
+[27:57 - 28:00] So this is the product vision session, right?
+[28:00 - 28:08] So the first thing that we go over is this high, I want Temi and Sankey to first understand the full end to end picture.
+[28:08 - 28:12] So we're going to go through this slide and this slide, right?
+[28:12 - 28:13] Okay.
+[28:13 - 28:14] Just one feedback, right there.
+[28:14 - 28:16] Go back to that slide.
+[28:16 - 28:17] Yep.
+[28:17 - 28:20] The first zero needs to have OKRs over there.
+[28:20 - 28:22] Can view OKRs?
+[28:22 - 28:23] Can you take the data?
+[28:23 - 28:25] I don't want the objective and key results.
+[28:25 - 28:27] OKRs should come there.
+[28:28 - 28:30] Or put it in the brackets, whatever.
+[28:30 - 28:31] Can view OKRs?
+[28:31 - 28:33] Is that what you want?
+[28:34 - 28:36] Yeah, I think you take the data OKRs or whatever.
+[28:36 - 28:38] KTV, OKR.
+[28:39 - 28:40] Oh, just OK.
+[28:41 - 28:41] Got it.
+[28:41 - 28:41] I just sped up.
+[28:42 - 28:47] I want the keyword OKR over there, because you have put it in step two OKR.
+[28:47 - 28:51] In step two, you have to put it as product OKRs.
+[28:51 - 28:55] Remember, you are using language very loosely.
+[28:55 - 29:01] This can have impact because I sat down with Sara Yafan and convinced her, you're okay.
+[29:01 - 29:03] I said, here, this is our okay.
+[29:03 - 29:06] And she was a light because Sara Goodman is not convinced.
+[29:06 - 29:14] So you need to be very critical because when you're translating it to Dex, you're losing the feedback that people are giving you.
+[29:15 - 29:15] Okay.
+[29:16 - 29:16] Yeah.
+[29:16 - 29:18] So this is the high level view.
+[29:19 - 29:25] that is being shared tomorrow, which is the first 10, 15 minutes.
+[29:25 - 29:33] Can you please change that to can you OKR and the left put objective key results in the brackets?
+[29:35 - 29:40] Sorry, I am very picky on those things, because I'm facing the front of it.
+[29:41 - 29:45] And you can remove the last key, but yeah, OKR.
+[29:46 - 29:47] OK?
+[29:47 - 29:47] Yeah.
+[29:49 - 29:51] So you'll go through this.
+[29:51 - 29:59] We're first actually trying to talk about this distinction between SPM and the product model.
+[29:59 - 30:03] So I think this slide should be first, but you tell me if you want to cover it afterwards.
+[30:03 - 30:09] I think this is the SPM story, which is, hey, this is where you start and then this is how you go around in the circle.
+[30:09 - 30:11] This is where we come in, right?
+[30:12 - 30:18] This is where we are coming in with our six steps and then this is where we tie the execution and the business value on the metrics and API.
+[30:18 - 30:21] So it's basically tying that big picture together.
+[30:21 - 30:22] That's slide number one.
+[30:22 - 30:23] Slide number two.
+[30:23 - 30:23] Okay.
+[30:23 - 30:30] Now we'll go into the detailed steps, not session two steps on how to achieve what we talked about in the previous slide.
+[30:30 - 30:32] And then I know just go through.
+[30:33 - 30:33] Okay.
+[30:33 - 30:34] Here's
+[30:33 - 30:36] There's two only two, we've kept it very light, right?
+[30:36 - 30:37] We've kept it high level.
+[30:38 - 30:46] Yes, what vision means, here's what a vision statement should look like, and then we'll go into the workshop saying, okay, here's an example that we gave you for Google.
+[30:46 - 30:49] We want you to put that workshop, and then I want you to put it into Gira.
+[30:50 - 30:53] So then you're going to go into the G-R structure, that same standard structure.
+[30:53 - 30:55] So let me just go through the slides.
+[30:55 - 30:58] I just quickly talked about all this.
+[30:58 - 31:00] So first step is, here's the vision.
+[31:01 - 31:03] Two slides on what is the vision, blah, blah, blah.
+[31:04 - 31:10] Next one is, you need a vision statement for your product at the product level that has these things captured in it.
+[31:10 - 31:11] Who is it for?
+[31:11 - 31:13] So where is the template?
+[31:13 - 31:14] Where will they capture it?
+[31:14 - 31:19] The template is over here at the bottom, which is in the last place.
+[31:19 - 31:20] put the template next.
+[31:21 - 31:23] So you said, you're going to teach them.
+[31:24 - 31:25] This is not a template.
+[31:25 - 31:26] This is an example.
+[31:26 - 31:28] Where is the template?
+[31:28 - 31:32] So this is what Anuj is saying that, see, we are basically asking them to come up with a piece.
+[31:32 - 31:34] I'm not just cutting to the chair.
+[31:34 - 31:35] I'm not sure, template.
+[31:36 - 31:38] All I am saying is, where is the template?
+[31:38 - 31:40] I need that template in the next slide.
+[31:40 - 31:43] If you're asking them to fill a template, they get a template.
+[31:43 - 31:46] Because this was made clear in the last call.
+[31:46 - 31:46] It's right.
+[31:46 - 31:49] I gave the call with Sake and Timmy.
+[31:50 - 31:53] So Sake and Timmy just said give me a template.
+[31:53 - 31:57] Peshanti, I'll make him feel the template and we still are talking.
+[31:57 - 31:57] There's a template.
+[31:57 - 31:58] There's a template.
+[31:58 - 32:00] I don't see the template.
+[32:00 - 32:00] Is this a template?
+[32:02 - 32:04] I don't think I have access to it.
+[32:04 - 32:06] It doesn't look like a template.
+[32:06 - 32:08] This is not how the template looks.
+[32:08 - 32:09] I'm sorry to say.
+[32:09 - 32:13] Can I give you a little bit of executiveness that you have to put over here?
+[32:13 - 32:15] If it is who, what, why?
+[32:15 - 32:16] You're just going to randomly put here.
+[32:16 - 32:20] They can send it in a email.
+[32:20 - 32:26] This is the output of the workshop where I think he's going to do the workshop, which is here is what we're going to go through.
+[32:26 - 32:27] Here are the things that
+[32:28 - 32:34] If there should be the immoral board, there should be a template where they're putting sticky notes.
+[32:35 - 32:36] There needs to be something, guys.
+[32:36 - 32:40] If you're saying a working session, how will you let them do it?
+[32:40 - 32:41] Who is the scribe?
+[32:41 - 32:49] Are you going to open a mural board for four sections and say, hey, drop in your things over there.
+[32:49 - 32:50] This is the one there.
+[32:50 - 32:55] So this is what the screen shot there and say we are going to capture.
+[32:55 - 32:58] There needs to be specific steps.
+[32:58 - 32:59] You will give five minutes.
+[32:59 - 33:01] Have you timed your session?
+[33:01 - 33:02] How much time on which will speak?
+[33:03 - 33:03] When will you?
+[33:04 - 33:05] How much time is this entire thing?
+[33:05 - 33:07] We are going to open up a mural board.
+[33:07 - 33:08] You know this takes time.
+[33:09 - 33:11] People are thinking people are putting.
+[33:11 - 33:12] They might not put anything.
+[33:13 - 33:13] So
+[33:13 - 33:24] Are you making them do it in the session or are you going to give them one slide at template and say, do however you want, but put the vision ultimately.
+[33:24 - 33:25] What are you saying?
+[33:26 - 33:34] So in the session, Anuj is planning that in the session, we will ask because we are giving them guidance in the session, we're giving them the Uber example.
+[33:34 - 33:39] The goal is that they will use that example to fill out the template, right?
+[33:40 - 33:41] That is the intent.
+[33:41 - 33:43] Let me just, I think I have access to it now.
+[33:43 - 33:44] Thank you for that.
+[33:45 - 33:48] Oh, I think it's still working, but whatever.
+[33:48 - 33:50] So you're throwing me this neural board.
+[33:50 - 33:51] What will you tell me?
+[33:51 - 33:52] Okay, I am circuit.
+[33:52 - 33:55] What are you asking?
+[33:56 - 33:57] So let's do it right now.
+[33:57 - 34:00] I'm not I'm not sure we have this pretty.
+[34:01 - 34:03] You don't know how you people are delivering.
+[34:04 - 34:06] You all are scrambling with me.
+[34:06 - 34:08] One of you showing the mural board.
+[34:08 - 34:10] One of you showing the appendix slide.
+[34:10 - 34:12] One of you don't have a game plan.
+[34:12 - 34:13] Sorry.
+[34:13 - 34:15] You don't, none of you have a given plan.
+[34:15 - 34:18] You have no strategy how you are going to go there.
+[34:18 - 34:19] You have no strategy.
+[34:19 - 34:22] How will you ask them to, okay, you're doing a session.
+[34:22 - 34:24] What will be the output?
+[34:24 - 34:27] You're saying Jira Vishal, I see a mural board.
+[34:27 - 34:29] Who is doing what?
+[34:30 - 34:33] I'm doing the opening, right?
+[34:33 - 34:36] I'm doing the opening where I'm giving the big picture.
+[34:36 - 34:40] and then Anuj is going to walk through the first few slides with the examples, right?
+[34:40 - 34:45] So my, my story is I'm going to do the opening and then how much time is this session?
+[34:45 - 34:46] I'm doing 10 minutes.
+[34:46 - 34:48] Anuj is doing 50, 60 minutes session.
+[34:49 - 34:50] Out of the 15 minutes, we are basic.
+[34:51 - 34:54] Anuj is going to take the first 10, 15 minutes to talk.
+[34:54 - 34:54] Hold on.
+[34:54 - 34:55] Hold on.
+[34:55 - 34:55] Hold on.
+[34:56 - 34:56] 10 minutes.
+[34:57 - 34:57] You're done.
+[34:57 - 34:59] You, you cover your three slides.
+[34:59 - 35:00] 15 minutes.
+[35:00 - 35:01] He's doing this workshop.
+[35:02 - 35:04] But, but you were talking about mapping.
+[35:04 - 35:06] Where is the mapping part of it?
+[35:06 - 35:06] Where are you?
+[35:06 - 35:23] So the theory part is, so the next 15-20 minutes, right, which is the first half hour of the session, we're going to cover the theory, right, which is, this is how you do it, which 30 minutes over in the next 30 minutes, what are you doing?
+[35:26 - 35:26] looking session.
+[35:27 - 35:33] And we're just going to give the example so that they can start thinking about, hey, look, let's use the Uber example to talk about this, ooh, what, why, what.
+[35:33 - 35:36] Now apply this to your product.
+[35:36 - 35:41] And that's where we are introducing the mirror board, which is over here, which is the workshop agenda.
+[35:41 - 35:43] This is the 30 minute workshop.
+[35:43 - 35:46] Now when the mirror is the mapping, the mirror is the mapping.
+[35:47 - 35:48] The mirror you're asking them to map.
+[35:50 - 35:51] mapping it back into Gira, right?
+[35:51 - 35:52] That's what you're asking.
+[35:52 - 35:54] Is that what you said Gira?
+[35:54 - 35:55] That is one thing.
+[35:55 - 35:58] What about we are talking about all these L2Ks?
+[35:58 - 35:58] L2Ks?
+[35:58 - 35:59] L2Ks?
+[35:59 - 35:59] L2Ks?
+[35:59 - 36:01] L2Ks?
+[36:01 - 36:02] L2Ks?
+[36:02 - 36:02] L2Ks?
+[36:02 - 36:04] L2Ks?
+[36:05 - 36:06] L2Ks?
+[36:07 - 36:07] L2Ks?
+[36:08 - 36:08] L2Ks?
+[36:08 - 36:13] One day we are not even 24 hours away from the session.
+[36:13 - 36:15] I don't see a skeleton.
+[36:15 - 36:18] I don't see which slide is getting delivered by whom.
+[36:19 - 36:21] I don't see how much time we are preserving forward.
+[36:21 - 36:23] I see something over here.
+[36:23 - 36:24] 45 minutes of discussion.
+[36:24 - 36:25] I'm synthesized.
+[36:26 - 36:28] Why should they be even doing it?
+[36:29 - 36:31] Along with you, I don't understand these visions.
+[36:32 - 36:37] You're not giving them capabilities to say, hey, map your vision to capabilities.
+[36:37 - 36:38] You're not.
+[36:38 - 36:45] And there was a better slide, a better template of a vision where it had a couple of bosses over there.
+[36:45 - 36:46] What is the purpose of the product?
+[36:46 - 36:47] What is this?
+[36:48 - 36:51] That would automatically give you a into capability.
+[36:51 - 36:55] Because if a circuit says, what's the purpose of limbs?
+[36:55 - 37:11] even really might be able to map it to L2, but now you're not asking anything just simply putting why what when they're going to give you one one line sentences and that will become your vision statement because they are saying give me a perfect template.
+[37:11 - 37:13] I will fill it over there.
+[37:13 - 37:17] So if you have all these questions which applications you map to which
+[37:17 - 37:23] they should be a place in that template, which asks for those questions.
+[37:24 - 37:27] If you don't ask for those questions, they're not going to answer your question.
+[37:29 - 37:36] So can you give me that word document that you extracted out of Lean Ix where you have the L1, L2, this, whatever, right?
+[37:36 - 37:36] The other product.
+[37:37 - 37:44] If you send me that, I'll create a slide that says, at the output of this session, these are the things that we want for links.
+[37:44 - 37:50] No, your template will not even be influenced by what he's keeping.
+[37:50 - 37:53] He can give ABC XYZ, Vishal.
+[37:53 - 37:55] Where is my vision template?
+[37:55 - 38:00] I'm simply asking all of you guys, where is my vision template?
+[38:00 - 38:05] Which says, hey, there needs to be a question for what are the two capabilities you're mapping?
+[38:05 - 38:06] Who is your sponsor?
+[38:06 - 38:08] Who is your stakeholders?
+[38:08 - 38:09] Who is your...
+[38:09 - 38:11] That's all thing is vision.
+[38:11 - 38:14] You're all so focused on peace-mealing it.
+[38:15 - 38:16] Vision is just what the prop.
+[38:16 - 38:20] No, as a part of the vision, I want to know all these outline things.
+[38:20 - 38:23] Who is your product owner, business owner?
+[38:23 - 38:25] All these things need to be answered.
+[38:25 - 38:27] This is your one shot you're getting with them.
+[38:28 - 38:31] In one hour, ask them to fill all the missing information.
+[38:31 - 38:34] You people told me, we don't know teams, we don't know.
+[38:34 - 38:44] To tell those boxes, there needs to be a pretty template, like a project charter template, a project, a mission template should be there, which is very prescriptive.
+[38:44 - 38:46] You don't have to narrate it.
+[38:46 - 38:51] Any person should read and be, who is your business partner?
+[38:51 - 38:53] Sake should be just simply able to fill it.
+[38:53 - 38:57] You don't have to teach him who is a business partner, right?
+[38:57 - 39:03] Do you know who the Sake always keeps saying, hey, I work with my business, I do whatever he says.
+[39:03 - 39:06] Do we know who that person is referring to?
+[39:07 - 39:09] Does it take to requirements from 10 people, one person?
+[39:10 - 39:11] Do we know that?
+[39:13 - 39:15] Are you not pre-populated?
+[39:16 - 39:22] For all six, if you're saying that you want a template for all six of this, we can just create that and share it with you at the moment.
+[39:22 - 39:23] We can do that.
+[39:23 - 39:24] All six weeks.
+[39:24 - 39:26] You're saying that I need from you, right?
+[39:27 - 39:28] We can do that.
+[39:28 - 39:34] We can give them saying here's a template question.
+[39:35 - 39:37] We have been talking about this for three months now.
+[39:38 - 39:42] And what on which promise we was for every workshop there's a template.
+[39:42 - 39:43] And I don't see a template.
+[39:43 - 39:44] I'm sorry.
+[39:44 - 39:45] I'm losing it.
+[39:45 - 39:48] Either you tell me, Vishanti, you do it.
+[39:49 - 39:52] Create a template, I'll tell you what the template is.
+[39:53 - 40:02] But I'm not saying we're always talking, this could be one way, that could be one way, some one way we may be like the template or not.
+[40:03 - 40:07] Whoever is asking them questions, you need to put that question there so that we get the answers.
+[40:08 - 40:11] At the end of the day, I'm really afraid guys.
+[40:11 - 40:13] We will just get four sentences.
+[40:13 - 40:14] What is that?
+[40:14 - 40:16] He will say it's a lab management system.
+[40:17 - 40:18] That will be his answer.
+[40:18 - 40:18] I know some.
+[40:19 - 40:19] It's very good.
+[40:20 - 40:20] Okay.
+[40:20 - 40:23] And then he will say, Hey, why do we need it?
+[40:23 - 40:25] He'll say it's a GXP thing.
+[40:25 - 40:26] I know.
+[40:26 - 40:27] It's a TQ process.
+[40:27 - 40:29] We cannot miss it.
+[40:29 - 40:30] He's going to get crappy answers.
+[40:31 - 40:31] Believe me.
+[40:32 - 40:32] Okay.
+[40:32 - 40:35] And then you will say, I don't know why you got who I don't know.
+[40:36 - 40:38] He'll just give you one line sentences.
+[40:38 - 40:40] I will challenge you.
+[40:40 - 40:43] This is what is the template I have answered your questions.
+[40:43 - 40:44] Rajini, you know him better.
+[40:44 - 40:46] You go with the score answers.
+[40:47 - 40:48] You are going to get four sentences.
+[40:51 - 40:52] And he is only circuit.
+[40:53 - 40:55] That's why I want to know the participants who is there.
+[40:55 - 41:01] Even if you open a moral board, there will be one one sticky that he'll place it.
+[41:02 - 41:10] To all our communities, to me, to me, to stress me, to me, to who, who I am, to just partner, just the best three people need all the three of them.
+[41:10 - 41:12] To me, to me, to stress me.
+[41:13 - 41:18] So only three people are coming and I asked him like, you do you want to, you know, whatever they invite to anybody?
+[41:18 - 41:20] This may be a laugh at this template.
+[41:20 - 41:21] If you say, why, what?
+[41:21 - 41:22] It's poor.
+[41:22 - 41:25] He'll say, he's this, then he's going to challenge me.
+[41:25 - 41:26] Yeah, we are.
+[41:26 - 41:28] So I might say, let me put it on.
+[41:28 - 41:29] Hold on, Rajani.
+[41:29 - 41:35] Now the conversation I know once, because TV yesterday, you, you heard, Rajani, you were there, right?
+[41:35 - 41:37] When he said, Peshanti, give me a template.
+[41:37 - 41:38] I'll populate it.
+[41:38 - 41:40] Then my will, my maturity go up.
+[41:41 - 41:43] That was his question.
+[41:43 - 41:46] I said you have maturity won't go up, but we give you a template.
+[41:46 - 41:48] And this is not a template.
+[41:50 - 41:57] Who can come back to me with a template if I don't get a template at what time is the session?
+[41:58 - 41:59] Tomorrow at noon.
+[42:01 - 42:04] But we have invite.
+[42:06 - 42:09] But what we'll do is today, I think we need to have
+[42:10 - 42:13] I think I understand where you are going with this question.
+[42:14 - 42:15] I think everybody understands where you're going with this.
+[42:16 - 42:19] Which is, if I get one hour with you, I'm going to give you everything that I need.
+[42:20 - 42:22] I can tell you what the can-view target in OKR is.
+[42:23 - 42:25] I need your product line vision.
+[42:25 - 42:31] I need your product group OKRs, product OKRs, for links specifically.
+[42:31 - 42:34] and we'll give them like one or two slides, one slide per.
+[42:34 - 42:37] And one more question is, we need Chris Serito there.
+[42:37 - 42:41] If we are talking about Lena, IH and all, why is Chris missing?
+[42:42 - 42:43] Why is Ruchit missing?
+[42:43 - 42:49] Or at least Ruchit should have been there as a Chris, Chris is delicate, right?
+[42:50 - 42:52] He is going to support you on those product vision.
+[42:52 - 42:59] Whatever, if Chris makes say, this is not the L2 capabilities, Ruchit has to support you and say, this is the L2 capabilities.
+[42:59 - 43:01] Why is he missing?
+[43:01 - 43:04] These are the people you need to think about the audience.
+[43:04 - 43:08] As we are changing the scope, we need to get the right audience there.
+[43:08 - 43:11] If Chris cannot be there, who is the next best person?
+[43:11 - 43:12] Richie.
+[43:12 - 43:16] If Richie cannot be there, we still make them optional and go forward.
+[43:16 - 43:21] Because unless we bring Chris and Chris Smith, Chris Serito and Chris Smith,
+[43:21 - 43:23] They will never come into an alignment.
+[43:23 - 43:30] We need to bring them, do their case up and say, hey, you people fight it out and tell me, come out of this session with one.
+[43:31 - 43:32] That's our victory, right?
+[43:32 - 43:34] Because we are running with two things.
+[43:35 - 43:37] Make them meet and talk in that session.
+[43:37 - 43:38] They might, they might quarrel.
+[43:39 - 43:39] It's okay.
+[43:40 - 43:41] Mediate that discussion.
+[43:41 - 43:49] And when you come out of that discussion, we should have one list or aligned list, where we know Christmas, that Chris Serito agrees.
+[43:49 - 43:50] That is a victory.
+[43:50 - 43:54] I want to define what is the success of the thing.
+[43:54 - 44:03] We can just give this course and come out and we can be again talking about there are two lists or any of the problem, I'd say there is one list right now.
+[44:04 - 44:07] Because what does Brian Rada Sahib is going to go and do?
+[44:07 - 44:10] He'll have a separate conversation with Chris Sarito, he'll have a separate one.
+[44:10 - 44:11] No.
+[44:12 - 44:13] Now, Robert hits the road.
+[44:14 - 44:16] Why are we not catching a capability list to the vision?
+[44:17 - 44:19] Why are we not trying to get the vision right?
+[44:20 - 44:22] Thank you.
+[44:23 - 44:23] We're not.
+[44:24 - 44:30] The goal was to try and get as much as possible in one session, instead of having multiple sessions, but we don't have to.
+[44:31 - 44:38] Yeah, I don't understand that, but I don't think that we're ready to go and say which one of these things do you map up to if this stuff is still being debated and being reviewed?
+[44:40 - 44:45] But I thought there was already a line meant that's how it went into Leigh Nyx.
+[44:45 - 44:50] So I just want to remind Christmas, this is already aligned and accepted.
+[44:50 - 44:52] So why are you changing the structure?
+[44:52 - 44:55] I want a second objective to come up.
+[44:55 - 44:57] We have all the right people in the room.
+[44:57 - 45:01] Why are we hesitating to ask the right questions?
+[45:01 - 45:03] Because we're not a lingering problem.
+[45:03 - 45:05] Can we fix the lingering issue?
+[45:06 - 45:09] So you're trying to fix Chris Saruto's problem with the product model.
+[45:10 - 45:15] And by doing that, you're going to have an issue not, I mean, you need them to have a vision statement.
+[45:15 - 45:18] The success for the product models, they have the vision statement.
+[45:18 - 45:19] If
+[45:19 - 45:23] I'll get a beautiful vision statement.
+[45:24 - 45:29] How can a vision statement be drafted without knowing what capability they're supporting?
+[45:29 - 45:30] Because that's the purpose, right?
+[45:31 - 45:35] In reality, they should be able to say, I am going to support this
+[45:35 - 45:38] A, 2, and 3, and 4, I don't care which one.
+[45:38 - 45:39] Well, yes and no.
+[45:39 - 45:41] We've already made the decision.
+[45:41 - 45:44] If we're made the decision to go from the bottom up, it doesn't matter nearly as much.
+[45:44 - 45:45] They know what they're targeting.
+[45:46 - 45:56] If you're going to say that the vision statement is going to be done the right way, then we would have started with L1s and we would have gotten them to give us one that would have been used for L2s, it would have been used for L3s.
+[45:57 - 46:03] We're starting at L3s, so what we really have is the success is that they come out with a vision statement.
+[46:05 - 46:11] Sorry, I have to go, but you guys brainstorm it, but I need a template.
+[46:12 - 46:14] I need a format how we are going through.
+[46:14 - 46:19] I'm going to do some offline conversation.
+[46:19 - 46:28] I'm trying to bring Christmas and Christmas, set it up together, whether in that call or separate, let me let me get back to you how that goes.
+[46:28 - 46:30] So now I need to know
+[46:30 - 46:35] We have to forget which capability matrix there needs to be a key.
+[46:35 - 46:39] At least we all agree that a product should support a capability.
+[46:39 - 46:44] Wherever it is, however it is, they should support some R&D capability.
+[46:45 - 46:51] As long as they can articulate that in their own words, then we can match that capability in our taxonomy.
+[46:51 - 46:57] But they need to be able to say this product was some capability.
+[46:57 - 47:05] If that can be there in that vision template, that is what I am looking towards.
+[47:05 - 47:08] And then we will see how to map that.
+[47:08 - 47:11] But they need to say which business capable.

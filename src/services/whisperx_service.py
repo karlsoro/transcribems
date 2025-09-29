@@ -10,6 +10,17 @@ from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
 import gc
 
+# Configure audio backend first to suppress warnings
+try:
+    from ..core.audio_config import configure_audio_backend
+    configure_audio_backend()
+except ImportError:
+    # Fallback configuration
+    import os
+    import warnings
+    warnings.filterwarnings("ignore", message=".*torchaudio._backend.*deprecated.*")
+    os.environ.setdefault('TORCHAUDIO_BACKEND', 'soundfile')
+
 import torch
 import whisperx
 from whisperx import load_model, load_align_model, load_audio
@@ -209,7 +220,7 @@ class WhisperXService:
             result = self._whisper_model.transcribe(
                 audio,
                 batch_size=batch_size,
-                chunk_length=chunk_length,
+                chunk_size=chunk_length,  # Fixed: chunk_size not chunk_length
                 language=None if language == "auto" else language
             )
 
@@ -228,26 +239,58 @@ class WhisperXService:
                     return_char_alignments=False
                 )
 
-            # Speaker diarization
+            # Native WhisperX speaker diarization (MUCH faster than double processing)
             speakers = []
             if enable_speaker_diarization:
-                if not self._diarization_pipeline:
-                    await self.load_diarization_pipeline()
+                logger.debug("Performing native WhisperX speaker diarization")
+                try:
+                    # Load diarization pipeline if not loaded
+                    if not self._diarization_pipeline:
+                        await self.load_diarization_pipeline()
 
-                if self._diarization_pipeline:
-                    logger.debug("Performing speaker diarization")
-                    diarization_result = await self._perform_diarization(
-                        audio_path, result["segments"]
-                    )
-                    result = diarization_result["segments"]
-                    speakers = diarization_result["speakers"]
+                    if self._diarization_pipeline:
+                        # Use the audio tensor for diarization (pyannote expects waveform format)
+                        # Create the format that pyannote expects: {"waveform": tensor, "sample_rate": 16000}
+                        audio_for_diarization = {
+                            "waveform": torch.from_numpy(audio).unsqueeze(0),  # Add batch dimension
+                            "sample_rate": 16000
+                        }
+
+                        diarize_segments = self._diarization_pipeline(audio_for_diarization)
+
+                        # Apply diarization to transcription segments using WhisperX method
+                        result = whisperx.assign_word_speakers(diarize_segments, result)
+
+                        # Extract unique speakers from segments
+                        speakers_set = set()
+                        for segment in result.get("segments", []):
+                            if "speaker" in segment and segment["speaker"]:
+                                speakers_set.add(segment["speaker"])
+
+                        speakers = list(speakers_set)
+                        logger.info(f"Native WhisperX diarization found {len(speakers)} speakers: {speakers}")
+
+                        # Count segments with speakers
+                        segments_with_speakers = sum(1 for seg in result.get("segments", []) if seg.get("speaker"))
+                        logger.info(f"Assigned speakers to {segments_with_speakers}/{len(result.get('segments', []))} segments")
+                    else:
+                        logger.warning("Diarization pipeline not available, speaker diarization disabled")
+
+                except Exception as e:
+                    logger.warning(f"Native WhisperX speaker diarization failed: {e}")
+                    speakers = []
 
             processing_time = time.time() - start_time
             realtime_factor = audio_duration / processing_time if processing_time > 0 else 0
 
+            # Format segments and extract full text
+            formatted_segments = self._format_segments(result.get("segments", []))
+            full_text = " ".join(seg.get("text", "").strip() for seg in formatted_segments if seg.get("text", "").strip())
+
             # Format response
             response = {
-                "segments": self._format_segments(result.get("segments", [])),
+                "text": full_text,  # Add full text field
+                "segments": formatted_segments,
                 "speakers": speakers,
                 "language": detected_language,
                 "language_probability": result.get("language_probability"),

@@ -1,0 +1,17 @@
+{
+  "test_timestamp": "2025-09-28T11:10:09.435565",
+  "optimization_version": "corrected_native_whisperx_diarization",
+  "backend": "torchcodec",
+  "file_tested": "./.cache/recordings/coach-9-16-2025/coach-9-16-2025.aac",
+  "file_size_mb": 42.440937995910645,
+  "processing_time_minutes": 6.724733289082845,
+  "audio_duration_minutes": 60.90026666666667,
+  "realtime_factor": 9.056174913714992,
+  "vs_cli_benchmark_ratio": 0.37359629383793586,
+  "text_length": 43486,
+  "segments_count": 778,
+  "speakers_count": 0,
+  "performance_rating": "\ud83c\udf8a EXCELLENT - Near CLI performance!",
+  "text_preview": "Okay. Maybe let's give one more minute for Vishal to join in, then they get started. So today we wanted to talk about, okay it is Satish who has joined, okay. We wanted to talk about the taxonomy and after that we also wanted to touch upon what are the outcomes that we are planning to achieve. by end of the vision statement. There was a discussion, there's a thought Pashanti has shared that whether she's looking for three things, one is the vision statement, then two or three capabilities and th",
+  "success": true
+}
