@@ -1,290 +1,379 @@
-# TranscribeMS - WhisperX Audio Transcription MCP Server
+# TranscribeMS - GPU-Accelerated Audio Transcription
 
-Enterprise-grade audio transcription service with speaker identification using WhisperX, implemented as a Model Context Protocol (MCP) server.
+High-performance audio transcription service with GPU acceleration, speaker diarization, and enterprise-grade reliability.
 
-## Features
+## 🚀 Key Features
 
-- **High-Accuracy Transcription**: WhisperX integration with 70x speed improvement over base Whisper
-- **Speaker Identification**: Automatic speaker diarization with sequential labeling (Speaker 1, Speaker 2, etc.)
-- **Large File Support**: Process audio files up to 5GB with chunked processing strategy
-- **GPU Acceleration**: Automatic GPU detection with CPU fallback for optimal performance
-- **MCP Integration**: Native Model Context Protocol server for seamless AI agent integration
-- **Enterprise Integration**: Comprehensive logging, error handling, and validation
-- **Async Processing**: Built-in async processing for optimal performance
+- **GPU Acceleration**: 7x faster processing with NVIDIA CUDA
+- **Speaker Diarization**: Automatic speaker identification and labeling
+- **Multiple Output Formats**: JSON, TXT, SRT, VTT, TSV
+- **Large File Support**: Process hours of audio efficiently
+- **Automatic Optimization**: Intelligent GPU/CPU detection and configuration
+- **Production Ready**: Enterprise-grade reliability and performance monitoring
 
-## Supported Audio Formats
+## ⚡ Performance
 
-- WAV (recommended for best quality)
-- MP3
-- M4A
-- FLAC
+| Mode | Processing Speed | Best Use Case |
+|------|-----------------|---------------|
+| **GPU (CUDA)** | **6-7x realtime** | Production workloads, large files |
+| **CPU** | 1x realtime | Development, small files |
 
-## Quick Start
+**Real Example**: 47-minute audio file processed in 6.8 minutes (6.97x realtime) on RTX 3060.
 
-### Prerequisites
-
-- Python 3.11+
-- NVIDIA GPU with CUDA 11.8+ (optional, for acceleration)
-- 16GB+ RAM (32GB recommended for large files)
-- MCP-compatible client (Claude Desktop, VS Code with MCP extension, or custom MCP client)
+## 🛠️ Quick Start
 
 ### Installation
 
-1. Clone the repository:
-
-   ```bash
-   git clone <repository-url>
-   cd TranscribeMS
-   ```
-
-2. Create virtual environment:
-
-   ```bash
-   python3.11 -m venv transcribems_env
-   source transcribems_env/bin/activate  # On Windows: transcribems_env\Scripts\activate
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   pip install -e .
-   ```
-
-4. Configure environment:
-
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration (HF_TOKEN for speaker diarization)
-   ```
-
-5. Test the installation:
-
-   ```bash
-   # Run the integration test
-   python3 integration_test.py
-
-   # Run MCP contract tests
-   python3 -m pytest tests/contract/mcp/ -v
-   ```
-
-### MCP Server Setup
-
-#### Option 1: Direct Command Line
-
 ```bash
-# Start the MCP server
-transcribems-mcp
+# Clone repository
+git clone <repository-url>
+cd TranscribeMS
 
-# Or run directly with Python
-python -m src.mcp_server.server
+# Create virtual environment
+python -m venv transcribems_env
+source transcribems_env/bin/activate  # Linux/Mac
+# transcribems_env\Scripts\activate  # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install GPU support (recommended)
+pip install torch==2.2.0+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install "numpy<2"
+pip install nvidia-cudnn-cu11==8.7.0.84
 ```
 
-#### Option 2: Claude Desktop Integration
-
-Add to your Claude Desktop configuration:
-
-```json
-{
-  "mcpServers": {
-    "transcribems": {
-      "command": "transcribems-mcp",
-      "args": [],
-      "env": {
-        "HF_TOKEN": "your_huggingface_token_here"
-      }
-    }
-  }
-}
-```
-
-#### Option 3: Docker Setup
-
-```bash
-docker-compose up --build
-```
-
-## MCP Tools Usage
-
-TranscribeMS provides the following MCP tools:
-
-### Available Tools
-
-1. **transcribe_audio** - Transcribe audio files with speaker diarization
-2. **get_transcription_progress** - Monitor transcription progress
-3. **get_transcription_result** - Retrieve completed transcription results
-4. **list_transcription_history** - View transcription history
-5. **batch_transcribe** - Process multiple audio files
-6. **cancel_transcription** - Cancel running transcriptions
-
-### Example Usage (MCP Client)
+### Basic Usage
 
 ```python
-# Example MCP client usage
 import asyncio
-from mcp.client import ClientSession
+from src.services.simple_whisperx_cli import SimpleWhisperXCLI
 
 async def transcribe_audio():
-    async with ClientSession() as session:
-        # Submit transcription
-        result = await session.call_tool(
-            "transcribe_audio",
-            {
-                "audio_file_path": "/path/to/audio.wav",
-                "enable_diarization": True,
-                "debug_mode": False
-            }
-        )
+    cli = SimpleWhisperXCLI()
 
-        job_id = result["job_id"]
+    result = await cli.transcribe_audio(
+        audio_path="your_audio_file.wav",
+        model="large-v2",           # Best quality
+        enable_diarization=True,    # Speaker identification
+        # GPU automatically detected and used
+    )
 
-        # Monitor progress
-        while True:
-            progress = await session.call_tool(
-                "get_transcription_progress",
-                {"job_id": job_id}
-            )
+    print(f"Success: {result['success']}")
+    print(f"Device used: {result['device_used']}")
+    print(f"Processing time: {result['processing_time_seconds']:.1f}s")
+    print(f"Speakers detected: {result['speakers_count']}")
+    print(f"Text: {result['text'][:200]}...")
 
-            if progress["status"] == "completed":
-                break
-
-            await asyncio.sleep(1)
-
-        # Get final result
-        final_result = await session.call_tool(
-            "get_transcription_result",
-            {"job_id": job_id}
-        )
-
-        return final_result
-
-# Run the transcription
-result = asyncio.run(transcribe_audio())
-print(result)
+# Run transcription
+asyncio.run(transcribe_audio())
 ```
 
-## Configuration
-
-Key environment variables:
-
-- `WHISPERX_MODEL_SIZE`: Model size (base, large-v2, large-v3) - default: large-v2
-- `MAX_FILE_SIZE`: Maximum upload size in bytes (default: 5GB)
-- `HF_TOKEN`: Hugging Face token for speaker diarization (required for diarization)
-- `TRANSCRIBEMS_LOG_LEVEL`: Logging level (DEBUG, INFO, WARNING, ERROR)
-- `TRANSCRIBEMS_WORK_DIR`: Working directory for temporary files
-
-## Performance
-
-- **CPU Mode**: 1-2x real-time processing
-- **GPU Mode**: 10-70x real-time processing (model dependent)
-- **Memory Usage**: <2GB system RAM for large files
-- **Throughput**: Optimized for enterprise workloads
-
-## Architecture
-
-- **MCP Server**: Model Context Protocol server for AI agent integration
-- **WhisperX**: Advanced speech recognition with speaker diarization
-- **AsyncIO**: Async processing for optimal performance
-- **Pydantic**: Data validation and serialization
-- **Structured Logging**: Comprehensive logging with structured output
-- **Docker**: Containerized deployment with CUDA support
-
-## Development
-
-### Running Tests
+### Command Line Usage
 
 ```bash
-# Install development dependencies
-pip install -e .[dev]
+# Activate environment
+source transcribems_env/bin/activate
 
-# Run all tests
-python3 -m pytest tests/ -v --cov=src --cov-report=html
+# Run transcription (GPU auto-detected)
+python -c "
+import asyncio
+from src.services.simple_whisperx_cli import SimpleWhisperXCLI
 
-# Run only MCP contract tests
-python3 -m pytest tests/contract/mcp/ -v
+async def main():
+    cli = SimpleWhisperXCLI()
+    result = await cli.transcribe_audio('audio.wav', model='large-v2')
+    print(f'Success: {result[\"success\"]}, Device: {result[\"device_used\"]}')
 
-# Run integration tests
-python3 -m pytest tests/integration/ -v
-
-# Run the comprehensive integration test
-python3 integration_test.py
+asyncio.run(main())
+"
 ```
 
-### Testing Your Setup
+## 📋 Requirements
+
+### Hardware Requirements
+
+#### For GPU Acceleration (Recommended)
+- **NVIDIA GPU** with CUDA Compute Capability 3.5+
+- **VRAM**: 6GB+ for best models (RTX 3060/3070/3080/4070/4080/4090)
+- **RAM**: 16GB+ system memory
+- **Storage**: NVMe SSD recommended for large files
+
+#### For CPU-Only Mode
+- **CPU**: Modern multi-core processor
+- **RAM**: 8GB+ system memory
+- **Storage**: Any storage type
+
+### Software Requirements
+
+- **Python**: 3.8+
+- **CUDA**: 11.8 (for GPU acceleration)
+- **FFmpeg**: For audio format conversion
+- **Linux/Windows/macOS**: Cross-platform support
+
+## 🎯 Models and Performance
+
+### Available Models
+
+| Model | Quality | Speed | VRAM | Use Case |
+|-------|---------|-------|------|----------|
+| `base` | Good | Fastest | 2GB | Development, testing |
+| `small` | Better | Fast | 3GB | Balanced performance |
+| `medium` | Very Good | Medium | 4GB | Production quality |
+| `large` | Excellent | Slower | 6GB | High quality |
+| `large-v2` | **Best** | Slower | 6GB | **Production** |
+
+### Performance Benchmarks
+
+Tested on RTX 3060 with large-v2 model:
+
+| File Size | Audio Duration | Processing Time | Realtime Factor |
+|-----------|----------------|-----------------|-----------------|
+| 10MB | 5 min | 45s | 6.7x |
+| 50MB | 25 min | 3.5min | 7.1x |
+| 111MB | 47 min | 6.8min | 6.97x |
+
+## 📊 Features
+
+### Automatic GPU Detection
+
+The service automatically detects and configures optimal settings:
+
+```python
+# Automatic configuration
+cli = SimpleWhisperXCLI()
+result = await cli.transcribe_audio("audio.wav")
+
+# Manual configuration
+result = await cli.transcribe_audio(
+    "audio.wav",
+    device="cuda",          # Force GPU
+    compute_type="float16", # GPU precision
+    batch_size=16          # GPU batch size
+)
+```
+
+### Speaker Diarization
+
+Identify and label different speakers:
+
+```python
+result = await cli.transcribe_audio(
+    "meeting.wav",
+    enable_diarization=True
+)
+
+print(f"Speakers: {result['speakers']}")
+# Output: ['SPEAKER_00', 'SPEAKER_01', 'SPEAKER_02']
+
+for segment in result['segments'][:3]:
+    speaker = segment['speaker']
+    text = segment['text']
+    print(f"{speaker}: {text}")
+```
+
+### Multiple Output Formats
+
+```python
+result = await cli.transcribe_audio("audio.wav")
+
+print("Generated files:")
+for format_name, file_path in result['generated_files'].items():
+    print(f"  {format_name.upper()}: {file_path}")
+
+# Output:
+# JSON: /path/to/audio.json (detailed segments)
+# TXT: /path/to/audio.txt (plain text)
+# SRT: /path/to/audio.srt (subtitles)
+# VTT: /path/to/audio.vtt (web subtitles)
+# TSV: /path/to/audio.tsv (tab-separated)
+```
+
+### Performance Monitoring
+
+```python
+result = await cli.transcribe_audio("audio.wav")
+
+# Performance metrics
+print(f"Processing time: {result['processing_time_seconds']:.1f}s")
+print(f"Audio duration: {result['audio_duration_seconds']:.1f}s")
+print(f"Realtime factor: {result['realtime_factor']:.2f}x")
+print(f"File processing speed: {result['processing_speed_mb_per_sec']:.2f} MB/s")
+print(f"Device used: {result['device_used']}")
+print(f"GPU available: {result['gpu_available']}")
+```
+
+## 🧪 Testing
+
+### Run Test Suite
 
 ```bash
-# 1. Create test audio (if you don't have any)
-python3 create_test_audio.py
+# Activate environment
+source transcribems_env/bin/activate
 
-# 2. Run system demo
-python3 system_demo.py
+# Quick validation
+python test_service_validation.py
 
-# 3. Run performance benchmark
-python3 performance_benchmark.py
+# Comprehensive GPU test
+python test_gpu_enhanced_service.py
 
-# 4. Validate implementation
-python3 validate_implementation.py
+# Performance benchmark (if large file available)
+python large_file_gpu_test.py
 ```
 
-### Code Quality
+### Validate GPU Setup
 
 ```bash
-# Format code
-black src/ tests/
+# Check CUDA availability
+python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
 
-# Lint code
-flake8 src/ tests/
+# Check GPU details
+python -c "import torch; print('GPU:', torch.cuda.get_device_name(0))"
 
-# Type checking
-mypy src/
-
-# Sort imports
-isort src/ tests/
-
-# Run pre-commit hooks
-pre-commit run --all-files
+# Test GPU tensor
+python -c "import torch; x=torch.tensor([1.0]).cuda(); print('GPU working:', x.device)"
 ```
 
-### Validating Transcription Results
+## 📚 Documentation
 
-To ensure your setup is working correctly:
+### Comprehensive Guides
 
-1. **Basic Validation**:
+- **[GPU Acceleration Guide](docs/GPU_ACCELERATION_GUIDE.md)** - Complete GPU setup and optimization
+- **[PyTorch/CUDA Compatibility](docs/PYTORCH_CUDA_COMPATIBILITY.md)** - Version compatibility matrix
+- **[Performance Benchmarks](docs/PERFORMANCE_BENCHMARKS.md)** - Detailed performance analysis
 
-   ```bash
-   python3 integration_test.py
-   ```
+### API Reference
 
-   This will test all MCP tools and report success/failure.
+```python
+class SimpleWhisperXCLI:
+    async def transcribe_audio(
+        self,
+        audio_path: str,                    # Path to audio file
+        output_dir: Optional[str] = None,   # Output directory
+        model: str = "base",                # Model size
+        language: str = "en",               # Language code
+        enable_diarization: bool = True,    # Speaker diarization
+        timeout_minutes: int = 30,          # Processing timeout
+        device: Optional[str] = None,       # Force device (cuda/cpu)
+        compute_type: Optional[str] = None, # Precision (float16/float32)
+        batch_size: Optional[int] = None    # Batch size
+    ) -> Dict[str, Any]:
+        """
+        Transcribe audio with automatic GPU optimization.
 
-2. **Audio Quality Test**:
+        Returns:
+            Dict containing results, performance metrics, and file paths
+        """
+```
 
-   ```bash
-   python3 create_test_audio.py  # Creates test_audio/test_speech.wav
-   python3 system_demo.py        # Transcribes the test audio
-   ```
+## 🔧 Troubleshooting
 
-   Check the output in `system_demo_report.json` for accuracy.
+### Common Issues
 
-3. **Performance Benchmark**:
+#### GPU Not Detected
+```bash
+# Install CUDA-enabled PyTorch
+pip install torch==2.2.0+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-   ```bash
-   python3 performance_benchmark.py
-   ```
+# Check GPU
+python -c "import torch; print(torch.cuda.is_available())"
+```
 
-   Validates performance metrics and accuracy.
+#### CUDNN Library Issues
+```bash
+# Install compatible CUDNN
+pip install nvidia-cudnn-cu11==8.7.0.84 --force-reinstall
+```
 
-4. **Manual Validation**:
-   - Use your own audio files
-   - Check speaker diarization accuracy (if enabled)
-   - Verify timestamps and formatting
-   - Test large file processing
+#### Out of Memory
+```python
+# Reduce batch size for lower VRAM
+result = await cli.transcribe_audio(
+    "audio.wav",
+    batch_size=8,  # Reduce from default 16
+    model="medium"  # Use smaller model
+)
+```
 
-## License
+### Performance Optimization
 
-MIT License - see LICENSE file for details.
+#### For Production
+```python
+# Optimal production settings
+result = await cli.transcribe_audio(
+    "audio.wav",
+    model="large-v2",        # Best quality
+    enable_diarization=True, # Speaker ID
+    device="cuda",           # Force GPU
+    batch_size=16           # Optimal batch size
+)
+```
 
-## Support
+#### For Development
+```python
+# Fast development settings
+result = await cli.transcribe_audio(
+    "audio.wav",
+    model="base",            # Fastest model
+    enable_diarization=False, # Skip for speed
+    timeout_minutes=5        # Short timeout
+)
+```
 
-- Documentation: See `/docs` endpoint when running
-- Issues: GitHub Issues
-- Performance: Consult performance optimization guide
+## 🏗️ Architecture
+
+### Project Structure
+
+```
+TranscribeMS/
+├── src/
+│   ├── services/
+│   │   └── simple_whisperx_cli.py    # Main service (GPU-enhanced)
+│   └── core/
+│       └── logging.py                # Logging utilities
+├── docs/                             # Documentation
+├── tests/                            # Test files
+├── test_data/                        # Sample audio files
+└── requirements.txt                  # Dependencies
+```
+
+### Key Components
+
+- **SimpleWhisperXCLI**: Main transcription service with GPU acceleration
+- **Automatic Detection**: GPU/CPU detection and optimization
+- **Process Management**: Timeout protection and cleanup
+- **Performance Monitoring**: Real-time metrics collection
+- **Multi-format Output**: JSON, TXT, SRT, VTT, TSV generation
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Run tests (`python test_service_validation.py`)
+4. Commit changes (`git commit -m 'Add amazing feature'`)
+5. Push to branch (`git push origin feature/amazing-feature`)
+6. Open Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- **OpenAI Whisper** - Foundation transcription model
+- **WhisperX** - Enhanced diarization and alignment
+- **PyTorch** - Machine learning framework
+- **NVIDIA CUDA** - GPU acceleration platform
+
+## 📞 Support
+
+For issues, questions, or feature requests:
+
+1. Check the [documentation](docs/)
+2. Run the validation script: `python test_service_validation.py`
+3. Review [troubleshooting](#-troubleshooting) section
+4. Open an issue with detailed logs and system info
+
+---
+
+**TranscribeMS** - Making audio transcription fast, accurate, and accessible. 🎵➡️📝

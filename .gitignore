@@ -87,3 +87,9 @@ models/
 
 # Hugging Face cache
 .cache/huggingface/
+# Reorganized structure additions
+/data/
+/test_reports/
+/.cache/
+/test_data/audio/*.wav
+/test_data/audio/*.mp3

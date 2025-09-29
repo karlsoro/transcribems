@@ -11,6 +11,17 @@ from typing import Any, Dict, List, Optional
 from pathlib import Path
 import logging
 
+# Configure audio backend and suppress warnings
+try:
+    from ..core.audio_config import configure_audio_backend
+    configure_audio_backend()
+except ImportError:
+    # Fallback configuration
+    import os
+    warnings.filterwarnings("ignore", message=".*torchaudio._backend.*deprecated.*")
+    warnings.filterwarnings("ignore", message=".*TorchAudio.*maintenance phase.*")
+    os.environ.setdefault('TORCHAUDIO_BACKEND', 'soundfile')
+
 # Suppress pyannote warnings
 warnings.filterwarnings("ignore")
 

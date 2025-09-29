@@ -1,0 +1,3112 @@
+1
+00:00:03,641 --> 00:00:04,863
+Okay.
+
+2
+00:00:11,352 --> 00:00:17,981
+Maybe let's give one more minute for Vishal to join in, then they get started.
+
+3
+00:00:18,742 --> 00:00:25,751
+So today we wanted to talk about, okay it is Satish who has joined, okay.
+
+4
+00:00:26,356 --> 00:00:39,218
+We wanted to talk about the taxonomy and after that we also wanted to touch upon what are the outcomes that we are planning to achieve.
+
+5
+00:00:39,686 --> 00:00:41,268
+by end of the vision statement.
+
+6
+00:00:41,829 --> 00:00:53,703
+There was a discussion, there's a thought Pashanti has shared that whether she's looking for three things, one is the vision statement, then two or three capabilities and the mapping to the respective application.
+
+7
+00:00:53,942 --> 00:01:02,353
+So that's the three things, but then here is the first step like building that the standing and modifying the content for the vision works up tomorrow.
+
+8
+00:01:02,332 --> 00:01:05,099
+Accordingly, that's the plan.
+
+9
+00:01:05,118 --> 00:01:09,188
+So Karl, I think we have full house, which may not be able to join.
+
+10
+00:01:09,248 --> 00:01:10,793
+He has some medical emergency.
+
+11
+00:01:11,334 --> 00:01:12,256
+That's what he's sure.
+
+12
+00:01:12,396 --> 00:01:15,263
+So we can get started.
+
+13
+00:01:15,596 --> 00:01:17,540
+What do you get all yours?
+
+14
+00:01:17,561 --> 00:01:18,522
+Yeah, sure.
+
+15
+00:01:18,543 --> 00:01:24,935
+I mean, and a lot of what we were covering was I mean, seems to be that there's people don't know what a business capability is or how business capability maps are.
+
+16
+00:01:25,335 --> 00:01:29,944
+I'm not looking at what our business capability map is because there's still some stuff up in the air there.
+
+17
+00:01:30,064 --> 00:01:34,433
+We had some conversation over last couple days of
+
+18
+00:01:35,829 --> 00:01:46,402
+There is a version in Lean IX, which currently is considered the, you know, the Kenview version, but there's also some discussion about whether or not the Lean IX version is right or not, so we'll continue to have those discussions.
+
+19
+00:01:47,123 --> 00:01:52,509
+But my bigger thing is understanding what a business capability map and how it works into the product model.
+
+20
+00:01:52,569 --> 00:01:55,371
+What does a business capability map have to do with a product model?
+
+21
+00:01:56,132 --> 00:01:58,796
+They are very, very much linked.
+
+22
+00:01:59,417 --> 00:02:04,302
+And by definition, if you look at the design of a product model by anybody,
+
+23
+00:02:05,242 --> 00:02:08,306
+Actually, I was just looking yesterday at seven different product models.
+
+24
+00:02:08,665 --> 00:02:09,586
+There's seven different versions.
+
+25
+00:02:09,627 --> 00:02:13,830
+The product model that I've been able to locate over the seven, every single one of them uses.
+
+26
+00:02:13,850 --> 00:02:19,254
+I'm sorry, I just got it.
+
+27
+00:02:19,275 --> 00:02:21,676
+You know, I guess I'm the being that you have to pay attention to.
+
+28
+00:02:24,719 --> 00:02:30,685
+The, you know, in the product model, what they're doing in a lot of cases is what you're doing exactly what we're looking at.
+
+29
+00:02:30,705 --> 00:02:33,747
+When you're talking about a line to a group,
+
+30
+00:02:34,167 --> 00:02:38,092
+to a team, you're looking at capabilities.
+
+31
+00:02:38,492 --> 00:02:46,444
+A line is a high level, a level one capability, a product group is a level two capability, and a level three capability is a team.
+
+32
+00:02:47,025 --> 00:02:48,647
+That's why they're defined the way they are.
+
+33
+00:02:49,669 --> 00:02:52,293
+We had a definition that was used to category software.
+
+34
+00:02:52,753 --> 00:02:57,741
+We're changing from that definition, we're moving out of that definition, there's a Copa version that was used there.
+
+35
+00:02:58,161 --> 00:03:00,764
+Copa is a standards organization.
+
+36
+00:03:00,745 --> 00:03:05,012
+The standards organization of the CPG business is what it's from.
+
+37
+00:03:05,893 --> 00:03:06,713
+We won't be using that one.
+
+38
+00:03:06,814 --> 00:03:08,056
+There are some changes from there.
+
+39
+00:03:09,318 --> 00:03:12,282
+There's a couple other models that are out there that are fairly common.
+
+40
+00:03:12,843 --> 00:03:19,234
+About five of them is the same model, but for the most part, there's different models.
+
+41
+00:03:19,675 --> 00:03:27,967
+So I'm intentionally going to use a graphic from an I will share in this condition as I find it.
+
+42
+00:03:28,133 --> 00:03:30,656
+A graphic that's, this is how it looks.
+
+43
+00:03:30,675 --> 00:03:31,616
+This isn't ours.
+
+44
+00:03:32,418 --> 00:03:33,598
+It has nothing to do with ours.
+
+45
+00:03:33,758 --> 00:03:36,141
+I don't want to use ours for a very good reason.
+
+46
+00:03:36,262 --> 00:03:41,168
+Is that ours is up in the air and I don't want people to get confused by what's going to be there.
+
+47
+00:03:42,909 --> 00:03:48,175
+So if I can just find this stupid thing, I will share it.
+
+48
+00:03:50,679 --> 00:03:51,459
+All right, where did it go?
+
+49
+00:03:51,500 --> 00:03:56,205
+That's not the one.
+
+50
+00:03:56,685 --> 00:03:58,106
+That is ours, okay.
+
+51
+00:03:58,610 --> 00:04:03,915
+And I am working currently on as part of another process.
+
+52
+00:04:04,075 --> 00:04:06,459
+I'm working on what ours will look like.
+
+53
+00:04:07,019 --> 00:04:16,189
+Somewhat I need to get agreement from a couple people before I can say so, because whether we're gonna have one or two and things like that, because there's a lot of different thought processes out there.
+
+54
+00:04:16,589 --> 00:04:19,432
+So, where did it go?
+
+55
+00:04:20,274 --> 00:04:20,954
+There it is, okay.
+
+56
+00:04:22,115 --> 00:04:23,137
+Now I have to go back to sharing.
+
+57
+00:04:23,757 --> 00:04:25,360
+I have to find it before I get shared.
+
+58
+00:04:27,887 --> 00:04:46,625
+The fun of working on a Mac is you have multiple screens and I can't find the stupid thing on the screen.
+
+59
+00:04:46,665 --> 00:04:47,286
+I want it to be on.
+
+60
+00:04:48,507 --> 00:04:50,529
+All right, I'll open it again.
+
+61
+00:04:50,550 --> 00:04:52,651
+I can't show it.
+
+62
+00:04:52,672 --> 00:04:54,012
+All right, let me try this.
+
+63
+00:04:54,331 --> 00:04:56,858
+if I can share my entire thing just because it's easier that way.
+
+64
+00:04:58,723 --> 00:05:02,574
+And then you can tell me whether or not you can see it when I get it where to go.
+
+65
+00:05:03,677 --> 00:05:05,100
+All right, if I share my screen, can you see that?
+
+66
+00:05:05,461 --> 00:05:06,966
+Are you seeing a big box?
+
+67
+00:05:06,985 --> 00:05:07,988
+Okay, good.
+
+68
+00:05:08,389 --> 00:05:08,932
+Cool.
+
+69
+00:05:08,951 --> 00:05:10,095
+All right, now.
+
+70
+00:05:10,312 --> 00:05:13,718
+When I talk about L1s, then this is where you'll start to see where things happen.
+
+71
+00:05:13,738 --> 00:05:18,949
+When you talk about L1s, where you see operating processes here, or management and support processes.
+
+72
+00:05:19,309 --> 00:05:20,151
+Those are L1s.
+
+73
+00:05:20,531 --> 00:05:29,449
+Those usually have a VP over them at a VP level that would be responsible for operating processes and what the goals are for that operating processes group.
+
+74
+00:05:30,209 --> 00:05:32,134
+So if we were to look at
+
+75
+00:05:32,435 --> 00:05:33,896
+Probably Eleanor is the best mix.
+
+76
+00:05:34,057 --> 00:05:44,613
+Eleanor in our company has enterprise services, which includes corporate services, and it includes supply chain, which is sometimes done, sometimes not.
+
+77
+00:05:44,673 --> 00:05:45,776
+It's a little unique on its own.
+
+78
+00:05:46,958 --> 00:05:53,228
+But what comes in after that, normally, would then be, where do you take the things that are inside of
+
+79
+00:05:53,596 --> 00:05:54,437
+enterprise services.
+
+80
+00:05:54,478 --> 00:05:56,382
+So enterprise services has a lot of different systems.
+
+81
+00:05:57,105 --> 00:05:59,692
+Okay, we have a lot of different things but they're grouped together.
+
+82
+00:05:59,771 --> 00:06:02,559
+So maybe we were to say is I'm going to do corporate systems.
+
+83
+00:06:04,384 --> 00:06:07,692
+Now the thing that gets lost quite often is you can have multiple capabilities under there.
+
+84
+00:06:07,732 --> 00:06:10,338
+So you might say corporate systems is one of these boxes.
+
+85
+00:06:12,057 --> 00:06:13,379
+Well, what do we have in corporate systems?
+
+86
+00:06:14,101 --> 00:06:16,769
+Well, we can have finance systems, we can have HR systems.
+
+87
+00:06:16,829 --> 00:06:18,213
+But what is the capability?
+
+88
+00:06:18,273 --> 00:06:19,014
+What are they doing?
+
+89
+00:06:19,596 --> 00:06:27,956
+So if I were to look at HR and say, what are the actual capabilities that would make up these blue boxes in this case,
+
+90
+00:06:27,937 --> 00:06:33,163
+I would look at things like if I said I was in corporate systems and I had capabilities inside corporate systems.
+
+91
+00:06:33,204 --> 00:06:36,908
+Now, HR can be grouped in there as its own or as something different.
+
+92
+00:06:37,007 --> 00:06:38,670
+You could make HR one of these boxes.
+
+93
+00:06:39,672 --> 00:06:40,552
+People do it different ways.
+
+94
+00:06:40,812 --> 00:06:44,978
+So if we were to say HR was one of these yellow blocks, HR has capabilities.
+
+95
+00:06:45,238 --> 00:06:48,141
+You have Core HCM, which is things like Workday.
+
+96
+00:06:48,983 --> 00:06:52,807
+You have compensations, which could be in total reward.
+
+97
+00:06:54,670 --> 00:06:56,812
+You could have
+
+98
+00:06:58,884 --> 00:07:02,454
+talent recruiting which is another part of all of that.
+
+99
+00:07:02,875 --> 00:07:11,274
+Now those would normally have a leader in the yellow box in that case would be Jessica in our case because we've dealt with Jessica and the blue box is what you would see is the
+
+100
+00:07:11,490 --> 00:07:13,795
+folks that we're working with and I can't remember what her name is.
+
+101
+00:07:14,214 --> 00:07:15,598
+Generally, you would actually be somebody more.
+
+102
+00:07:15,757 --> 00:07:18,802
+Now, we have an extra layer in the corporate end of the world.
+
+103
+00:07:19,204 --> 00:07:20,605
+So we do have extra people in there.
+
+104
+00:07:21,226 --> 00:07:24,913
+But if we were to split off HR on its own, we wouldn't.
+
+105
+00:07:24,952 --> 00:07:28,057
+If we said HR or compensation is that, then you'd have just owning two boxes.
+
+106
+00:07:28,678 --> 00:07:29,880
+That's why it gets confused.
+
+107
+00:07:30,322 --> 00:07:37,954
+But what we're trying to do is say is what I need to know is what are my high level lines so that I have a leader here that's a
+
+108
+00:07:38,372 --> 00:07:41,317
+aligning with that business side of that.
+
+109
+00:07:41,336 --> 00:07:43,600
+These don't just apply to technology.
+
+110
+00:07:43,641 --> 00:07:45,083
+They apply to technology and business.
+
+111
+00:07:45,963 --> 00:07:54,016
+So if I were to be able to apply both of them and say, okay, in the business, we have a set of goals.
+
+112
+00:07:54,156 --> 00:07:55,718
+Those goals come cascading down.
+
+113
+00:07:56,319 --> 00:08:01,326
+When we talk about cost savings, maybe at operating process, we want to save
+
+114
+00:08:03,095 --> 00:08:07,242
+$50 million and we have six boxes here.
+
+115
+00:08:07,762 --> 00:08:18,502
+We may split that six boxes into six parts and say you each have to do one or we may do it unevenly because they're of the impact each group has.
+
+116
+00:08:18,521 --> 00:08:21,408
+You would then cascade that would be where that cascaded goal would come from.
+
+117
+00:08:21,487 --> 00:08:26,757
+So if the vision of operating processes is to shorten work times and reduce costs,
+
+118
+00:08:27,461 --> 00:08:29,324
+OK, that vision is going to cascade down.
+
+119
+00:08:29,803 --> 00:08:32,566
+It's going to cascade down to the things what impact they can have.
+
+120
+00:08:33,086 --> 00:08:38,171
+Then those will get down to the team level to say which individual team should be supporting in what level.
+
+121
+00:08:38,631 --> 00:08:40,092
+So the goal doesn't change.
+
+122
+00:08:40,913 --> 00:08:45,116
+The portion of the goal that the teams can actually impact changes.
+
+123
+00:08:46,859 --> 00:08:48,460
+So that's when you're looking at your vision.
+
+124
+00:08:48,500 --> 00:08:49,660
+The vision doesn't change.
+
+125
+00:08:49,761 --> 00:08:54,024
+The vision becomes specified much more detailed to what you can do.
+
+126
+00:08:54,946 --> 00:08:57,148
+So if they say, yeah, right.
+
+127
+00:08:58,005 --> 00:09:00,327
+question for you.
+
+128
+00:09:00,347 --> 00:09:09,836
+Can we say that this is a guideline for teams to define what the L1 capabilities are?
+
+129
+00:09:11,697 --> 00:09:14,620
+Yes, not sure, but L2.
+
+130
+00:09:14,640 --> 00:09:18,024
+Well, L1 is a product line.
+
+131
+00:09:18,864 --> 00:09:22,927
+Teams wouldn't define what their product line is.
+
+132
+00:09:23,648 --> 00:09:27,692
+Corporate systems would, like if you were going into, who's going first?
+
+133
+00:09:28,465 --> 00:09:29,885
+Who's going tomorrow?
+
+134
+00:09:31,847 --> 00:09:38,674
+We're doing plans.
+
+135
+00:09:38,955 --> 00:09:48,303
+Okay, so you may be looking at research and development as being the product line, which is probably, it may or may not be part of operations, but that's okay.
+
+136
+00:09:48,323 --> 00:09:56,532
+So let's assume that R&D was this thing, rather than operating processes, this said research and development, and you were going into the lab services.
+
+137
+00:09:57,440 --> 00:10:01,006
+There could be two teams, there could be three teams, there could be multiple software packages.
+
+138
+00:10:01,508 --> 00:10:11,148
+So their L1 would then be R&D, their L2 would be lab services, and their individual teams, limbs being one of them would be an L3.
+
+139
+00:10:11,269 --> 00:10:18,283
+So then the level three capability is lab, I forget what limbs does now, monitoring and notebooking it.
+
+140
+00:10:19,342 --> 00:10:27,551
+So how do I translate this into business capabilities that I'm going to maybe just need?
+
+141
+00:10:27,571 --> 00:10:33,076
+Well, again, this is where we run into the problem here at Kenview because we haven't really settled on something.
+
+142
+00:10:33,096 --> 00:10:38,360
+There are industry definitions that say, this is the capabilities that you do in the company.
+
+143
+00:10:39,081 --> 00:10:41,803
+We can use those or we can use what they define.
+
+144
+00:10:41,923 --> 00:10:46,227
+If they want to call limbs, I am the lab management platforms.
+
+145
+00:10:46,697 --> 00:10:48,280
+OK, your lab management platforms.
+
+146
+00:10:48,301 --> 00:10:49,403
+Do you have any more than one system?
+
+147
+00:10:49,623 --> 00:10:50,024
+Maybe not.
+
+148
+00:10:50,485 --> 00:10:51,427
+It's possible they don't.
+
+149
+00:10:52,128 --> 00:10:54,032
+It could be their lab management platforms.
+
+150
+00:10:54,072 --> 00:11:00,003
+Then their blue box would say lab management platforms, which is fine.
+
+151
+00:11:00,062 --> 00:11:03,148
+I mean, they can define whatever they want to put there.
+
+152
+00:11:03,389 --> 00:11:10,562
+The problem I think we have right now is that we have multiple places where we've already gathered this information multiple times.
+
+153
+00:11:10,863 --> 00:11:12,264
+and everybody's getting different answers.
+
+154
+00:11:12,966 --> 00:11:17,333
+So we have to figure out who is the source of truth or what is the source of truth and stick to one.
+
+155
+00:11:17,955 --> 00:11:21,301
+So right now what I'm using is what actually happens to be in lean IX.
+
+156
+00:11:22,283 --> 00:11:28,153
+So if I were to look at what's in lean IX, lean IX has a set of things.
+
+157
+00:11:28,192 --> 00:11:28,975
+Let me see if I can find it.
+
+158
+00:11:29,134 --> 00:11:30,998
+I could probably can because I think I had it open.
+
+159
+00:11:31,956 --> 00:11:36,672
+Pishanti has a question, I think she just tempts out as well.
+
+160
+00:11:36,692 --> 00:11:44,177
+So what I understood here is the L1 is kind of equivalent to the product line.
+
+161
+00:11:44,798 --> 00:11:49,581
+That's what we are seeing it, which particularly talks about what your product does.
+
+162
+00:11:50,462 --> 00:11:51,984
+Not product, product line does.
+
+163
+00:11:52,144 --> 00:11:53,625
+That's what in combination.
+
+164
+00:11:54,145 --> 00:11:54,947
+That's what it is.
+
+165
+00:11:55,086 --> 00:12:04,375
+And then we have not just upon L2 and L3, but who defined these L1, L2, L3, who are the responsible person who has to define these?
+
+166
+00:12:05,956 --> 00:12:08,639
+Well, right now, what we have is, I don't even actually know.
+
+167
+00:12:08,739 --> 00:12:13,523
+I mean, architecture worked with a bunch of senior leaders to come up with a number of definitions.
+
+168
+00:12:14,802 --> 00:12:19,207
+So, that is who defined the ones that we have.
+
+169
+00:12:19,227 --> 00:12:21,890
+So, can you see a business capability index I have for LeanIX here?
+
+170
+00:12:24,094 --> 00:12:25,936
+I can see the screen.
+
+171
+00:12:26,336 --> 00:12:26,657
+Yeah.
+
+172
+00:12:26,716 --> 00:12:35,288
+Okay, so if I look at this, now if I look at the L ones that they have defined, you would look at this and say, okay, here my product line is R&D and engineer.
+
+173
+00:12:37,971 --> 00:12:38,873
+Makes sense, right?
+
+174
+00:12:39,033 --> 00:12:40,274
+It's a rational thing because it's there.
+
+175
+00:12:40,315 --> 00:12:41,417
+Those are already defined.
+
+176
+00:12:42,278 --> 00:12:44,100
+Normally there's eight, we have 33.
+
+177
+00:12:45,903 --> 00:12:51,051
+Then if I came down again, a little level to L2s, now I would see is, okay, well, there's a bunch of them.
+
+178
+00:12:51,110 --> 00:12:55,277
+So wait, this is limb, so this is going to be, you know, 212.
+
+179
+00:12:55,657 --> 00:12:58,802
+So it was the R&D engineering and lab management.
+
+180
+00:12:59,001 --> 00:13:02,628
+Now, if I want to hit the level three, because they have an additional level here.
+
+181
+00:13:02,648 --> 00:13:09,618
+And theoretically, this is an additional level because they missed the old one.
+
+182
+00:13:09,638 --> 00:13:12,923
+But let's then I come down to 21.
+
+183
+00:13:15,822 --> 00:13:16,342
+lab management.
+
+184
+00:13:16,783 --> 00:13:21,429
+Now they could be, limbs itself could be one of these lab management data.
+
+185
+00:13:21,490 --> 00:13:24,274
+So maybe there are 21, 2, 3 lab management data management.
+
+186
+00:13:27,119 --> 00:13:32,827
+And they're different than whoever is doing lab data visualization or real material management or any of the other management.
+
+187
+00:13:33,548 --> 00:13:41,520
+So assuming that these are the correct ones because these are the ones that are set up currently in Leon IX and they're pretty adamant about keeping them that way.
+
+188
+00:13:41,561 --> 00:13:42,942
+They're not going to change them at this point.
+
+189
+00:13:43,565 --> 00:13:45,626
+So just one question, come.
+
+190
+00:13:46,347 --> 00:13:49,971
+I think Leonides, at least let's take the example of R&D.
+
+191
+00:13:50,513 --> 00:13:51,594
+Okay.
+
+192
+00:13:51,614 --> 00:13:58,802
+I'm not sure if you have access, maybe we can look at it, download and see what Leonie X has.
+
+193
+00:13:59,363 --> 00:14:10,416
+But my understanding is Chris Smith has already defined his L1 and L2L3 capabilities and based on what I'm hearing,
+
+194
+00:14:11,509 --> 00:14:14,134
+I mean, there's nobody else deciding these things.
+
+195
+00:14:14,153 --> 00:14:16,998
+It's us, or it's them, right?
+
+196
+00:14:17,097 --> 00:14:24,048
+We have not taken a stab and said, Brian has not told us saying that we'll go with the industry best practices.
+
+197
+00:14:24,269 --> 00:14:26,892
+Somebody actually has to make it.
+
+198
+00:14:27,052 --> 00:14:29,556
+This is the Lenax data that we're looking at right now.
+
+199
+00:14:29,576 --> 00:14:31,219
+This is not industry best practices.
+
+200
+00:14:31,698 --> 00:14:34,243
+This specifically is Lenax.
+
+201
+00:14:34,563 --> 00:14:36,807
+Okay, let me see what I have.
+
+202
+00:14:37,427 --> 00:14:40,993
+I have what Chris gave me was one second.
+
+203
+00:14:43,116 --> 00:14:48,326
+He has given, if you don't mind, I'll steal the share for one second and I'll give it back to you.
+
+204
+00:14:49,769 --> 00:14:53,075
+This is what he has given me, unless it has changed.
+
+205
+00:14:53,115 --> 00:14:58,424
+I don't know what's the latest, but this is what he's saying.
+
+206
+00:14:59,265 --> 00:15:00,989
+These are the L2 capabilities.
+
+207
+00:15:01,129 --> 00:15:02,269
+These are the L3.
+
+208
+00:15:02,671 --> 00:15:05,936
+So according to him, these are the product.
+
+209
+00:15:05,956 --> 00:15:10,101
+No, I think this is product line product groups and products.
+
+210
+00:15:10,403 --> 00:15:11,924
+This is how they are looking at it.
+
+211
+00:15:12,306 --> 00:15:15,549
+And then maybe Lynne's Paul center regulatory.
+
+212
+00:15:15,570 --> 00:15:17,994
+I don't know regulatory of clinical.
+
+213
+00:15:18,014 --> 00:15:18,674
+I'm not sure.
+
+214
+00:15:18,654 --> 00:15:21,960
+But this is what I was expecting to see in Linux.
+
+215
+00:15:22,379 --> 00:15:24,823
+If this is not matching, then we need.
+
+216
+00:15:24,844 --> 00:15:25,705
+And that'll never come back.
+
+217
+00:15:25,725 --> 00:15:28,509
+That'll never end up in Linux because those aren't actual categories.
+
+218
+00:15:28,548 --> 00:15:34,096
+Those are actually, you know, medical safety is not a category because it could fit in 50 different places.
+
+219
+00:15:35,759 --> 00:15:37,722
+It's not going to show up in capabilities.
+
+220
+00:15:37,783 --> 00:15:43,431
+Now, what Chris has here, my understanding is he got this agreed upon with senior leaders.
+
+221
+00:15:44,288 --> 00:15:45,330
+We're following up.
+
+222
+00:15:45,370 --> 00:15:46,491
+I had a conversation with Brian on it.
+
+223
+00:15:46,511 --> 00:15:48,455
+We're having some follow up with it on it already.
+
+224
+00:15:48,515 --> 00:15:55,528
+But the idea was, do we adapt to what Lena X is saying or do we let every single group do it the way they want to do it?
+
+225
+00:15:55,607 --> 00:16:02,780
+Because the problem that we have, and I think it's a little off track of the conversation where I've been here because we can let them tell us anything they want.
+
+226
+00:16:03,221 --> 00:16:05,706
+We have to make a decision on what
+
+227
+00:16:05,686 --> 00:16:06,847
+We're going to use this.
+
+228
+00:16:07,187 --> 00:16:08,850
+There's a hundred charts out there.
+
+229
+00:16:08,870 --> 00:16:11,313
+Fortunately, we are not getting, I'm stopping my share.
+
+230
+00:16:11,695 --> 00:16:14,700
+I'll take, if you give me that list, I'm going to take both of them.
+
+231
+00:16:14,740 --> 00:16:22,571
+I'm going to send it to Chris Smith and Chris Serito, coffee, Brian, you and Sara and say, pick one.
+
+232
+00:16:22,591 --> 00:16:23,572
+We are moving forward.
+
+233
+00:16:23,592 --> 00:16:26,216
+Yeah, Brian must have already happened.
+
+234
+00:16:26,236 --> 00:16:28,980
+So it is that a government.
+
+235
+00:16:29,081 --> 00:16:30,043
+Okay, it's already.
+
+236
+00:16:30,062 --> 00:16:30,903
+Brian already has it.
+
+237
+00:16:30,923 --> 00:16:32,726
+He's headed for a few days and he's going through it.
+
+238
+00:16:32,846 --> 00:16:33,668
+So
+
+239
+00:16:33,648 --> 00:16:36,711
+You can check on his status with it, and let's go that way.
+
+240
+00:16:37,133 --> 00:16:43,280
+But it's actually nothing.
+
+241
+00:16:43,321 --> 00:16:46,846
+I was trying to explain why we do it the way we do it.
+
+242
+00:16:47,167 --> 00:16:50,591
+What chart we use doesn't matter, and I don't want to go too far off of what chart.
+
+243
+00:16:51,032 --> 00:16:52,995
+We know there's questions of which chart we're going to use.
+
+244
+00:16:53,075 --> 00:16:55,317
+I don't want to get stuck in that.
+
+245
+00:16:55,585 --> 00:16:58,169
+The idea is, we keep talking about business.
+
+246
+00:16:58,250 --> 00:17:05,986
+For us, if we ask people to map to some end to capabilities, we have to give them the end to capabilities to say, map it.
+
+247
+00:17:06,807 --> 00:17:09,532
+Now, which end to capability will put in front of them?
+
+248
+00:17:09,553 --> 00:17:11,416
+We'll try to put whatever is expected.
+
+249
+00:17:11,396 --> 00:17:12,318
+online.
+
+250
+00:17:12,659 --> 00:17:16,286
+I think if they want to throw some dabs, evolve up, that's up to them.
+
+251
+00:17:16,685 --> 00:17:21,315
+But at this point of time, the direction I've got is don't disrupt anything.
+
+252
+00:17:21,335 --> 00:17:25,040
+If there's something already existing, just go with it.
+
+253
+00:17:25,582 --> 00:17:29,108
+That's the strong direction I obviously, but I might be wrong.
+
+254
+00:17:29,670 --> 00:17:32,595
+There might be something else that's going on right now.
+
+255
+00:17:32,575 --> 00:17:37,904
+This team is looking for carless, not like, hey, maybe this or that.
+
+256
+00:17:38,025 --> 00:17:47,482
+We need to go with one list so that they can finish the activity of mapping because if we put two lists in front of Reginae and say, hey, ask them if they can map here.
+
+257
+00:17:47,583 --> 00:17:48,384
+This is better.
+
+258
+00:17:48,404 --> 00:17:49,646
+This is Chris says.
+
+259
+00:17:49,787 --> 00:17:50,548
+You can map here.
+
+260
+00:17:50,608 --> 00:17:52,092
+This is what Chris mid says.
+
+261
+00:17:52,532 --> 00:17:54,035
+It will be very confusing to them.
+
+262
+00:17:54,055 --> 00:17:55,478
+We need to give them one list.
+
+263
+00:17:55,458 --> 00:17:58,026
+Like Christmas, if you set it off, fight it out.
+
+264
+00:17:58,667 --> 00:18:03,544
+One list comes out of it and that list goes to this train as simple as that.
+
+265
+00:18:04,402 --> 00:18:06,965
+And Prishandhi, I have a follow up question on that.
+
+266
+00:18:06,986 --> 00:18:11,271
+So you have shared that slide that we have it from long, right?
+
+267
+00:18:11,932 --> 00:18:13,536
+It talks about L2L3.
+
+268
+00:18:13,915 --> 00:18:20,465
+So when we are in a workshop, are we asking the business to verify it, whether this is correct or not?
+
+269
+00:18:20,786 --> 00:18:23,450
+Because it's the audience.
+
+270
+00:18:23,631 --> 00:18:27,435
+Whoever you have invited, I'm assuming they have the decision makers over there.
+
+271
+00:18:27,876 --> 00:18:29,578
+It could be the technical leader.
+
+272
+00:18:29,598 --> 00:18:31,201
+It could be the business.
+
+273
+00:18:31,342 --> 00:18:32,703
+It's a collaborative thing.
+
+274
+00:18:32,683 --> 00:18:40,354
+If they are saying, take this application, take there is this, whatever, Anaplan did demand planning.
+
+275
+00:18:40,753 --> 00:18:47,583
+Yes, the technical person is saying this, does the business person agree or his capability is delivered?
+
+276
+00:18:47,803 --> 00:18:50,807
+Do they use Anaplan for supply planning?
+
+277
+00:18:50,846 --> 00:18:51,949
+That's the biggest question.
+
+278
+00:18:52,288 --> 00:18:56,193
+Yes, yes, yes, that's the application.
+
+279
+00:18:56,596 --> 00:18:59,701
+That's the capability, that's how you navigate.
+
+280
+00:18:59,721 --> 00:19:04,428
+And we might be just talking about one product here because we are just talking pioneers.
+
+281
+00:19:04,808 --> 00:19:08,094
+But ideally, like Farley is saying, we should do top down.
+
+282
+00:19:08,134 --> 00:19:10,257
+But we are not in that space.
+
+283
+00:19:10,277 --> 00:19:11,439
+We are doing bottoms up.
+
+284
+00:19:11,779 --> 00:19:21,674
+So maybe in that entire hierarchy, it's only one box you're going to pick up and say, hey, these two applications, we have been talking about mass to this supply plan.
+
+285
+00:19:21,992 --> 00:19:22,413
+That's it.
+
+286
+00:19:23,034 --> 00:19:24,455
+You map it done.
+
+287
+00:19:25,076 --> 00:19:27,459
+Then you say, OK, the product, whatever.
+
+288
+00:19:28,380 --> 00:19:32,845
+Finalize the name, finalize the age to capability, finalize the applications.
+
+289
+00:19:32,964 --> 00:19:36,269
+That's your two-way mapping, right?
+
+290
+00:19:37,109 --> 00:19:38,191
+At least stop there.
+
+291
+00:19:38,230 --> 00:19:39,932
+We are not going to boil the ocean.
+
+292
+00:19:39,952 --> 00:19:42,615
+At this point of time, it's too late.
+
+293
+00:19:42,695 --> 00:19:45,578
+We have been debating on this three months, four months.
+
+294
+00:19:45,598 --> 00:19:46,519
+We don't have answer.
+
+295
+00:19:46,940 --> 00:19:51,105
+And unfortunately, I'm ready to make a decision today.
+
+296
+00:19:51,085 --> 00:19:52,847
+somebody gave me the option.
+
+297
+00:19:53,148 --> 00:19:54,510
+Khan will make it today.
+
+298
+00:19:55,152 --> 00:19:56,934
+If somebody empowered him, right?
+
+299
+00:19:57,036 --> 00:20:01,723
+If Brian told Khan, you are 100% accountable for this structure.
+
+300
+00:20:01,884 --> 00:20:02,525
+Go put it.
+
+301
+00:20:02,986 --> 00:20:07,074
+I'm sure he'll come up with the best in class taxonomy.
+
+302
+00:20:07,134 --> 00:20:09,939
+And we can say this is the taxonomy aligned to it.
+
+303
+00:20:10,338 --> 00:20:11,862
+But nobody is empowering us.
+
+304
+00:20:11,842 --> 00:20:13,464
+That's the biggest problem.
+
+305
+00:20:13,945 --> 00:20:16,912
+Without empowerment, we can be talking, talking, talking.
+
+306
+00:20:16,932 --> 00:20:19,897
+We might be having the best taxonomy in the world.
+
+307
+00:20:19,998 --> 00:20:25,107
+We cannot operationalize it because the leaders are not supporting.
+
+308
+00:20:25,425 --> 00:20:39,461
+In the end, it's owned by architecture in the end, because they're the ones who have to set this up for the... I understood that they do have a set up, and we are having the discussion whether or not we just go with it.
+
+309
+00:20:39,480 --> 00:20:44,405
+And right now, they don't want to change anything again, because they're going to miss all their dates, because they have to get their stuff in there.
+
+310
+00:20:44,747 --> 00:20:52,615
+But the reality of it is, what we really need to understand is how this stuff relates to what we're talking about, and how do we explain it to people.
+
+311
+00:20:52,595 --> 00:20:57,880
+What it is can be debated forever for a bunch of leaders want to go argue 50 different times.
+
+312
+00:20:57,900 --> 00:20:58,861
+I don't care.
+
+313
+00:20:58,881 --> 00:21:07,309
+The reality of it is there's a direct mapping between business capabilities and lines and groups and teams.
+
+314
+00:21:07,490 --> 00:21:10,212
+That's how the two go together and they go together for that way for a reason.
+
+315
+00:21:10,692 --> 00:21:19,682
+There's the reasoning behind this in a lot of cases is when you're dealing with a product model for one product doesn't necessarily fit every single type of organization, but
+
+316
+00:21:19,662 --> 00:21:23,586
+By understanding where the business capabilities are, they do fit every organization.
+
+317
+00:21:23,988 --> 00:21:29,355
+No matter what kind of organization it is, whether it's an infrastructure or a R&D organization, it doesn't matter.
+
+318
+00:21:30,256 --> 00:21:35,362
+The idea is that what it gives us is a standard methodology for understanding how we're doing.
+
+319
+00:21:35,542 --> 00:21:37,184
+So you can set metrics.
+
+320
+00:21:37,204 --> 00:21:43,152
+You can say, am I spending on this capability in the same range as my competition?
+
+321
+00:21:44,314 --> 00:21:48,318
+Am I delivering time frame wise?
+
+322
+00:21:48,838 --> 00:21:59,273
+indirect alignment with my competition by putting capabilities in and as a rational way and mapping those capabilities in a standard way, it gives us an ability to go against other information that we have.
+
+323
+00:21:59,814 --> 00:22:03,640
+Now we can do that data analytics and data-driven decision making that makes sense.
+
+324
+00:22:04,421 --> 00:22:08,046
+If we say we now want to invest in growth,
+
+325
+00:22:09,426 --> 00:22:17,217
+If we're overspending in five places, but we're underspending on the things that help with growth, we know where we can move things around in a very rational way and make sense.
+
+326
+00:22:17,837 --> 00:22:22,784
+The idea behind the business capability model is that ability to attach ourselves to something.
+
+327
+00:22:22,923 --> 00:22:32,615
+If I go to Gartner and say, what is the average that a CPG company of over $5 billion will spend on HR?
+
+328
+00:22:33,912 --> 00:22:36,435
+It'll give me an idea whether I'm in the ballpark or not.
+
+329
+00:22:36,455 --> 00:22:42,988
+When we say that we spend too much on things, because we'll hear that quite a bit in a lot of our meetings, people say we're spending too much on.
+
+330
+00:22:43,568 --> 00:22:44,810
+That's where those numbers come from.
+
+331
+00:22:45,392 --> 00:22:50,119
+But we are currently at such a high level that we know we spend too much on IT.
+
+332
+00:22:50,621 --> 00:22:53,085
+We don't know we spend too much on what.
+
+333
+00:22:53,385 --> 00:22:55,809
+So that is a lot of the purpose of why it's there.
+
+334
+00:22:55,910 --> 00:23:00,596
+But we want the product teams to understand is that these capabilities match up to something.
+
+335
+00:23:01,137 --> 00:23:07,788
+When we're saying that, you know, you need to do these, they're important because they're giving us an actual data driven something.
+
+336
+00:23:09,330 --> 00:23:11,615
+You know, we don't know whether we're doing good better and different.
+
+337
+00:23:11,634 --> 00:23:13,538
+We only know it from the context of us.
+
+338
+00:23:15,137 --> 00:23:25,119
+The current leadership, the current and a lot of other things are looking at us and the street will look at us and say, are they doing a good job at a high level?
+
+339
+00:23:25,480 --> 00:23:28,186
+And that's always been the number, but the next level down matters.
+
+340
+00:23:29,229 --> 00:23:33,618
+There was the question of, are we spending too much on IT or are we just not making enough money to cover it?
+
+341
+00:23:35,557 --> 00:23:36,479
+So you have two choices.
+
+342
+00:23:36,499 --> 00:23:37,661
+You always have two choices.
+
+343
+00:23:37,681 --> 00:23:40,144
+Do you know what I'm saying?
+
+344
+00:23:40,164 --> 00:23:50,323
+I hear you and kind of angry, but only my question here is now totally, you know, it has to be done that way and then there is a talk.
+
+345
+00:23:50,762 --> 00:23:58,115
+But now right now, we started with this pioneer and the immediate test, please correct me.
+
+346
+00:23:58,135 --> 00:24:00,400
+Okay, this is what it's coming in my mind.
+
+347
+00:24:00,531 --> 00:24:21,982
+We do have a capability map either we can go with the presentation one or you know the one which we have pulled it from the line you extend and then we will ask the business to get it verify and do that and another thing is because we might be at L3 or even below that because we could be at the application level.
+
+348
+00:24:21,962 --> 00:24:26,470
+What could be the different applications are there in that L3?
+
+349
+00:24:26,951 --> 00:24:30,336
+Maybe is that something to outcome that we look for?
+
+350
+00:24:30,757 --> 00:24:32,881
+I mean, this is what it's coming for.
+
+351
+00:24:32,901 --> 00:24:34,363
+But that's being mapped separately right now.
+
+352
+00:24:34,423 --> 00:24:38,509
+That is a separate exercise that's been going on fairly actively right now.
+
+353
+00:24:38,630 --> 00:24:43,617
+I'm actually meeting with Brian's going to have a communication going on on the application list shortly.
+
+354
+00:24:44,779 --> 00:24:46,823
+Products and applications do not equal.
+
+355
+00:24:47,089 --> 00:24:52,356
+So you could have three applications in a product or you could have one application in a product.
+
+356
+00:24:52,416 --> 00:24:53,117
+It doesn't matter.
+
+357
+00:24:53,178 --> 00:24:57,784
+I mean, like if your workday you may say is, okay, HR core is all in workday, so I have one application.
+
+358
+00:24:58,184 --> 00:24:58,986
+Good.
+
+359
+00:24:59,006 --> 00:24:59,286
+Fine.
+
+360
+00:24:59,306 --> 00:25:04,973
+If you looked at total rewards, total rewards had a dozen applications underneath it.
+
+361
+00:25:04,993 --> 00:25:07,997
+But they're all vendor manage, but they had a bunch of applications underneath them.
+
+362
+00:25:08,438 --> 00:25:10,401
+So they're all, but they're all the same product.
+
+363
+00:25:10,500 --> 00:25:12,202
+They're just different things.
+
+364
+00:25:12,672 --> 00:25:15,655
+So, you know, it was the CCR one-stream conversation.
+
+365
+00:25:15,796 --> 00:25:19,421
+If a mid was the one running CCR, it should be CCR.
+
+366
+00:25:19,740 --> 00:25:23,665
+If a mid's only running one stream, is one stream the only thing, and is there somebody above him?
+
+367
+00:25:24,126 --> 00:25:29,353
+Now, if there isn't, then maybe they have two different, you know, L3s, and that's what they have.
+
+368
+00:25:29,452 --> 00:25:35,862
+One is one stream, which we would probably call the name, not by its product name, you know, the software product name.
+
+369
+00:25:36,342 --> 00:25:37,042
+But,
+
+370
+00:25:37,022 --> 00:25:41,307
+You know, there's lots of different ways to look at these things, but we are currently working on the application list.
+
+371
+00:25:41,326 --> 00:25:42,367
+That's something else that's being done.
+
+372
+00:25:42,407 --> 00:25:43,669
+And it's being done as an Ampika.
+
+373
+00:25:43,689 --> 00:25:45,730
+Brian said it should be done as an Amp.
+
+374
+00:25:45,750 --> 00:25:50,894
+So Shanti has called something like that.
+
+375
+00:25:50,914 --> 00:25:52,715
+We have 12 minutes left.
+
+376
+00:25:53,237 --> 00:25:58,821
+So my question is, what was the outcome you wanted to achieve on this call for Bill?
+
+377
+00:25:58,842 --> 00:26:01,243
+Because I see outcome for vision session.
+
+378
+00:26:01,824 --> 00:26:03,726
+One thing of the vision session.
+
+379
+00:26:03,746 --> 00:26:06,387
+Yeah, that's what we want.
+
+380
+00:26:06,367 --> 00:26:09,692
+Unless there's any other questions specifically to this thing.
+
+381
+00:26:10,031 --> 00:26:11,394
+Again, this is an informational thing.
+
+382
+00:26:11,433 --> 00:26:16,538
+If you go with the slide that Chris gave us, it's going to be less hassle, less argument, and it does not going to make really a difference anyway.
+
+383
+00:26:16,578 --> 00:26:17,579
+So I would just go with that.
+
+384
+00:26:18,181 --> 00:26:22,224
+But I'm sure we're going to change something, but that's OK.
+
+385
+00:26:22,265 --> 00:26:22,846
+It doesn't matter.
+
+386
+00:26:22,905 --> 00:26:25,009
+I mean, you should go with what Chris is.
+
+387
+00:26:25,308 --> 00:26:29,492
+What you really want to know is if they own a function here, no matter what it's called, we call it 1.1.1.
+
+388
+00:26:30,233 --> 00:26:30,595
+Who cares?
+
+389
+00:26:32,036 --> 00:26:33,657
+What applications they have underneath that?
+
+390
+00:26:34,464 --> 00:26:40,673
+And if they can say that there's applications under that and we can identify a TPO, that's a positive thing because most of our TPO's are wrong in all of our data.
+
+391
+00:26:41,213 --> 00:26:44,598
+So that's a huge step forward, so I would go with it.
+
+392
+00:26:45,240 --> 00:26:49,164
+But is there anything else anybody need to know about what the point of capabilities is?
+
+393
+00:26:52,750 --> 00:26:54,853
+So we should call, yeah, we shall go ahead.
+
+394
+00:26:55,953 --> 00:27:03,644
+So the intent of the session was we wanted to try and understand how to incorporate lean Ix into
+
+395
+00:27:04,267 --> 00:27:06,772
+the conversation that we're having with the limbs tomorrow.
+
+396
+00:27:07,253 --> 00:27:16,196
+So we have a draft deck that we've created and I'm sharing information and you can opine on what you want us to do with it.
+
+397
+00:27:16,597 --> 00:27:20,267
+So first question is, when we meet with some kids tomorrow,
+
+398
+00:27:21,174 --> 00:27:29,146
+Uh, we're going to go over the full value mapping, right, which is the target that the two slides that I think you.
+
+399
+00:27:29,708 --> 00:27:31,911
+Can I see the content, please?
+
+400
+00:27:31,931 --> 00:27:33,773
+I don't want to be a ceiling.
+
+401
+00:27:34,214 --> 00:27:35,435
+I want to see the content.
+
+402
+00:27:35,455 --> 00:27:38,821
+I want to know who is because I don't see anything on my calendar.
+
+403
+00:27:39,061 --> 00:27:41,184
+So I'm not sure why I'm not invited.
+
+404
+00:27:42,426 --> 00:27:49,156
+Uh, so I want to be there to understand what's going on in the sessions because I don't want another escalation from
+
+405
+00:27:49,863 --> 00:27:50,364
+That's correct.
+
+406
+00:27:50,384 --> 00:27:57,031
+So this is me and Unuch are tagging, so Rajani can you forward the session?
+
+407
+00:27:57,593 --> 00:28:00,856
+So this is the product vision session, right?
+
+408
+00:28:00,876 --> 00:28:08,526
+So the first thing that we go over is this high, I want Temi and Sankey to first understand the full end to end picture.
+
+409
+00:28:08,967 --> 00:28:12,330
+So we're going to go through this slide and this slide, right?
+
+410
+00:28:12,550 --> 00:28:13,132
+Okay.
+
+411
+00:28:13,152 --> 00:28:14,794
+Just one feedback, right there.
+
+412
+00:28:14,933 --> 00:28:16,375
+Go back to that slide.
+
+413
+00:28:16,957 --> 00:28:17,237
+Yep.
+
+414
+00:28:17,436 --> 00:28:20,763
+The first zero needs to have OKRs over there.
+
+415
+00:28:20,903 --> 00:28:22,267
+Can view OKRs?
+
+416
+00:28:22,346 --> 00:28:23,388
+Can you take the data?
+
+417
+00:28:23,409 --> 00:28:25,292
+I don't want the objective and key results.
+
+418
+00:28:25,733 --> 00:28:27,557
+OKRs should come there.
+
+419
+00:28:28,519 --> 00:28:30,463
+Or put it in the brackets, whatever.
+
+420
+00:28:30,483 --> 00:28:31,886
+Can view OKRs?
+
+421
+00:28:31,906 --> 00:28:33,990
+Is that what you want?
+
+422
+00:28:34,010 --> 00:28:36,797
+Yeah, I think you take the data OKRs or whatever.
+
+423
+00:28:36,936 --> 00:28:38,500
+KTV, OKR.
+
+424
+00:28:39,813 --> 00:28:40,596
+Oh, just OK.
+
+425
+00:28:41,077 --> 00:28:41,338
+Got it.
+
+426
+00:28:41,378 --> 00:28:41,980
+I just sped up.
+
+427
+00:28:42,021 --> 00:28:47,301
+I want the keyword OKR over there, because you have put it in step two OKR.
+
+428
+00:28:47,702 --> 00:28:51,257
+In step two, you have to put it as product OKRs.
+
+429
+00:28:51,642 --> 00:28:55,226
+Remember, you are using language very loosely.
+
+430
+00:28:55,266 --> 00:29:01,491
+This can have impact because I sat down with Sara Yafan and convinced her, you're okay.
+
+431
+00:29:01,511 --> 00:29:03,334
+I said, here, this is our okay.
+
+432
+00:29:03,713 --> 00:29:06,857
+And she was a light because Sara Goodman is not convinced.
+
+433
+00:29:06,877 --> 00:29:14,546
+So you need to be very critical because when you're translating it to Dex, you're losing the feedback that people are giving you.
+
+434
+00:29:15,246 --> 00:29:15,527
+Okay.
+
+435
+00:29:16,027 --> 00:29:16,688
+Yeah.
+
+436
+00:29:16,708 --> 00:29:18,730
+So this is the high level view.
+
+437
+00:29:19,704 --> 00:29:25,493
+that is being shared tomorrow, which is the first 10, 15 minutes.
+
+438
+00:29:25,673 --> 00:29:33,306
+Can you please change that to can you OKR and the left put objective key results in the brackets?
+
+439
+00:29:35,809 --> 00:29:40,636
+Sorry, I am very picky on those things, because I'm facing the front of it.
+
+440
+00:29:41,979 --> 00:29:45,324
+And you can remove the last key, but yeah, OKR.
+
+441
+00:29:46,346 --> 00:29:47,607
+OK?
+
+442
+00:29:47,627 --> 00:29:47,788
+Yeah.
+
+443
+00:29:49,928 --> 00:29:51,169
+So you'll go through this.
+
+444
+00:29:51,609 --> 00:29:59,078
+We're first actually trying to talk about this distinction between SPM and the product model.
+
+445
+00:29:59,098 --> 00:30:03,022
+So I think this slide should be first, but you tell me if you want to cover it afterwards.
+
+446
+00:30:03,042 --> 00:30:09,951
+I think this is the SPM story, which is, hey, this is where you start and then this is how you go around in the circle.
+
+447
+00:30:09,991 --> 00:30:11,933
+This is where we come in, right?
+
+448
+00:30:12,013 --> 00:30:18,821
+This is where we are coming in with our six steps and then this is where we tie the execution and the business value on the metrics and API.
+
+449
+00:30:18,801 --> 00:30:21,205
+So it's basically tying that big picture together.
+
+450
+00:30:21,246 --> 00:30:22,167
+That's slide number one.
+
+451
+00:30:22,788 --> 00:30:23,569
+Slide number two.
+
+452
+00:30:23,730 --> 00:30:23,971
+Okay.
+
+453
+00:30:23,990 --> 00:30:30,423
+Now we'll go into the detailed steps, not session two steps on how to achieve what we talked about in the previous slide.
+
+454
+00:30:30,903 --> 00:30:32,586
+And then I know just go through.
+
+455
+00:30:33,047 --> 00:30:33,749
+Okay.
+
+456
+00:30:33,888 --> 00:30:34,009
+Here's
+
+457
+00:30:33,989 --> 00:30:36,913
+There's two only two, we've kept it very light, right?
+
+458
+00:30:36,933 --> 00:30:37,976
+We've kept it high level.
+
+459
+00:30:38,436 --> 00:30:46,430
+Yes, what vision means, here's what a vision statement should look like, and then we'll go into the workshop saying, okay, here's an example that we gave you for Google.
+
+460
+00:30:46,851 --> 00:30:49,955
+We want you to put that workshop, and then I want you to put it into Gira.
+
+461
+00:30:50,424 --> 00:30:53,909
+So then you're going to go into the G-R structure, that same standard structure.
+
+462
+00:30:53,929 --> 00:30:55,289
+So let me just go through the slides.
+
+463
+00:30:55,589 --> 00:30:58,053
+I just quickly talked about all this.
+
+464
+00:30:58,073 --> 00:31:00,875
+So first step is, here's the vision.
+
+465
+00:31:01,056 --> 00:31:03,758
+Two slides on what is the vision, blah, blah, blah.
+
+466
+00:31:04,378 --> 00:31:10,865
+Next one is, you need a vision statement for your product at the product level that has these things captured in it.
+
+467
+00:31:10,885 --> 00:31:11,726
+Who is it for?
+
+468
+00:31:11,886 --> 00:31:13,087
+So where is the template?
+
+469
+00:31:13,288 --> 00:31:14,429
+Where will they capture it?
+
+470
+00:31:14,750 --> 00:31:19,233
+The template is over here at the bottom, which is in the last place.
+
+471
+00:31:19,805 --> 00:31:20,846
+put the template next.
+
+472
+00:31:21,467 --> 00:31:23,810
+So you said, you're going to teach them.
+
+473
+00:31:24,511 --> 00:31:25,613
+This is not a template.
+
+474
+00:31:25,813 --> 00:31:26,714
+This is an example.
+
+475
+00:31:26,755 --> 00:31:28,436
+Where is the template?
+
+476
+00:31:28,457 --> 00:31:32,782
+So this is what Anuj is saying that, see, we are basically asking them to come up with a piece.
+
+477
+00:31:32,843 --> 00:31:34,285
+I'm not just cutting to the chair.
+
+478
+00:31:34,424 --> 00:31:35,767
+I'm not sure, template.
+
+479
+00:31:36,127 --> 00:31:38,191
+All I am saying is, where is the template?
+
+480
+00:31:38,530 --> 00:31:40,394
+I need that template in the next slide.
+
+481
+00:31:40,433 --> 00:31:43,357
+If you're asking them to fill a template, they get a template.
+
+482
+00:31:43,597 --> 00:31:46,301
+Because this was made clear in the last call.
+
+483
+00:31:46,281 --> 00:31:46,963
+It's right.
+
+484
+00:31:46,983 --> 00:31:49,992
+I gave the call with Sake and Timmy.
+
+485
+00:31:50,053 --> 00:31:53,262
+So Sake and Timmy just said give me a template.
+
+486
+00:31:53,282 --> 00:31:57,115
+Peshanti, I'll make him feel the template and we still are talking.
+
+487
+00:31:57,134 --> 00:31:57,896
+There's a template.
+
+488
+00:31:57,916 --> 00:31:58,659
+There's a template.
+
+489
+00:31:58,679 --> 00:32:00,063
+I don't see the template.
+
+490
+00:32:00,083 --> 00:32:00,965
+Is this a template?
+
+491
+00:32:02,194 --> 00:32:04,538
+I don't think I have access to it.
+
+492
+00:32:04,618 --> 00:32:06,240
+It doesn't look like a template.
+
+493
+00:32:06,280 --> 00:32:08,044
+This is not how the template looks.
+
+494
+00:32:08,064 --> 00:32:09,526
+I'm sorry to say.
+
+495
+00:32:09,546 --> 00:32:13,673
+Can I give you a little bit of executiveness that you have to put over here?
+
+496
+00:32:13,712 --> 00:32:15,255
+If it is who, what, why?
+
+497
+00:32:15,315 --> 00:32:16,877
+You're just going to randomly put here.
+
+498
+00:32:16,897 --> 00:32:20,002
+They can send it in a email.
+
+499
+00:32:20,624 --> 00:32:26,673
+This is the output of the workshop where I think he's going to do the workshop, which is here is what we're going to go through.
+
+500
+00:32:26,993 --> 00:32:27,914
+Here are the things that
+
+501
+00:32:28,097 --> 00:32:34,788
+If there should be the immoral board, there should be a template where they're putting sticky notes.
+
+502
+00:32:35,169 --> 00:32:36,692
+There needs to be something, guys.
+
+503
+00:32:36,811 --> 00:32:40,498
+If you're saying a working session, how will you let them do it?
+
+504
+00:32:40,518 --> 00:32:41,460
+Who is the scribe?
+
+505
+00:32:41,799 --> 00:32:49,211
+Are you going to open a mural board for four sections and say, hey, drop in your things over there.
+
+506
+00:32:49,528 --> 00:32:50,390
+This is the one there.
+
+507
+00:32:50,871 --> 00:32:55,278
+So this is what the screen shot there and say we are going to capture.
+
+508
+00:32:55,318 --> 00:32:58,002
+There needs to be specific steps.
+
+509
+00:32:58,144 --> 00:32:59,445
+You will give five minutes.
+
+510
+00:32:59,726 --> 00:33:01,288
+Have you timed your session?
+
+511
+00:33:01,388 --> 00:33:02,971
+How much time on which will speak?
+
+512
+00:33:03,413 --> 00:33:03,993
+When will you?
+
+513
+00:33:04,034 --> 00:33:05,817
+How much time is this entire thing?
+
+514
+00:33:05,836 --> 00:33:07,480
+We are going to open up a mural board.
+
+515
+00:33:07,500 --> 00:33:08,781
+You know this takes time.
+
+516
+00:33:09,363 --> 00:33:11,425
+People are thinking people are putting.
+
+517
+00:33:11,445 --> 00:33:12,769
+They might not put anything.
+
+518
+00:33:13,308 --> 00:33:13,630
+So
+
+519
+00:33:13,609 --> 00:33:24,448
+Are you making them do it in the session or are you going to give them one slide at template and say, do however you want, but put the vision ultimately.
+
+520
+00:33:24,708 --> 00:33:25,469
+What are you saying?
+
+521
+00:33:26,471 --> 00:33:34,163
+So in the session, Anuj is planning that in the session, we will ask because we are giving them guidance in the session, we're giving them the Uber example.
+
+522
+00:33:34,203 --> 00:33:39,853
+The goal is that they will use that example to fill out the template, right?
+
+523
+00:33:40,660 --> 00:33:41,542
+That is the intent.
+
+524
+00:33:41,903 --> 00:33:43,788
+Let me just, I think I have access to it now.
+
+525
+00:33:43,808 --> 00:33:44,391
+Thank you for that.
+
+526
+00:33:45,373 --> 00:33:48,241
+Oh, I think it's still working, but whatever.
+
+527
+00:33:48,261 --> 00:33:50,247
+So you're throwing me this neural board.
+
+528
+00:33:50,307 --> 00:33:51,210
+What will you tell me?
+
+529
+00:33:51,230 --> 00:33:52,192
+Okay, I am circuit.
+
+530
+00:33:52,594 --> 00:33:55,362
+What are you asking?
+
+531
+00:33:56,236 --> 00:33:57,478
+So let's do it right now.
+
+532
+00:33:57,618 --> 00:34:00,884
+I'm not I'm not sure we have this pretty.
+
+533
+00:34:01,365 --> 00:34:03,570
+You don't know how you people are delivering.
+
+534
+00:34:04,251 --> 00:34:06,015
+You all are scrambling with me.
+
+535
+00:34:06,455 --> 00:34:08,360
+One of you showing the mural board.
+
+536
+00:34:08,380 --> 00:34:10,344
+One of you showing the appendix slide.
+
+537
+00:34:10,364 --> 00:34:12,809
+One of you don't have a game plan.
+
+538
+00:34:12,829 --> 00:34:13,349
+Sorry.
+
+539
+00:34:13,329 --> 00:34:15,393
+You don't, none of you have a given plan.
+
+540
+00:34:15,753 --> 00:34:18,117
+You have no strategy how you are going to go there.
+
+541
+00:34:18,197 --> 00:34:19,418
+You have no strategy.
+
+542
+00:34:19,599 --> 00:34:22,922
+How will you ask them to, okay, you're doing a session.
+
+543
+00:34:22,963 --> 00:34:24,204
+What will be the output?
+
+544
+00:34:24,686 --> 00:34:27,449
+You're saying Jira Vishal, I see a mural board.
+
+545
+00:34:27,829 --> 00:34:29,311
+Who is doing what?
+
+546
+00:34:30,313 --> 00:34:33,217
+I'm doing the opening, right?
+
+547
+00:34:33,438 --> 00:34:36,402
+I'm doing the opening where I'm giving the big picture.
+
+548
+00:34:36,668 --> 00:34:40,572
+and then Anuj is going to walk through the first few slides with the examples, right?
+
+549
+00:34:40,592 --> 00:34:45,516
+So my, my story is I'm going to do the opening and then how much time is this session?
+
+550
+00:34:45,536 --> 00:34:46,297
+I'm doing 10 minutes.
+
+551
+00:34:46,336 --> 00:34:48,498
+Anuj is doing 50, 60 minutes session.
+
+552
+00:34:49,059 --> 00:34:50,840
+Out of the 15 minutes, we are basic.
+
+553
+00:34:51,021 --> 00:34:54,184
+Anuj is going to take the first 10, 15 minutes to talk.
+
+554
+00:34:54,284 --> 00:34:54,503
+Hold on.
+
+555
+00:34:54,543 --> 00:34:55,485
+Hold on.
+
+556
+00:34:55,625 --> 00:34:55,945
+Hold on.
+
+557
+00:34:56,365 --> 00:34:56,945
+10 minutes.
+
+558
+00:34:57,025 --> 00:34:57,586
+You're done.
+
+559
+00:34:57,706 --> 00:34:59,288
+You, you cover your three slides.
+
+560
+00:34:59,307 --> 00:35:00,248
+15 minutes.
+
+561
+00:35:00,570 --> 00:35:01,951
+He's doing this workshop.
+
+562
+00:35:02,391 --> 00:35:04,572
+But, but you were talking about mapping.
+
+563
+00:35:04,592 --> 00:35:06,275
+Where is the mapping part of it?
+
+564
+00:35:06,295 --> 00:35:06,675
+Where are you?
+
+565
+00:35:06,655 --> 00:35:23,753
+So the theory part is, so the next 15-20 minutes, right, which is the first half hour of the session, we're going to cover the theory, right, which is, this is how you do it, which 30 minutes over in the next 30 minutes, what are you doing?
+
+566
+00:35:26,027 --> 00:35:26,648
+looking session.
+
+567
+00:35:27,389 --> 00:35:33,418
+And we're just going to give the example so that they can start thinking about, hey, look, let's use the Uber example to talk about this, ooh, what, why, what.
+
+568
+00:35:33,998 --> 00:35:36,382
+Now apply this to your product.
+
+569
+00:35:36,884 --> 00:35:41,050
+And that's where we are introducing the mirror board, which is over here, which is the workshop agenda.
+
+570
+00:35:41,449 --> 00:35:43,432
+This is the 30 minute workshop.
+
+571
+00:35:43,452 --> 00:35:46,097
+Now when the mirror is the mapping, the mirror is the mapping.
+
+572
+00:35:47,197 --> 00:35:48,981
+The mirror you're asking them to map.
+
+573
+00:35:50,074 --> 00:35:51,657
+mapping it back into Gira, right?
+
+574
+00:35:51,677 --> 00:35:52,460
+That's what you're asking.
+
+575
+00:35:52,480 --> 00:35:54,864
+Is that what you said Gira?
+
+576
+00:35:54,885 --> 00:35:55,726
+That is one thing.
+
+577
+00:35:55,806 --> 00:35:58,251
+What about we are talking about all these L2Ks?
+
+578
+00:35:58,572 --> 00:35:58,791
+L2Ks?
+
+579
+00:35:58,913 --> 00:35:59,253
+L2Ks?
+
+580
+00:35:59,333 --> 00:35:59,875
+L2Ks?
+
+581
+00:35:59,894 --> 00:36:01,737
+L2Ks?
+
+582
+00:36:01,797 --> 00:36:02,480
+L2Ks?
+
+583
+00:36:02,599 --> 00:36:02,860
+L2Ks?
+
+584
+00:36:02,900 --> 00:36:04,844
+L2Ks?
+
+585
+00:36:05,125 --> 00:36:06,327
+L2Ks?
+
+586
+00:36:07,208 --> 00:36:07,869
+L2Ks?
+
+587
+00:36:08,050 --> 00:36:08,150
+L2Ks?
+
+588
+00:36:08,889 --> 00:36:13,396
+One day we are not even 24 hours away from the session.
+
+589
+00:36:13,416 --> 00:36:15,500
+I don't see a skeleton.
+
+590
+00:36:15,519 --> 00:36:18,724
+I don't see which slide is getting delivered by whom.
+
+591
+00:36:19,065 --> 00:36:21,570
+I don't see how much time we are preserving forward.
+
+592
+00:36:21,670 --> 00:36:23,032
+I see something over here.
+
+593
+00:36:23,052 --> 00:36:24,755
+45 minutes of discussion.
+
+594
+00:36:24,815 --> 00:36:25,835
+I'm synthesized.
+
+595
+00:36:26,958 --> 00:36:28,940
+Why should they be even doing it?
+
+596
+00:36:29,157 --> 00:36:31,699
+Along with you, I don't understand these visions.
+
+597
+00:36:32,039 --> 00:36:37,606
+You're not giving them capabilities to say, hey, map your vision to capabilities.
+
+598
+00:36:37,626 --> 00:36:38,467
+You're not.
+
+599
+00:36:38,487 --> 00:36:45,155
+And there was a better slide, a better template of a vision where it had a couple of bosses over there.
+
+600
+00:36:45,175 --> 00:36:46,958
+What is the purpose of the product?
+
+601
+00:36:46,978 --> 00:36:47,998
+What is this?
+
+602
+00:36:48,358 --> 00:36:51,762
+That would automatically give you a into capability.
+
+603
+00:36:51,782 --> 00:36:55,047
+Because if a circuit says, what's the purpose of limbs?
+
+604
+00:36:55,027 --> 00:37:11,416
+even really might be able to map it to L2, but now you're not asking anything just simply putting why what when they're going to give you one one line sentences and that will become your vision statement because they are saying give me a perfect template.
+
+605
+00:37:11,835 --> 00:37:13,077
+I will fill it over there.
+
+606
+00:37:13,358 --> 00:37:17,405
+So if you have all these questions which applications you map to which
+
+607
+00:37:17,385 --> 00:37:23,871
+they should be a place in that template, which asks for those questions.
+
+608
+00:37:24,291 --> 00:37:27,896
+If you don't ask for those questions, they're not going to answer your question.
+
+609
+00:37:29,097 --> 00:37:36,023
+So can you give me that word document that you extracted out of Lean Ix where you have the L1, L2, this, whatever, right?
+
+610
+00:37:36,043 --> 00:37:36,724
+The other product.
+
+611
+00:37:37,043 --> 00:37:44,271
+If you send me that, I'll create a slide that says, at the output of this session, these are the things that we want for links.
+
+612
+00:37:44,909 --> 00:37:50,318
+No, your template will not even be influenced by what he's keeping.
+
+613
+00:37:50,619 --> 00:37:53,463
+He can give ABC XYZ, Vishal.
+
+614
+00:37:53,824 --> 00:37:55,809
+Where is my vision template?
+
+615
+00:37:55,829 --> 00:38:00,217
+I'm simply asking all of you guys, where is my vision template?
+
+616
+00:38:00,277 --> 00:38:05,125
+Which says, hey, there needs to be a question for what are the two capabilities you're mapping?
+
+617
+00:38:05,365 --> 00:38:06,507
+Who is your sponsor?
+
+618
+00:38:06,768 --> 00:38:08,030
+Who is your stakeholders?
+
+619
+00:38:08,311 --> 00:38:09,313
+Who is your...
+
+620
+00:38:09,293 --> 00:38:11,476
+That's all thing is vision.
+
+621
+00:38:11,615 --> 00:38:14,501
+You're all so focused on peace-mealing it.
+
+622
+00:38:15,242 --> 00:38:16,864
+Vision is just what the prop.
+
+623
+00:38:16,884 --> 00:38:20,949
+No, as a part of the vision, I want to know all these outline things.
+
+624
+00:38:20,969 --> 00:38:23,152
+Who is your product owner, business owner?
+
+625
+00:38:23,554 --> 00:38:25,036
+All these things need to be answered.
+
+626
+00:38:25,056 --> 00:38:27,438
+This is your one shot you're getting with them.
+
+627
+00:38:28,059 --> 00:38:31,826
+In one hour, ask them to fill all the missing information.
+
+628
+00:38:31,846 --> 00:38:34,710
+You people told me, we don't know teams, we don't know.
+
+629
+00:38:34,690 --> 00:38:44,673
+To tell those boxes, there needs to be a pretty template, like a project charter template, a project, a mission template should be there, which is very prescriptive.
+
+630
+00:38:44,693 --> 00:38:46,077
+You don't have to narrate it.
+
+631
+00:38:46,619 --> 00:38:51,130
+Any person should read and be, who is your business partner?
+
+632
+00:38:51,818 --> 00:38:53,860
+Sake should be just simply able to fill it.
+
+633
+00:38:53,960 --> 00:38:57,505
+You don't have to teach him who is a business partner, right?
+
+634
+00:38:57,764 --> 00:39:03,452
+Do you know who the Sake always keeps saying, hey, I work with my business, I do whatever he says.
+
+635
+00:39:03,853 --> 00:39:06,655
+Do we know who that person is referring to?
+
+636
+00:39:07,177 --> 00:39:09,880
+Does it take to requirements from 10 people, one person?
+
+637
+00:39:10,581 --> 00:39:11,902
+Do we know that?
+
+638
+00:39:13,047 --> 00:39:15,373
+Are you not pre-populated?
+
+639
+00:39:16,034 --> 00:39:22,751
+For all six, if you're saying that you want a template for all six of this, we can just create that and share it with you at the moment.
+
+640
+00:39:22,771 --> 00:39:23,233
+We can do that.
+
+641
+00:39:23,253 --> 00:39:24,175
+All six weeks.
+
+642
+00:39:24,195 --> 00:39:26,061
+You're saying that I need from you, right?
+
+643
+00:39:27,407 --> 00:39:28,128
+We can do that.
+
+644
+00:39:28,148 --> 00:39:34,500
+We can give them saying here's a template question.
+
+645
+00:39:35,242 --> 00:39:37,786
+We have been talking about this for three months now.
+
+646
+00:39:38,347 --> 00:39:42,193
+And what on which promise we was for every workshop there's a template.
+
+647
+00:39:42,213 --> 00:39:43,476
+And I don't see a template.
+
+648
+00:39:43,496 --> 00:39:44,117
+I'm sorry.
+
+649
+00:39:44,177 --> 00:39:45,159
+I'm losing it.
+
+650
+00:39:45,880 --> 00:39:48,844
+Either you tell me, Vishanti, you do it.
+
+651
+00:39:49,106 --> 00:39:52,251
+Create a template, I'll tell you what the template is.
+
+652
+00:39:53,378 --> 00:40:02,954
+But I'm not saying we're always talking, this could be one way, that could be one way, some one way we may be like the template or not.
+
+653
+00:40:03,114 --> 00:40:07,862
+Whoever is asking them questions, you need to put that question there so that we get the answers.
+
+654
+00:40:08,322 --> 00:40:11,168
+At the end of the day, I'm really afraid guys.
+
+655
+00:40:11,148 --> 00:40:13,411
+We will just get four sentences.
+
+656
+00:40:13,992 --> 00:40:14,713
+What is that?
+
+657
+00:40:14,733 --> 00:40:16,996
+He will say it's a lab management system.
+
+658
+00:40:17,237 --> 00:40:18,298
+That will be his answer.
+
+659
+00:40:18,398 --> 00:40:18,980
+I know some.
+
+660
+00:40:19,059 --> 00:40:19,681
+It's very good.
+
+661
+00:40:20,141 --> 00:40:20,461
+Okay.
+
+662
+00:40:20,882 --> 00:40:23,827
+And then he will say, Hey, why do we need it?
+
+663
+00:40:23,987 --> 00:40:25,829
+He'll say it's a GXP thing.
+
+664
+00:40:25,969 --> 00:40:26,289
+I know.
+
+665
+00:40:26,550 --> 00:40:27,932
+It's a TQ process.
+
+666
+00:40:27,992 --> 00:40:29,094
+We cannot miss it.
+
+667
+00:40:29,155 --> 00:40:30,876
+He's going to get crappy answers.
+
+668
+00:40:31,016 --> 00:40:31,538
+Believe me.
+
+669
+00:40:32,139 --> 00:40:32,619
+Okay.
+
+670
+00:40:32,639 --> 00:40:35,764
+And then you will say, I don't know why you got who I don't know.
+
+671
+00:40:36,125 --> 00:40:38,809
+He'll just give you one line sentences.
+
+672
+00:40:38,789 --> 00:40:40,130
+I will challenge you.
+
+673
+00:40:40,190 --> 00:40:43,014
+This is what is the template I have answered your questions.
+
+674
+00:40:43,153 --> 00:40:44,476
+Rajini, you know him better.
+
+675
+00:40:44,516 --> 00:40:46,918
+You go with the score answers.
+
+676
+00:40:47,239 --> 00:40:48,981
+You are going to get four sentences.
+
+677
+00:40:51,603 --> 00:40:52,945
+And he is only circuit.
+
+678
+00:40:53,146 --> 00:40:55,367
+That's why I want to know the participants who is there.
+
+679
+00:40:55,728 --> 00:41:01,135
+Even if you open a moral board, there will be one one sticky that he'll place it.
+
+680
+00:41:02,735 --> 00:41:10,880
+To all our communities, to me, to me, to stress me, to me, to who, who I am, to just partner, just the best three people need all the three of them.
+
+681
+00:41:10,960 --> 00:41:12,204
+To me, to me, to stress me.
+
+682
+00:41:13,905 --> 00:41:18,230
+So only three people are coming and I asked him like, you do you want to, you know, whatever they invite to anybody?
+
+683
+00:41:18,250 --> 00:41:20,112
+This may be a laugh at this template.
+
+684
+00:41:20,152 --> 00:41:21,293
+If you say, why, what?
+
+685
+00:41:21,733 --> 00:41:22,134
+It's poor.
+
+686
+00:41:22,534 --> 00:41:25,416
+He'll say, he's this, then he's going to challenge me.
+
+687
+00:41:25,456 --> 00:41:26,018
+Yeah, we are.
+
+688
+00:41:26,577 --> 00:41:28,659
+So I might say, let me put it on.
+
+689
+00:41:28,699 --> 00:41:29,440
+Hold on, Rajani.
+
+690
+00:41:29,860 --> 00:41:35,106
+Now the conversation I know once, because TV yesterday, you, you heard, Rajani, you were there, right?
+
+691
+00:41:35,206 --> 00:41:37,389
+When he said, Peshanti, give me a template.
+
+692
+00:41:37,568 --> 00:41:38,469
+I'll populate it.
+
+693
+00:41:38,530 --> 00:41:40,891
+Then my will, my maturity go up.
+
+694
+00:41:41,851 --> 00:41:43,052
+That was his question.
+
+695
+00:41:43,293 --> 00:41:46,356
+I said you have maturity won't go up, but we give you a template.
+
+696
+00:41:46,737 --> 00:41:48,039
+And this is not a template.
+
+697
+00:41:50,742 --> 00:41:57,213
+Who can come back to me with a template if I don't get a template at what time is the session?
+
+698
+00:41:58,054 --> 00:41:59,356
+Tomorrow at noon.
+
+699
+00:42:01,699 --> 00:42:04,742
+But we have invite.
+
+700
+00:42:06,244 --> 00:42:09,630
+But what we'll do is today, I think we need to have
+
+701
+00:42:10,740 --> 00:42:13,987
+I think I understand where you are going with this question.
+
+702
+00:42:14,007 --> 00:42:15,750
+I think everybody understands where you're going with this.
+
+703
+00:42:16,110 --> 00:42:19,938
+Which is, if I get one hour with you, I'm going to give you everything that I need.
+
+704
+00:42:20,297 --> 00:42:22,782
+I can tell you what the can-view target in OKR is.
+
+705
+00:42:23,503 --> 00:42:25,688
+I need your product line vision.
+
+706
+00:42:25,969 --> 00:42:31,077
+I need your product group OKRs, product OKRs, for links specifically.
+
+707
+00:42:31,057 --> 00:42:34,161
+and we'll give them like one or two slides, one slide per.
+
+708
+00:42:34,280 --> 00:42:37,364
+And one more question is, we need Chris Serito there.
+
+709
+00:42:37,724 --> 00:42:41,867
+If we are talking about Lena, IH and all, why is Chris missing?
+
+710
+00:42:42,367 --> 00:42:43,668
+Why is Ruchit missing?
+
+711
+00:42:43,768 --> 00:42:49,894
+Or at least Ruchit should have been there as a Chris, Chris is delicate, right?
+
+712
+00:42:50,074 --> 00:42:52,717
+He is going to support you on those product vision.
+
+713
+00:42:52,737 --> 00:42:59,563
+Whatever, if Chris makes say, this is not the L2 capabilities, Ruchit has to support you and say, this is the L2 capabilities.
+
+714
+00:42:59,603 --> 00:43:01,065
+Why is he missing?
+
+715
+00:43:01,045 --> 00:43:04,431
+These are the people you need to think about the audience.
+
+716
+00:43:04,672 --> 00:43:08,579
+As we are changing the scope, we need to get the right audience there.
+
+717
+00:43:08,679 --> 00:43:11,664
+If Chris cannot be there, who is the next best person?
+
+718
+00:43:11,704 --> 00:43:12,065
+Richie.
+
+719
+00:43:12,385 --> 00:43:16,072
+If Richie cannot be there, we still make them optional and go forward.
+
+720
+00:43:16,454 --> 00:43:21,382
+Because unless we bring Chris and Chris Smith, Chris Serito and Chris Smith,
+
+721
+00:43:21,362 --> 00:43:23,306
+They will never come into an alignment.
+
+722
+00:43:23,346 --> 00:43:30,394
+We need to bring them, do their case up and say, hey, you people fight it out and tell me, come out of this session with one.
+
+723
+00:43:31,076 --> 00:43:32,637
+That's our victory, right?
+
+724
+00:43:32,697 --> 00:43:34,480
+Because we are running with two things.
+
+725
+00:43:35,041 --> 00:43:37,143
+Make them meet and talk in that session.
+
+726
+00:43:37,184 --> 00:43:38,885
+They might, they might quarrel.
+
+727
+00:43:39,005 --> 00:43:39,527
+It's okay.
+
+728
+00:43:40,068 --> 00:43:41,349
+Mediate that discussion.
+
+729
+00:43:41,650 --> 00:43:49,300
+And when you come out of that discussion, we should have one list or aligned list, where we know Christmas, that Chris Serito agrees.
+
+730
+00:43:49,420 --> 00:43:50,762
+That is a victory.
+
+731
+00:43:50,742 --> 00:43:54,827
+I want to define what is the success of the thing.
+
+732
+00:43:54,847 --> 00:44:03,976
+We can just give this course and come out and we can be again talking about there are two lists or any of the problem, I'd say there is one list right now.
+
+733
+00:44:04,157 --> 00:44:07,121
+Because what does Brian Rada Sahib is going to go and do?
+
+734
+00:44:07,221 --> 00:44:10,664
+He'll have a separate conversation with Chris Sarito, he'll have a separate one.
+
+735
+00:44:10,945 --> 00:44:11,326
+No.
+
+736
+00:44:12,166 --> 00:44:13,608
+Now, Robert hits the road.
+
+737
+00:44:14,208 --> 00:44:16,692
+Why are we not catching a capability list to the vision?
+
+738
+00:44:17,132 --> 00:44:19,094
+Why are we not trying to get the vision right?
+
+739
+00:44:20,324 --> 00:44:22,387
+Thank you.
+
+740
+00:44:23,289 --> 00:44:23,771
+We're not.
+
+741
+00:44:24,271 --> 00:44:30,744
+The goal was to try and get as much as possible in one session, instead of having multiple sessions, but we don't have to.
+
+742
+00:44:31,025 --> 00:44:38,400
+Yeah, I don't understand that, but I don't think that we're ready to go and say which one of these things do you map up to if this stuff is still being debated and being reviewed?
+
+743
+00:44:40,000 --> 00:44:45,929
+But I thought there was already a line meant that's how it went into Leigh Nyx.
+
+744
+00:44:45,949 --> 00:44:50,496
+So I just want to remind Christmas, this is already aligned and accepted.
+
+745
+00:44:50,516 --> 00:44:52,298
+So why are you changing the structure?
+
+746
+00:44:52,780 --> 00:44:55,143
+I want a second objective to come up.
+
+747
+00:44:55,163 --> 00:44:57,085
+We have all the right people in the room.
+
+748
+00:44:57,166 --> 00:45:01,333
+Why are we hesitating to ask the right questions?
+
+749
+00:45:01,313 --> 00:45:03,217
+Because we're not a lingering problem.
+
+750
+00:45:03,317 --> 00:45:05,240
+Can we fix the lingering issue?
+
+751
+00:45:06,003 --> 00:45:09,809
+So you're trying to fix Chris Saruto's problem with the product model.
+
+752
+00:45:10,291 --> 00:45:15,481
+And by doing that, you're going to have an issue not, I mean, you need them to have a vision statement.
+
+753
+00:45:15,762 --> 00:45:18,648
+The success for the product models, they have the vision statement.
+
+754
+00:45:18,668 --> 00:45:19,068
+If
+
+755
+00:45:19,048 --> 00:45:23,916
+I'll get a beautiful vision statement.
+
+756
+00:45:24,177 --> 00:45:29,085
+How can a vision statement be drafted without knowing what capability they're supporting?
+
+757
+00:45:29,106 --> 00:45:30,608
+Because that's the purpose, right?
+
+758
+00:45:31,050 --> 00:45:35,978
+In reality, they should be able to say, I am going to support this
+
+759
+00:45:35,958 --> 00:45:38,702
+A, 2, and 3, and 4, I don't care which one.
+
+760
+00:45:38,862 --> 00:45:39,523
+Well, yes and no.
+
+761
+00:45:39,543 --> 00:45:41,085
+We've already made the decision.
+
+762
+00:45:41,264 --> 00:45:44,329
+If we're made the decision to go from the bottom up, it doesn't matter nearly as much.
+
+763
+00:45:44,510 --> 00:45:45,710
+They know what they're targeting.
+
+764
+00:45:46,271 --> 00:45:56,827
+If you're going to say that the vision statement is going to be done the right way, then we would have started with L1s and we would have gotten them to give us one that would have been used for L2s, it would have been used for L3s.
+
+765
+00:45:57,146 --> 00:46:03,635
+We're starting at L3s, so what we really have is the success is that they come out with a vision statement.
+
+766
+00:46:05,184 --> 00:46:11,670
+Sorry, I have to go, but you guys brainstorm it, but I need a template.
+
+767
+00:46:12,012 --> 00:46:14,333
+I need a format how we are going through.
+
+768
+00:46:14,853 --> 00:46:19,418
+I'm going to do some offline conversation.
+
+769
+00:46:19,518 --> 00:46:28,788
+I'm trying to bring Christmas and Christmas, set it up together, whether in that call or separate, let me let me get back to you how that goes.
+
+770
+00:46:28,807 --> 00:46:30,670
+So now I need to know
+
+771
+00:46:30,650 --> 00:46:35,094
+We have to forget which capability matrix there needs to be a key.
+
+772
+00:46:35,114 --> 00:46:39,880
+At least we all agree that a product should support a capability.
+
+773
+00:46:39,900 --> 00:46:44,606
+Wherever it is, however it is, they should support some R&D capability.
+
+774
+00:46:45,186 --> 00:46:51,413
+As long as they can articulate that in their own words, then we can match that capability in our taxonomy.
+
+775
+00:46:51,434 --> 00:46:57,179
+But they need to be able to say this product was some capability.
+
+776
+00:46:57,159 --> 00:47:05,463
+If that can be there in that vision template, that is what I am looking towards.
+
+777
+00:47:05,744 --> 00:47:08,130
+And then we will see how to map that.
+
+778
+00:47:08,150 --> 00:47:11,760
+But they need to say which business capable.
+
