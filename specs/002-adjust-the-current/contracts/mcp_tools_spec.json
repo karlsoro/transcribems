@@ -1,0 +1,561 @@
+{
+  "mcp_server": {
+    "name": "transcribems",
+    "version": "1.0.0",
+    "description": "MCP server for audio transcription using WhisperX with speaker diarization",
+    "tools": [
+      {
+        "name": "transcribe_audio",
+        "description": "Transcribe an audio file with speaker diarization and word-level timestamps",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "file_path": {
+              "type": "string",
+              "description": "Absolute path to the audio file to transcribe",
+              "maxLength": 1000
+            },
+            "settings": {
+              "type": "object",
+              "properties": {
+                "model_size": {
+                  "type": "string",
+                  "enum": ["tiny", "base", "small", "medium", "large"],
+                  "default": "base",
+                  "description": "WhisperX model size to use"
+                },
+                "language": {
+                  "type": "string",
+                  "pattern": "^[a-z]{2}$",
+                  "description": "ISO 639-1 language code, null for auto-detection"
+                },
+                "enable_diarization": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Enable speaker diarization"
+                },
+                "device": {
+                  "type": "string",
+                  "enum": ["cpu", "cuda", "mps"],
+                  "default": "cpu",
+                  "description": "Processing device"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": ["file_path"],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique job identifier for tracking"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["processing", "completed", "failed"],
+              "description": "Job status"
+            },
+            "result": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "Full transcribed text"
+                },
+                "confidence_score": {
+                  "type": "number",
+                  "minimum": 0.0,
+                  "maximum": 1.0,
+                  "description": "Overall transcription confidence"
+                },
+                "language": {
+                  "type": "string",
+                  "description": "Detected language code"
+                },
+                "processing_time": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Processing time in seconds"
+                },
+                "segments": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TranscriptionSegment"
+                  },
+                  "description": "Time-segmented transcription data"
+                },
+                "speakers": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Speaker"
+                  },
+                  "description": "Identified speakers (if diarization enabled)"
+                }
+              },
+              "required": ["text", "confidence_score", "language", "processing_time", "segments"]
+            },
+            "error": {
+              "type": "string",
+              "description": "Error message if status is failed"
+            }
+          },
+          "required": ["job_id", "status"]
+        }
+      },
+      {
+        "name": "get_transcription_progress",
+        "description": "Get the progress of a transcription job",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Job identifier from transcribe_audio"
+            }
+          },
+          "required": ["job_id"],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["pending", "processing", "completed", "failed", "cancelled"]
+            },
+            "progress": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "description": "Completion percentage"
+            },
+            "estimated_remaining": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Estimated remaining time in seconds"
+            },
+            "current_chunk": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "total_chunks": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "error_message": {
+              "type": "string",
+              "description": "Error message if status is failed"
+            }
+          },
+          "required": ["job_id", "status", "progress"]
+        }
+      },
+      {
+        "name": "list_transcription_history",
+        "description": "List recent transcription jobs and their results",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10,
+              "description": "Maximum number of results to return"
+            },
+            "status_filter": {
+              "type": "string",
+              "enum": ["pending", "processing", "completed", "failed", "cancelled"],
+              "description": "Filter by job status"
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "jobs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "job_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["pending", "processing", "completed", "failed", "cancelled"]
+                  },
+                  "started_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "completed_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "Audio duration in seconds"
+                  },
+                  "word_count": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": ["job_id", "file_path", "status", "started_at"]
+              }
+            },
+            "total_count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": ["jobs", "total_count"]
+        }
+      },
+      {
+        "name": "get_transcription_result",
+        "description": "Retrieve complete transcription result for a completed job",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Job identifier"
+            },
+            "format": {
+              "type": "string",
+              "enum": ["full", "text_only", "segments_only"],
+              "default": "full",
+              "description": "Result format detail level"
+            }
+          },
+          "required": ["job_id"],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["completed", "failed"]
+            },
+            "result": {
+              "$ref": "#/components/schemas/TranscriptionResult"
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": ["job_id", "status"]
+        }
+      },
+      {
+        "name": "batch_transcribe",
+        "description": "Transcribe multiple audio files in parallel",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "file_paths": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 1000
+              },
+              "minItems": 1,
+              "maxItems": 10,
+              "description": "Array of audio file paths to transcribe"
+            },
+            "settings": {
+              "$ref": "#/components/schemas/TranscriptionSettings"
+            }
+          },
+          "required": ["file_paths"],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "batch_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Batch operation identifier"
+            },
+            "jobs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "job_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["pending", "processing", "failed"]
+                  }
+                },
+                "required": ["job_id", "file_path", "status"]
+              }
+            },
+            "total_jobs": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": ["batch_id", "jobs", "total_jobs"]
+        }
+      },
+      {
+        "name": "cancel_transcription",
+        "description": "Cancel a running transcription job",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Job identifier to cancel"
+            }
+          },
+          "required": ["job_id"],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["cancelled", "completed", "failed"]
+            },
+            "message": {
+              "type": "string",
+              "description": "Cancellation status message"
+            }
+          },
+          "required": ["job_id", "status", "message"]
+        }
+      }
+    ]
+  },
+  "components": {
+    "schemas": {
+      "TranscriptionSettings": {
+        "type": "object",
+        "properties": {
+          "model_size": {
+            "type": "string",
+            "enum": ["tiny", "base", "small", "medium", "large"],
+            "default": "base"
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2}$"
+          },
+          "enable_diarization": {
+            "type": "boolean",
+            "default": true
+          },
+          "device": {
+            "type": "string",
+            "enum": ["cpu", "cuda", "mps"],
+            "default": "cpu"
+          },
+          "chunk_length": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 120,
+            "default": 30,
+            "description": "Audio chunk length in seconds"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TranscriptionResult": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Full transcribed text"
+          },
+          "confidence_score": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "language": {
+            "type": "string",
+            "description": "Detected/specified language code"
+          },
+          "processing_time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "word_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "segments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TranscriptionSegment"
+            }
+          },
+          "speakers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Speaker"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/TranscriptionMetadata"
+          }
+        },
+        "required": ["text", "confidence_score", "language", "processing_time", "segments"]
+      },
+      "TranscriptionSegment": {
+        "type": "object",
+        "properties": {
+          "segment_id": {
+            "type": "string"
+          },
+          "start_time": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "end_time": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "speaker_id": {
+            "type": "string",
+            "pattern": "^SPEAKER_\\d+$"
+          },
+          "words": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Word"
+            }
+          }
+        },
+        "required": ["segment_id", "start_time", "end_time", "text", "confidence"]
+      },
+      "Word": {
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_time": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "end_time": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "probability": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          }
+        },
+        "required": ["word", "start_time", "end_time", "confidence"]
+      },
+      "Speaker": {
+        "type": "object",
+        "properties": {
+          "speaker_id": {
+            "type": "string",
+            "pattern": "^SPEAKER_\\d+$"
+          },
+          "speaker_label": {
+            "type": "string"
+          },
+          "total_speech_time": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "segment_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          }
+        },
+        "required": ["speaker_id", "total_speech_time", "segment_count", "confidence"]
+      },
+      "TranscriptionMetadata": {
+        "type": "object",
+        "properties": {
+          "whisperx_version": {
+            "type": "string"
+          },
+          "model_path": {
+            "type": "string"
+          },
+          "device_used": {
+            "type": "string"
+          },
+          "memory_usage": {
+            "type": "number",
+            "minimum": 0
+          },
+          "chunks_processed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "diarization_enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": ["whisperx_version", "device_used", "chunks_processed", "diarization_enabled"]
+      }
+    }
+  }
+}

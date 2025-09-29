@@ -1,0 +1,47 @@
+{
+  "started_at": "2025-09-26T06:29:50.500803",
+  "tests_run": 10,
+  "tests_passed": 10,
+  "tests_failed": 0,
+  "test_details": [
+    {
+      "name": "Service Import Test",
+      "success": true,
+      "result": {
+        "success": true,
+        "message": "All services imported and instantiated successfully",
+        "services_tested": 5
+      },
+      "timestamp": "2025-09-26T06:29:50.581438"
+    },
+    {
+      "name": "MCP Tools Test",
+      "success": true,
+      "result": {
+        "success": true,
+        "message": "All MCP tools are properly callable",
+        "tools_tested": 6,
+        "tool_names": [
+          "transcribe_audio_tool",
+          "get_transcription_progress_tool",
+          "list_transcription_history_tool",
+          "get_transcription_result_tool",
+          "batch_transcribe_tool",
+          "cancel_transcription_tool"
+        ]
+      },
+      "timestamp": "2025-09-26T06:29:50.582362"
+    },
+    {
+      "name": "Audio File Validation Test",
+      "success": true,
+      "result": {
+        "success": true,
+        "message": "Validated 3 audio files",
+        "validated_files": [
+          {
+            "file": "multi_speaker.wav",
+            "duration": 10.0,
+            "sample_rate": 16000,
+            "channels": 1,
+            "state": 

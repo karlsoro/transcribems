@@ -1,0 +1,592 @@
+openapi: 3.0.3
+info:
+  title: WhisperX Audio Transcription API
+  description: |
+    Enterprise-grade audio transcription API with speaker identification using WhisperX.
+    Supports large files up to 5GB with GPU acceleration and comprehensive logging.
+  version: 1.0.0
+  contact:
+    name: TranscribeMS API Support
+    email: support@transcribems.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.transcribems.com/v1
+    description: Production server
+  - url: https://staging-api.transcribems.com/v1
+    description: Staging server
+  - url: http://localhost:8000/v1
+    description: Development server
+
+paths:
+  /transcriptions:
+    post:
+      summary: Submit audio file for transcription
+      description: |
+        Upload an audio file and submit it for transcription with speaker identification.
+        Supports files up to 5GB in WAV, MP3, M4A, and FLAC formats.
+      operationId: createTranscription
+      tags:
+        - Transcriptions
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - audio_file
+              properties:
+                audio_file:
+                  type: string
+                  format: binary
+                  description: Audio file to transcribe (max 5GB)
+                language:
+                  type: string
+                  pattern: '^[a-z]{2}$'
+                  description: Language code (e.g., 'en', 'es'). Auto-detected if not provided
+                  example: "en"
+                enable_diarization:
+                  type: boolean
+                  default: true
+                  description: Enable speaker identification
+                min_speakers:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+                  description: Minimum expected number of speakers
+                max_speakers:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+                  description: Maximum expected number of speakers
+                model_size:
+                  type: string
+                  enum: [base, large-v2, large-v3]
+                  default: large-v2
+                  description: WhisperX model size (affects accuracy vs speed)
+                debug_mode:
+                  type: boolean
+                  default: false
+                  description: Enable verbose logging for debugging
+            encoding:
+              audio_file:
+                contentType: audio/wav, audio/mpeg, audio/mp4, audio/flac
+      responses:
+        '202':
+          description: Transcription job submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptionJobResponse'
+              example:
+                job_id: "550e8400-e29b-41d4-a716-446655440000"
+                status: "queued"
+                estimated_completion: "2025-01-24T15:30:00Z"
+                progress_url: "/v1/transcriptions/550e8400-e29b-41d4-a716-446655440000"
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_file_format:
+                  value:
+                    error: "INVALID_FILE_FORMAT"
+                    message: "Unsupported audio format. Supported formats: WAV, MP3, M4A, FLAC"
+                    details:
+                      supported_formats: ["wav", "mp3", "m4a", "flac"]
+                file_too_large:
+                  value:
+                    error: "FILE_TOO_LARGE"
+                    message: "File size exceeds maximum limit of 5GB"
+                    details:
+                      max_size_bytes: 5368709120
+                      actual_size_bytes: 6000000000
+        '413':
+          description: Payload too large
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /transcriptions/{job_id}:
+    get:
+      summary: Get transcription job status and results
+      description: |
+        Retrieve the current status of a transcription job and its results if completed.
+      operationId: getTranscription
+      tags:
+        - Transcriptions
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: Unique transcription job identifier
+          schema:
+            type: string
+            format: uuid
+          example: "550e8400-e29b-41d4-a716-446655440000"
+      responses:
+        '200':
+          description: Transcription job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptionResponse'
+              examples:
+                completed_job:
+                  value:
+                    job_id: "550e8400-e29b-41d4-a716-446655440000"
+                    status: "completed"
+                    progress: 100
+                    created_at: "2025-01-24T14:30:00Z"
+                    completed_at: "2025-01-24T14:35:00Z"
+                    metadata:
+                      audio_duration_seconds: 300.0
+                      processing_time_seconds: 15.2
+                      language: "en"
+                      model_used: "large-v2"
+                      speakers_detected: 2
+                    result:
+                      speakers:
+                        - speaker_id: "Speaker 1"
+                          total_speech_duration: 180.5
+                          segment_count: 12
+                        - speaker_id: "Speaker 2"
+                          total_speech_duration: 119.5
+                          segment_count: 8
+                      segments:
+                        - start_time: 0.0
+                          end_time: 3.2
+                          speaker: "Speaker 1"
+                          text: "Welcome to our discussion today."
+                          confidence: 0.95
+                processing_job:
+                  value:
+                    job_id: "550e8400-e29b-41d4-a716-446655440001"
+                    status: "processing"
+                    progress: 65
+                    created_at: "2025-01-24T14:30:00Z"
+                    started_at: "2025-01-24T14:31:00Z"
+                    estimated_completion: "2025-01-24T14:40:00Z"
+                    metadata:
+                      audio_duration_seconds: 1800.0
+                      model_used: "large-v2"
+        '404':
+          description: Transcription job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "JOB_NOT_FOUND"
+                message: "Transcription job not found"
+                details:
+                  job_id: "550e8400-e29b-41d4-a716-446655440000"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      summary: Cancel transcription job
+      description: |
+        Cancel a queued or processing transcription job. Completed jobs cannot be cancelled.
+      operationId: cancelTranscription
+      tags:
+        - Transcriptions
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: Unique transcription job identifier
+          schema:
+            type: string
+            format: uuid
+          example: "550e8400-e29b-41d4-a716-446655440000"
+      responses:
+        '200':
+          description: Job cancelled successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                    format: uuid
+                  status:
+                    type: string
+                    enum: [cancelled]
+                  message:
+                    type: string
+              example:
+                job_id: "550e8400-e29b-41d4-a716-446655440000"
+                status: "cancelled"
+                message: "Transcription job cancelled successfully"
+        '400':
+          description: Job cannot be cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "CANNOT_CANCEL"
+                message: "Job cannot be cancelled (already completed)"
+        '404':
+          description: Transcription job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /transcriptions/{job_id}/progress:
+    get:
+      summary: Get real-time transcription progress
+      description: |
+        Server-Sent Events endpoint for real-time progress updates.
+      operationId: getTranscriptionProgress
+      tags:
+        - Transcriptions
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: Unique transcription job identifier
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Real-time progress events
+          content:
+            text/event-stream:
+              schema:
+                type: string
+              example: |
+                data: {"status": "processing", "progress": 25, "message": "Processing audio chunk 1/4"}
+
+                data: {"status": "processing", "progress": 50, "message": "Processing audio chunk 2/4"}
+
+                data: {"status": "processing", "progress": 75, "message": "Performing speaker diarization"}
+
+                data: {"status": "completed", "progress": 100, "message": "Transcription completed"}
+        '404':
+          description: Transcription job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Check API health and system status
+      operationId: healthCheck
+      tags:
+        - System
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [healthy, degraded]
+                  timestamp:
+                    type: string
+                    format: date-time
+                  version:
+                    type: string
+                  gpu_available:
+                    type: boolean
+                  queue_size:
+                    type: integer
+                  processing_jobs:
+                    type: integer
+              example:
+                status: "healthy"
+                timestamp: "2025-01-24T14:30:00Z"
+                version: "1.0.0"
+                gpu_available: true
+                queue_size: 3
+                processing_jobs: 1
+        '503':
+          description: System is unhealthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [unhealthy]
+                  timestamp:
+                    type: string
+                    format: date-time
+                  errors:
+                    type: array
+                    items:
+                      type: string
+
+components:
+  schemas:
+    TranscriptionJobResponse:
+      type: object
+      required:
+        - job_id
+        - status
+        - progress_url
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          description: Unique job identifier
+        status:
+          type: string
+          enum: [queued, processing, completed, failed, cancelled]
+          description: Current job status
+        estimated_completion:
+          type: string
+          format: date-time
+          description: Estimated completion time
+        progress_url:
+          type: string
+          format: uri
+          description: URL for real-time progress updates
+
+    TranscriptionResponse:
+      type: object
+      required:
+        - job_id
+        - status
+        - progress
+        - created_at
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          description: Unique job identifier
+        status:
+          type: string
+          enum: [queued, processing, completed, failed, cancelled]
+          description: Current job status
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Processing progress percentage
+        created_at:
+          type: string
+          format: date-time
+          description: Job creation timestamp
+        started_at:
+          type: string
+          format: date-time
+          description: Processing start timestamp
+        completed_at:
+          type: string
+          format: date-time
+          description: Processing completion timestamp
+        estimated_completion:
+          type: string
+          format: date-time
+          description: Estimated completion time (for processing jobs)
+        metadata:
+          $ref: '#/components/schemas/TranscriptionMetadata'
+        result:
+          $ref: '#/components/schemas/TranscriptionResult'
+        error:
+          $ref: '#/components/schemas/ProcessingError'
+
+    TranscriptionMetadata:
+      type: object
+      properties:
+        audio_duration_seconds:
+          type: number
+          format: float
+          description: Duration of audio file in seconds
+        processing_time_seconds:
+          type: number
+          format: float
+          description: Actual processing time
+        language:
+          type: string
+          description: Detected or specified language code
+        model_used:
+          type: string
+          enum: [base, large-v2, large-v3]
+          description: WhisperX model used for processing
+        speakers_detected:
+          type: integer
+          minimum: 0
+          description: Number of unique speakers identified
+
+    TranscriptionResult:
+      type: object
+      properties:
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeakerInfo'
+          description: Information about identified speakers
+        segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeechSegment'
+          description: Transcribed speech segments with timing
+
+    SpeakerInfo:
+      type: object
+      required:
+        - speaker_id
+        - total_speech_duration
+        - segment_count
+      properties:
+        speaker_id:
+          type: string
+          description: Speaker identifier (e.g., "Speaker 1", "Speaker 2")
+        total_speech_duration:
+          type: number
+          format: float
+          description: Total seconds of speech attributed to this speaker
+        segment_count:
+          type: integer
+          description: Number of speech segments for this speaker
+
+    SpeechSegment:
+      type: object
+      required:
+        - start_time
+        - end_time
+        - speaker
+        - text
+        - confidence
+      properties:
+        start_time:
+          type: number
+          format: float
+          description: Segment start time in seconds
+        end_time:
+          type: number
+          format: float
+          description: Segment end time in seconds
+        speaker:
+          type: string
+          description: Speaker identifier
+        text:
+          type: string
+          description: Transcribed text content
+        confidence:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Transcription confidence score
+
+    ProcessingError:
+      type: object
+      required:
+        - error_code
+        - message
+      properties:
+        error_code:
+          type: string
+          enum: [AUDIO_PROCESSING_ERROR, MODEL_LOADING_ERROR, GPU_OUT_OF_MEMORY, INVALID_AUDIO_FORMAT, PROCESSING_TIMEOUT]
+          description: Specific error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error context
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error context
+        timestamp:
+          type: string
+          format: date-time
+          description: Error occurrence timestamp
+
+    ValidationErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+        - validation_errors
+      properties:
+        error:
+          type: string
+          enum: [VALIDATION_ERROR]
+        message:
+          type: string
+        validation_errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+              value:
+                oneOf:
+                  - type: string
+                  - type: number
+                  - type: boolean
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+security:
+  - ApiKeyAuth: []
+
+tags:
+  - name: Transcriptions
+    description: Audio transcription operations
+  - name: System
+    description: System health and status

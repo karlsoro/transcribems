@@ -1,0 +1,10 @@
+{
+    "venvPath": ".",
+    "venv": "transcribems_env",
+    "pythonVersion": "3.12",
+    "ignore": [
+        "src/services/speaker_service.py"
+    ],
+    "reportMissingImports": false,
+    "reportMissingModuleSource": false
+}
