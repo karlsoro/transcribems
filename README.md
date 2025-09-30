@@ -327,23 +327,88 @@ result = await cli.transcribe_audio(
 ```
 TranscribeMS/
 ├── src/
+│   ├── mcp_server/
+│   │   ├── server.py                # MCP server
+│   │   └── fastmcp_server.py        # FastMCP implementation
 │   ├── services/
-│   │   └── simple_whisperx_cli.py    # Main service (GPU-enhanced)
-│   └── core/
-│       └── logging.py                # Logging utilities
-├── docs/                             # Documentation
-├── tests/                            # Test files
-├── test_data/                        # Sample audio files
-└── requirements.txt                  # Dependencies
+│   │   └── simple_whisperx_cli.py   # Main service (GPU-enhanced)
+│   ├── tools/                       # MCP tool implementations
+│   └── models/                      # Data models
+├── tests/                           # Test suite
+│   ├── integration/                 # Integration tests
+│   ├── validation/                  # Validation tests
+│   └── results/                     # Test results
+├── docs/                            # Documentation
+│   ├── guides/                      # Setup and integration guides
+│   └── INTEGRATION_EXAMPLES.md      # Code examples
+├── scripts/                         # Utility scripts
+│   ├── start_mcp_server.sh          # MCP server launcher
+│   └── test_mcp_connection.py       # Connection test
+├── test_data/                       # Sample audio files
+└── requirements.txt                 # Dependencies
 ```
+
+For detailed structure, see [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)
 
 ### Key Components
 
 - **SimpleWhisperXCLI**: Main transcription service with GPU acceleration
+- **MCP Server**: Model Context Protocol server for integrations
 - **Automatic Detection**: GPU/CPU detection and optimization
 - **Process Management**: Timeout protection and cleanup
 - **Performance Monitoring**: Real-time metrics collection
 - **Multi-format Output**: JSON, TXT, SRT, VTT, TSV generation
+
+## 🔌 MCP Server Integration
+
+TranscribeMS provides a Model Context Protocol (MCP) server for easy integration:
+
+```bash
+# Start MCP server
+./scripts/start_mcp_server.sh
+
+# Test connection
+python scripts/test_mcp_connection.py
+```
+
+### Quick Integration
+
+**Claude Desktop:**
+```json
+{
+  "mcpServers": {
+    "transcribems": {
+      "command": "bash",
+      "args": ["/path/to/TranscribeMS/scripts/start_mcp_server.sh"],
+      "cwd": "/path/to/TranscribeMS"
+    }
+  }
+}
+```
+
+**Python:**
+```python
+from mcp import ClientSession, StdioServerParameters
+from mcp.client.stdio import stdio_client
+
+server_params = StdioServerParameters(
+    command="bash",
+    args=["/path/to/TranscribeMS/scripts/start_mcp_server.sh"],
+    cwd="/path/to/TranscribeMS"
+)
+
+async with stdio_client(server_params) as (read, write):
+    async with ClientSession(read, write) as session:
+        await session.initialize()
+        result = await session.call_tool("transcribe_audio", {...})
+```
+
+### Documentation
+
+- **Connection Guide**: [docs/guides/MCP_CONNECTION_GUIDE.md](docs/guides/MCP_CONNECTION_GUIDE.md)
+- **Quick Reference**: [docs/guides/MCP_QUICK_REFERENCE.md](docs/guides/MCP_QUICK_REFERENCE.md)
+- **Integration Examples**: [docs/INTEGRATION_EXAMPLES.md](docs/INTEGRATION_EXAMPLES.md)
+- **Server Status**: [docs/guides/MCP_SERVER_READY.md](docs/guides/MCP_SERVER_READY.md)
 
 ## 🤝 Contributing
 

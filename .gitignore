@@ -63,6 +63,15 @@ transcriptions/
 logs/
 *.log
 
+# Test outputs and results
+tests/outputs/
+tests/logs/
+
+# Transcript output formats
+*.vtt
+*.srt
+*.tsv
+
 # Temporary files
 tmp/
 temp/
