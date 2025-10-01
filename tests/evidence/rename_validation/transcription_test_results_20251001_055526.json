@@ -1,0 +1,24 @@
+{
+  "timestamp": "20251001_055526",
+  "tests": [
+    {
+      "name": "Imports",
+      "passed": false
+    },
+    {
+      "name": "MCP Tools",
+      "passed": false
+    },
+    {
+      "name": "Configuration",
+      "passed": false
+    },
+    {
+      "name": "Transcription Service",
+      "passed": false
+    }
+  ],
+  "total": 4,
+  "passed": 0,
+  "failed": 4
+}

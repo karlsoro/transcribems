@@ -15,8 +15,8 @@ def fix_lightning_checkpoint():
     print("🔧 FIXING PYTORCH LIGHTNING CHECKPOINT")
     print("=" * 50)
 
-    checkpoint_path = Path("transcribems_env/lib/python3.12/site-packages/whisperx/assets/pytorch_model.bin")
-    backup_path = Path("transcribems_env/lib/python3.12/site-packages/whisperx/assets/pytorch_model.bak")
+    checkpoint_path = Path("transcribe_mcp_env/lib/python3.12/site-packages/whisperx/assets/pytorch_model.bin")
+    backup_path = Path("transcribe_mcp_env/lib/python3.12/site-packages/whisperx/assets/pytorch_model.bak")
 
     if not checkpoint_path.exists():
         print(f"❌ Checkpoint file not found: {checkpoint_path}")
@@ -99,7 +99,7 @@ def test_checkpoint_loading():
     """Test if the checkpoint can be loaded without errors."""
     print("\n🧪 Testing checkpoint loading...")
 
-    checkpoint_path = Path("transcribems_env/lib/python3.12/site-packages/whisperx/assets/pytorch_model.bin")
+    checkpoint_path = Path("transcribe_mcp_env/lib/python3.12/site-packages/whisperx/assets/pytorch_model.bin")
 
     try:
         # Test loading the checkpoint

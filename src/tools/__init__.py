@@ -1,4 +1,4 @@
-"""TranscribeMS MCP Tools package.
+"""TranscribeMCP MCP Tools package.
 
 This package contains all MCP tool implementations for audio transcription
 functionality including transcription, progress tracking, history, and results.

@@ -1,5 +1,5 @@
 #!/bin/bash
-# TranscribeMS MCP Server Startup Script
+# TranscribeMCP MCP Server Startup Script
 
 set -e
 
@@ -14,20 +14,20 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}================================================${NC}"
-echo -e "${BLUE}  TranscribeMS MCP Server${NC}"
+echo -e "${BLUE}  TranscribeMCP MCP Server${NC}"
 echo -e "${BLUE}================================================${NC}"
 echo ""
 
 # Check if virtual environment exists
-if [ ! -d "$PROJECT_ROOT/transcribems_env" ]; then
-    echo -e "${YELLOW}Warning: Virtual environment not found at $PROJECT_ROOT/transcribems_env${NC}"
-    echo "Please create it first with: python -m venv transcribems_env"
+if [ ! -d "$PROJECT_ROOT/transcribe_mcp_env" ]; then
+    echo -e "${YELLOW}Warning: Virtual environment not found at $PROJECT_ROOT/transcribe_mcp_env${NC}"
+    echo "Please create it first with: python -m venv transcribe_mcp_env"
     exit 1
 fi
 
 # Activate virtual environment
 echo -e "${GREEN}✓${NC} Activating virtual environment..."
-source "$PROJECT_ROOT/transcribems_env/bin/activate"
+source "$PROJECT_ROOT/transcribe_mcp_env/bin/activate"
 
 # Change to project root
 cd "$PROJECT_ROOT"

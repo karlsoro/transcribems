@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple GPU validation script for TranscribeMS
+Simple GPU validation script for TranscribeMCP
 Run this script to test GPU functionality when you have GPU hardware available.
 """
 
@@ -222,7 +222,7 @@ def test_dependencies():
 
 async def main():
     """Run all GPU validation tests."""
-    print("🚀 TranscribeMS GPU Validation Suite")
+    print("🚀 TranscribeMCP GPU Validation Suite")
     print("=" * 60)
     print("This script tests GPU functionality when hardware is available")
     print("It's normal for some tests to skip on CPU-only systems")

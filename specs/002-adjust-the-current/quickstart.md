@@ -1,10 +1,10 @@
-# Quickstart Guide: TranscribeMS MCP Server
+# Quickstart Guide: TranscribeMCP MCP Server
 
 **Date**: 2025-09-25
-**Feature**: Convert TranscribeMS API to MCP Server
+**Feature**: Convert TranscribeMCP API to MCP Server
 **Branch**: 002-adjust-the-current
 
-This guide provides step-by-step integration scenarios for using TranscribeMS as an MCP server with Claude Code.
+This guide provides step-by-step integration scenarios for using TranscribeMCP as an MCP server with Claude Code.
 
 ## Prerequisites
 
@@ -16,21 +16,21 @@ This guide provides step-by-step integration scenarios for using TranscribeMS as
 
 ### Installation Steps
 
-1. **Install TranscribeMS MCP Server**
+1. **Install TranscribeMCP MCP Server**
    ```bash
-   pip install transcribems-mcp
+   pip install transcribe_mcp-mcp
    ```
 
 2. **Configure Claude Code MCP Integration**
    ```bash
    # Add MCP server to Claude Code configuration
-   claude mcp add transcribems transcribems-mcp serve
+   claude mcp add transcribe_mcp transcribe_mcp-mcp serve
    ```
 
 3. **Verify Installation**
    ```bash
    # Check MCP server status
-   claude mcp status transcribems
+   claude mcp status transcribe_mcp
    ```
 
 ## Integration Scenarios
@@ -315,18 +315,18 @@ This guide provides step-by-step integration scenarios for using TranscribeMS as
 
 Check MCP server logs:
 ```bash
-claude mcp logs transcribems
+claude mcp logs transcribe_mcp
 ```
 
 Restart MCP server:
 ```bash
-claude mcp restart transcribems
+claude mcp restart transcribe_mcp
 ```
 
 Update to latest version:
 ```bash
-pip install --upgrade transcribems-mcp
-claude mcp restart transcribems
+pip install --upgrade transcribe_mcp-mcp
+claude mcp restart transcribe_mcp
 ```
 
 ## Next Steps
@@ -339,4 +339,4 @@ After validating these integration scenarios:
 4. **User Experience**: Gather feedback on Claude Code integration workflow
 5. **Documentation**: Create user-facing documentation and examples
 
-This quickstart guide serves as the acceptance criteria for the TranscribeMS MCP server implementation.
+This quickstart guide serves as the acceptance criteria for the TranscribeMCP MCP server implementation.

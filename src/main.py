@@ -1,5 +1,5 @@
 """
-FastAPI main application for TranscribeMS.
+FastAPI main application for TranscribeMCP.
 """
 
 import sys
@@ -35,7 +35,7 @@ async def lifespan(app: FastAPI):
     Application lifespan context manager for startup/shutdown events.
     """
     # Startup
-    logger.info("TranscribeMS API starting up", extra={
+    logger.info("TranscribeMCP API starting up", extra={
         "version": "1.0.0",
         "debug": settings.DEBUG,
         "environment": "production" if settings.is_production() else "development"
@@ -78,12 +78,12 @@ async def lifespan(app: FastAPI):
             "message": "Some services may not be fully available"
         })
 
-    logger.info("TranscribeMS API startup completed")
+    logger.info("TranscribeMCP API startup completed")
 
     yield
 
     # Shutdown
-    logger.info("TranscribeMS API shutting down")
+    logger.info("TranscribeMCP API shutting down")
 
     # Cleanup if needed
     try:
@@ -92,12 +92,12 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error("Error during shutdown cleanup", extra={"error": str(e)})
 
-    logger.info("TranscribeMS API shutdown completed")
+    logger.info("TranscribeMCP API shutdown completed")
 
 
 # Create FastAPI application
 app = FastAPI(
-    title="TranscribeMS API",
+    title="TranscribeMCP API",
     description="WhisperX Audio Transcription API with Speaker Identification",
     version="1.0.0",
     lifespan=lifespan,
@@ -282,7 +282,7 @@ async def health_check():
 async def root():
     """Root endpoint with API information."""
     return {
-        "message": "TranscribeMS API",
+        "message": "TranscribeMCP API",
         "description": "WhisperX Audio Transcription API with Speaker Identification",
         "version": "1.0.0",
         "docs": "/docs",

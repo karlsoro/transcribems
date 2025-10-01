@@ -1,12 +1,12 @@
-# TranscribeMS MCP Server Deployment Guide
+# TranscribeMCP MCP Server Deployment Guide
 
 ## Overview
 
-This guide provides comprehensive instructions for deploying TranscribeMS as a Model Context Protocol (MCP) server with GPU acceleration support.
+This guide provides comprehensive instructions for deploying TranscribeMCP as a Model Context Protocol (MCP) server with GPU acceleration support.
 
 ## 🚀 **GPU-Enhanced MCP Features**
 
-TranscribeMS MCP Server now includes:
+TranscribeMCP MCP Server now includes:
 - **GPU Acceleration**: 7x faster processing with CUDA
 - **Automatic Device Detection**: Intelligent GPU/CPU fallback
 - **Performance Metrics**: Real-time processing statistics
@@ -35,7 +35,7 @@ TranscribeMS MCP Server now includes:
 # Core MCP dependencies
 pip install mcp
 
-# GPU-enhanced TranscribeMS with dependencies
+# GPU-enhanced TranscribeMCP with dependencies
 # (See installation section below)
 ```
 
@@ -46,12 +46,12 @@ pip install mcp
 ```bash
 # Clone repository
 git clone <repository-url>
-cd TranscribeMS
+cd TranscribeMCP
 
 # Create virtual environment
-python -m venv transcribems_env
-source transcribems_env/bin/activate  # Linux/Mac
-# transcribems_env\Scripts\activate  # Windows
+python -m venv transcribe_mcp_env
+source transcribe_mcp_env/bin/activate  # Linux/Mac
+# transcribe_mcp_env\Scripts\activate  # Windows
 ```
 
 ### 2. Install GPU-Enhanced Dependencies
@@ -87,7 +87,7 @@ python test_service_validation.py
 ## 🗂️ Project Structure
 
 ```
-TranscribeMS/
+TranscribeMCP/
 ├── src/
 │   ├── mcp_server/
 │   │   └── server.py                 # Main MCP server
@@ -115,7 +115,7 @@ TranscribeMS/
 
 ```bash
 # Activate environment
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 
 # Start MCP server
 python -m src.mcp_server.server
@@ -128,24 +128,24 @@ python -m src.mcp_server.server
 pip install -e .
 
 # Start via MCP
-mcp start transcribems
+mcp start transcribe_mcp
 ```
 
 #### Method 3: Background Service
 
 ```bash
 # Create systemd service (Linux)
-sudo tee /etc/systemd/system/transcribems-mcp.service << EOF
+sudo tee /etc/systemd/system/transcribe_mcp-mcp.service << EOF
 [Unit]
-Description=TranscribeMS MCP Server
+Description=TranscribeMCP MCP Server
 After=network.target
 
 [Service]
 Type=simple
-User=transcribems
-WorkingDirectory=/path/to/TranscribeMS
-Environment=PATH=/path/to/TranscribeMS/transcribems_env/bin
-ExecStart=/path/to/TranscribeMS/transcribems_env/bin/python -m src.mcp_server.server
+User=transcribe_mcp
+WorkingDirectory=/path/to/TranscribeMCP
+Environment=PATH=/path/to/TranscribeMCP/transcribe_mcp_env/bin
+ExecStart=/path/to/TranscribeMCP/transcribe_mcp_env/bin/python -m src.mcp_server.server
 Restart=always
 RestartSec=10
 
@@ -154,8 +154,8 @@ WantedBy=multi-user.target
 EOF
 
 # Enable and start service
-sudo systemctl enable transcribems-mcp
-sudo systemctl start transcribems-mcp
+sudo systemctl enable transcribe_mcp-mcp
+sudo systemctl start transcribe_mcp-mcp
 ```
 
 ### 2. MCP Client Configuration
@@ -167,12 +167,12 @@ Add to Claude Desktop settings:
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["-m", "src.mcp_server.server"],
-      "cwd": "/path/to/TranscribeMS",
+      "cwd": "/path/to/TranscribeMCP",
       "env": {
-        "VIRTUAL_ENV": "/path/to/TranscribeMS/transcribems_env"
+        "VIRTUAL_ENV": "/path/to/TranscribeMCP/transcribe_mcp_env"
       }
     }
   }
@@ -185,7 +185,7 @@ Add to Claude Desktop settings:
 import asyncio
 from mcp import Client
 
-async def connect_to_transcribems():
+async def connect_to_transcribe_mcp():
     client = Client()
     await client.connect("stdio", command=["python", "-m", "src.mcp_server.server"])
 
@@ -196,7 +196,7 @@ async def connect_to_transcribems():
     return client
 
 # Use the client
-client = asyncio.run(connect_to_transcribems())
+client = asyncio.run(connect_to_transcribe_mcp())
 ```
 
 ## 🛠️ MCP Tools Reference
@@ -307,12 +307,12 @@ export CUDA_VISIBLE_DEVICES=0
 export OMP_NUM_THREADS=8
 
 # Logging
-export TRANSCRIBEMS_LOG_LEVEL=INFO
-export TRANSCRIBEMS_LOG_FILE=/var/log/transcribems.log
+export TRANSCRIBE_MCP_LOG_LEVEL=INFO
+export TRANSCRIBE_MCP_LOG_FILE=/var/log/transcribe_mcp.log
 
 # Storage
-export TRANSCRIBEMS_DATA_DIR=/var/lib/transcribems
-export TRANSCRIBEMS_TEMP_DIR=/tmp/transcribems
+export TRANSCRIBE_MCP_DATA_DIR=/var/lib/transcribe_mcp
+export TRANSCRIBE_MCP_TEMP_DIR=/tmp/transcribe_mcp
 ```
 
 ### Configuration Files
@@ -321,7 +321,7 @@ export TRANSCRIBEMS_TEMP_DIR=/tmp/transcribems
 
 ```yaml
 server:
-  name: transcribems
+  name: transcribe_mcp
   version: 1.0.0
   bind_address: 0.0.0.0
   port: 8080
@@ -335,7 +335,7 @@ gpu:
 models:
   default: base
   available: [tiny, base, small, medium, large, large-v2]
-  cache_dir: /var/cache/transcribems/models
+  cache_dir: /var/cache/transcribe_mcp/models
 
 processing:
   max_concurrent_jobs: 3
@@ -345,7 +345,7 @@ processing:
 logging:
   level: INFO
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-  file: /var/log/transcribems.log
+  file: /var/log/transcribe_mcp.log
 ```
 
 ## 🧪 Testing MCP Deployment
@@ -393,10 +393,10 @@ python test_mcp_load.py
 
 ```bash
 # Application logs
-tail -f /var/log/transcribems.log
+tail -f /var/log/transcribe_mcp.log
 
 # System service logs (if using systemd)
-journalctl -u transcribems-mcp -f
+journalctl -u transcribe_mcp-mcp -f
 
 # GPU monitoring
 watch -n 1 nvidia-smi
@@ -435,7 +435,7 @@ print(adapter.get_system_info())
 ALLOWED_PATHS = [
     "/var/uploads/audio/",
     "/home/user/audio/",
-    "/tmp/transcribems/"
+    "/tmp/transcribe_mcp/"
 ]
 
 # Validate file paths in tools
@@ -488,16 +488,16 @@ CMD ["python", "-m", "src.mcp_server.server"]
 ```yaml
 version: '3.8'
 services:
-  transcribems-mcp:
+  transcribe_mcp-mcp:
     build: .
     ports:
       - "8080:8080"
     volumes:
-      - ./data:/var/lib/transcribems
+      - ./data:/var/lib/transcribe_mcp
       - ./logs:/var/log
     environment:
       - CUDA_VISIBLE_DEVICES=0
-      - TRANSCRIBEMS_LOG_LEVEL=INFO
+      - TRANSCRIBE_MCP_LOG_LEVEL=INFO
     deploy:
       resources:
         reservations:
@@ -513,20 +513,20 @@ services:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: transcribems-mcp
+  name: transcribe_mcp-mcp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: transcribems-mcp
+      app: transcribe_mcp-mcp
   template:
     metadata:
       labels:
-        app: transcribems-mcp
+        app: transcribe_mcp-mcp
     spec:
       containers:
-      - name: transcribems
-        image: transcribems:latest
+      - name: transcribe_mcp
+        image: transcribe_mcp:latest
         ports:
         - containerPort: 8080
         resources:
@@ -570,10 +570,10 @@ python -m src.mcp_server.server
 
 ```bash
 # Reduce batch size for lower VRAM
-export TRANSCRIBEMS_BATCH_SIZE=8
+export TRANSCRIBE_MCP_BATCH_SIZE=8
 
 # Use smaller model
-export TRANSCRIBEMS_DEFAULT_MODEL=medium
+export TRANSCRIBE_MCP_DEFAULT_MODEL=medium
 ```
 
 #### 4. Performance Issues
@@ -586,7 +586,7 @@ nvidia-smi
 htop
 
 # Check logs for bottlenecks
-tail -f /var/log/transcribems.log
+tail -f /var/log/transcribe_mcp.log
 ```
 
 ## 📈 Performance Optimization
@@ -623,12 +623,12 @@ class TranscriptionPlatform:
     def __init__(self):
         self.mcp_client = None
 
-    async def connect_to_transcribems(self):
+    async def connect_to_transcribe_mcp(self):
         self.mcp_client = Client()
         await self.mcp_client.connect(
             "stdio",
             command=["python", "-m", "src.mcp_server.server"],
-            cwd="/path/to/TranscribeMS"
+            cwd="/path/to/TranscribeMCP"
         )
 
     async def transcribe_file(self, file_path):
@@ -687,4 +687,4 @@ For deployment issues:
 
 ---
 
-**TranscribeMS MCP Server** is now production-ready with GPU acceleration, providing 7x performance improvement for audio transcription workloads. 🎵➡️📝⚡
+**TranscribeMCP MCP Server** is now production-ready with GPU acceleration, providing 7x performance improvement for audio transcription workloads. 🎵➡️📝⚡

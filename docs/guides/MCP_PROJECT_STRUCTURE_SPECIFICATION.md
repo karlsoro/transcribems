@@ -5,7 +5,7 @@
 This document defines the standard folder structure for Model Context Protocol (MCP) projects. This specification ensures consistency, maintainability, and proper organization across all MCP implementations.
 
 **Version**: 1.0.0
-**Based on**: TranscribeMS MCP Server Implementation
+**Based on**: TranscribeMCP MCP Server Implementation
 **Compliance**: Production-ready, validation-system compatible
 
 ## 📁 Standard MCP Project Structure

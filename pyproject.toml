@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "transcribems"
+name = "transcribe_mcp"
 version = "1.0.0"
 description = "WhisperX Audio Transcription MCP Server with Speaker Identification"
 authors = [
-    {name = "TranscribeMS Team", email = "support@transcribems.com"},
+    {name = "Transcribe MCP Team", email = "support@transcribe-mcp.com"},
 ]
 readme = "README.md"
 license = {text = "MIT"}
@@ -86,8 +86,7 @@ dev = [
 
 gpu = [
     # GPU-specific PyTorch (CUDA 12.1)
-    "torch>=2.1.0+cu121",
-    "torchaudio>=2.1.0+cu121",
+    # Note: Install with: pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
 ]
 
 docker = [
@@ -96,13 +95,13 @@ docker = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/transcribems/transcribems"
-Repository = "https://github.com/transcribems/transcribems.git"
-Issues = "https://github.com/transcribems/transcribems/issues"
-Documentation = "https://docs.transcribems.com"
+Homepage = "https://github.com/karlsoro/transcribe_mcp"
+Repository = "https://github.com/karlsoro/transcribe_mcp.git"
+Issues = "https://github.com/karlsoro/transcribe_mcp/issues"
+Documentation = "https://docs.transcribe-mcp.com"
 
 [project.scripts]
-transcribems-mcp = "src.mcp_server.server:main"
+transcribe-mcp = "src.mcp_server.server:main"
 
 [tool.setuptools.packages.find]
 where = ["."]

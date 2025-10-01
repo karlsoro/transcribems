@@ -1,8 +1,8 @@
-# Performance Benchmarks - TranscribeMS GPU Acceleration
+# Performance Benchmarks - TranscribeMCP GPU Acceleration
 
 ## Executive Summary
 
-GPU acceleration provides **6-7x performance improvement** over CPU-only processing, making TranscribeMS suitable for production workloads with large audio files.
+GPU acceleration provides **6-7x performance improvement** over CPU-only processing, making TranscribeMCP suitable for production workloads with large audio files.
 
 ## Test Environment
 
@@ -267,7 +267,7 @@ For processing >10GB audio monthly:
 
 ## Conclusion
 
-GPU acceleration transforms TranscribeMS from a development tool to a production-ready transcription service:
+GPU acceleration transforms TranscribeMCP from a development tool to a production-ready transcription service:
 
 - **7x performance improvement** over CPU
 - **Production-scale processing** of large files

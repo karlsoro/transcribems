@@ -1,8 +1,8 @@
-# TranscribeMS Platform Integration Validation
+# TranscribeMCP Platform Integration Validation
 
 ## 🎯 Integration Status: VALIDATED ✅
 
-The TranscribeMS MCP server has been successfully prepared and validated for platform consumption. All requirements have been met for production deployment.
+The TranscribeMCP MCP server has been successfully prepared and validated for platform consumption. All requirements have been met for production deployment.
 
 ## 📋 Validation Summary
 
@@ -48,8 +48,8 @@ WhisperX + GPU Acceleration
 | Method | Use Case | Command |
 |--------|----------|---------|
 | **Direct Python** | Development/Testing | `python -m src.mcp_server.fastmcp_server` |
-| **Systemd Service** | Production Server | `systemctl start transcribems-mcp` |
-| **Docker Container** | Cloud/Containerized | `docker run transcribems-mcp` |
+| **Systemd Service** | Production Server | `systemctl start transcribe_mcp-mcp` |
+| **Docker Container** | Cloud/Containerized | `docker run transcribe_mcp-mcp` |
 | **Kubernetes** | Enterprise/Scale | `kubectl apply -f k8s/` |
 
 ### 2. Platform Integration Patterns
@@ -58,10 +58,10 @@ WhisperX + GPU Acceleration
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["-m", "src.mcp_server.fastmcp_server"],
-      "cwd": "/path/to/TranscribeMS"
+      "cwd": "/path/to/TranscribeMCP"
     }
   }
 }
@@ -149,9 +149,9 @@ async with stdio_client("python", ["-m", "src.mcp_server.fastmcp_server"]) as se
 ```bash
 # Environment Variables Set
 CUDA_VISIBLE_DEVICES=0
-TRANSCRIBEMS_LOG_LEVEL=INFO
-TRANSCRIBEMS_MAX_CONCURRENT_JOBS=3
-TRANSCRIBEMS_DATA_DIR=/var/lib/transcribems
+TRANSCRIBE_MCP_LOG_LEVEL=INFO
+TRANSCRIBE_MCP_MAX_CONCURRENT_JOBS=3
+TRANSCRIBE_MCP_DATA_DIR=/var/lib/transcribe_mcp
 ```
 
 ## 🧪 Integration Test Results
@@ -160,7 +160,7 @@ TRANSCRIBEMS_DATA_DIR=/var/lib/transcribems
 ```
 📋 Running: Server Startup
 ✅ Server imported successfully: FastMCP
-✅ Server name: transcribems
+✅ Server name: transcribe_mcp
 ✅ Server Startup: PASSED
 ```
 
@@ -197,7 +197,7 @@ Complete MCP tools specification available at:
 
 ### ✅ Ready for Integration
 
-The TranscribeMS MCP server is **production-ready** and validated for platform consumption with:
+The TranscribeMCP MCP server is **production-ready** and validated for platform consumption with:
 
 **Immediate Benefits:**
 - 7x faster audio transcription with GPU acceleration
@@ -237,7 +237,7 @@ The TranscribeMS MCP server is **production-ready** and validated for platform c
 
 ## 🏆 Final Status: DEPLOYMENT READY
 
-✅ **TranscribeMS MCP Integration VALIDATED**
+✅ **TranscribeMCP MCP Integration VALIDATED**
 
 The system has been successfully enhanced with GPU acceleration, integrated with the MCP protocol, thoroughly tested, and documented for production deployment. The platform team can proceed with confidence for production deployment and integration.
 

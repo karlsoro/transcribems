@@ -2,7 +2,7 @@
 # Implementation Plan: WhisperX Audio Transcription API
 
 **Branch**: `001-api-transcribe` | **Date**: 2025-01-24 | **Spec**: [spec.md](./spec.md)
-**Input**: Feature specification from `/home/karlsoro/Projects/TranscribeMS/specs/001-api-transcribe/spec.md`
+**Input**: Feature specification from `/home/karlsoro/Projects/TranscribeMCP/specs/001-api-transcribe/spec.md`
 
 ## Execution Flow (/plan command scope)
 ```

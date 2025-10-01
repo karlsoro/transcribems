@@ -2,7 +2,7 @@
 """
 MCP Integration Test Script
 
-Tests the TranscribeMS MCP server functionality including:
+Tests the TranscribeMCP MCP server functionality including:
 - Server startup and tool listing
 - GPU detection and system info
 - Basic transcription workflow simulation
@@ -90,7 +90,7 @@ async def test_server_startup():
 async def main():
     """Run all MCP integration tests."""
     print("=" * 60)
-    print("🧪 TranscribeMS MCP Integration Tests")
+    print("🧪 TranscribeMCP MCP Integration Tests")
     print("=" * 60)
 
     tests = [

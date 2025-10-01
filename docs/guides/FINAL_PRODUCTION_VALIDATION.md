@@ -1,4 +1,4 @@
-# TranscribeMS - FINAL PRODUCTION VALIDATION
+# TranscribeMCP - FINAL PRODUCTION VALIDATION
 
 **Date**: September 27, 2025
 **Status**: ✅ **PRODUCTION READY - VALIDATED**
@@ -8,7 +8,7 @@
 
 ## 🎯 EXECUTIVE SUMMARY
 
-**TranscribeMS is NOW PRODUCTION READY** after fixing the critical speaker identification integration issue. The system has been validated end-to-end with real audio processing and complete speaker diarization.
+**TranscribeMCP is NOW PRODUCTION READY** after fixing the critical speaker identification integration issue. The system has been validated end-to-end with real audio processing and complete speaker diarization.
 
 ### ✅ ISSUE RESOLUTION COMPLETED
 
@@ -129,10 +129,10 @@ python src/mcp_server/server.py
 # Claude Desktop config
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["src/mcp_server/server.py"],
-      "cwd": "/path/to/TranscribeMS"
+      "cwd": "/path/to/TranscribeMCP"
     }
   }
 }

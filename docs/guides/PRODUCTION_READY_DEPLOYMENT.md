@@ -1,4 +1,4 @@
-# TranscribeMS - PRODUCTION READY FOR DEPLOYMENT
+# TranscribeMCP - PRODUCTION READY FOR DEPLOYMENT
 
 ## 🎯 PRODUCTION VALIDATION SUMMARY
 
@@ -94,10 +94,10 @@ python src/mcp_server/server.py
 # Add to claude_desktop_config.json:
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["src/mcp_server/server.py"],
-      "cwd": "/path/to/TranscribeMS"
+      "cwd": "/path/to/TranscribeMCP"
     }
   }
 }
@@ -214,4 +214,4 @@ result = await transcribe_audio_tool({
 
 ---
 
-*This document certifies that TranscribeMS has undergone comprehensive production validation and is ready for deployment.*
+*This document certifies that TranscribeMCP has undergone comprehensive production validation and is ready for deployment.*

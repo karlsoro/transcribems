@@ -1,5 +1,5 @@
 """
-Configuration settings for TranscribeMS application.
+Configuration settings for TranscribeMCP application.
 """
 
 import os

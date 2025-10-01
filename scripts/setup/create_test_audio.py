@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create test audio files for TranscribeMS integration testing.
+"""Create test audio files for TranscribeMCP integration testing.
 
 This script generates synthetic audio files with known content
 for testing the transcription system end-to-end.
@@ -106,7 +106,7 @@ def create_test_audio_files():
     # Create metadata file
     metadata = {
         "test_files": [],
-        "created_by": "TranscribeMS test audio generator",
+        "created_by": "TranscribeMCP test audio generator",
         "sample_rate": sample_rate,
         "format": "WAV",
         "notes": "Synthetic audio files for testing transcription system"

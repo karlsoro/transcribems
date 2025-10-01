@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Performance benchmarking suite for TranscribeMS MCP server.
+"""Performance benchmarking suite for TranscribeMCP MCP server.
 
 This benchmark measures system performance across different scenarios
 and provides detailed performance analysis for production planning.
@@ -16,8 +16,8 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class TranscribeMSBenchmark:
-    """Comprehensive performance benchmarking for TranscribeMS."""
+class TranscribeMCPBenchmark:
+    """Comprehensive performance benchmarking for TranscribeMCP."""
 
     def __init__(self):
         """Initialize benchmark suite."""
@@ -30,7 +30,7 @@ class TranscribeMSBenchmark:
 
     async def run_benchmarks(self):
         """Run all performance benchmarks."""
-        logger.info("🚀 Starting TranscribeMS Performance Benchmark Suite")
+        logger.info("🚀 Starting TranscribeMCP Performance Benchmark Suite")
         logger.info("=" * 60)
 
         benchmarks = [
@@ -503,7 +503,7 @@ class TranscribeMSBenchmark:
 async def main():
     """Run the performance benchmark suite."""
     try:
-        benchmark = TranscribeMSBenchmark()
+        benchmark = TranscribeMCPBenchmark()
         await benchmark.run_benchmarks()
         return 0
 

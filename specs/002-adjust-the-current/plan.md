@@ -1,8 +1,8 @@
 
-# Implementation Plan: Convert TranscribeMS API to MCP Server
+# Implementation Plan: Convert TranscribeMCP API to MCP Server
 
 **Branch**: `002-adjust-the-current` | **Date**: 2025-09-25 | **Spec**: [spec.md](./spec.md)
-**Input**: Feature specification from `/home/karlsoro/Projects/TranscribeMS/specs/002-adjust-the-current/spec.md`
+**Input**: Feature specification from `/home/karlsoro/Projects/TranscribeMCP/specs/002-adjust-the-current/spec.md`
 
 ## Execution Flow (/plan command scope)
 ```
@@ -31,7 +31,7 @@
 - Phase 3-4: Implementation execution (manual or via tools)
 
 ## Summary
-Convert TranscribeMS from a traditional API-based transcription service to a Model Context Protocol (MCP) server that integrates directly with Claude Code. This enables seamless audio/video transcription capabilities within coding environments without external API calls. The system will use WhisperX for local processing with speaker diarization, support all common audio formats up to 1GB, and provide comprehensive transcription results with timestamps, confidence scores, and speaker labels.
+Convert TranscribeMCP from a traditional API-based transcription service to a Model Context Protocol (MCP) server that integrates directly with Claude Code. This enables seamless audio/video transcription capabilities within coding environments without external API calls. The system will use WhisperX for local processing with speaker diarization, support all common audio formats up to 1GB, and provide comprehensive transcription results with timestamps, confidence scores, and speaker labels.
 
 ## Technical Context
 **Language/Version**: Python 3.11+ (required for WhisperX and MCP SDK compatibility)

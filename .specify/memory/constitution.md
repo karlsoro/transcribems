@@ -7,7 +7,7 @@ Sync Impact Report:
 - Follow-up TODOs: None - all placeholders filled
 -->
 
-# TranscribeMS Constitution
+# TranscribeMCP Constitution
 
 ## Core Principles
 

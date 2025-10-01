@@ -1,6 +1,6 @@
-# ✅ TranscribeMS MCP Server - Ready for Integration
+# ✅ TranscribeMCP MCP Server - Ready for Integration
 
-The TranscribeMS MCP server is now fully configured and ready to be used in other projects.
+The TranscribeMCP MCP server is now fully configured and ready to be used in other projects.
 
 ## 🎯 What's Been Set Up
 
@@ -35,10 +35,10 @@ The TranscribeMS MCP server is now fully configured and ready to be used in othe
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "bash",
-      "args": ["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-      "cwd": "/home/karlsoro/Projects/TranscribeMS"
+      "args": ["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+      "cwd": "/home/karlsoro/Projects/TranscribeMCP"
     }
   }
 }
@@ -54,8 +54,8 @@ from mcp.client.stdio import stdio_client
 
 server_params = StdioServerParameters(
     command="bash",
-    args=["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-    cwd="/home/karlsoro/Projects/TranscribeMS"
+    args=["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+    cwd="/home/karlsoro/Projects/TranscribeMCP"
 )
 
 async with stdio_client(server_params) as (read, write):
@@ -77,8 +77,8 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 
 const transport = new StdioClientTransport({
   command: "bash",
-  args: ["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-  cwd: "/home/karlsoro/Projects/TranscribeMS"
+  args: ["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+  cwd: "/home/karlsoro/Projects/TranscribeMCP"
 });
 
 const client = new Client({ name: "my-app", version: "1.0.0" }, { capabilities: {} });
@@ -89,13 +89,13 @@ await client.connect(transport);
 
 | Property | Value |
 |----------|-------|
-| **Server Name** | `transcribems` |
-| **Server Path** | `/home/karlsoro/Projects/TranscribeMS` |
+| **Server Name** | `transcribe_mcp` |
+| **Server Path** | `/home/karlsoro/Projects/TranscribeMCP` |
 | **Startup Command** | `bash scripts/start_mcp_server.sh` |
 | **Protocol** | MCP over stdio |
 | **Python Version** | 3.12.3 (requires 3.11+) |
 | **MCP SDK Version** | 1.15.0 |
-| **Virtual Environment** | `transcribems_env/` |
+| **Virtual Environment** | `transcribe_mcp_env/` |
 
 ## 🛠️ Available Tools
 
@@ -143,8 +143,8 @@ await client.connect(transport);
 ### 1. Test Server Locally
 
 ```bash
-cd /home/karlsoro/Projects/TranscribeMS
-source transcribems_env/bin/activate
+cd /home/karlsoro/Projects/TranscribeMCP
+source transcribe_mcp_env/bin/activate
 python scripts/test_mcp_connection.py
 ```
 
@@ -161,7 +161,7 @@ python scripts/test_mcp_connection.py
 ### 2. Test Basic Tool Call
 
 ```bash
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 python -c "
 from src.mcp_server.fastmcp_server import server
 print('✅ Server loaded successfully')
@@ -171,7 +171,7 @@ print('✅ Server loaded successfully')
 ### 3. Verify Dependencies
 
 ```bash
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 python -c "import mcp; print(f'✅ MCP {mcp.__version__}')"
 python -c "import torch; print('✅ CUDA' if torch.cuda.is_available() else '✅ CPU')"
 ```
@@ -203,7 +203,7 @@ python -c "import torch; print('✅ CUDA' if torch.cuda.is_available() else '✅
 
 ### For Python Developers
 1. Read [docs/INTEGRATION_EXAMPLES.md](docs/INTEGRATION_EXAMPLES.md)
-2. Copy the `TranscribeMSClient` class
+2. Copy the `TranscribeMCPClient` class
 3. Start building your integration
 
 ### For Node.js Developers
@@ -220,7 +220,7 @@ python -c "import torch; print('✅ CUDA' if torch.cuda.is_available() else '✅
 
 | Issue | Solution |
 |-------|----------|
-| Server won't start | Activate venv: `source transcribems_env/bin/activate` |
+| Server won't start | Activate venv: `source transcribe_mcp_env/bin/activate` |
 | MCP not found | Install: `pip install mcp` |
 | Import errors | Install deps: `pip install -r requirements.txt` |
 | GPU not detected | Will auto-fallback to CPU (slower but works) |
@@ -239,7 +239,7 @@ For issues or questions:
 
 ## ✨ Summary
 
-**The TranscribeMS MCP server is production-ready and tested.**
+**The TranscribeMCP MCP server is production-ready and tested.**
 
 - ✅ 6 tools available and verified
 - ✅ Startup script tested and working

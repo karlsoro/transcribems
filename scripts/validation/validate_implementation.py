@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validation script for TranscribeMS MCP implementation.
+"""Validation script for TranscribeMCP MCP implementation.
 
 This script validates the structure and imports without requiring
 external dependencies like WhisperX, librosa, etc.
@@ -113,7 +113,7 @@ def validate_models():
 
 def main():
     """Run all validations."""
-    print("🚀 Starting TranscribeMS Implementation Validation")
+    print("🚀 Starting TranscribeMCP Implementation Validation")
     print("=" * 50)
 
     validations = [

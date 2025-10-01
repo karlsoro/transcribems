@@ -6,16 +6,16 @@ info:
     Supports large files up to 5GB with GPU acceleration and comprehensive logging.
   version: 1.0.0
   contact:
-    name: TranscribeMS API Support
-    email: support@transcribems.com
+    name: TranscribeMCP API Support
+    email: support@transcribe_mcp.com
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: https://api.transcribems.com/v1
+  - url: https://api.transcribe_mcp.com/v1
     description: Production server
-  - url: https://staging-api.transcribems.com/v1
+  - url: https://staging-api.transcribe_mcp.com/v1
     description: Staging server
   - url: http://localhost:8000/v1
     description: Development server

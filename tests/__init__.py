@@ -1,3 +1,3 @@
 """
-Test suite for TranscribeMS API following TDD principles.
+Test suite for TranscribeMCP API following TDD principles.
 """

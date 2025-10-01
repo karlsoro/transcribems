@@ -1,0 +1,29 @@
+{
+  "count": 6,
+  "tools": [
+    {
+      "name": "transcribe_audio",
+      "description": "Transcribe audio file using GPU-enhanced WhisperX with speaker diarization"
+    },
+    {
+      "name": "get_transcription_progress",
+      "description": "Get progress information for transcription jobs with GPU performance metrics"
+    },
+    {
+      "name": "get_transcription_result",
+      "description": "Retrieve transcription results with various formatting options"
+    },
+    {
+      "name": "list_transcription_history",
+      "description": "List transcription history with filtering and search capabilities"
+    },
+    {
+      "name": "batch_transcribe",
+      "description": "Transcribe multiple audio files with shared settings"
+    },
+    {
+      "name": "cancel_transcription",
+      "description": "Cancel in-progress transcription jobs"
+    }
+  ]
+}

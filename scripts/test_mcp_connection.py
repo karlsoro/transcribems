@@ -21,10 +21,10 @@ except ImportError:
 
 
 async def test_mcp_server():
-    """Test the TranscribeMS MCP server connection and tools."""
+    """Test the TranscribeMCP MCP server connection and tools."""
 
     print("=" * 60)
-    print("TranscribeMS MCP Server Connection Test")
+    print("TranscribeMCP MCP Server Connection Test")
     print("=" * 60)
     print()
 

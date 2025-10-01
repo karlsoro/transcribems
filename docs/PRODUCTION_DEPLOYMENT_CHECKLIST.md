@@ -1,4 +1,4 @@
-# TranscribeMS MCP Production Deployment Checklist
+# TranscribeMCP MCP Production Deployment Checklist
 
 ## 🚀 Pre-Deployment Validation
 
@@ -35,7 +35,7 @@
 
 ```bash
 # Activate environment
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 
 # Start MCP server
 python -m src.mcp_server.fastmcp_server
@@ -54,13 +54,13 @@ python -m src.mcp_server.fastmcp_server
 
 ```bash
 # Install service
-sudo cp config/transcribems-mcp.service /etc/systemd/system/
-sudo systemctl enable transcribems-mcp
-sudo systemctl start transcribems-mcp
+sudo cp config/transcribe_mcp-mcp.service /etc/systemd/system/
+sudo systemctl enable transcribe_mcp-mcp
+sudo systemctl start transcribe_mcp-mcp
 
 # Monitor
-sudo systemctl status transcribems-mcp
-journalctl -u transcribems-mcp -f
+sudo systemctl status transcribe_mcp-mcp
+journalctl -u transcribe_mcp-mcp -f
 ```
 
 **Pros:**
@@ -76,8 +76,8 @@ journalctl -u transcribems-mcp -f
 
 ```bash
 # Build and run
-docker build -t transcribems-mcp .
-docker run -d --gpus all --name transcribems transcribems-mcp
+docker build -t transcribe_mcp-mcp .
+docker run -d --gpus all --name transcribe_mcp transcribe_mcp-mcp
 ```
 
 **Pros:**
@@ -93,11 +93,11 @@ docker run -d --gpus all --name transcribems transcribems-mcp
 
 ```bash
 # Deploy
-kubectl apply -f k8s/transcribems-deployment.yaml
-kubectl apply -f k8s/transcribems-service.yaml
+kubectl apply -f k8s/transcribe_mcp-deployment.yaml
+kubectl apply -f k8s/transcribe_mcp-service.yaml
 
 # Scale
-kubectl scale deployment transcribems-mcp --replicas=3
+kubectl scale deployment transcribe_mcp-mcp --replicas=3
 ```
 
 **Pros:**
@@ -118,7 +118,7 @@ kubectl scale deployment transcribems-mcp --replicas=3
    ALLOWED_PATHS = [
        "/var/uploads/audio/",
        "/home/user/audio/",
-       "/tmp/transcribems/"
+       "/tmp/transcribe_mcp/"
    ]
    ```
 
@@ -153,12 +153,12 @@ For Claude Desktop:
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["-m", "src.mcp_server.fastmcp_server"],
-      "cwd": "/path/to/TranscribeMS",
+      "cwd": "/path/to/TranscribeMCP",
       "env": {
-        "VIRTUAL_ENV": "/path/to/TranscribeMS/transcribems_env",
+        "VIRTUAL_ENV": "/path/to/TranscribeMCP/transcribe_mcp_env",
         "CUDA_VISIBLE_DEVICES": "0"
       }
     }
@@ -195,17 +195,17 @@ export CUDA_VISIBLE_DEVICES=0
 export OMP_NUM_THREADS=8
 
 # Logging
-export TRANSCRIBEMS_LOG_LEVEL=INFO
-export TRANSCRIBEMS_LOG_FILE=/var/log/transcribems.log
+export TRANSCRIBE_MCP_LOG_LEVEL=INFO
+export TRANSCRIBE_MCP_LOG_FILE=/var/log/transcribe_mcp.log
 
 # Storage
-export TRANSCRIBEMS_DATA_DIR=/var/lib/transcribems
-export TRANSCRIBEMS_TEMP_DIR=/tmp/transcribems
+export TRANSCRIBE_MCP_DATA_DIR=/var/lib/transcribe_mcp
+export TRANSCRIBE_MCP_TEMP_DIR=/tmp/transcribe_mcp
 
 # Performance
-export TRANSCRIBEMS_MAX_CONCURRENT_JOBS=3
-export TRANSCRIBEMS_DEFAULT_MODEL=large
-export TRANSCRIBEMS_BATCH_SIZE=16
+export TRANSCRIBE_MCP_MAX_CONCURRENT_JOBS=3
+export TRANSCRIBE_MCP_DEFAULT_MODEL=large
+export TRANSCRIBE_MCP_BATCH_SIZE=16
 ```
 
 ## 📊 Monitoring and Health Checks
@@ -233,7 +233,7 @@ Expected healthy response:
 
 ```bash
 # Application logs
-tail -f /var/log/transcribems.log
+tail -f /var/log/transcribe_mcp.log
 
 # GPU monitoring
 watch -n 1 nvidia-smi
@@ -278,10 +278,10 @@ Monitor these key metrics:
 3. **Memory Issues**
    ```bash
    # Reduce batch size
-   export TRANSCRIBEMS_BATCH_SIZE=8
+   export TRANSCRIBE_MCP_BATCH_SIZE=8
 
    # Use smaller model
-   export TRANSCRIBEMS_DEFAULT_MODEL=medium
+   export TRANSCRIBE_MCP_DEFAULT_MODEL=medium
    ```
 
 4. **Performance Issues**
@@ -293,7 +293,7 @@ Monitor these key metrics:
    htop
 
    # Check for bottlenecks
-   tail -f /var/log/transcribems.log
+   tail -f /var/log/transcribe_mcp.log
    ```
 
 ## ✅ Final Deployment Validation
@@ -348,7 +348,7 @@ Monitor these key metrics:
 
 ## 🎉 Deployment Status: READY
 
-✅ **TranscribeMS MCP Server is production-ready with:**
+✅ **TranscribeMCP MCP Server is production-ready with:**
 - GPU acceleration achieving 7x performance improvement
 - Comprehensive MCP integration with 6 tools
 - Multiple deployment options (systemd, Docker, Kubernetes)

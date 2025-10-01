@@ -1,4 +1,4 @@
-# Tasks: Convert TranscribeMS API to MCP Server
+# Tasks: Convert TranscribeMCP API to MCP Server
 
 **Input**: Design documents from `/specs/002-adjust-the-current/`
 **Prerequisites**: plan.md (required), research.md, data-model.md, contracts/

@@ -1,4 +1,4 @@
-# Feature Specification: Convert TranscribeMS API to Model Context Protocol (MCP) Server
+# Feature Specification: Convert TranscribeMCP API to Model Context Protocol (MCP) Server
 
 **Feature Branch**: `002-adjust-the-current`
 **Created**: 2025-09-25
@@ -48,12 +48,12 @@
 ## User Scenarios & Testing *(mandatory)*
 
 ### Primary User Story
-Claude Code users need to interact with TranscribeMS transcription capabilities directly through the Model Context Protocol, allowing seamless integration of audio/video transcription features within their coding environment without requiring separate API endpoints or external service calls.
+Claude Code users need to interact with TranscribeMCP transcription capabilities directly through the Model Context Protocol, allowing seamless integration of audio/video transcription features within their coding environment without requiring separate API endpoints or external service calls.
 
 ### Acceptance Scenarios
-1. **Given** Claude Code is running with TranscribeMS MCP server enabled, **When** a user requests transcription of an audio file, **Then** the transcription is processed and returned directly in the Claude Code interface
+1. **Given** Claude Code is running with TranscribeMCP MCP server enabled, **When** a user requests transcription of an audio file, **Then** the transcription is processed and returned directly in the Claude Code interface
 2. **Given** a user has multiple audio files in their workspace, **When** they request batch transcription through Claude Code, **Then** all files are processed and results are accessible within the coding environment
-3. **Given** TranscribeMS MCP server is configured, **When** Claude Code starts up, **Then** transcription tools are automatically available without additional setup steps
+3. **Given** TranscribeMCP MCP server is configured, **When** Claude Code starts up, **Then** transcription tools are automatically available without additional setup steps
 
 ### Edge Cases
 - What happens when audio files are in unsupported formats?
@@ -76,7 +76,7 @@ Claude Code users need to interact with TranscribeMS transcription capabilities 
 - **FR-010**: System MUST integrate with WhisperX for local transcription processing with speaker diarization capabilities
 
 ### Key Entities *(include if feature involves data)*
-- **MCP Server**: Represents the TranscribeMS service endpoint that implements Model Context Protocol specifications
+- **MCP Server**: Represents the TranscribeMCP service endpoint that implements Model Context Protocol specifications
 - **Transcription Tool**: Individual MCP tool definitions that expose specific transcription capabilities to Claude Code
 - **Audio File**: Input files that need transcription, with metadata about format, size, and location
 - **Transcription Result**: Output containing transcribed text with word-level timestamps, confidence scores, speaker diarization labels, and processing metadata

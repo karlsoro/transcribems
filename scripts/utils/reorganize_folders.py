@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Folder Reorganization Script for TranscribeMS
+Folder Reorganization Script for TranscribeMCP
 This script reorganizes the chaotic folder structure into a clean, logical layout.
 """
 
@@ -81,8 +81,8 @@ def safe_move(source: str, destination: str, description: str = "") -> bool:
 def cleanup_redundant_directories():
     """Remove redundant and unnecessary directories."""
     redundant_dirs = [
-        "venv",  # Keep transcribems_env
-        "transcribems",  # Duplicate project structure
+        "venv",  # Keep transcribe_mcp_env
+        "transcribe_mcp",  # Duplicate project structure
         ".mypy_cache",
         ".pytest_cache",
     ]
@@ -90,7 +90,7 @@ def cleanup_redundant_directories():
     for directory in redundant_dirs:
         try:
             if Path(directory).exists():
-                if directory in ["venv", "transcribems"]:
+                if directory in ["venv", "transcribe_mcp"]:
                     # Ask for confirmation for major deletions
                     response = input(f"⚠️  Delete redundant directory '{directory}'? (y/N): ")
                     if response.lower() != 'y':
@@ -170,8 +170,8 @@ def reorganize_test_results():
 def reorganize_data_directories():
     """Reorganize data and runtime directories."""
     data_moves = [
-        ("transcribems_data/jobs", "data/jobs"),
-        ("transcribems_data/results", "data/results"),
+        ("transcribe_mcp_data/jobs", "data/jobs"),
+        ("transcribe_mcp_data/results", "data/results"),
         ("uploads", "data/uploads"),
         ("transcriptions", "data/transcriptions"),
         ("logs", "data/logs"),
@@ -182,11 +182,11 @@ def reorganize_data_directories():
     for source, dest in data_moves:
         safe_move(source, dest, "(data)")
 
-    # Clean up empty transcribems_data
+    # Clean up empty transcribe_mcp_data
     try:
-        if Path("transcribems_data").exists() and not any(Path("transcribems_data").iterdir()):
-            Path("transcribems_data").rmdir()
-            print("🗑️  Removed empty: transcribems_data/")
+        if Path("transcribe_mcp_data").exists() and not any(Path("transcribe_mcp_data").iterdir()):
+            Path("transcribe_mcp_data").rmdir()
+            print("🗑️  Removed empty: transcribe_mcp_data/")
     except:
         pass
 
@@ -206,11 +206,11 @@ def create_config_files():
     print("\n⚙️  Creating Configuration Files...")
 
     # Create default environment config
-    default_config = """# Default TranscribeMS Configuration
+    default_config = """# Default TranscribeMCP Configuration
 WHISPERX_MODEL_SIZE=large-v2
 MAX_FILE_SIZE=5368709120
-TRANSCRIBEMS_LOG_LEVEL=INFO
-TRANSCRIBEMS_WORK_DIR=./data
+TRANSCRIBE_MCP_LOG_LEVEL=INFO
+TRANSCRIBE_MCP_WORK_DIR=./data
 HF_TOKEN=your_huggingface_token_here
 """
 
@@ -234,7 +234,7 @@ handlers:
     class: logging.FileHandler
     level: DEBUG
     formatter: default
-    filename: data/logs/transcribems.log
+    filename: data/logs/transcribe_mcp.log
 loggers:
   src:
     level: DEBUG
@@ -300,7 +300,7 @@ def print_summary():
 
 def main():
     """Main reorganization process."""
-    print("🚀 TranscribeMS Folder Reorganization Script")
+    print("🚀 TranscribeMCP Folder Reorganization Script")
     print("=" * 50)
 
     # Confirm before proceeding

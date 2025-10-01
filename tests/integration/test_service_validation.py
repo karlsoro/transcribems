@@ -6,7 +6,7 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.append('/home/karlsoro/Projects/TranscribeMS/src')
+sys.path.append('/home/karlsoro/Projects/TranscribeMCP/src')
 from services.simple_whisperx_cli import SimpleWhisperXCLI
 
 
@@ -21,7 +21,7 @@ async def test_service_validation():
     print(f"   GPU available: {cli._gpu_available}")
 
     # Check if we have a test file
-    test_file = "/home/karlsoro/Projects/TranscribeMS/test_data/audio/multi_speaker.wav"
+    test_file = "/home/karlsoro/Projects/TranscribeMCP/test_data/audio/multi_speaker.wav"
     if not Path(test_file).exists():
         print(f"⚠️  Test file not found: {test_file}")
         print("   Creating a test scenario without actual transcription")
@@ -48,7 +48,7 @@ async def test_service_validation():
     try:
         result = await cli.transcribe_audio(
             audio_path=test_file,
-            output_dir="/home/karlsoro/Projects/TranscribeMS/service_validation_output",
+            output_dir="/home/karlsoro/Projects/TranscribeMCP/service_validation_output",
             model="base",  # Fastest model
             language="en",
             enable_diarization=False,  # Disable for speed

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Comprehensive integration test for TranscribeMS MCP system.
+"""Comprehensive integration test for TranscribeMCP MCP system.
 
 This script tests the complete transcription pipeline end-to-end,
 including MCP tools, services, and WhisperX integration.
@@ -17,8 +17,8 @@ from typing import Dict, Any, List
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class TranscribeMSIntegrationTest:
-    """Comprehensive integration test suite for TranscribeMS."""
+class TranscribeMCPIntegrationTest:
+    """Comprehensive integration test suite for TranscribeMCP."""
 
     def __init__(self):
         """Initialize the integration test."""
@@ -32,7 +32,7 @@ class TranscribeMSIntegrationTest:
 
     async def run_all_tests(self):
         """Run all integration tests."""
-        logger.info("🚀 Starting TranscribeMS Integration Test Suite")
+        logger.info("🚀 Starting TranscribeMCP Integration Test Suite")
         logger.info("=" * 60)
 
         test_methods = [
@@ -450,7 +450,7 @@ class TranscribeMSIntegrationTest:
 async def main():
     """Run the integration test suite."""
     try:
-        test_suite = TranscribeMSIntegrationTest()
+        test_suite = TranscribeMCPIntegrationTest()
         await test_suite.run_all_tests()
 
         # Return appropriate exit code

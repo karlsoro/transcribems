@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the PyTorch and CUDA version compatibility requirements for GPU acceleration in TranscribeMS. Proper version alignment is critical for GPU functionality.
+This document outlines the PyTorch and CUDA version compatibility requirements for GPU acceleration in TranscribeMCP. Proper version alignment is critical for GPU functionality.
 
 ## Compatibility Matrix
 
@@ -203,8 +203,8 @@ export NUMEXPR_NUM_THREADS=8
 
 1. **Use dedicated virtual environment**:
 ```bash
-python -m venv transcribems_env
-source transcribems_env/bin/activate
+python -m venv transcribe_mcp_env
+source transcribe_mcp_env/bin/activate
 ```
 
 2. **Install in correct order**:

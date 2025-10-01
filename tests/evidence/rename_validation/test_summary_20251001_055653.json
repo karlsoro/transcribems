@@ -1,0 +1,15 @@
+{
+  "timestamp": "20251001_055653",
+  "tests_passed": 4,
+  "tests_failed": 0,
+  "tools_count": 6,
+  "server_name": "transcribe_mcp",
+  "tools": [
+    "transcribe_audio",
+    "get_transcription_progress",
+    "get_transcription_result",
+    "list_transcription_history",
+    "batch_transcribe",
+    "cancel_transcription"
+  ]
+}

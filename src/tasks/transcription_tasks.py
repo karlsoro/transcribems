@@ -28,7 +28,7 @@ setup_logging(
 
 # Create Celery app
 celery_app = Celery(
-    "transcribems",
+    "transcribe_mcp",
     broker=settings.CELERY_BROKER_URL,
     backend=settings.CELERY_RESULT_BACKEND
 )

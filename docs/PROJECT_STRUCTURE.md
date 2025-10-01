@@ -1,11 +1,11 @@
-# TranscribeMS Project Structure
+# TranscribeMCP Project Structure
 
-This document describes the organized directory structure of the TranscribeMS project.
+This document describes the organized directory structure of the TranscribeMCP project.
 
 ## 📁 Directory Overview
 
 ```
-TranscribeMS/
+TranscribeMCP/
 ├── src/                          # Source code
 │   ├── mcp_server/              # MCP server implementations
 │   │   ├── server.py            # Main MCP server
@@ -69,7 +69,7 @@ TranscribeMS/
 ├── production_validation/       # Production validation artifacts
 ├── validation_results/          # Validation outputs
 │
-├── transcribems_env/            # Python virtual environment
+├── transcribe_mcp_env/            # Python virtual environment
 │
 ├── CLAUDE.md                    # Project-level Claude instructions
 ├── README.md                    # Project overview

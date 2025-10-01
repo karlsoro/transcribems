@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 class StorageService:
     """Service for file-based JSON persistence."""
 
-    def __init__(self, data_dir: str = "transcribems_data"):
+    def __init__(self, data_dir: str = "transcribe_mcp_data"):
         """Initialize the storage service.
 
         Args:

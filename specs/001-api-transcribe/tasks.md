@@ -1,6 +1,6 @@
 # Tasks: WhisperX Audio Transcription API
 
-**Input**: Design documents from `/home/karlsoro/Projects/TranscribeMS/specs/001-api-transcribe/`
+**Input**: Design documents from `/home/karlsoro/Projects/TranscribeMCP/specs/001-api-transcribe/`
 **Prerequisites**: plan.md, research.md, data-model.md, contracts/, quickstart.md
 
 ## Execution Flow (main)

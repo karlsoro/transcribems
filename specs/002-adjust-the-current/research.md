@@ -1,7 +1,7 @@
-# Research: MCP Server Implementation for TranscribeMS
+# Research: MCP Server Implementation for TranscribeMCP
 
 **Date**: 2025-09-25
-**Feature**: Convert TranscribeMS API to MCP Server
+**Feature**: Convert TranscribeMCP API to MCP Server
 **Branch**: 002-adjust-the-current
 
 ## Technology Decisions

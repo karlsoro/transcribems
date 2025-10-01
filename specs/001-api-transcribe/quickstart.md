@@ -26,9 +26,9 @@ This quickstart guide demonstrates the complete workflow for using the WhisperX 
 ### 1. Environment Setup
 ```bash
 # Create virtual environment
-python3.11 -m venv transcribems-env
-source transcribems-env/bin/activate  # Linux/macOS
-# transcribems-env\Scripts\activate  # Windows
+python3.11 -m venv transcribe_mcp-env
+source transcribe_mcp-env/bin/activate  # Linux/macOS
+# transcribe_mcp-env\Scripts\activate  # Windows
 
 # Install core dependencies
 pip install whisperx fastapi uvicorn redis celery
@@ -53,8 +53,8 @@ export DEBUG_MODE=false
 ### 3. API Server Startup
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/transcribems.git
-cd transcribems
+git clone https://github.com/your-org/transcribe_mcp.git
+cd transcribe_mcp
 
 # Start the API server
 uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload

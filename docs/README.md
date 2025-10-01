@@ -1,4 +1,4 @@
-# TranscribeMS - WhisperX Audio Transcription MCP Server
+# TranscribeMCP - WhisperX Audio Transcription MCP Server
 
 Enterprise-grade audio transcription service with speaker identification using WhisperX, implemented as a Model Context Protocol (MCP) server.
 
@@ -34,14 +34,14 @@ Enterprise-grade audio transcription service with speaker identification using W
 
    ```bash
    git clone <repository-url>
-   cd TranscribeMS
+   cd TranscribeMCP
    ```
 
 2. Create virtual environment:
 
    ```bash
-   python3.11 -m venv transcribems_env
-   source transcribems_env/bin/activate  # On Windows: transcribems_env\Scripts\activate
+   python3.11 -m venv transcribe_mcp_env
+   source transcribe_mcp_env/bin/activate  # On Windows: transcribe_mcp_env\Scripts\activate
    ```
 
 3. Install dependencies:
@@ -73,7 +73,7 @@ Enterprise-grade audio transcription service with speaker identification using W
 
 ```bash
 # Start the MCP server
-transcribems-mcp
+transcribe_mcp-mcp
 
 # Or run directly with Python
 python -m src.mcp_server.server
@@ -86,8 +86,8 @@ Add to your Claude Desktop configuration:
 ```json
 {
   "mcpServers": {
-    "transcribems": {
-      "command": "transcribems-mcp",
+    "transcribe_mcp": {
+      "command": "transcribe_mcp-mcp",
       "args": [],
       "env": {
         "HF_TOKEN": "your_huggingface_token_here"
@@ -105,7 +105,7 @@ docker-compose up --build
 
 ## MCP Tools Usage
 
-TranscribeMS provides the following MCP tools:
+TranscribeMCP provides the following MCP tools:
 
 ### Available Tools
 
@@ -169,8 +169,8 @@ Key environment variables:
 - `WHISPERX_MODEL_SIZE`: Model size (base, large-v2, large-v3) - default: large-v2
 - `MAX_FILE_SIZE`: Maximum upload size in bytes (default: 5GB)
 - `HF_TOKEN`: Hugging Face token for speaker diarization (required for diarization)
-- `TRANSCRIBEMS_LOG_LEVEL`: Logging level (DEBUG, INFO, WARNING, ERROR)
-- `TRANSCRIBEMS_WORK_DIR`: Working directory for temporary files
+- `TRANSCRIBE_MCP_LOG_LEVEL`: Logging level (DEBUG, INFO, WARNING, ERROR)
+- `TRANSCRIBE_MCP_WORK_DIR`: Working directory for temporary files
 
 ## Performance
 

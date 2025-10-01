@@ -1,6 +1,6 @@
 {
   "mcp_server": {
-    "name": "transcribems",
+    "name": "transcribe_mcp",
     "version": "1.0.0",
     "description": "MCP server for audio transcription using WhisperX with speaker diarization",
     "tools": [

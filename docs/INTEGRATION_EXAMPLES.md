@@ -1,6 +1,6 @@
-# TranscribeMS MCP Integration Examples
+# TranscribeMCP MCP Integration Examples
 
-Complete examples for integrating TranscribeMS MCP server into various projects.
+Complete examples for integrating TranscribeMCP MCP server into various projects.
 
 ## Table of Contents
 - [Claude Desktop Integration](#claude-desktop-integration)
@@ -20,10 +20,10 @@ Complete examples for integrating TranscribeMS MCP server into various projects.
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "bash",
-      "args": ["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-      "cwd": "/home/karlsoro/Projects/TranscribeMS"
+      "args": ["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+      "cwd": "/home/karlsoro/Projects/TranscribeMCP"
     }
   }
 }
@@ -41,7 +41,7 @@ Once configured, you can ask Claude to:
 "List my last 10 transcription jobs and show me the statistics"
 ```
 
-Claude will automatically use the TranscribeMS MCP tools.
+Claude will automatically use the TranscribeMCP MCP tools.
 
 ---
 
@@ -52,7 +52,7 @@ Claude will automatically use the TranscribeMS MCP tools.
 ```python
 #!/usr/bin/env python3
 """
-Complete TranscribeMS MCP client example.
+Complete TranscribeMCP MCP client example.
 """
 
 import asyncio
@@ -61,10 +61,10 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 
-class TranscribeMSClient:
-    """High-level client for TranscribeMS MCP server."""
+class TranscribeMCPClient:
+    """High-level client for TranscribeMCP MCP server."""
 
-    def __init__(self, server_path: str = "/home/karlsoro/Projects/TranscribeMS"):
+    def __init__(self, server_path: str = "/home/karlsoro/Projects/TranscribeMCP"):
         self.server_params = StdioServerParameters(
             command="bash",
             args=[f"{server_path}/scripts/start_mcp_server.sh"],
@@ -188,7 +188,7 @@ class TranscribeMSClient:
 
 # Example usage
 async def main():
-    client = TranscribeMSClient()
+    client = TranscribeMCPClient()
 
     # Single file transcription
     print("Transcribing single file...")
@@ -224,8 +224,8 @@ from mcp.client.stdio import stdio_client
 async def transcribe():
     server_params = StdioServerParameters(
         command="bash",
-        args=["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-        cwd="/home/karlsoro/Projects/TranscribeMS"
+        args=["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+        cwd="/home/karlsoro/Projects/TranscribeMCP"
     )
 
     async with stdio_client(server_params) as (read, write):
@@ -261,8 +261,8 @@ npm install @modelcontextprotocol/sdk
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
-class TranscribeMSClient {
-  constructor(serverPath = "/home/karlsoro/Projects/TranscribeMS") {
+class TranscribeMCPClient {
+  constructor(serverPath = "/home/karlsoro/Projects/TranscribeMCP") {
     this.serverPath = serverPath;
   }
 
@@ -275,7 +275,7 @@ class TranscribeMSClient {
 
     this.client = new Client(
       {
-        name: "transcribems-client",
+        name: "transcribe_mcp-client",
         version: "1.0.0",
       },
       {
@@ -372,7 +372,7 @@ class TranscribeMSClient {
 
 // Example usage
 async function main() {
-  const client = await new TranscribeMSClient().connect();
+  const client = await new TranscribeMCPClient().connect();
 
   try {
     // Transcribe single file
@@ -418,12 +418,12 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 import asyncio
 
-app = FastAPI(title="TranscribeMS REST API")
+app = FastAPI(title="TranscribeMCP REST API")
 
 SERVER_PARAMS = StdioServerParameters(
     command="bash",
-    args=["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-    cwd="/home/karlsoro/Projects/TranscribeMS"
+    args=["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+    cwd="/home/karlsoro/Projects/TranscribeMCP"
 )
 
 
@@ -606,7 +606,7 @@ import pytest
 @pytest.mark.asyncio
 async def test_transcription():
     """Test basic transcription."""
-    client = TranscribeMSClient()
+    client = TranscribeMCPClient()
     result = await client.transcribe_file(
         "/path/to/test.mp3",
         wait_for_completion=True

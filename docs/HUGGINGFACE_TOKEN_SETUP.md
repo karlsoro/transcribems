@@ -1,6 +1,6 @@
 # HuggingFace Token Setup for Speaker Diarization
 
-TranscribeMS uses HuggingFace models for advanced speaker diarization. To enable this feature, you need to configure a HuggingFace access token.
+TranscribeMCP uses HuggingFace models for advanced speaker diarization. To enable this feature, you need to configure a HuggingFace access token.
 
 ## Why is a HuggingFace token needed?
 
@@ -12,7 +12,7 @@ The speaker diarization feature uses the `pyannote/speaker-diarization-3.1` mode
 2. Create an account or log in
 3. Go to your [Settings > Access Tokens](https://huggingface.co/settings/tokens)
 4. Click "New token"
-5. Give it a name (e.g., "TranscribeMS")
+5. Give it a name (e.g., "TranscribeMCP")
 6. Select "Read" access level
 7. Copy the token
 
@@ -106,7 +106,7 @@ If no token is provided:
 - Ensure token has "Read" access
 - Some models may require accepting terms of use on HuggingFace Hub
 
-## Current token usage in TranscribeMS
+## Current token usage in TranscribeMCP
 
 The token is used in:
 - `src/services/whisperx_service.py` - Main transcription service

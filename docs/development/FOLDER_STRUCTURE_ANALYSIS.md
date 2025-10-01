@@ -1,4 +1,4 @@
-# TranscribeMS Folder Structure Analysis & Reorganization Plan
+# TranscribeMCP Folder Structure Analysis & Reorganization Plan
 
 ## 🚨 Current Problems
 
@@ -55,17 +55,17 @@ tests/                   # Official test directory
 
 ### 5. **Redundant Directories**
 ```
-transcribems/            # Duplicate of main project?
+transcribe_mcp/            # Duplicate of main project?
 ├── .claude/
 ├── .git/               # Another git repo!
 ├── .specify/
 └── (duplicate structure)
 
-transcribems_data/       # Data storage
+transcribe_mcp_data/       # Data storage
 ├── jobs/
 └── results/
 
-transcribems_env/        # Virtual environment
+transcribe_mcp_env/        # Virtual environment
 └── (Python packages)
 
 venv/                    # ANOTHER virtual environment!
@@ -134,7 +134,7 @@ venv/                    # ANOTHER virtual environment!
 ## 🎯 Recommended Folder Structure
 
 ```
-TranscribeMS/
+TranscribeMCP/
 ├── 📁 config/
 │   ├── default.env
 │   ├── production.env
@@ -198,8 +198,8 @@ TranscribeMS/
 │       └── performance_benchmark.py
 │
 ├── 📁 data/                        # Runtime data
-│   ├── jobs/                       # Move transcribems_data/jobs/
-│   ├── results/                    # Move transcribems_data/results/
+│   ├── jobs/                       # Move transcribe_mcp_data/jobs/
+│   ├── results/                    # Move transcribe_mcp_data/results/
 │   ├── uploads/                    # Keep uploads/
 │   ├── transcriptions/             # Keep transcriptions/
 │   └── logs/                       # Keep logs/
@@ -230,8 +230,8 @@ TranscribeMS/
 ### 1. **Remove Redundant Directories**
 ```bash
 # Remove duplicate virtual environments (keep one)
-rm -rf venv/                    # Keep transcribems_env/
-rm -rf transcribems/            # Duplicate project structure
+rm -rf venv/                    # Keep transcribe_mcp_env/
+rm -rf transcribe_mcp/            # Duplicate project structure
 
 # Clean up cache directories
 rm -rf .mypy_cache/
@@ -289,7 +289,7 @@ mv system_demo_report.json test_reports/validation/
 # Create proper configuration files
 echo "WHISPERX_MODEL_SIZE=large-v2" > config/default.env
 echo "MAX_FILE_SIZE=5368709120" >> config/default.env
-echo "TRANSCRIBEMS_LOG_LEVEL=INFO" >> config/default.env
+echo "TRANSCRIBE_MCP_LOG_LEVEL=INFO" >> config/default.env
 ```
 
 ## 🏆 Test Evidence for Validation Systems

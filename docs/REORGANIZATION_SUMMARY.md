@@ -5,7 +5,7 @@
 
 ## Overview
 
-The TranscribeMS project has been reorganized into a logical, maintainable structure with proper separation of concerns.
+The TranscribeMCP project has been reorganized into a logical, maintainable structure with proper separation of concerns.
 
 ## What Changed
 
@@ -155,7 +155,7 @@ $ ./scripts/start_mcp_server.sh
 
 ### Before (Root Directory)
 ```
-TranscribeMS/
+TranscribeMCP/
 ├── test_*.py (17 files)           ❌ Cluttered root
 ├── production_validation_test.py  ❌ Unclear location
 ├── *.json (4 files)               ❌ Test results in root
@@ -169,7 +169,7 @@ TranscribeMS/
 
 ### After (Organized)
 ```
-TranscribeMS/
+TranscribeMCP/
 ├── src/                           ✅ Source code
 ├── tests/                         ✅ All tests organized
 │   ├── integration/ (17)          ✅ Integration tests
@@ -264,7 +264,7 @@ For developers and users:
 
 **Status**: ✅ **Complete and Verified**
 
-The TranscribeMS project is now properly organized with:
+The TranscribeMCP project is now properly organized with:
 - ✅ 17 integration tests in dedicated directory
 - ✅ 1 validation test properly located
 - ✅ 4 test result files organized

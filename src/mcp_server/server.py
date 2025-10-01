@@ -1,6 +1,6 @@
-"""TranscribeMS MCP Server.
+"""TranscribeMCP MCP Server.
 
-This module implements the Model Context Protocol server for TranscribeMS,
+This module implements the Model Context Protocol server for TranscribeMCP,
 providing audio transcription capabilities through standardized MCP tools.
 """
 
@@ -31,12 +31,12 @@ from ..tools.cancel_tool import cancel_transcription_tool
 
 logger = logging.getLogger(__name__)
 
-class TranscribeMSServer:
-    """TranscribeMS MCP Server implementation."""
+class TranscribeMCPServer:
+    """TranscribeMCP MCP Server implementation."""
 
     def __init__(self):
         """Initialize the MCP server."""
-        self.server = FastMCP("transcribems")
+        self.server = FastMCP("transcribe_mcp")
         self._setup_tools()
 
     def _setup_tools(self):
@@ -260,7 +260,7 @@ class TranscribeMSServer:
     async def run(self):
         """Run the MCP server."""
         try:
-            logger.info("Starting TranscribeMS MCP Server...")
+            logger.info("Starting TranscribeMCP MCP Server...")
             await self.server.run_stdio_async()
         except Exception as e:
             logger.error(f"Server error: {e}")
@@ -273,7 +273,7 @@ def main():
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
 
-    server = TranscribeMSServer()
+    server = TranscribeMCPServer()
 
     try:
         asyncio.run(server.run())

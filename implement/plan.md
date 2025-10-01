@@ -1,4 +1,4 @@
-# Implementation Plan - TranscribeMS MCP Server
+# Implementation Plan - TranscribeMCP MCP Server
 **Created**: 2025-09-25T18:26:00Z
 **Session ID**: transcribe-mcp-002
 **Source**: SPARC Specification - Convert API to MCP Server

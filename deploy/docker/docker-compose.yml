@@ -1,11 +1,11 @@
-# Docker Compose configuration for TranscribeMS
+# Docker Compose configuration for TranscribeMCP
 version: '3.8'
 
 services:
   # Redis for Celery message broker
   redis:
     image: redis:7-alpine
-    container_name: transcribems_redis
+    container_name: transcribe_mcp_redis
     ports:
       - "6379:6379"
     volumes:
@@ -20,18 +20,18 @@ services:
   # PostgreSQL database (optional, for job persistence)
   postgres:
     image: postgres:15-alpine
-    container_name: transcribems_postgres
+    container_name: transcribe_mcp_postgres
     environment:
-      POSTGRES_DB: transcribems
-      POSTGRES_USER: transcribems
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-transcribems_dev}
+      POSTGRES_DB: transcribe_mcp
+      POSTGRES_USER: transcribe_mcp
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-transcribe_mcp_dev}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U transcribems"]
+      test: ["CMD-SHELL", "pg_isready -U transcribe_mcp"]
       interval: 10s
       timeout: 3s
       retries: 3
@@ -43,7 +43,7 @@ services:
       target: development
       args:
         - BUILDKIT_INLINE_CACHE=1
-    container_name: transcribems_api
+    container_name: transcribe_mcp_api
     ports:
       - "8000:8000"
     volumes:
@@ -54,7 +54,7 @@ services:
       - ./logs:/app/logs
     environment:
       - REDIS_URL=redis://redis:6379/0
-      - DATABASE_URL=postgresql://transcribems:${DB_PASSWORD:-transcribems_dev}@postgres:5432/transcribems
+      - DATABASE_URL=postgresql://transcribe_mcp:${DB_PASSWORD:-transcribe_mcp_dev}@postgres:5432/transcribe_mcp
       - DEBUG=true
       - LOG_LEVEL=DEBUG
       - CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
@@ -79,14 +79,14 @@ services:
       target: worker
       args:
         - BUILDKIT_INLINE_CACHE=1
-    container_name: transcribems_worker
+    container_name: transcribe_mcp_worker
     volumes:
       - ./uploads:/app/uploads
       - ./transcriptions:/app/transcriptions
       - ./logs:/app/logs
     environment:
       - REDIS_URL=redis://redis:6379/0
-      - DATABASE_URL=postgresql://transcribems:${DB_PASSWORD:-transcribems_dev}@postgres:5432/transcribems
+      - DATABASE_URL=postgresql://transcribe_mcp:${DB_PASSWORD:-transcribe_mcp_dev}@postgres:5432/transcribe_mcp
       - DEBUG=true
       - LOG_LEVEL=INFO
       - CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
@@ -107,7 +107,7 @@ services:
   # Flower for Celery monitoring (development only)
   flower:
     image: mher/flower:0.9.7
-    container_name: transcribems_flower
+    container_name: transcribe_mcp_flower
     ports:
       - "5555:5555"
     environment:
@@ -124,4 +124,4 @@ volumes:
 
 networks:
   default:
-    name: transcribems_network
+    name: transcribe_mcp_network

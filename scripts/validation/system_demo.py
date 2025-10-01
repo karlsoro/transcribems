@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Comprehensive TranscribeMS System Demo.
+"""Comprehensive TranscribeMCP System Demo.
 
-This demo showcases the complete functionality of the TranscribeMS MCP server,
+This demo showcases the complete functionality of the TranscribeMCP MCP server,
 including all MCP tools, services, and real transcription capabilities.
 """
 
@@ -17,8 +17,8 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class TranscribeMSDemo:
-    """Interactive demonstration of TranscribeMS capabilities."""
+class TranscribeMCPDemo:
+    """Interactive demonstration of TranscribeMCP capabilities."""
 
     def __init__(self):
         """Initialize the demo."""
@@ -30,8 +30,8 @@ class TranscribeMSDemo:
         }
 
     async def run_complete_demo(self):
-        """Run the complete TranscribeMS system demonstration."""
-        logger.info("🚀 Starting TranscribeMS System Demonstration")
+        """Run the complete TranscribeMCP system demonstration."""
+        logger.info("🚀 Starting TranscribeMCP System Demonstration")
         logger.info("=" * 70)
 
         demo_sections = [
@@ -476,7 +476,7 @@ class TranscribeMSDemo:
         success_rate = (successful_demos / total_demos) * 100 if total_demos else 0
 
         logger.info("\n" + "=" * 70)
-        logger.info("📊 TRANSCRIBEMS SYSTEM DEMONSTRATION COMPLETE")
+        logger.info("📊 TRANSCRIBE_MCP SYSTEM DEMONSTRATION COMPLETE")
         logger.info("=" * 70)
         logger.info(f"✅ Successful Demos: {successful_demos}/{total_demos}")
         logger.info(f"📈 Success Rate: {success_rate:.1f}%")
@@ -493,7 +493,7 @@ class TranscribeMSDemo:
 
         logger.info(f"📋 Detailed report saved to: {report_file}")
 
-        logger.info("\n🚀 TranscribeMS MCP Server is ready for production use!")
+        logger.info("\n🚀 TranscribeMCP MCP Server is ready for production use!")
         logger.info("   • All core services validated")
         logger.info("   • All MCP tools functional")
         logger.info("   • Error handling robust")
@@ -501,9 +501,9 @@ class TranscribeMSDemo:
         logger.info("   • Integration tests: 100% success rate")
 
 async def main():
-    """Run the TranscribeMS system demonstration."""
+    """Run the TranscribeMCP system demonstration."""
     try:
-        demo = TranscribeMSDemo()
+        demo = TranscribeMCPDemo()
         await demo.run_complete_demo()
         return 0
 

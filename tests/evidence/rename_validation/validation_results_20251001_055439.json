@@ -1,0 +1,98 @@
+{
+  "timestamp": "20251001_055439",
+  "total_tests": 15,
+  "passed": 12,
+  "failed": 3,
+  "tests": [
+    {
+      "test": "Import validation",
+      "passed": false,
+      "details": "cannot import name 'settings' from 'src.core.config' (/home/karlsoro/Projects/TranscribeMS/src/core/config.py)",
+      "timestamp": "2025-10-01T05:54:39.759172"
+    },
+    {
+      "test": "MCP server initialization",
+      "passed": false,
+      "details": "cannot import name 'mcp' from 'src.mcp_server.fastmcp_server' (/home/karlsoro/Projects/TranscribeMS/src/mcp_server/fastmcp_server.py)",
+      "timestamp": "2025-10-01T05:54:42.092722"
+    },
+    {
+      "test": "Path exists: src/core/config.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092767"
+    },
+    {
+      "test": "Path exists: src/mcp_server/server.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092780"
+    },
+    {
+      "test": "Path exists: src/mcp_server/fastmcp_server.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092791"
+    },
+    {
+      "test": "Path exists: src/services/transcription_service.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092804"
+    },
+    {
+      "test": "Path exists: tests/integration",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092813"
+    },
+    {
+      "test": "Path exists: docs/guides",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092823"
+    },
+    {
+      "test": "Path exists: scripts/utils",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092832"
+    },
+    {
+      "test": "Path exists: transcribe_mcp_env",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092840"
+    },
+    {
+      "test": "Path exists: pyproject.toml",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:54:42.092848"
+    },
+    {
+      "test": "Configuration validation",
+      "passed": false,
+      "details": "cannot import name 'settings' from 'src.core.config' (/home/karlsoro/Projects/TranscribeMS/src/core/config.py)",
+      "timestamp": "2025-10-01T05:54:42.092856"
+    },
+    {
+      "test": "No old refs in src/mcp_server/server.py",
+      "passed": true,
+      "details": "File is clean",
+      "timestamp": "2025-10-01T05:54:42.092908"
+    },
+    {
+      "test": "No old refs in src/mcp_server/fastmcp_server.py",
+      "passed": true,
+      "details": "File is clean",
+      "timestamp": "2025-10-01T05:54:42.092939"
+    },
+    {
+      "test": "No old refs in src/core/config.py",
+      "passed": true,
+      "details": "File is clean",
+      "timestamp": "2025-10-01T05:54:42.092967"
+    }
+  ]
+}

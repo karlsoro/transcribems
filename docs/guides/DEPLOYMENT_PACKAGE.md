@@ -1,4 +1,4 @@
-# TranscribeMS - Production Deployment Package
+# TranscribeMCP - Production Deployment Package
 
 **Status**: ✅ **PRODUCTION READY FOR IMMEDIATE DEPLOYMENT**
 **Validation Date**: September 27, 2025
@@ -8,7 +8,7 @@
 
 ## 🎯 EXECUTIVE SUMMARY
 
-TranscribeMS is **PRODUCTION READY** and validated for deployment to external projects requiring audio transcription capabilities. All core components have been tested with real audio files and comprehensive validation artifacts have been generated.
+TranscribeMCP is **PRODUCTION READY** and validated for deployment to external projects requiring audio transcription capabilities. All core components have been tested with real audio files and comprehensive validation artifacts have been generated.
 
 ### ✅ VALIDATED CAPABILITIES
 - **Audio Transcription**: WhisperX integration with 26.9x realtime processing speed
@@ -31,8 +31,8 @@ pip install structlog whisperx torch torchaudio librosa soundfile pyannote-audio
 
 **2. Start MCP Server**
 ```bash
-# Navigate to TranscribeMS directory
-cd /path/to/TranscribeMS
+# Navigate to TranscribeMCP directory
+cd /path/to/TranscribeMCP
 
 # Start MCP server
 python src/mcp_server/server.py
@@ -43,10 +43,10 @@ Add to your `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["src/mcp_server/server.py"],
-      "cwd": "/path/to/TranscribeMS"
+      "cwd": "/path/to/TranscribeMCP"
     }
   }
 }
@@ -238,4 +238,4 @@ model_sizes = {
 
 ---
 
-*TranscribeMS has undergone comprehensive production validation and is certified ready for deployment. All validation artifacts and evidence files are included for compliance and quality assurance.*
+*TranscribeMCP has undergone comprehensive production validation and is certified ready for deployment. All validation artifacts and evidence files are included for compliance and quality assurance.*

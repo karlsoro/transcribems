@@ -82,7 +82,7 @@ async def generate_final_transcript_with_speakers():
         txt_file = f"data/results/FINAL_LARGE_TRANSCRIPT_WITH_SPEAKERS_{timestamp}.txt"
 
         with open(txt_file, 'w') as f:
-            f.write("# TranscribeMS - Large Audio Transcript with Speaker Identification\n")
+            f.write("# TranscribeMCP - Large Audio Transcript with Speaker Identification\n")
             f.write(f"# Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"# Audio file: {audio_file} ({file_size:.1f}MB)\n")
             f.write(f"# Processing time: {processing_time:.1f}s\n")

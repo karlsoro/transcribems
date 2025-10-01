@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-TranscribeMS is a structured feature development framework built on the "specKit" system. It provides a comprehensive workflow for specification-driven development with enterprise-grade standards and automated tooling. The project operates within the `transcribems/` subdirectory and uses custom Claude commands for feature development.
+TranscribeMCP is a structured feature development framework built on the "specKit" system. It provides a comprehensive workflow for specification-driven development with enterprise-grade standards and automated tooling. The project operates within the `transcribe_mcp/` subdirectory and uses custom Claude commands for feature development.
 
 ## Architecture and Structure
 

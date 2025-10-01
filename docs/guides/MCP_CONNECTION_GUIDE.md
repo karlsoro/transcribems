@@ -1,24 +1,24 @@
-# TranscribeMS MCP Server - Connection Guide
+# TranscribeMCP MCP Server - Connection Guide
 
 ## Overview
 
-TranscribeMS provides a **Model Context Protocol (MCP)** server that exposes GPU-accelerated audio transcription capabilities with speaker diarization. This guide shows how to connect and use the MCP server from other projects.
+TranscribeMCP provides a **Model Context Protocol (MCP)** server that exposes GPU-accelerated audio transcription capabilities with speaker diarization. This guide shows how to connect and use the MCP server from other projects.
 
 ## Server Details
 
-- **Server Name**: `transcribems`
+- **Server Name**: `transcribe_mcp`
 - **Protocol**: MCP over stdio
-- **Package**: `transcribems`
+- **Package**: `transcribe_mcp`
 - **Version**: 1.0.0
-- **Entry Point**: `transcribems-mcp` or `python -m src.mcp_server.server`
+- **Entry Point**: `transcribe_mcp-mcp` or `python -m src.mcp_server.server`
 
 ## Installation
 
 ### Option 1: Install as Package (Recommended for Production)
 
 ```bash
-# From the TranscribeMS directory
-cd /home/karlsoro/Projects/TranscribeMS
+# From the TranscribeMCP directory
+cd /home/karlsoro/Projects/TranscribeMCP
 
 # Install in development mode (editable)
 pip install -e .
@@ -34,7 +34,7 @@ pip install -e ".[dev,gpu]"
 
 ```bash
 # Ensure dependencies are installed
-cd /home/karlsoro/Projects/TranscribeMS
+cd /home/karlsoro/Projects/TranscribeMCP
 pip install -r requirements.txt
 
 # Run directly
@@ -50,9 +50,9 @@ Add to your Claude Desktop MCP configuration (`~/Library/Application Support/Cla
 ```json
 {
   "mcpServers": {
-    "transcribems": {
-      "command": "transcribems-mcp",
-      "cwd": "/home/karlsoro/Projects/TranscribeMS"
+    "transcribe_mcp": {
+      "command": "transcribe_mcp-mcp",
+      "cwd": "/home/karlsoro/Projects/TranscribeMCP"
     }
   }
 }
@@ -63,12 +63,12 @@ Or using Python directly:
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["-m", "src.mcp_server.server"],
-      "cwd": "/home/karlsoro/Projects/TranscribeMS",
+      "cwd": "/home/karlsoro/Projects/TranscribeMCP",
       "env": {
-        "PYTHONPATH": "/home/karlsoro/Projects/TranscribeMS"
+        "PYTHONPATH": "/home/karlsoro/Projects/TranscribeMCP"
       }
     }
   }
@@ -82,10 +82,10 @@ import asyncio
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-async def connect_to_transcribems():
+async def connect_to_transcribe_mcp():
     server_params = StdioServerParameters(
-        command="transcribems-mcp",
-        cwd="/home/karlsoro/Projects/TranscribeMS"
+        command="transcribe_mcp-mcp",
+        cwd="/home/karlsoro/Projects/TranscribeMCP"
     )
 
     async with stdio_client(server_params) as (read, write):
@@ -108,7 +108,7 @@ async def connect_to_transcribems():
             )
             print(result)
 
-asyncio.run(connect_to_transcribems())
+asyncio.run(connect_to_transcribe_mcp())
 ```
 
 ### For Node.js MCP Clients
@@ -117,10 +117,10 @@ asyncio.run(connect_to_transcribems())
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
-async function connectToTranscribeMS() {
+async function connectToTranscribeMCP() {
   const transport = new StdioClientTransport({
-    command: "transcribems-mcp",
-    cwd: "/home/karlsoro/Projects/TranscribeMS"
+    command: "transcribe_mcp-mcp",
+    cwd: "/home/karlsoro/Projects/TranscribeMCP"
   });
 
   const client = new Client({
@@ -149,12 +149,12 @@ async function connectToTranscribeMS() {
   console.log(result);
 }
 
-connectToTranscribeMS().catch(console.error);
+connectToTranscribeMCP().catch(console.error);
 ```
 
 ## Available MCP Tools
 
-The TranscribeMS MCP server exposes 6 primary tools:
+The TranscribeMCP MCP server exposes 6 primary tools:
 
 ### 1. `transcribe_audio`
 Transcribe a single audio file with GPU acceleration and speaker diarization.
@@ -324,13 +324,13 @@ history = await session.call_tool(
 
 ```bash
 # Check if package is installed
-pip show transcribems
+pip show transcribe_mcp
 
 # Verify Python version
 python3 --version  # Should be 3.11+
 
 # Check dependencies
-pip install -r /home/karlsoro/Projects/TranscribeMS/requirements.txt
+pip install -r /home/karlsoro/Projects/TranscribeMCP/requirements.txt
 
 # Run with debugging
 python -m src.mcp_server.server
@@ -347,15 +347,15 @@ python -m src.mcp_server.server
 
 ```bash
 # Test MCP server directly
-cd /home/karlsoro/Projects/TranscribeMS
-transcribems-mcp
+cd /home/karlsoro/Projects/TranscribeMCP
+transcribe_mcp-mcp
 
 # Should output MCP protocol messages
 ```
 
 ## Support and Documentation
 
-- **Repository**: `/home/karlsoro/Projects/TranscribeMS`
+- **Repository**: `/home/karlsoro/Projects/TranscribeMCP`
 - **Main Server**: [src/mcp_server/fastmcp_server.py](../../src/mcp_server/fastmcp_server.py)
 - **Alternative Server**: [src/mcp_server/server.py](../../src/mcp_server/server.py)
 - **Tool Implementations**: `../../src/tools/`
@@ -363,7 +363,7 @@ transcribems-mcp
 
 ## Integration Checklist
 
-- [ ] Install TranscribeMS package or add to Python path
+- [ ] Install TranscribeMCP package or add to Python path
 - [ ] Configure MCP server in client configuration
 - [ ] Verify server starts correctly (`scripts/test_mcp_connection.py`)
 - [ ] Test basic transcribe_audio tool call

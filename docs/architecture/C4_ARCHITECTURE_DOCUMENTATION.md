@@ -1,8 +1,8 @@
-# TranscribeMS C4 Architecture Documentation
+# TranscribeMCP C4 Architecture Documentation
 
 ## Overview
 
-This document provides comprehensive architectural documentation for TranscribeMS using the C4 model (Context, Containers, Components, Code). TranscribeMS is an enterprise-grade audio transcription system built on WhisperX with speaker diarization capabilities, MCP (Model Context Protocol) server implementation, and FastAPI web services.
+This document provides comprehensive architectural documentation for TranscribeMCP using the C4 model (Context, Containers, Components, Code). TranscribeMCP is an enterprise-grade audio transcription system built on WhisperX with speaker diarization capabilities, MCP (Model Context Protocol) server implementation, and FastAPI web services.
 
 ## System Overview
 
@@ -19,13 +19,13 @@ This document provides comprehensive architectural documentation for TranscribeM
 
 ```mermaid
 C4Context
-    title System Context Diagram for TranscribeMS
+    title System Context Diagram for TranscribeMCP
 
     Person(user, "End User", "Researchers, content creators, businesses needing audio transcription")
     Person(developer, "Developer", "Software developers integrating transcription capabilities")
     Person(admin, "System Administrator", "DevOps engineers managing deployment and monitoring")
 
-    System(transcribems, "TranscribeMS", "Audio transcription system with speaker identification using WhisperX and pyannote-audio")
+    System(transcribe_mcp, "TranscribeMCP", "Audio transcription system with speaker identification using WhisperX and pyannote-audio")
 
     System_Ext(claude_desktop, "Claude Desktop", "AI assistant platform with MCP client capabilities")
     System_Ext(huggingface, "Hugging Face", "Model repository and tokenization services")
@@ -33,17 +33,17 @@ C4Context
     System_Ext(storage_systems, "File Storage", "Local/cloud storage for audio files and transcriptions")
     System_Ext(monitoring, "Monitoring Systems", "Application performance monitoring and logging")
 
-    Rel(user, transcribems, "Uploads audio files, receives transcriptions", "HTTPS/API")
-    Rel(developer, transcribems, "Integrates via MCP protocol", "stdio/JSON-RPC")
-    Rel(admin, transcribems, "Monitors and manages", "HTTPS/Docker")
+    Rel(user, transcribe_mcp, "Uploads audio files, receives transcriptions", "HTTPS/API")
+    Rel(developer, transcribe_mcp, "Integrates via MCP protocol", "stdio/JSON-RPC")
+    Rel(admin, transcribe_mcp, "Monitors and manages", "HTTPS/Docker")
 
-    Rel(transcribems, claude_desktop, "Provides MCP tools", "stdio/JSON-RPC")
-    Rel(transcribems, huggingface, "Downloads models, authenticates", "HTTPS/API")
-    Rel(transcribems, gpu_infrastructure, "Executes AI models", "CUDA/PyTorch")
-    Rel(transcribems, storage_systems, "Stores files and results", "File I/O")
-    Rel(transcribems, monitoring, "Sends metrics and logs", "HTTP/JSON")
+    Rel(transcribe_mcp, claude_desktop, "Provides MCP tools", "stdio/JSON-RPC")
+    Rel(transcribe_mcp, huggingface, "Downloads models, authenticates", "HTTPS/API")
+    Rel(transcribe_mcp, gpu_infrastructure, "Executes AI models", "CUDA/PyTorch")
+    Rel(transcribe_mcp, storage_systems, "Stores files and results", "File I/O")
+    Rel(transcribe_mcp, monitoring, "Sends metrics and logs", "HTTP/JSON")
 
-    UpdateElementStyle(transcribems, $fontColor="white", $bgColor="blue", $borderColor="navy")
+    UpdateElementStyle(transcribe_mcp, $fontColor="white", $bgColor="blue", $borderColor="navy")
     UpdateElementStyle(claude_desktop, $fontColor="black", $bgColor="lightgreen", $borderColor="green")
     UpdateElementStyle(huggingface, $fontColor="white", $bgColor="orange", $borderColor="darkorange")
 ```
@@ -54,7 +54,7 @@ C4Context
 
 ```mermaid
 C4Container
-    title Container Diagram for TranscribeMS
+    title Container Diagram for TranscribeMCP
 
     Person(user, "End User")
     Person(developer, "Developer")
@@ -62,7 +62,7 @@ C4Container
     System_Ext(huggingface, "Hugging Face")
     System_Ext(gpu_hardware, "GPU Hardware")
 
-    Container_Boundary(transcribems_system, "TranscribeMS System") {
+    Container_Boundary(transcribe_mcp_system, "TranscribeMCP System") {
         Container(mcp_server, "MCP Server", "Python/asyncio", "Model Context Protocol server providing transcription tools to AI assistants")
         Container(fastapi_app, "FastAPI Application", "FastAPI/Uvicorn", "REST API for web-based transcription services with async processing")
         Container(whisperx_engine, "WhisperX Engine", "PyTorch/CUDA", "Core transcription engine with speaker diarization capabilities")
@@ -118,7 +118,7 @@ C4Container
 
 ```mermaid
 C4Component
-    title Component Diagram for TranscribeMS Core Services
+    title Component Diagram for TranscribeMCP Core Services
 
     Container_Boundary(mcp_server_container, "MCP Server Container") {
         Component(mcp_server_main, "MCP Server", "Server class", "Main MCP protocol handler and tool registry")
@@ -283,7 +283,7 @@ C4Component
 
 ```mermaid
 C4Deployment
-    title Deployment Diagram for TranscribeMS
+    title Deployment Diagram for TranscribeMCP
 
     Deployment_Node(developer_machine, "Developer Machine", "Local Development") {
         Deployment_Node(docker_compose, "Docker Compose", "Local Container Orchestration") {
@@ -620,4 +620,4 @@ graph TB
 
 ---
 
-*This C4 documentation provides comprehensive architectural overview of TranscribeMS system. Last updated: September 27, 2025*
+*This C4 documentation provides comprehensive architectural overview of TranscribeMCP system. Last updated: September 27, 2025*

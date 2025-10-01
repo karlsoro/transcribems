@@ -1,5 +1,5 @@
 """
-Structured logging configuration for TranscribeMS.
+Structured logging configuration for TranscribeMCP.
 """
 
 import logging
@@ -197,7 +197,7 @@ def setup_logging(
     root_logger.handlers.clear()
 
     # File handler with rotation
-    log_file = log_path / "transcribems.log"
+    log_file = log_path / "transcribe_mcp.log"
     file_handler = logging.handlers.RotatingFileHandler(
         log_file,
         maxBytes=max_file_size_mb * 1024 * 1024,
@@ -216,7 +216,7 @@ def setup_logging(
         root_logger.addHandler(console_handler)
 
     # Error file handler
-    error_log_file = log_path / "transcribems_errors.log"
+    error_log_file = log_path / "transcribe_mcp_errors.log"
     error_handler = logging.handlers.RotatingFileHandler(
         error_log_file,
         maxBytes=max_file_size_mb * 1024 * 1024,

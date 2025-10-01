@@ -12,7 +12,7 @@ handlers:
     class: logging.FileHandler
     level: DEBUG
     formatter: default
-    filename: data/logs/transcribems.log
+    filename: data/logs/transcribe_mcp.log
 loggers:
   src:
     level: DEBUG

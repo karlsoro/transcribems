@@ -1,4 +1,4 @@
-# TranscribeMS - GPU-Accelerated Audio Transcription
+# TranscribeMCP - GPU-Accelerated Audio Transcription
 
 High-performance audio transcription service with GPU acceleration, speaker diarization, and enterprise-grade reliability.
 
@@ -27,12 +27,12 @@ High-performance audio transcription service with GPU acceleration, speaker diar
 ```bash
 # Clone repository
 git clone <repository-url>
-cd TranscribeMS
+cd TranscribeMCP
 
 # Create virtual environment
-python -m venv transcribems_env
-source transcribems_env/bin/activate  # Linux/Mac
-# transcribems_env\Scripts\activate  # Windows
+python -m venv transcribe_mcp_env
+source transcribe_mcp_env/bin/activate  # Linux/Mac
+# transcribe_mcp_env\Scripts\activate  # Windows
 
 # Install dependencies
 pip install -r requirements.txt
@@ -73,7 +73,7 @@ asyncio.run(transcribe_audio())
 
 ```bash
 # Activate environment
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 
 # Run transcription (GPU auto-detected)
 python -c "
@@ -209,7 +209,7 @@ print(f"GPU available: {result['gpu_available']}")
 
 ```bash
 # Activate environment
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 
 # Quick validation
 python test_service_validation.py
@@ -325,7 +325,7 @@ result = await cli.transcribe_audio(
 ### Project Structure
 
 ```
-TranscribeMS/
+TranscribeMCP/
 ├── src/
 │   ├── mcp_server/
 │   │   ├── server.py                # MCP server
@@ -361,7 +361,7 @@ For detailed structure, see [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.m
 
 ## 🔌 MCP Server Integration
 
-TranscribeMS provides a Model Context Protocol (MCP) server for easy integration:
+TranscribeMCP provides a Model Context Protocol (MCP) server for easy integration:
 
 ```bash
 # Start MCP server
@@ -377,10 +377,10 @@ python scripts/test_mcp_connection.py
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "bash",
-      "args": ["/path/to/TranscribeMS/scripts/start_mcp_server.sh"],
-      "cwd": "/path/to/TranscribeMS"
+      "args": ["/path/to/TranscribeMCP/scripts/start_mcp_server.sh"],
+      "cwd": "/path/to/TranscribeMCP"
     }
   }
 }
@@ -393,8 +393,8 @@ from mcp.client.stdio import stdio_client
 
 server_params = StdioServerParameters(
     command="bash",
-    args=["/path/to/TranscribeMS/scripts/start_mcp_server.sh"],
-    cwd="/path/to/TranscribeMS"
+    args=["/path/to/TranscribeMCP/scripts/start_mcp_server.sh"],
+    cwd="/path/to/TranscribeMCP"
 )
 
 async with stdio_client(server_params) as (read, write):
@@ -441,4 +441,4 @@ For issues, questions, or feature requests:
 
 ---
 
-**TranscribeMS** - Making audio transcription fast, accurate, and accessible. 🎵➡️📝
+**TranscribeMCP** - Making audio transcription fast, accurate, and accessible. 🎵➡️📝

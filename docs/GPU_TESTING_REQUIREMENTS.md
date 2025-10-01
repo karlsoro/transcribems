@@ -1,4 +1,4 @@
-# GPU Testing Requirements - TranscribeMS
+# GPU Testing Requirements - TranscribeMCP
 
 ## Current GPU Test Status
 

@@ -1,5 +1,5 @@
 """
-TranscribeMS FastMCP Server.
+TranscribeMCP FastMCP Server.
 
 A simplified MCP server implementation using FastMCP for GPU-enhanced audio transcription.
 """
@@ -27,7 +27,7 @@ from ..tools.cancel_tool import cancel_transcription_tool
 logger = logging.getLogger(__name__)
 
 # Create FastMCP server
-server = FastMCP("transcribems")
+server = FastMCP("transcribe_mcp")
 
 @server.tool()
 async def transcribe_audio(
@@ -146,7 +146,7 @@ def main():
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
 
-    logger.info("Starting TranscribeMS FastMCP Server...")
+    logger.info("Starting TranscribeMCP FastMCP Server...")
 
     try:
         asyncio.run(server.run_stdio_async())

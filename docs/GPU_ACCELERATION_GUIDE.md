@@ -1,8 +1,8 @@
-# GPU Acceleration Guide for TranscribeMS
+# GPU Acceleration Guide for TranscribeMCP
 
 ## Overview
 
-TranscribeMS now supports GPU acceleration for significantly improved transcription performance. The system automatically detects GPU availability and optimizes settings for the best performance.
+TranscribeMCP now supports GPU acceleration for significantly improved transcription performance. The system automatically detects GPU availability and optimizes settings for the best performance.
 
 ## Performance Improvements
 

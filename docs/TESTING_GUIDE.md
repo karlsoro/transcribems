@@ -1,4 +1,4 @@
-# TranscribeMS Testing Guide
+# TranscribeMCP Testing Guide
 
 Complete guide for testing the speaker identification and transcription system from a developer/user perspective.
 
@@ -103,10 +103,10 @@ if __name__ == "__main__":
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "python",
       "args": ["-m", "src.mcp_server.server"],
-      "cwd": "/path/to/TranscribeMS"
+      "cwd": "/path/to/TranscribeMCP"
     }
   }
 }
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
 2. **Test in Claude Desktop**:
 ```
-Ask Claude: "Can you transcribe an audio file using the transcribems MCP server?"
+Ask Claude: "Can you transcribe an audio file using the transcribe_mcp MCP server?"
 ```
 
 3. **Expected behavior**: Claude should list available tools including `transcribe_audio_tool`, `get_transcription_progress_tool`, etc.

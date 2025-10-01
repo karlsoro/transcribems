@@ -1,6 +1,6 @@
 {
     "venvPath": ".",
-    "venv": "transcribems_env",
+    "venv": "transcribe_mcp_env",
     "pythonVersion": "3.12",
     "ignore": [
         "src/services/speaker_service.py"

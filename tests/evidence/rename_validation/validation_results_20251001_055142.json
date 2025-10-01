@@ -1,0 +1,98 @@
+{
+  "timestamp": "20251001_055142",
+  "total_tests": 15,
+  "passed": 12,
+  "failed": 3,
+  "tests": [
+    {
+      "test": "Import validation",
+      "passed": false,
+      "details": "No module named 'pydantic_settings'",
+      "timestamp": "2025-10-01T05:51:42.544455"
+    },
+    {
+      "test": "MCP server initialization",
+      "passed": false,
+      "details": "No module named 'structlog'",
+      "timestamp": "2025-10-01T05:51:42.553889"
+    },
+    {
+      "test": "Path exists: src/core/config.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.553954"
+    },
+    {
+      "test": "Path exists: src/mcp_server/server.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.553968"
+    },
+    {
+      "test": "Path exists: src/mcp_server/fastmcp_server.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.553977"
+    },
+    {
+      "test": "Path exists: src/services/transcription_service.py",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.553987"
+    },
+    {
+      "test": "Path exists: tests/integration",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.553995"
+    },
+    {
+      "test": "Path exists: docs/guides",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.554003"
+    },
+    {
+      "test": "Path exists: scripts/utils",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.554011"
+    },
+    {
+      "test": "Path exists: transcribe_mcp_env",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.554020"
+    },
+    {
+      "test": "Path exists: pyproject.toml",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-01T05:51:42.554028"
+    },
+    {
+      "test": "Configuration validation",
+      "passed": false,
+      "details": "No module named 'pydantic_settings'",
+      "timestamp": "2025-10-01T05:51:42.554187"
+    },
+    {
+      "test": "No old refs in src/mcp_server/server.py",
+      "passed": true,
+      "details": "File is clean",
+      "timestamp": "2025-10-01T05:51:42.554267"
+    },
+    {
+      "test": "No old refs in src/mcp_server/fastmcp_server.py",
+      "passed": true,
+      "details": "File is clean",
+      "timestamp": "2025-10-01T05:51:42.554303"
+    },
+    {
+      "test": "No old refs in src/core/config.py",
+      "passed": true,
+      "details": "File is clean",
+      "timestamp": "2025-10-01T05:51:42.554336"
+    }
+  ]
+}

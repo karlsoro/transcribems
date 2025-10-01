@@ -1,7 +1,7 @@
-# Data Model: TranscribeMS MCP Server
+# Data Model: TranscribeMCP MCP Server
 
 **Date**: 2025-09-25
-**Feature**: Convert TranscribeMS API to MCP Server
+**Feature**: Convert TranscribeMCP API to MCP Server
 **Branch**: 002-adjust-the-current
 
 ## Core Entities
@@ -268,7 +268,7 @@ erDiagram
 
 ### File System Structure
 ```
-transcribems_data/
+transcribe_mcp_data/
 ├── jobs/
 │   ├── {job_id}.json              # TranscriptionJob metadata
 │   └── {job_id}_result.json       # TranscriptionResult data

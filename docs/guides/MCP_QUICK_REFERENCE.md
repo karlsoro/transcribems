@@ -1,14 +1,14 @@
-# TranscribeMS MCP Server - Quick Reference
+# TranscribeMCP MCP Server - Quick Reference
 
 ## 🚀 Quick Start
 
 ```bash
 # Start the server
-cd /home/karlsoro/Projects/TranscribeMS
+cd /home/karlsoro/Projects/TranscribeMCP
 ./scripts/start_mcp_server.sh
 
 # Test the connection
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 python scripts/test_mcp_connection.py
 ```
 
@@ -16,10 +16,10 @@ python scripts/test_mcp_connection.py
 
 | Property | Value |
 |----------|-------|
-| **Server Name** | `transcribems` |
+| **Server Name** | `transcribe_mcp` |
 | **Protocol** | MCP over stdio |
 | **Command** | `python -m src.mcp_server.fastmcp_server` |
-| **Working Directory** | `/home/karlsoro/Projects/TranscribeMS` |
+| **Working Directory** | `/home/karlsoro/Projects/TranscribeMCP` |
 | **Python Version** | 3.12.3 (requires 3.11+) |
 | **MCP SDK Version** | 1.15.0 |
 
@@ -30,10 +30,10 @@ python scripts/test_mcp_connection.py
 ```json
 {
   "mcpServers": {
-    "transcribems": {
+    "transcribe_mcp": {
       "command": "bash",
-      "args": ["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-      "cwd": "/home/karlsoro/Projects/TranscribeMS"
+      "args": ["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+      "cwd": "/home/karlsoro/Projects/TranscribeMCP"
     }
   }
 }
@@ -57,8 +57,8 @@ from mcp.client.stdio import stdio_client
 async def transcribe():
     server_params = StdioServerParameters(
         command="bash",
-        args=["/home/karlsoro/Projects/TranscribeMS/scripts/start_mcp_server.sh"],
-        cwd="/home/karlsoro/Projects/TranscribeMS"
+        args=["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
+        cwd="/home/karlsoro/Projects/TranscribeMCP"
     )
 
     async with stdio_client(server_params) as (read, write):
@@ -81,7 +81,7 @@ async def transcribe():
 
 ```bash
 # Activate environment
-source transcribems_env/bin/activate
+source transcribe_mcp_env/bin/activate
 
 # Check server can load
 python -c "from src.mcp_server.fastmcp_server import server; print('✅ Server OK')"
@@ -137,7 +137,7 @@ python scripts/test_mcp_connection.py
 
 | Issue | Solution |
 |-------|----------|
-| Server won't start | Activate venv: `source transcribems_env/bin/activate` |
+| Server won't start | Activate venv: `source transcribe_mcp_env/bin/activate` |
 | Import errors | Install deps: `pip install -r requirements.txt` |
 | GPU not detected | Install CUDA toolkit or use CPU mode (automatic fallback) |
 | Connection timeout | Check file paths are absolute, not relative |

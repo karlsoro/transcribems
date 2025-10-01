@@ -8,7 +8,7 @@ import time
 import os
 from pathlib import Path
 
-sys.path.append('/home/karlsoro/Projects/TranscribeMS/src')
+sys.path.append('/home/karlsoro/Projects/TranscribeMCP/src')
 from services.simple_whisperx_cli import SimpleWhisperXCLI
 
 
@@ -20,14 +20,14 @@ async def test_gpu_enhanced_service():
     # Test audio files
     test_files = [
         {
-            "path": "/home/karlsoro/Projects/TranscribeMS/test_data/audio/multi_speaker.wav",
+            "path": "/home/karlsoro/Projects/TranscribeMCP/test_data/audio/multi_speaker.wav",
             "description": "Small multi-speaker test file",
             "expected_min_duration": 10
         }
     ]
 
     # Check if large test file exists
-    large_file = Path("/home/karlsoro/Projects/TranscribeMS/large_audio_converted.wav")
+    large_file = Path("/home/karlsoro/Projects/TranscribeMCP/large_audio_converted.wav")
     if large_file.exists():
         test_files.append({
             "path": str(large_file),
@@ -53,7 +53,7 @@ async def test_gpu_enhanced_service():
         try:
             result_gpu = await cli_gpu.transcribe_audio(
                 audio_path=test_file["path"],
-                output_dir=f"/home/karlsoro/Projects/TranscribeMS/test_gpu_auto_{Path(test_file['path']).stem}",
+                output_dir=f"/home/karlsoro/Projects/TranscribeMCP/test_gpu_auto_{Path(test_file['path']).stem}",
                 model="base",  # Use base model for faster testing
                 language="en",
                 enable_diarization=True,
@@ -97,7 +97,7 @@ async def test_gpu_enhanced_service():
         try:
             result_cpu = await cli_cpu.transcribe_audio(
                 audio_path=test_file["path"],
-                output_dir=f"/home/karlsoro/Projects/TranscribeMS/test_cpu_forced_{Path(test_file['path']).stem}",
+                output_dir=f"/home/karlsoro/Projects/TranscribeMCP/test_cpu_forced_{Path(test_file['path']).stem}",
                 model="base",
                 language="en",
                 enable_diarization=True,
