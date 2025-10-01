@@ -361,40 +361,53 @@ For detailed structure, see [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.m
 
 ## 🔌 MCP Server Integration
 
-TranscribeMCP provides a Model Context Protocol (MCP) server for easy integration:
+TranscribeMCP provides a Model Context Protocol (MCP) server with multiple transport options:
 
+### Server Modes
+
+#### Stdio Mode (Claude Desktop)
 ```bash
-# Start MCP server
-./scripts/start_mcp_server.sh
+# Start in stdio mode (for Claude Desktop)
+transcribe-mcp stdio
 
-# Test connection
-python scripts/test_mcp_connection.py
+# Or using legacy command
+transcribe-mcp-stdio
+```
+
+#### HTTP Mode (Web Applications)
+```bash
+# Start HTTP server (default: SSE on port 8000)
+transcribe-mcp http
+
+# Custom host and port
+transcribe-mcp http --host 127.0.0.1 --port 3000
+
+# StreamableHTTP mode for advanced use cases
+transcribe-mcp http --transport streamable_http
 ```
 
 ### Quick Integration
 
-**Claude Desktop:**
+**Claude Desktop** (Stdio Mode):
 ```json
 {
   "mcpServers": {
     "transcribe_mcp": {
-      "command": "bash",
-      "args": ["/path/to/TranscribeMCP/scripts/start_mcp_server.sh"],
-      "cwd": "/path/to/TranscribeMCP"
+      "command": "transcribe-mcp",
+      "args": ["stdio"]
     }
   }
 }
 ```
 
-**Python:**
+**Python Client** (Stdio Mode):
 ```python
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 server_params = StdioServerParameters(
-    command="bash",
-    args=["/path/to/TranscribeMCP/scripts/start_mcp_server.sh"],
-    cwd="/path/to/TranscribeMCP"
+    command="transcribe-mcp",
+    args=["stdio"]
 )
 
 async with stdio_client(server_params) as (read, write):
@@ -403,8 +416,33 @@ async with stdio_client(server_params) as (read, write):
         result = await session.call_tool("transcribe_audio", {...})
 ```
 
+**HTTP Client** (JavaScript):
+```javascript
+const EventSource = require('eventsource');
+const es = new EventSource('http://localhost:8000/sse');
+
+es.onmessage = (event) => {
+  console.log('Received:', event.data);
+};
+```
+
+**HTTP Client** (Python):
+```python
+import httpx
+
+async with httpx.AsyncClient() as client:
+    async with client.stream(
+        "GET",
+        "http://localhost:8000/sse",
+        headers={"Accept": "text/event-stream"}
+    ) as response:
+        async for line in response.aiter_lines():
+            print(line)
+```
+
 ### Documentation
 
+- **Server Modes Guide**: [docs/SERVER_MODES.md](docs/SERVER_MODES.md) - Complete guide to stdio and HTTP modes
 - **Connection Guide**: [docs/guides/MCP_CONNECTION_GUIDE.md](docs/guides/MCP_CONNECTION_GUIDE.md)
 - **Quick Reference**: [docs/guides/MCP_QUICK_REFERENCE.md](docs/guides/MCP_QUICK_REFERENCE.md)
 - **Integration Examples**: [docs/INTEGRATION_EXAMPLES.md](docs/INTEGRATION_EXAMPLES.md)

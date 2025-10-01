@@ -2,14 +2,25 @@
 
 ## 🚀 Quick Start
 
+### Stdio Mode (Claude Desktop)
 ```bash
-# Start the server
-cd /home/karlsoro/Projects/TranscribeMCP
-./scripts/start_mcp_server.sh
+# Start stdio server
+transcribe-mcp stdio
 
-# Test the connection
-source transcribe_mcp_env/bin/activate
-python scripts/test_mcp_connection.py
+# Or legacy command
+transcribe-mcp-stdio
+```
+
+### HTTP Mode (Web Applications)
+```bash
+# Start HTTP server (default: SSE on port 8000)
+transcribe-mcp http
+
+# Custom port
+transcribe-mcp http --port 3000
+
+# StreamableHTTP mode
+transcribe-mcp http --transport streamable_http
 ```
 
 ## 📋 Connection Details
@@ -17,23 +28,56 @@ python scripts/test_mcp_connection.py
 | Property | Value |
 |----------|-------|
 | **Server Name** | `transcribe_mcp` |
-| **Protocol** | MCP over stdio |
-| **Command** | `python -m src.mcp_server.fastmcp_server` |
-| **Working Directory** | `/home/karlsoro/Projects/TranscribeMCP` |
+| **Version** | 1.1.0 |
+| **Protocols** | stdio, HTTP/SSE, HTTP/StreamableHTTP |
+| **Commands** | `transcribe-mcp {stdio\|http}` |
 | **Python Version** | 3.12.3 (requires 3.11+) |
 | **MCP SDK Version** | 1.15.0 |
+
+## 🔧 Server Modes
+
+### Stdio Mode
+- **Best for:** Claude Desktop, local CLIs
+- **Command:** `transcribe-mcp stdio`
+- **Port:** None (uses stdin/stdout)
+- **Network:** Not accessible over network
+
+### HTTP/SSE Mode
+- **Best for:** Web applications, REST APIs
+- **Command:** `transcribe-mcp http`
+- **Port:** 8000 (configurable with `--port`)
+- **Endpoint:** `http://localhost:8000/sse`
+- **Network:** Accessible over network
+
+### HTTP/StreamableHTTP Mode
+- **Best for:** High-throughput, advanced streaming
+- **Command:** `transcribe-mcp http --transport streamable_http`
+- **Port:** 8000 (configurable with `--port`)
+- **Endpoint:** `http://localhost:8000/streamable-http`
+- **Network:** Accessible over network
 
 ## 🔧 Claude Desktop Configuration
 
 **Location:** `~/.config/Claude/claude_desktop_config.json` (Linux) or `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
 
+**Recommended (New CLI):**
 ```json
 {
   "mcpServers": {
     "transcribe_mcp": {
-      "command": "bash",
-      "args": ["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
-      "cwd": "/home/karlsoro/Projects/TranscribeMCP"
+      "command": "transcribe-mcp",
+      "args": ["stdio"]
+    }
+  }
+}
+```
+
+**Legacy (Still Supported):**
+```json
+{
+  "mcpServers": {
+    "transcribe_mcp": {
+      "command": "transcribe-mcp-stdio"
     }
   }
 }
@@ -48,7 +92,9 @@ python scripts/test_mcp_connection.py
 5. **`batch_transcribe`** - Process multiple files concurrently
 6. **`cancel_transcription`** - Cancel in-progress jobs
 
-## 💡 Example Usage (Python)
+## 💡 Example Usage
+
+### Python Stdio Client
 
 ```python
 from mcp import ClientSession, StdioServerParameters
@@ -56,9 +102,8 @@ from mcp.client.stdio import stdio_client
 
 async def transcribe():
     server_params = StdioServerParameters(
-        command="bash",
-        args=["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
-        cwd="/home/karlsoro/Projects/TranscribeMCP"
+        command="transcribe-mcp",
+        args=["stdio"]
     )
 
     async with stdio_client(server_params) as (read, write):
@@ -77,23 +122,66 @@ async def transcribe():
             print(f"Job ID: {result.job_id}")
 ```
 
+### Python HTTP Client
+
+```python
+import httpx
+
+async def transcribe_http():
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+            "http://localhost:8000/message",
+            json={
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "transcribe_audio",
+                    "arguments": {
+                        "file_path": "/path/to/audio.mp3",
+                        "model_size": "base",
+                        "enable_diarization": True
+                    }
+                },
+                "id": 1
+            }
+        )
+        result = response.json()
+        print(f"Result: {result}")
+```
+
+### JavaScript/Node.js HTTP Client
+
+```javascript
+const EventSource = require('eventsource');
+const es = new EventSource('http://localhost:8000/sse');
+
+es.onmessage = (event) => {
+  console.log('Event:', JSON.parse(event.data));
+};
+```
+
 ## 🔍 Verification Commands
 
 ```bash
-# Activate environment
-source transcribe_mcp_env/bin/activate
+# Test CLI installation
+transcribe-mcp --help
+transcribe-mcp stdio --help
+transcribe-mcp http --help
 
-# Check server can load
-python -c "from src.mcp_server.fastmcp_server import server; print('✅ Server OK')"
+# Start server in stdio mode
+transcribe-mcp stdio
+
+# Start server in HTTP mode
+transcribe-mcp http
+
+# Test HTTP connection
+curl -N http://localhost:8000/sse
 
 # Check MCP SDK
 python -c "import mcp; print(f'✅ MCP {mcp.__version__}')"
 
 # Check GPU (optional)
 python -c "import torch; print('✅ CUDA' if torch.cuda.is_available() else '✅ CPU')"
-
-# Test full connection
-python scripts/test_mcp_connection.py
 ```
 
 ## 📊 Performance Specs

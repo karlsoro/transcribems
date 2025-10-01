@@ -53,5 +53,6 @@ echo -e "${GREEN}✓${NC} Starting MCP server..."
 echo -e "${BLUE}================================================${NC}"
 echo ""
 
-# Start the MCP server
-exec python -m src.mcp_server.fastmcp_server
+# Start the MCP server in stdio mode (for Claude Desktop)
+# For HTTP mode, use: ./scripts/start_mcp_server_http.sh
+exec transcribe-mcp stdio

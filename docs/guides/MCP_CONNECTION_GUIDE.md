@@ -7,10 +7,16 @@ TranscribeMCP provides a **Model Context Protocol (MCP)** server that exposes GP
 ## Server Details
 
 - **Server Name**: `transcribe_mcp`
-- **Protocol**: MCP over stdio
+- **Protocols**:
+  - MCP over stdio (for Claude Desktop)
+  - MCP over HTTP/SSE (for web applications)
+  - MCP over HTTP/StreamableHTTP (for advanced streaming)
 - **Package**: `transcribe_mcp`
-- **Version**: 1.0.0
-- **Entry Point**: `transcribe_mcp-mcp` or `python -m src.mcp_server.server`
+- **Version**: 1.1.0
+- **Entry Points**:
+  - `transcribe-mcp stdio` - Stdio mode
+  - `transcribe-mcp http` - HTTP mode
+  - `transcribe-mcp-stdio` - Legacy stdio command
 
 ## Installation
 
@@ -43,61 +49,102 @@ python -m src.mcp_server.server
 
 ## MCP Server Configuration
 
-### For Claude Desktop
+### Mode 1: Stdio (For Claude Desktop)
 
 Add to your Claude Desktop MCP configuration (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS or `%APPDATA%/Claude/claude_desktop_config.json` on Windows):
 
+**Recommended Configuration:**
 ```json
 {
   "mcpServers": {
     "transcribe_mcp": {
-      "command": "transcribe_mcp-mcp",
+      "command": "transcribe-mcp",
+      "args": ["stdio"]
+    }
+  }
+}
+```
+
+**Legacy Configuration (still supported):**
+```json
+{
+  "mcpServers": {
+    "transcribe_mcp": {
+      "command": "transcribe-mcp-stdio"
+    }
+  }
+}
+```
+
+**With Custom Working Directory:**
+```json
+{
+  "mcpServers": {
+    "transcribe_mcp": {
+      "command": "transcribe-mcp",
+      "args": ["stdio", "--log-level", "DEBUG"],
       "cwd": "/home/karlsoro/Projects/TranscribeMCP"
     }
   }
 }
 ```
 
-Or using Python directly:
+### Mode 2: HTTP/SSE (For Web Applications)
 
-```json
-{
-  "mcpServers": {
-    "transcribe_mcp": {
-      "command": "python",
-      "args": ["-m", "src.mcp_server.server"],
-      "cwd": "/home/karlsoro/Projects/TranscribeMCP",
-      "env": {
-        "PYTHONPATH": "/home/karlsoro/Projects/TranscribeMCP"
-      }
-    }
-  }
-}
+Start the server in HTTP mode:
+
+```bash
+# Default: SSE on port 8000
+transcribe-mcp http
+
+# Custom host and port
+transcribe-mcp http --host 127.0.0.1 --port 3000
+
+# With debug logging
+transcribe-mcp http --log-level DEBUG
 ```
 
-### For Python MCP Clients
+**Connection URL:**
+- SSE Endpoint: `http://localhost:8000/sse`
+- Message Endpoint: `http://localhost:8000/message`
+
+### Mode 3: HTTP/StreamableHTTP (For Advanced Streaming)
+
+Start the server in StreamableHTTP mode:
+
+```bash
+# StreamableHTTP transport
+transcribe-mcp http --transport streamable_http --port 8000
+```
+
+**Connection URL:**
+- StreamableHTTP Endpoint: `http://localhost:8000/streamable-http`
+
+## Client Integration Examples
+
+### Python Stdio Client
 
 ```python
 import asyncio
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-async def connect_to_transcribe_mcp():
+async def connect_stdio():
+    """Connect using stdio transport (Claude Desktop style)."""
     server_params = StdioServerParameters(
-        command="transcribe_mcp-mcp",
-        cwd="/home/karlsoro/Projects/TranscribeMCP"
+        command="transcribe-mcp",
+        args=["stdio"]
     )
 
     async with stdio_client(server_params) as (read, write):
         async with ClientSession(read, write) as session:
-            # Initialize connection
             await session.initialize()
 
             # List available tools
             tools = await session.list_tools()
             print(f"Available tools: {[tool.name for tool in tools]}")
 
-            # Use a tool
+            # Transcribe audio
             result = await session.call_tool(
                 "transcribe_audio",
                 arguments={
@@ -108,19 +155,74 @@ async def connect_to_transcribe_mcp():
             )
             print(result)
 
-asyncio.run(connect_to_transcribe_mcp())
+asyncio.run(connect_stdio())
 ```
 
-### For Node.js MCP Clients
+### Python HTTP/SSE Client
+
+```python
+import asyncio
+import httpx
+import json
+
+async def connect_http_sse():
+    """Connect using HTTP SSE transport."""
+    async with httpx.AsyncClient() as client:
+        async with client.stream(
+            "GET",
+            "http://localhost:8000/sse",
+            headers={"Accept": "text/event-stream"},
+            timeout=None
+        ) as response:
+            async for line in response.aiter_lines():
+                if line.startswith("data: "):
+                    data = json.loads(line[6:])
+                    print(f"Received: {data}")
+
+asyncio.run(connect_http_sse())
+```
+
+### Python HTTP POST Client
+
+```python
+import asyncio
+import httpx
+
+async def call_tool_http():
+    """Call MCP tool via HTTP."""
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+            "http://localhost:8000/message",
+            json={
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "transcribe_audio",
+                    "arguments": {
+                        "file_path": "/path/to/audio.mp3",
+                        "model_size": "base",
+                        "enable_diarization": True
+                    }
+                },
+                "id": 1
+            }
+        )
+        result = response.json()
+        print(result)
+
+asyncio.run(call_tool_http())
+```
+
+### Node.js Stdio Client
 
 ```javascript
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 
-async function connectToTranscribeMCP() {
+async function connectStdio() {
   const transport = new StdioClientTransport({
-    command: "transcribe_mcp-mcp",
-    cwd: "/home/karlsoro/Projects/TranscribeMCP"
+    command: "transcribe-mcp",
+    args: ["stdio"]
   });
 
   const client = new Client({
@@ -149,7 +251,56 @@ async function connectToTranscribeMCP() {
   console.log(result);
 }
 
-connectToTranscribeMCP().catch(console.error);
+connectStdio().catch(console.error);
+```
+
+### Node.js HTTP/SSE Client
+
+```javascript
+const EventSource = require('eventsource');
+
+async function connectHttpSSE() {
+  const es = new EventSource('http://localhost:8000/sse');
+
+  es.onopen = () => {
+    console.log('Connected to TranscribeMCP HTTP server');
+  };
+
+  es.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    console.log('Received:', data);
+  };
+
+  es.onerror = (error) => {
+    console.error('SSE Error:', error);
+  };
+}
+
+connectHttpSSE().catch(console.error);
+```
+
+### cURL Testing
+
+```bash
+# Test SSE connection
+curl -N -H "Accept: text/event-stream" http://localhost:8000/sse
+
+# Call tool via HTTP POST
+curl -X POST http://localhost:8000/message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "tools/call",
+    "params": {
+      "name": "transcribe_audio",
+      "arguments": {
+        "file_path": "/path/to/audio.mp3",
+        "model_size": "base",
+        "enable_diarization": true
+      }
+    },
+    "id": 1
+  }'
 ```
 
 ## Available MCP Tools

@@ -8,8 +8,9 @@ This document describes the organized directory structure of the TranscribeMCP p
 TranscribeMCP/
 ├── src/                          # Source code
 │   ├── mcp_server/              # MCP server implementations
-│   │   ├── server.py            # Main MCP server
-│   │   └── fastmcp_server.py    # FastMCP implementation (recommended)
+│   │   ├── server.py            # Main MCP server (stdio, HTTP/SSE, HTTP/StreamableHTTP)
+│   │   ├── cli.py               # CLI interface for server modes
+│   │   └── fastmcp_server.py    # Legacy FastMCP implementation
 │   ├── models/                  # Data models
 │   ├── services/                # Business logic services
 │   └── tools/                   # MCP tool implementations
@@ -18,7 +19,9 @@ TranscribeMCP/
 │   ├── integration/             # Integration tests
 │   │   ├── test_mcp_integration.py
 │   │   ├── test_complete_pipeline.py
+│   │   ├── test_http_server.py  # HTTP server integration tests
 │   │   └── test_*.py
+│   ├── test_cli.py              # CLI functionality tests
 │   ├── validation/              # Validation tests
 │   │   └── production_validation_test.py
 │   ├── results/                 # Test results and outputs
@@ -45,7 +48,11 @@ TranscribeMCP/
 │   │   ├── PRODUCTION_READY_DEPLOYMENT.md
 │   │   └── WORKING_SYSTEM_VALIDATION.md
 │   ├── api/                     # API documentation
-│   ├── INTEGRATION_EXAMPLES.md  # Integration code examples
+│   ├── INTEGRATION_EXAMPLES.md  # Integration code examples (stdio clients)
+│   ├── HTTP_CLIENT_EXAMPLES.md  # HTTP client examples (Python, JS, cURL)
+│   ├── SERVER_MODES.md          # Complete server modes guide
+│   ├── QUICK_START_CLI.md       # CLI quick reference
+│   ├── CHANGELOG_CLI.md         # CLI enhancement changelog
 │   └── PROJECT_STRUCTURE.md     # This file
 │
 ├── scripts/                     # Utility scripts
@@ -82,6 +89,9 @@ TranscribeMCP/
 ### `/src` - Source Code
 All production source code organized by function:
 - **mcp_server/**: MCP protocol server implementations
+  - `server.py`: Multi-transport server (stdio, HTTP/SSE, HTTP/StreamableHTTP)
+  - `cli.py`: Command-line interface with mode selection
+  - `fastmcp_server.py`: Legacy FastMCP implementation
 - **models/**: Pydantic data models and schemas
 - **services/**: Business logic and service layer
 - **tools/**: Individual MCP tool implementations

@@ -4,10 +4,12 @@ Complete examples for integrating TranscribeMCP MCP server into various projects
 
 ## Table of Contents
 - [Claude Desktop Integration](#claude-desktop-integration)
-- [Python Client Integration](#python-client-integration)
+- [Python Stdio Client Integration](#python-stdio-client-integration)
 - [Node.js Client Integration](#nodejs-client-integration)
 - [REST API Wrapper](#rest-api-wrapper)
 - [Advanced Usage Patterns](#advanced-usage-patterns)
+
+**For HTTP Client Examples:** See [HTTP_CLIENT_EXAMPLES.md](HTTP_CLIENT_EXAMPLES.md) for complete Python, JavaScript, and cURL examples using the HTTP transport.
 
 ---
 
@@ -15,15 +17,29 @@ Complete examples for integrating TranscribeMCP MCP server into various projects
 
 ### Configuration File
 
-**Location:** `~/.config/Claude/claude_desktop_config.json` (Linux)
+**Location:**
+- Linux: `~/.config/Claude/claude_desktop_config.json`
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
+**Recommended Configuration:**
 ```json
 {
   "mcpServers": {
     "transcribe_mcp": {
-      "command": "bash",
-      "args": ["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
-      "cwd": "/home/karlsoro/Projects/TranscribeMCP"
+      "command": "transcribe-mcp",
+      "args": ["stdio"]
+    }
+  }
+}
+```
+
+**Legacy Configuration (still supported):**
+```json
+{
+  "mcpServers": {
+    "transcribe_mcp": {
+      "command": "transcribe-mcp-stdio"
     }
   }
 }
@@ -45,7 +61,7 @@ Claude will automatically use the TranscribeMCP MCP tools.
 
 ---
 
-## Python Client Integration
+## Python Stdio Client Integration
 
 ### Complete Example
 
@@ -64,11 +80,10 @@ from mcp.client.stdio import stdio_client
 class TranscribeMCPClient:
     """High-level client for TranscribeMCP MCP server."""
 
-    def __init__(self, server_path: str = "/home/karlsoro/Projects/TranscribeMCP"):
+    def __init__(self):
         self.server_params = StdioServerParameters(
-            command="bash",
-            args=[f"{server_path}/scripts/start_mcp_server.sh"],
-            cwd=server_path,
+            command="transcribe-mcp",
+            args=["stdio"]
         )
 
     async def transcribe_file(
@@ -223,9 +238,8 @@ from mcp.client.stdio import stdio_client
 
 async def transcribe():
     server_params = StdioServerParameters(
-        command="bash",
-        args=["/home/karlsoro/Projects/TranscribeMCP/scripts/start_mcp_server.sh"],
-        cwd="/home/karlsoro/Projects/TranscribeMCP"
+        command="transcribe-mcp",
+        args=["stdio"]
     )
 
     async with stdio_client(server_params) as (read, write):

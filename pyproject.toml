@@ -28,6 +28,10 @@ dependencies = [
     # MCP Server Framework
     "mcp>=1.0.0",
 
+    # HTTP Server (for HTTP mode)
+    "uvicorn>=0.27.0",
+    "starlette>=0.36.0",
+
     # WhisperX and Audio Processing
     "whisperx>=3.1.1",
     "torch>=2.1.0",
@@ -101,7 +105,8 @@ Issues = "https://github.com/karlsoro/transcribe_mcp/issues"
 Documentation = "https://docs.transcribe-mcp.com"
 
 [project.scripts]
-transcribe-mcp = "src.mcp_server.server:main"
+transcribe-mcp = "src.mcp_server.cli:main"
+transcribe-mcp-stdio = "src.mcp_server.server:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
