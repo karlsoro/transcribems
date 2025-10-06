@@ -32,6 +32,10 @@ dependencies = [
     "uvicorn>=0.27.0",
     "starlette>=0.36.0",
 
+    # REST API Framework (for simplified FastAPI server)
+    "fastapi>=0.109.0",
+    "python-multipart>=0.0.6",
+
     # WhisperX and Audio Processing
     "whisperx>=3.1.1",
     "torch>=2.1.0",
@@ -107,6 +111,7 @@ Documentation = "https://docs.transcribe-mcp.com"
 [project.scripts]
 transcribe-mcp = "src.mcp_server.cli:main"
 transcribe-mcp-stdio = "src.mcp_server.server:main"
+transcribe-rest = "src.main_simple:main"
 
 [tool.setuptools.packages.find]
 where = ["."]

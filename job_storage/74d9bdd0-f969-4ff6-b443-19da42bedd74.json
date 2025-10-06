@@ -1,0 +1,14 @@
+{
+  "job_id": "74d9bdd0-f969-4ff6-b443-19da42bedd74",
+  "status": "processing",
+  "progress": 30,
+  "progress_message": "Transcribing audio",
+  "original_filename": "large_audio_converted.wav",
+  "audio_file_path": "uploads/74d9bdd0-f969-4ff6-b443-19da42bedd74.wav",
+  "language": "auto",
+  "enable_speaker_diarization": true,
+  "model_size": "base",
+  "estimated_processing_time": 1218.4445628929443,
+  "created_at": "2025-10-02T21:12:33.427763",
+  "updated_at": "2025-10-02T21:12:38.400715"
+}

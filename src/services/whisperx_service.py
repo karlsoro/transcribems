@@ -10,16 +10,12 @@ from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
 import gc
 
-# Configure audio backend first to suppress warnings
-try:
-    from ..core.audio_config import configure_audio_backend
-    configure_audio_backend()
-except ImportError:
-    # Fallback configuration
-    import os
-    import warnings
-    warnings.filterwarnings("ignore", message=".*torchaudio._backend.*deprecated.*")
-    os.environ.setdefault('TORCHAUDIO_BACKEND', 'soundfile')
+# Configure audio backend to suppress warnings (no torchcodec dependency)
+import os
+import warnings
+warnings.filterwarnings("ignore", message=".*torchaudio._backend.*deprecated.*")
+warnings.filterwarnings("ignore", message=".*torchaudio.*")
+os.environ.setdefault('TORCHAUDIO_BACKEND', 'soundfile')
 
 import torch
 import whisperx
@@ -42,7 +38,8 @@ class WhisperXService:
         model_size: str = "large-v2",
         device: Optional[str] = None,
         compute_type: str = "float16",
-        hf_token: Optional[str] = None
+        hf_token: Optional[str] = None,
+        progress_callback: Optional[callable] = None
     ):
         """
         Initialize WhisperX service.
@@ -52,10 +49,12 @@ class WhisperXService:
             device: Device to use (cuda, cpu, or auto)
             compute_type: Compute type for inference (float16, float32, int8)
             hf_token: Hugging Face token for speaker diarization model
+            progress_callback: Optional async callback for progress updates (progress: float, message: str)
         """
         self.model_size = model_size
         self.compute_type = compute_type
         self.hf_token = hf_token
+        self.progress_callback = progress_callback
 
         # Device setup
         self.gpu_service = GPUService(defer_initialization=True)
@@ -77,13 +76,25 @@ class WhisperXService:
             "gpu_available": self.gpu_service.is_gpu_available()
         })
 
+    async def _report_progress(self, progress: float, message: str) -> None:
+        """Report progress via callback if available."""
+        if self.progress_callback:
+            try:
+                if asyncio.iscoroutinefunction(self.progress_callback):
+                    await self.progress_callback(progress, message)
+                else:
+                    self.progress_callback(progress, message)
+            except Exception as e:
+                logger.warning(f"Progress callback failed: {e}")
+
     def _select_device(self) -> str:
         """Select optimal device for processing."""
         try:
             if self.gpu_service.is_gpu_available():
                 optimal_gpu = self.gpu_service.select_optimal_device()
                 if optimal_gpu:
-                    return f"cuda:{optimal_gpu['device_id']}"
+                    # Use just "cuda" instead of "cuda:0" for ctranslate2 compatibility
+                    return "cuda"
         except Exception:
             # If GPU service fails, fall back to CPU
             pass
@@ -106,10 +117,11 @@ class WhisperXService:
                 "device": self.device
             })
 
-            # Load Whisper model
+            # Load Whisper model (run in thread to avoid blocking)
             if not self._whisper_model:
                 logger.debug("Loading Whisper model")
-                self._whisper_model = load_model(
+                self._whisper_model = await asyncio.to_thread(
+                    load_model,
                     whisper_arch=self.model_size,
                     device=self.device,
                     compute_type=self.compute_type,
@@ -117,11 +129,12 @@ class WhisperXService:
                 )
                 logger.info("Whisper model loaded successfully")
 
-            # Load alignment model
+            # Load alignment model (run in thread to avoid blocking)
             if not self._align_model and language != "auto":
                 logger.debug(f"Loading alignment model for language: {language}")
                 try:
-                    self._align_model, self._align_metadata = load_align_model(
+                    self._align_model, self._align_metadata = await asyncio.to_thread(
+                        load_align_model,
                         language_code=language,
                         device=self.device
                     )
@@ -152,7 +165,9 @@ class WhisperXService:
             # Import diarization pipeline
             from pyannote.audio import Pipeline
 
-            self._diarization_pipeline = Pipeline.from_pretrained(
+            # Load pipeline in thread to avoid blocking
+            self._diarization_pipeline = await asyncio.to_thread(
+                Pipeline.from_pretrained,
                 "pyannote/speaker-diarization-3.1",
                 use_auth_token=self.hf_token
             )
@@ -207,30 +222,45 @@ class WhisperXService:
         })
 
         try:
-            # Load audio
+            # Load audio (run in thread to avoid blocking)
+            await self._report_progress(10, "Loading audio file")
             logger.debug("Loading audio file")
-            audio = load_audio(str(audio_path))
+            audio = await asyncio.to_thread(load_audio, str(audio_path))
             audio_duration = len(audio) / 16000  # WhisperX uses 16kHz
 
             # Load models
+            await self._report_progress(20, "Loading AI models")
             await self.load_models(language)
 
-            # Transcribe
+            # Transcribe (run in thread to avoid blocking event loop)
+            await self._report_progress(30, "Transcribing audio")
             logger.debug("Starting transcription")
-            result = self._whisper_model.transcribe(
-                audio,
-                batch_size=batch_size,
-                chunk_size=chunk_length,  # Fixed: chunk_size not chunk_length
-                language=None if language == "auto" else language
-            )
+            try:
+                result = await asyncio.wait_for(
+                    asyncio.to_thread(
+                        self._whisper_model.transcribe,
+                        audio,
+                        batch_size=batch_size,
+                        chunk_size=chunk_length,
+                        language=None if language == "auto" else language
+                    ),
+                    timeout=3600  # 1 hour timeout
+                )
+                logger.debug("Transcription completed")
+            except asyncio.TimeoutError:
+                logger.error("Transcription timed out after 1 hour")
+                raise RuntimeError("Transcription timed out")
 
             detected_language = result.get("language", language)
+            await self._report_progress(60, f"Transcription completed (language: {detected_language})")
             logger.info(f"Transcription completed, detected language: {detected_language}")
 
             # Align transcription (if alignment model available)
             if self._align_model and self._align_metadata:
+                await self._report_progress(70, "Aligning transcription")
                 logger.debug("Aligning transcription")
-                result = whisperx.align(
+                aligned_result = await asyncio.to_thread(
+                    whisperx.align,
                     result["segments"],
                     self._align_model,
                     self._align_metadata,
@@ -238,28 +268,53 @@ class WhisperXService:
                     self.device,
                     return_char_alignments=False
                 )
+                # Merge aligned segments back into result dict
+                result["segments"] = aligned_result.get("segments", result["segments"])
+                if "word_segments" in aligned_result:
+                    result["word_segments"] = aligned_result["word_segments"]
 
-            # Native WhisperX speaker diarization (MUCH faster than double processing)
+            # Speaker diarization using pyannote.audio
+            # Note: Requires LD_LIBRARY_PATH set (handled by current server startup)
             speakers = []
             if enable_speaker_diarization:
-                logger.debug("Performing native WhisperX speaker diarization")
+                await self._report_progress(75, "Identifying speakers")
+                logger.debug("Performing speaker diarization with pyannote.audio")
                 try:
                     # Load diarization pipeline if not loaded
                     if not self._diarization_pipeline:
                         await self.load_diarization_pipeline()
 
                     if self._diarization_pipeline:
-                        # Use the audio tensor for diarization (pyannote expects waveform format)
-                        # Create the format that pyannote expects: {"waveform": tensor, "sample_rate": 16000}
-                        audio_for_diarization = {
-                            "waveform": torch.from_numpy(audio).unsqueeze(0),  # Add batch dimension
-                            "sample_rate": 16000
-                        }
+                        # Run diarization in thread to avoid blocking
+                        # Pass audio file path directly to pyannote pipeline
+                        diarization_result = await asyncio.to_thread(
+                            self._diarization_pipeline,
+                            str(audio_path)
+                        )
 
-                        diarize_segments = self._diarization_pipeline(audio_for_diarization)
+                        logger.debug(f"Diarization completed, type: {type(diarization_result)}")
 
-                        # Apply diarization to transcription segments using WhisperX method
-                        result = whisperx.assign_word_speakers(diarize_segments, result)
+                        # Convert pyannote annotation to list of speaker segments
+                        # This bypasses the buggy WhisperX assign_word_speakers function
+                        speaker_segments = []
+                        for turn, _, speaker in diarization_result.itertracks(yield_label=True):
+                            speaker_segments.append({
+                                "start": turn.start,
+                                "end": turn.end,
+                                "speaker": speaker
+                            })
+
+                        logger.debug(f"Found {len(speaker_segments)} speaker segments from diarization")
+
+                        # Assign speakers to transcription segments based on timing overlap
+                        # Uses existing _assign_speakers_to_segments method for compatibility
+                        result = self._assign_speakers_to_segments(
+                            result.get("segments", []),
+                            speaker_segments
+                        )
+
+                        # Wrap back into result dict
+                        result = {"segments": result}
 
                         # Extract unique speakers from segments
                         speakers_set = set()
@@ -268,7 +323,7 @@ class WhisperXService:
                                 speakers_set.add(segment["speaker"])
 
                         speakers = list(speakers_set)
-                        logger.info(f"Native WhisperX diarization found {len(speakers)} speakers: {speakers}")
+                        logger.info(f"Speaker diarization found {len(speakers)} unique speakers: {speakers}")
 
                         # Count segments with speakers
                         segments_with_speakers = sum(1 for seg in result.get("segments", []) if seg.get("speaker"))
@@ -277,13 +332,14 @@ class WhisperXService:
                         logger.warning("Diarization pipeline not available, speaker diarization disabled")
 
                 except Exception as e:
-                    logger.warning(f"Native WhisperX speaker diarization failed: {e}")
+                    logger.error(f"Native WhisperX speaker diarization failed: {type(e).__name__}: {str(e)}", exc_info=True)
                     speakers = []
 
             processing_time = time.time() - start_time
             realtime_factor = audio_duration / processing_time if processing_time > 0 else 0
 
             # Format segments and extract full text
+            await self._report_progress(90, "Formatting results")
             formatted_segments = self._format_segments(result.get("segments", []))
             full_text = " ".join(seg.get("text", "").strip() for seg in formatted_segments if seg.get("text", "").strip())
 

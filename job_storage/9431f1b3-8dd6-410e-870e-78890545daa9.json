@@ -1,0 +1,122 @@
+{
+  "job_id": "9431f1b3-8dd6-410e-870e-78890545daa9",
+  "status": "completed",
+  "progress": 100,
+  "progress_message": "Transcription completed",
+  "original_filename": "51e7bd98-f263-4275-93d9-831fbbd3b4ee.wav",
+  "audio_file_path": "uploads/9431f1b3-8dd6-410e-870e-78890545daa9.wav",
+  "language": "en",
+  "enable_speaker_diarization": true,
+  "model_size": "base",
+  "estimated_processing_time": 9.00824063873291,
+  "created_at": "2025-10-03T11:49:52.791962",
+  "updated_at": "2025-10-03T11:49:58.991709",
+  "result": {
+    "text": "Hello. Hello. Oh, hello. I didn't know you were there. Neither did I. Okay. I thought, you know, I heard of deep. This is Diane in New Jersey. And I'm Sheila and Texas originally from Chicago. Oh, I'm originally from Chicago also. I'm in New Jersey now though. Well, there is not much difference. At least, you know, they all call me a Yankee down here. So I don't hear that New Jersey now.",
+    "segments": [
+      {
+        "start": 6.713,
+        "end": 7.074,
+        "text": "Hello.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 7.634,
+        "end": 8.155,
+        "text": "Hello.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 8.436,
+        "end": 8.876,
+        "text": "Oh, hello.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 8.916,
+        "end": 9.798,
+        "text": "I didn't know you were there.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 9.838,
+        "end": 11.26,
+        "text": "Neither did I. Okay.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 11.28,
+        "end": 12.501,
+        "text": "I thought, you know, I heard of deep.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 12.542,
+        "end": 14.184,
+        "text": "This is Diane in New Jersey.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 14.444,
+        "end": 17.769,
+        "text": "And I'm Sheila and Texas originally from Chicago.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 17.789,
+        "end": 20.113,
+        "text": "Oh, I'm originally from Chicago also.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 20.173,
+        "end": 21.475,
+        "text": "I'm in New Jersey now though.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 21.935,
+        "end": 23.978,
+        "text": "Well, there is not much difference.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 24.058,
+        "end": 27.423,
+        "text": "At least, you know, they all call me a Yankee down here.",
+        "confidence": null,
+        "speaker": null
+      },
+      {
+        "start": 27.483,
+        "end": 29.987,
+        "text": "So I don't hear that New Jersey now.",
+        "confidence": null,
+        "speaker": null
+      }
+    ],
+    "speakers": [],
+    "language": "en",
+    "language_probability": null,
+    "processing_time": 6.183620452880859,
+    "audio_duration": 30.0,
+    "realtime_factor": 4.851526743693241,
+    "model_name": "base",
+    "device": "cuda",
+    "gpu_used": true
+  },
+  "output_file": "transcriptions/9431f1b3-8dd6-410e-870e-78890545daa9/9431f1b3-8dd6-410e-870e-78890545daa9_transcription.json",
+  "segments_count": 13,
+  "speakers_count": 0
+}

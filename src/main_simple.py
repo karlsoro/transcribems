@@ -1,58 +1,81 @@
 """
-FastAPI main application for TranscribeMCP.
+Simplified FastAPI application for TranscribeMCP without Celery/Redis dependencies.
+This version provides a REST API for testing and simple deployments.
 """
 
-import sys
+import os
 from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
 
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 import uvicorn
 
 from src.core.config import get_settings
 from src.core.logging import setup_logging, get_logger
-# Use simple transcription endpoint (no Celery dependency)
 from src.api.endpoints.transcription_simple import router as transcription_router
-from src.api.endpoints.transcription_sse import router as transcription_sse_router
-from src.api.endpoints.speaker_management import router as speaker_router, initialize_speaker_services, cleanup_speaker_services
-from src.api.endpoints.speaker_identification import router as speaker_id_router
+from src.api.endpoints.transcription_sse import router as sse_router
+from src.services.job_storage import get_job_storage
 
+
+# Fix cuDNN library path for pyannote.audio speaker diarization
+# This must be set before importing torch to avoid library loading issues
+# The cuDNN libraries are needed for pyannote.audio's neural networks
+import sys
+cudnn_path = Path(sys.prefix) / "lib" / "python3.12" / "site-packages" / "nvidia" / "cudnn" / "lib"
+if cudnn_path.exists():
+    current_ld_path = os.environ.get("LD_LIBRARY_PATH", "")
+    if str(cudnn_path) not in current_ld_path:
+        os.environ["LD_LIBRARY_PATH"] = f"{cudnn_path}:{current_ld_path}"
 
 # Initialize settings and logging
 settings = get_settings()
 setup_logging(
     log_dir=settings.LOG_DIR,
     log_level=settings.LOG_LEVEL,
-    enable_console=not settings.is_production()
+    enable_console=True
 )
 logger = get_logger(__name__)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """
-    Application lifespan context manager for startup/shutdown events.
-    """
+    """Application lifespan context manager for startup/shutdown events."""
     # Startup
-    logger.info("TranscribeMCP API starting up", extra={
-        "version": "1.0.0",
-        "debug": settings.DEBUG,
-        "environment": "production" if settings.is_production() else "development"
+    logger.info("TranscribeMCP REST API starting up", extra={
+        "version": "1.1.0-simple",
+        "mode": "simplified (no Celery/Redis) with persistent storage",
+        "debug": settings.DEBUG
     })
 
     # Ensure directories exist
-    directories = [settings.UPLOAD_DIR, settings.OUTPUT_DIR, settings.LOG_DIR]
+    directories = [settings.UPLOAD_DIR, settings.OUTPUT_DIR, settings.LOG_DIR, "job_storage"]
     for directory in directories:
         Path(directory).mkdir(parents=True, exist_ok=True)
 
+    # Initialize job storage
+    job_storage = get_job_storage()
+
+    # Start background job cleanup task (runs every hour)
+    async def cleanup_task():
+        while True:
+            try:
+                await asyncio.sleep(3600)  # Run every hour
+                deleted = await job_storage.cleanup_old_jobs(retention_hours=48)
+                if deleted > 0:
+                    logger.info(f"Cleaned up {deleted} old jobs")
+            except Exception as e:
+                logger.error(f"Job cleanup error: {e}", exc_info=True)
+
+    import asyncio
+    cleanup_task_handle = asyncio.create_task(cleanup_task())
+    app.state.cleanup_task = cleanup_task_handle
+
     # Initialize services if needed
     try:
-        # Import and test GPU service
         from src.services.gpu_service import GPUService
         gpu_service = GPUService()
         gpu_info = gpu_service.detect_gpus()
@@ -62,7 +85,6 @@ async def lifespan(app: FastAPI):
             "device_count": gpu_info["device_count"]
         })
 
-        # Test WhisperX service initialization (without loading models)
         from src.services.whisperx_service import WhisperXService
         whisperx_service = WhisperXService(
             model_size=settings.WHISPER_MODEL,
@@ -76,62 +98,49 @@ async def lifespan(app: FastAPI):
             "gpu_available": device_info["gpu_available"]
         })
 
-        # Speaker services DISABLED - use ./start_server.sh to enable
-        # Requires: LD_LIBRARY_PATH set for cuDNN compatibility
-        # await initialize_speaker_services(
-        #     hf_token=settings.HF_TOKEN,
-        #     db_path="speaker_database.db"
-        # )
-
     except Exception as e:
         logger.warning("Service initialization warning", extra={
             "error": str(e),
-            "warning_message": "Some services may not be fully available"
+            "message": "Some services may not be fully available"
         })
 
-    logger.info("TranscribeMCP API startup completed")
+    logger.info("TranscribeMCP REST API startup completed")
 
     yield
 
     # Shutdown
-    logger.info("TranscribeMCP API shutting down")
+    logger.info("TranscribeMCP REST API shutting down")
 
-    # Cleanup if needed
-    try:
-        # Cleanup speaker services
-        await cleanup_speaker_services()
-    except Exception as e:
-        logger.error("Error during shutdown cleanup", extra={"error": str(e)})
+    # Cancel cleanup task
+    if hasattr(app.state, 'cleanup_task'):
+        app.state.cleanup_task.cancel()
+        try:
+            await app.state.cleanup_task
+        except asyncio.CancelledError:
+            pass
 
-    logger.info("TranscribeMCP API shutdown completed")
+    logger.info("TranscribeMCP REST API shutdown completed")
 
 
 # Create FastAPI application
 app = FastAPI(
-    title="TranscribeMCP API",
-    description="WhisperX Audio Transcription API with Speaker Identification",
-    version="1.0.0",
+    title="TranscribeMCP REST API (Simplified)",
+    description="WhisperX Audio Transcription REST API - Simplified version without Celery/Redis",
+    version="1.1.0-simple",
     lifespan=lifespan,
-    docs_url="/docs" if not settings.is_production() else None,
-    redoc_url="/redoc" if not settings.is_production() else None,
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
-
-# Add middleware
-if settings.is_production():
-    # Trusted host middleware for production
-    app.add_middleware(
-        TrustedHostMiddleware,
-        allowed_hosts=settings.allowed_hosts_list
-    )
 
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
+    allow_origins=["*"],  # Allow all origins for development
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
 )
+
 
 # Request logging middleware
 @app.middleware("http")
@@ -139,19 +148,20 @@ async def log_requests(request: Request, call_next):
     """Log HTTP requests and responses."""
     start_time = datetime.utcnow()
 
-    # Log request
+    # Skip ALL middleware processing for SSE streams - let them pass through untouched
+    if "/stream" in request.url.path:
+        return await call_next(request)
+
     logger.info("HTTP request received", extra={
         "method": request.method,
         "url": str(request.url),
         "client_ip": request.client.host if request.client else None,
-        "user_agent": request.headers.get("user-agent"),
     })
 
     try:
         response = await call_next(request)
         processing_time = (datetime.utcnow() - start_time).total_seconds()
 
-        # Log response
         logger.info("HTTP request completed", extra={
             "method": request.method,
             "url": str(request.url),
@@ -214,9 +224,7 @@ async def general_exception_handler(request: Request, exc: Exception):
 
 # Include routers
 app.include_router(transcription_router)
-app.include_router(transcription_sse_router)
-app.include_router(speaker_router)
-app.include_router(speaker_id_router)
+app.include_router(sse_router)
 
 
 # Health check endpoint
@@ -229,12 +237,12 @@ async def health_check():
         JSON response with system health information
     """
     try:
-        # Check basic system health
         health_status = {
             "status": "healthy",
             "timestamp": datetime.utcnow().isoformat() + "Z",
-            "version": "1.0.0",
-            "environment": "production" if settings.is_production() else "development"
+            "version": "1.1.0-simple",
+            "mode": "simplified",
+            "note": "No Celery/Redis required"
         }
 
         # Check directory permissions
@@ -243,7 +251,7 @@ async def health_check():
         for directory in [settings.UPLOAD_DIR, settings.OUTPUT_DIR, settings.LOG_DIR]:
             dir_path = Path(directory)
             if not (dir_path.exists() and dir_path.is_dir() and
-                   os.access(dir_path, os.R_OK | os.W_OK)):
+                    os.access(dir_path, os.R_OK | os.W_OK)):
                 directories_ok = False
                 break
 
@@ -258,19 +266,8 @@ async def health_check():
         except Exception:
             health_status["gpu"] = "unknown"
 
-        # Check Redis connection (for Celery)
-        redis_ok = True
-        try:
-            import redis
-            r = redis.from_url(settings.REDIS_URL)
-            r.ping()
-        except Exception:
-            redis_ok = False
-
-        health_status["redis"] = "ok" if redis_ok else "error"
-
         # Overall status
-        if not directories_ok or not redis_ok:
+        if not directories_ok:
             health_status["status"] = "degraded"
 
         return JSONResponse(
@@ -296,32 +293,26 @@ async def health_check():
 async def root():
     """Root endpoint with API information."""
     return {
-        "message": "TranscribeMCP API",
-        "description": "WhisperX Audio Transcription API with Speaker Identification",
-        "version": "1.0.0",
+        "message": "TranscribeMCP REST API (Simplified)",
+        "description": "WhisperX Audio Transcription REST API without Celery/Redis",
+        "version": "1.1.0-simple",
         "docs": "/docs",
-        "health": "/v1/health"
+        "health": "/v1/health",
+        "note": "This is a simplified version for testing. For production, use the MCP server."
     }
 
 
 def main():
     """Main entry point for running the application."""
-    import os
-
-    # Configure uvicorn logging
-    log_config = uvicorn.config.LOGGING_CONFIG
-    log_config["formatters"]["default"]["fmt"] = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    log_config["formatters"]["access"]["fmt"] = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-
-    # Run the application
     uvicorn.run(
-        "src.main:app",
+        "src.main_simple:app",
         host=settings.HOST,
         port=settings.PORT,
-        reload=settings.DEBUG and not settings.is_production(),
+        reload=settings.DEBUG,
         log_level=settings.LOG_LEVEL.lower(),
-        log_config=log_config,
-        access_log=True
+        access_log=True,
+        timeout_keep_alive=3600,  # 1 hour keep-alive timeout
+        timeout_graceful_shutdown=30
     )
 
 

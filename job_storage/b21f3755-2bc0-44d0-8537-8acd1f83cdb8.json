@@ -1,0 +1,16 @@
+{
+  "job_id": "b21f3755-2bc0-44d0-8537-8acd1f83cdb8",
+  "status": "failed",
+  "progress": 20,
+  "progress_message": "Loading AI models",
+  "original_filename": "51e7bd98-f263-4275-93d9-831fbbd3b4ee.wav",
+  "audio_file_path": "uploads/b21f3755-2bc0-44d0-8537-8acd1f83cdb8.wav",
+  "language": "en",
+  "enable_speaker_diarization": false,
+  "model_size": "base",
+  "estimated_processing_time": 9.00824063873291,
+  "created_at": "2025-10-02T17:14:04.468644",
+  "updated_at": "2025-10-02T17:14:06.117921",
+  "error": "Transcription failed: Model loading failed: HTTP Error 301: Moved Permanently",
+  "error_type": "RuntimeError"
+}

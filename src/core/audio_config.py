@@ -43,5 +43,5 @@ def get_audio_backend_info():
             "status": "torchcodec_required"
         }
 
-# Auto-configure when imported
-configure_audio_backend()
+# Note: Call configure_audio_backend() explicitly when needed
+# Don't auto-configure at import time to avoid torchcodec dependency errors

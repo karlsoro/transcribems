@@ -115,7 +115,8 @@ class Settings(BaseSettings):
     model_config = {
         "env_file": ".env",
         "env_file_encoding": "utf-8",
-        "case_sensitive": True
+        "case_sensitive": True,
+        "extra": "ignore"  # Allow extra fields in .env file
     }
 
     def __init__(self, **kwargs):

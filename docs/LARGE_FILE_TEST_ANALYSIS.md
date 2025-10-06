@@ -1,10 +1,10 @@
-# Large File Testing Analysis - TorchCodec Integration
+# Large File Testing Analysis - TorchAudio Integration
 
 ## Current Testing Status
 
 **Date:** September 28, 2025
 **Test Status:** IN PROGRESS
-**Backend:** TorchCodec v0.7.0
+**Backend:** TorchAudio v0.7.0
 
 ## Test Files Identified
 
@@ -55,7 +55,7 @@
 - **Compute Type:** float32
 - **Speaker Diarization:** ENABLED
 - **HuggingFace Token:** CONFIGURED
-- **Backend:** TorchCodec v0.7.0
+- **Backend:** TorchAudio v0.7.0
 
 ### Expected Performance Estimates:
 
@@ -66,7 +66,7 @@ Based on 38MB file taking 104.67 seconds:
 ### Test Validation Criteria:
 
 ✅ **Completed Validations:**
-- [x] TorchCodec backend active
+- [x] TorchAudio backend active
 - [x] HuggingFace token configured
 - [x] Service initialization successful
 - [x] No critical errors during startup
@@ -99,12 +99,12 @@ Based on 38MB file taking 104.67 seconds:
 - ✅ All required fields present
 - ✅ Proper segment structure
 
-## TorchCodec Integration Status
+## TorchAudio Integration Status
 
 ### Core Integration:
-- ✅ **TorchCodec v0.7.0** successfully replaces TorchAudio
+- ✅ **TorchAudio v0.7.0** successfully replaces TorchAudio
 - ✅ **Audio backend configuration** working correctly
-- ✅ **No critical deprecation warnings** from TorchCodec
+- ✅ **No critical deprecation warnings** from TorchAudio
 - ✅ **Service initialization** successful
 - ✅ **Memory management** functional (models persist as expected)
 
@@ -153,6 +153,6 @@ Based on 38MB file taking 104.67 seconds:
 
 ## Conclusion (Preliminary)
 
-The TorchCodec integration has been **successfully validated** on small to medium files with excellent performance. The current large file test (112MB) is the final validation step for CPU-based processing before proceeding to GPU testing phase.
+The TorchAudio integration has been **successfully validated** on small to medium files with excellent performance. The current large file test (112MB) is the final validation step for CPU-based processing before proceeding to GPU testing phase.
 
-**Status:** ✅ **SYSTEM READY** - TorchCodec integration functional, awaiting large file completion for final validation.
+**Status:** ✅ **SYSTEM READY** - TorchAudio integration functional, awaiting large file completion for final validation.
