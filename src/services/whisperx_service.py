@@ -232,24 +232,16 @@ class WhisperXService:
             await self._report_progress(20, "Loading AI models")
             await self.load_models(language)
 
-            # Transcribe (run in thread to avoid blocking event loop)
+            # Transcribe (synchronous blocking call - works in background task)
             await self._report_progress(30, "Transcribing audio")
             logger.debug("Starting transcription")
-            try:
-                result = await asyncio.wait_for(
-                    asyncio.to_thread(
-                        self._whisper_model.transcribe,
-                        audio,
-                        batch_size=batch_size,
-                        chunk_size=chunk_length,
-                        language=None if language == "auto" else language
-                    ),
-                    timeout=3600  # 1 hour timeout
-                )
-                logger.debug("Transcription completed")
-            except asyncio.TimeoutError:
-                logger.error("Transcription timed out after 1 hour")
-                raise RuntimeError("Transcription timed out")
+            result = self._whisper_model.transcribe(
+                audio,
+                batch_size=batch_size,
+                chunk_size=chunk_length,
+                language=None if language == "auto" else language
+            )
+            logger.debug("Transcription completed")
 
             detected_language = result.get("language", language)
             await self._report_progress(60, f"Transcription completed (language: {detected_language})")

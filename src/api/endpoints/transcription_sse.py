@@ -31,10 +31,17 @@ async def event_generator(job_id: str) -> AsyncGenerator[bytes, None]:
         iteration = 0
         while True:
             iteration += 1
-            job = await job_storage.get_job(job_id)
+
+            try:
+                job = await job_storage.get_job(job_id)
+            except Exception as e:
+                logger.error(f"SSE: Failed to get job {job_id}: {e}", exc_info=True)
+                error_data = json.dumps({"error": f"Failed to get job: {str(e)}"})
+                yield f"event: error\ndata: {error_data}\n\n".encode('utf-8')
+                break
 
             if not job:
-                logger.error(f"SSE: Job {job_id} not found")
+                logger.error(f"SSE: Job {job_id} not found at iteration {iteration}")
                 error_data = json.dumps({"error": "Job not found"})
                 yield f"event: error\ndata: {error_data}\n\n".encode('utf-8')
                 break
@@ -42,6 +49,10 @@ async def event_generator(job_id: str) -> AsyncGenerator[bytes, None]:
             status = job.get("status")
             progress = job.get("progress", 0)
             progress_message = job.get("progress_message", "")
+
+            # Log every 10 iterations for debugging
+            if iteration % 10 == 0:
+                logger.debug(f"SSE iteration {iteration} for {job_id}: status={status}, progress={progress}%")
 
             # Send on first iteration OR when values change
             should_send = (iteration == 1) or (progress != last_progress) or (status != last_status)
@@ -55,40 +66,52 @@ async def event_generator(job_id: str) -> AsyncGenerator[bytes, None]:
                 })
 
                 logger.info(f"SSE: Sending progress for {job_id}: {progress}% - {status} - {progress_message}")
-                yield f"event: progress\ndata: {data}\n\n".encode('utf-8')
+
+                try:
+                    yield f"event: progress\ndata: {data}\n\n".encode('utf-8')
+                except (ConnectionResetError, BrokenPipeError) as e:
+                    logger.warning(f"SSE: Client disconnected for job {job_id}: {e}")
+                    break
 
                 last_progress = progress
                 last_status = status
 
             # Terminal states
             if status in ["completed", "failed"]:
-                if status == "completed":
-                    result_data = json.dumps({
-                        "job_id": job_id,
-                        "status": status,
-                        "progress": 100,
-                        "message": "Transcription completed",
-                        "result": job.get("result"),
-                        "output_file": job.get("output_file"),
-                        "segments_count": job.get("segments_count"),
-                        "speakers_count": job.get("speakers_count")
-                    })
-                    yield f"event: completed\ndata: {result_data}\n\n".encode('utf-8')
-                else:
-                    error_data = json.dumps({
-                        "job_id": job_id,
-                        "status": status,
-                        "error": job.get("error"),
-                        "error_type": job.get("error_type")
-                    })
-                    yield f"event: failed\ndata: {error_data}\n\n".encode('utf-8')
+                try:
+                    if status == "completed":
+                        result_data = json.dumps({
+                            "job_id": job_id,
+                            "status": status,
+                            "progress": 100,
+                            "message": "Transcription completed",
+                            "result": job.get("result"),
+                            "output_file": job.get("output_file"),
+                            "segments_count": job.get("segments_count"),
+                            "speakers_count": job.get("speakers_count")
+                        })
+                        yield f"event: completed\ndata: {result_data}\n\n".encode('utf-8')
+                    else:
+                        error_data = json.dumps({
+                            "job_id": job_id,
+                            "status": status,
+                            "error": job.get("error"),
+                            "error_type": job.get("error_type")
+                        })
+                        yield f"event: failed\ndata: {error_data}\n\n".encode('utf-8')
+                except (ConnectionResetError, BrokenPipeError) as e:
+                    logger.warning(f"SSE: Client disconnected before receiving final status for job {job_id}: {e}")
 
                 logger.info(f"SSE stream ended for job {job_id} with status: {status}")
                 break
 
             # Send heartbeat every 10 iterations (5 seconds) to keep connection alive
             if iteration % 10 == 0:
-                yield f": heartbeat\n\n".encode('utf-8')
+                try:
+                    yield ": heartbeat\n\n".encode('utf-8')
+                except (ConnectionResetError, BrokenPipeError) as e:
+                    logger.warning(f"SSE: Client disconnected during heartbeat for job {job_id}: {e}")
+                    break
 
             # Poll every 500ms
             await asyncio.sleep(0.5)
@@ -118,7 +141,6 @@ async def stream_job_progress(job_id: str):
         media_type="text/event-stream",
         headers={
             "Cache-Control": "no-cache",
-            "Connection": "keep-alive",
             "X-Accel-Buffering": "no",
         }
     )

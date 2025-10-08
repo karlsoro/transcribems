@@ -18,7 +18,8 @@ from src.core.config import get_settings
 from src.core.logging import setup_logging, get_logger
 # Use simple transcription endpoint (no Celery dependency)
 from src.api.endpoints.transcription_simple import router as transcription_router
-from src.api.endpoints.transcription_sse import router as transcription_sse_router
+# SSE removed - using simple HTTP polling instead
+# from src.api.endpoints.transcription_sse import router as transcription_sse_router
 from src.api.endpoints.speaker_management import router as speaker_router, initialize_speaker_services, cleanup_speaker_services
 from src.api.endpoints.speaker_identification import router as speaker_id_router
 
@@ -76,12 +77,12 @@ async def lifespan(app: FastAPI):
             "gpu_available": device_info["gpu_available"]
         })
 
-        # Speaker services DISABLED - use ./start_server.sh to enable
+        # Initialize speaker services with proper cuDNN setup
         # Requires: LD_LIBRARY_PATH set for cuDNN compatibility
-        # await initialize_speaker_services(
-        #     hf_token=settings.HF_TOKEN,
-        #     db_path="speaker_database.db"
-        # )
+        await initialize_speaker_services(
+            hf_token=settings.HF_TOKEN,
+            db_path="speaker_database.db"
+        )
 
     except Exception as e:
         logger.warning("Service initialization warning", extra={
@@ -214,7 +215,8 @@ async def general_exception_handler(request: Request, exc: Exception):
 
 # Include routers
 app.include_router(transcription_router)
-app.include_router(transcription_sse_router)
+# SSE removed - using simple HTTP polling instead
+# app.include_router(transcription_sse_router)
 app.include_router(speaker_router)
 app.include_router(speaker_id_router)
 
