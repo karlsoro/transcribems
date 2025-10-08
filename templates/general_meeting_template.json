@@ -1,0 +1,31 @@
+{
+  "template_id": "general-meeting-v1",
+  "name": "General Meeting Notes",
+  "description": "Standard meeting notes with discussion topics, decisions, and action items",
+  "version": "1.0.0",
+  "output_format": "docx",
+  "type": "general_meeting",
+  
+  "required_fields": [
+    "meeting_date",
+    "attendees",
+    "discussion_topics",
+    "action_items"
+  ],
+  
+  "optional_fields": [
+    "decisions",
+    "next_steps",
+    "parking_lot"
+  ],
+  
+  "field_descriptions": {
+    "meeting_date": "Date and time of the meeting",
+    "attendees": "List of meeting participants",
+    "discussion_topics": "Main topics covered in the meeting",
+    "decisions": "Key decisions made during the meeting",
+    "action_items": "Tasks assigned with owners and due dates",
+    "next_steps": "Planned activities following the meeting",
+    "parking_lot": "Topics deferred to future discussions"
+  }
+}

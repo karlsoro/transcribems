@@ -1,0 +1,39 @@
+{
+  "template_id": "project-meeting-v1",
+  "name": "Project Meeting Notes",
+  "description": "Comprehensive project meeting notes with status, risks, and detailed action tracking",
+  "version": "1.0.0",
+  "output_format": "docx",
+  "type": "project_meeting",
+  
+  "required_fields": [
+    "project_name",
+    "meeting_date",
+    "attendees",
+    "status_updates",
+    "action_items"
+  ],
+  
+  "optional_fields": [
+    "risks_issues",
+    "decisions",
+    "next_meeting"
+  ],
+  
+  "field_descriptions": {
+    "project_name": "Name of the project",
+    "meeting_date": "Date and time of the meeting",
+    "attendees": "Participants with their roles",
+    "status_updates": "Progress updates on deliverables and milestones",
+    "risks_issues": "Current blockers, risks, and mitigation plans",
+    "decisions": "Key decisions made with rationale",
+    "action_items": "Tasks with owners, due dates, and dependencies",
+    "next_meeting": "Date and focus areas for next meeting"
+  },
+  
+  "validation_rules": {
+    "action_items": {
+      "required_structure": "Each action item should include: description, owner, due date"
+    }
+  }
+}

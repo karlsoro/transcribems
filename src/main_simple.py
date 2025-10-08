@@ -18,6 +18,7 @@ from src.core.config import get_settings
 from src.core.logging import setup_logging, get_logger
 from src.api.endpoints.transcription_simple import router as transcription_router
 from src.api.endpoints.transcription_sse import router as sse_router
+from src.api.endpoints.transcript_formatter import router as formatter_router
 from src.services.job_storage import get_job_storage
 
 
@@ -52,12 +53,28 @@ async def lifespan(app: FastAPI):
     })
 
     # Ensure directories exist
-    directories = [settings.UPLOAD_DIR, settings.OUTPUT_DIR, settings.LOG_DIR, "job_storage"]
+    directories = [
+        settings.UPLOAD_DIR,
+        settings.OUTPUT_DIR,
+        settings.LOG_DIR,
+        "job_storage",
+        "format_output",
+        "templates",
+        "templates/scripts"
+    ]
     for directory in directories:
         Path(directory).mkdir(parents=True, exist_ok=True)
 
     # Initialize job storage
     job_storage = get_job_storage()
+
+    # Initialize template database
+    try:
+        from src.services.template_database import get_template_db
+        template_db = await get_template_db()
+        logger.info("Template database initialized")
+    except Exception as e:
+        logger.warning(f"Template database initialization warning: {e}")
 
     # Start background job cleanup task (runs every hour)
     async def cleanup_task():
@@ -225,6 +242,7 @@ async def general_exception_handler(request: Request, exc: Exception):
 # Include routers
 app.include_router(transcription_router)
 app.include_router(sse_router)
+app.include_router(formatter_router)
 
 
 # Health check endpoint

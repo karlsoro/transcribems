@@ -1,0 +1,13 @@
+# Additional dependencies for Use Transcript feature
+
+# LLM Client
+anthropic>=0.39.0  # Claude API for AI-powered content extraction
+
+# Document Generation
+python-docx>=1.1.0  # Microsoft Word document generation
+jinja2>=3.1.4  # Text template rendering
+
+# Optional: OpenAI support (alternative to Anthropic)
+# openai>=1.0.0
+
+# Note: All other dependencies are already satisfied by existing requirements
