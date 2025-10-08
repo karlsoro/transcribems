@@ -102,3 +102,6 @@ models/
 /.cache/
 /test_data/audio/*.wav
 /test_data/audio/*.mp3
+job_storage/*.json
+.claude/settings.local.json.tmp.*
+speaker_database.db
